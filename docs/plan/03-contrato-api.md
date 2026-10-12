@@ -2,7 +2,7 @@
 
 Version: v0.1 (propuesta). Congelar en el hito H0. Cualquier cambio se avisa a Zabdiel y Julian. La implementacion real debe pasar la validacion contra OpenAPI generado por FastAPI.
 
-Base: `/api/v1`. JSON UTF-8. Zonas identificadas por indice H3 (resolucion configurable, por defecto 8).
+Base: `/api/v1`. JSON UTF-8. Zona = municipio, identificado por codigo DIVIPOLA (string de 5 digitos, ej. `"68001"` Bucaramanga). Horizonte fijo: mes siguiente. `hazard`: `"wildfire" | "landslide" | "flood"` (por defecto la amenaza principal).
 
 ## Convenciones
 
@@ -20,14 +20,17 @@ Respuesta: `{ "status": "ok", "model_version": "string", "data_version": "string
 ### POST /predict
 Entrada:
 ```json
-{ "lat": 7.1193, "lon": -73.1227, "as_of": "2026-10-12" }
+{ "zone_id": "68001", "hazard": "wildfire", "as_of": "2026-10-12" }
 ```
 `as_of` opcional (por defecto hoy).
 
 Respuesta:
 ```json
 {
-  "zone_id": "88a8e0a1b3fffff",
+  "zone_id": "68001",
+  "municipality": "Bucaramanga",
+  "hazard": "wildfire",
+  "abstain": false,
   "risk_score": 0.74,
   "risk_level": "high",
   "interval": { "lower": 0.61, "upper": 0.85, "coverage": 0.9 },
@@ -40,8 +43,8 @@ Respuesta:
 ```
 
 ### GET /zones
-Query: `bbox=minLon,minLat,maxLon,maxLat`, `level` opcional.
-Respuesta: GeoJSON FeatureCollection; cada feature con `zone_id`, `risk_score`, `risk_level`.
+Query: `hazard` opcional, `level` opcional.
+Respuesta: GeoJSON FeatureCollection (poligonos municipales si existen; si no, puntos en el centroide); cada feature con `zone_id`, `municipality`, `risk_score`, `risk_level`, `abstain`.
 
 ### GET /zones/ranking
 Query: `limit` (por defecto 20), `level` opcional.

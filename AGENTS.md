@@ -27,9 +27,9 @@ El enunciado del dominio y el dataset oficial pueden no existir al arrancar: el 
 ## Reglas no negociables
 
 1. Contrato primero: `docs/plan/03-contrato-api.md` es la frontera ML <-> web. Cambiarlo requiere avisar a los otros dos.
-2. Sin fuga espacial: validacion con particion por bloques geograficos, nunca aleatoria sobre puntos vecinos.
+2. Sin fuga espacial ni temporal: validacion por bloques de municipios (clusters de centroides o provincias) y particion temporal con embargo; nunca aleatoria sobre unidades vecinas.
 3. Todo experimento deja rastro: corrida en MLflow, semilla fija, hash de datos, version de codigo. Sin rastro no cuenta como resultado.
-4. Reportar metricas tal como salen, con intervalos. No se afirma "gana" si los intervalos se solapan.
+4. Reportar metricas tal como salen, con intervalos por remuestreo de bloques. Para decir que un modelo gana se usa el intervalo de la diferencia pareada por bloques; el solapamiento de intervalos marginales no prueba empate ni diferencia. Si es inconcluso, se prefiere el modelo mas simple.
 5. Sin secretos en git. `.env` ignorado; `.env.example` versionado.
 6. El modelo es aprendido, nunca reglas fijas. Un baseline simple es obligatorio para compararse.
 

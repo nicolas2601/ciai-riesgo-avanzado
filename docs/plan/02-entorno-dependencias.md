@@ -55,7 +55,7 @@ bun dev
 bun run build
 ```
 
-Pila propuesta: Vite + React + TypeScript, MapLibre GL (mapa), deck.gl (capa de celdas H3), TanStack Query (cliente), cliente tipado generado desde OpenAPI. Decision final del lider web, respetando `skills/web-app/SKILL.md`.
+Pila propuesta: Vite + React + TypeScript, MapLibre GL (mapa), deck.gl o capa GeoJSON de MapLibre (municipios: poligonos o centroides), TanStack Query (cliente), cliente tipado generado desde OpenAPI. Decision final del lider web, respetando `skills/web-app/SKILL.md`.
 
 ## Despliegue
 
