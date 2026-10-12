@@ -10,7 +10,7 @@ Base: `/api/v1`. JSON UTF-8. Zona = municipio por codigo DIVIPOLA (string de 5 d
 
 - **Objetivo**: nivel de riesgo de la amenaza `hazard` en el mes `target_month`, derivado de conteos de emergencias reportadas (regla de `docs/research/01-datasets.md`). Es frecuencia relativa de reportes, no severidad ni alerta oficial.
 - **`hazard`**: `"wildfire" | "landslide" | "flood"`. Solo se aceptan los listados en `supported_hazards` de `/ready`; los demas se rechazan.
-- **`target_month`**: `"YYYY-MM"`. Por defecto, el mes siguiente a `data_available_through`.
+- **`target_month`**: `"YYYY-MM"` entre `2019-01` (inicio de la serie UNGRD) y `2099-12`; fuera de ese rango, 422. Por defecto, el mes siguiente a `data_available_through`.
 - **`feature_cutoff`**: ultimo dia cuyos datos pueden usarse = dia anterior al inicio de `target_month`.
 - **`data_available_through`**: ultima fecha con datos realmente disponibles en el snapshot. Si es anterior a `feature_cutoff`, la API se abstiene (`abstain_reason = "stale_data"`) en lugar de predecir.
 - **Snapshot**: campos `model_version`, `data_version`, `hazard`, `target_month`, `feature_cutoff`, `is_mock`. Estan en TODAS las respuestas de datos (predict, zones, ranking, explain, metrics). La web debe pedir zones, ranking y explain con el mismo `hazard` y `target_month` para que sean coherentes.
@@ -72,7 +72,7 @@ Query: `hazard`, `target_month`, `level` (todos opcionales). GeoJSON `FeatureCol
 Query: `hazard`, `target_month`, `limit` (por defecto 20, maximo 100), `level`. Respuesta: campos del snapshot + `items`: `rank`, `zone_id`, `municipality`, `risk_score`, `risk_level`, `prediction_set`. Orden descendente por `risk_score`; las zonas con `risk_score = null` no entran.
 
 ### GET /zones/{zone_id}/explain
-Query: `hazard`, `target_month`. Respuesta: campos del snapshot + `zone_id`, `top_factors` (SHAP) e `history`: `[ { "month": "2026-04", "risk_score": 0.4 } ]` (meses previos, con la informacion disponible en su momento).
+Query: `hazard`, `target_month`. Respuesta: campos del snapshot + `zone_id`, `abstain`, `abstain_reason`, `top_factors` (SHAP) e `history`: `[ { "month": "2026-04", "risk_score": 0.4 } ]`. Misma regla de abstencion que `/predict`: con `stale_data`, `top_factors` es `[]`. `history` solo incluye meses previos con snapshot valido (desde 2019-01 y con datos disponibles a su `feature_cutoff`).
 
 ### GET /metrics
 Query: `hazard`. Metricas leidas de MLflow, nunca escritas a mano. Campos del snapshot +
