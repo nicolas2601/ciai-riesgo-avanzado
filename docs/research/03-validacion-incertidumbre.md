@@ -7,7 +7,7 @@ Consulta: 2026-10-12. Protocolo propuesto; no hay métricas ejecutadas. Referenc
 **PROPUESTA:** distinguir dos preguntas antes del split:
 
 1. Pronóstico en zonas conocidas: futuro retenido y pasado como train, con embargo suficiente para ventanas/targets solapados.
-2. Transferencia territorial: bloques geográficos retenidos; si además se promete futuro en zonas nuevas, retener simultáneamente espacio y tiempo.
+2. Transferencia territorial: clusters de municipios por centroides o provincias retenidas; si además se promete futuro en municipios nuevos, retener simultáneamente espacio y tiempo.
 
 Un split espacial no demuestra pronóstico futuro. Uno temporal no demuestra transferencia a otra región. Reportar cuál se probó.
 
@@ -16,10 +16,10 @@ Un split espacial no demuestra pronóstico futuro. Uno temporal no demuestra tra
 ## Diseño mínimo, ajustable a soporte real
 
 - Deduplicar eventos y agrupar inventarios del mismo episodio antes del split; mantener episodio y ventanas muy correlacionadas juntos.
-- Definir bloques geográficos con distancia física/estructura del fenómeno. Tamaño inicial es hipótesis; hacer sensibilidad a dos tamaños si alcanza tiempo. H3 por sí mismo no elimina correlación.
+- Definir bloques de municipios mediante clusters de centroides en CRS métrico o provincias verificadas, conservando un municipio completo en su fold espacial. Tamaño/composición inicial es hipótesis; hacer sensibilidad si alcanza tiempo. DIVIPOLA validado no elimina correlación. Con 87 municipios del catálogo habrá pocos bloques independientes y clases posiblemente ausentes: ~7,300 filas mensuales no son ~7,300 unidades espaciales independientes. Resolver códigos UNGRD corruptos antes de construir folds; un municipio duplicado por códigos raw causaría fuga.
 - Reservar test externo no usado para tuning. Dentro del conjunto restante, hacer CV por bloques para selección y early stopping.
 - Guardar IDs de filas, zonas, fechas, episodios y folds. No basta guardar semilla.
-- Para pronóstico, toda feature necesita fecha de disponibilidad; purgar train si horizonte de su etiqueta intersecta ventana retenida. Embargo depende de historial/horizonte, no es un número universal.
+- Para pronóstico, toda feature necesita fecha de disponibilidad; purgar train si horizonte de su etiqueta intersecta ventana retenida. Embargo depende de historial/horizonte, no es un número universal. Mes sin seguimiento UNGRD completo es censurado, no negativo; validar cobertura por tabla y municipio antes de rellenar ceros.
 - Imputadores, escaladores, encoders, sampling y umbrales de target se ajustan en train de cada fold. No ejecutar SMOTE antes de dividir.
 - Si faltan clases por fold, documentar inviabilidad; reducir folds con justificación o cambiar target. No escoger split aleatorio para ocultarlo.
 

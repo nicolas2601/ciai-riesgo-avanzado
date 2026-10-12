@@ -6,7 +6,7 @@ Propuestas al 2026-10-12. No implementadas ni validadas con usuarios. Se subordi
 
 **Problema:** un color de riesgo sin soporte induce falsa precisión y oculta regiones sin datos.
 
-**PROPUESTA:** cada zona muestra clase/frecuencia prevista y, separadamente, calidad de datos, horizonte y necesidad de revisión. Si set conformal tiene varias clases o falta soporte/OOD verificable, mostrar estado de abstención. No confundir entropía con error de medición ni convertir confianza en garantía de seguridad.
+**PROPUESTA:** cada municipio (DIVIPOLA) muestra clase/frecuencia prevista para mes siguiente y, separadamente, calidad de datos, horizonte y necesidad de revisión. Polígono municipal verificado o punto representativo; no ubicación puntual del evento UNGRD. Si set conformal tiene varias clases o falta soporte/OOD verificable, mostrar estado de abstención. No confundir entropía con error de medición ni convertir confianza en garantía de seguridad.
 
 **Panel de decisión:** probabilidad de clase alta cuando esté calibrada, población estimada expuesta separada, antigüedad de datos, versión de modelo y principales factores asociados. No multiplicar población por probabilidad de una clase relativa y llamarlo daño esperado.
 
@@ -32,7 +32,7 @@ Propuestas al 2026-10-12. No implementadas ni validadas con usuarios. Se subordi
 
 **Problema:** un equipo solo puede inspeccionar K zonas; mapa completo no ordena trabajo ni registra por qué se eligieron.
 
-**PROPUESTA:** ranking de zonas para revisión por score aprendido de amenaza, acompañado de exposición y calidad separadas. Elegir K según capacidad del equipo, registrar motivos/versiones y marcar zonas inciertas para revisión, no ocultarlas al final de una lista.
+**PROPUESTA:** ranking de municipios para revisión por score aprendido de reportes de una amenaza, acompañado de exposición y calidad separadas. Elegir K según capacidad del equipo, registrar motivos/versiones y marcar municipios inciertos para revisión, no ocultarlos al final de una lista.
 
 **Creatividad defendible:** reporte reproducible de qué se priorizó, cuándo y con qué datos; estados pendiente/revisado y feedback humano que nunca sobrescribe label original.
 

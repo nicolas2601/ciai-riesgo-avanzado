@@ -27,8 +27,8 @@ Guardar como artefactos/tags en MLflow:
 - Fuentes, producto/versión, URL, licencia, acceso, región/fechas, CRS, tamaño y hash SHA-256 de archivos raw/processed.
 - Snapshot recuperable o ruta de storage versionada. No depender de URL mutable ni endpoint NRT que reemplaza históricos.
 - Configuración **resuelta**, semilla, versions/lockfile, hardware/runtime, opciones deterministas y limitaciones conocidas. Una semilla no garantiza igualdad bit a bit entre CUDA/platforms.
-- Definición target, horizonte, mapping de clases, umbral de discretización, universo y esquema de negativos/background.
-- IDs de folds y episodios, features en orden, transformaciones ajustadas, hiperparámetros, historia de entrenamiento y selección.
+- Definición target municipio (DIVIPOLA) × mes, horizonte mes siguiente, mapping de clases, umbral, catálogo de 87 municipios y cobertura de reporte. Registrar filtro exacto de Santander: substring incluye Norte de Santander. Auditar join nombre normalizado + departamento contra catálogo, códigos raw corruptos y ambiguos rechazados. Sin seguimiento completo, target ausente, no cero.
+- IDs de folds (clusters de centroides o provincias), municipios y episodios, features en orden, transformaciones ajustadas, hiperparámetros, historia de entrenamiento y selección. Para TabPFN opcional, paquete/checkpoint/hash/licencia y contexto de entrenamiento por fold.
 - Métricas por fold/clase, tamaño/soporte, intervalos y reporte de test externo; no mezclar train/test en mismo nombre de métrica.
 - Preprocesador, pesos/modelo, calibrador, cuantiles conformales si existen, firma, input example y ejemplos de paridad offline/API.
 
@@ -57,7 +57,7 @@ Hydra permite sweeps, pero guardar interpolaciones evaluadas: valores basados en
 **PROPUESTA de diseño, subordinada al contrato del equipo:**
 
 - Cargar bundle verificado una vez en startup; readiness falla si faltan pesos/preprocesador o mapping compatible.
-- API pública recibe zona/coordenadas/fecha; resolver features a partir de snapshot precomputado. No descargar rasters ni entrenar dentro de cada petición.
+- API pública recibe municipio/DIVIPOLA y fecha; resolver features a partir de snapshot municipal precomputado. No inferir ubicación puntual de eventos UNGRD desde centroides ni descargar rasters/entrenar dentro de cada petición.
 - Separar inferencia de construcción de features y documentar si API solo acepta features precalculadas, en vez de prometer resolución territorial inexistente.
 - Validar CRS, rangos, fechas, unidades, valores finitos y límites de lote/body. Número máximo se fija con prueba real, no se inventa throughput.
 - Respuesta incluye versión/hash de modelo, snapshot, horizonte, probabilidades calibradas cuando lo estén, target, clase y motivo de abstención cuando aplique.
@@ -83,7 +83,7 @@ Estacionalidad y cambios de satélite pueden producir drift esperado o artefactu
 ## Escalabilidad y rollback
 
 - Recortar COG por ventanas y cachear agregados; tabla procesada particionada por región/fecha si volumen lo exige. No cargar raster global para consulta puntual.
-- Precalcular predicciones para mapa; evitar inferencia por cada píxel visible.
+- Precalcular predicciones municipales para mapa; evitar inferencia por cada píxel visible. Mostrar polígonos verificados o puntos representativos, no heatmap puntual de eventos inexistentes.
 - Bundle inmutable: cambiar versión mediante publicación controlada; preservar versión previa y endpoint de versión.
 - Falla cluster: entrenamiento pequeño local y tracking local pendiente de sincronización.
 - Falla fuente/túnel: mostrar snapshot y su antigüedad; no decir tiempo real. Demo local como fallback, sin inventar disponibilidad pública.

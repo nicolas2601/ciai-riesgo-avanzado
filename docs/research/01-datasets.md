@@ -1,14 +1,16 @@
 # Datasets candidatos y definición de la etiqueta
 
-Consulta de fuentes: 2026-10-12. Investigación documental, sin descargar datos ni entrenar modelos. Los tamaños regionales y conteos de eventos todavía no están medidos.
+Consulta de fuentes: 2026-10-12. Investigación documental y consultas agregadas a UNGRD, sin descargar datasets completos ni entrenar modelos. Tamaños regionales de fuentes globales todavía no medidos.
 
 ## Decisión recomendada, condicionada
 
 No elegir inundación, remoción en masa, incendio o delito como si fueran intercambiables. Primero confirmar enunciado, unidad espacial, horizonte y etiqueta oficial. Si no existe etiqueta oficial, seleccionar **una sola amenaza observable** y declarar exactamente qué se predice.
 
 - **HECHO:** FIRMS ofrece observaciones de anomalías térmicas con fecha y coordenadas; COOLR reúne reportes/inventarios de deslizamientos. Lluvia, elevación y población no son etiquetas de eventos.
-- **PROPUESTA:** primer candidato operativo: frecuencia futura de detecciones térmicas por celda y ventana; alternativa: eventos reportados de deslizamiento, si el inventario regional es suficiente. Ninguno equivale automáticamente a riesgo integral ni a severidad.
-- **SUPOSICIÓN:** Santander es el área de interés. No hay verificación del enunciado, inventario oficial o distribución de clases.
+- **HECHO verificado en API UNGRD:** `2343-nuqp` tiene 13,008 de 13,012 registros con coordenadas `0`. Unidad viable: municipio/DIVIPOLA, no puntos de eventos. Filtro exacto `departamento = 'SANTANDER'`: 1,212 + 927 + 502 = **2,641 registros** en las tres tablas 2019–2025. El filtro substring mezcla Norte de Santander y produce 4,958; no usarlo. En 2019–2022 hay 85 DIVIPOLA distintos observados, no necesariamente universo municipal completo.
+- **HECHO verificado en directorio:** `kqut-4h4r`, `divipola_departamento = '68'`, tiene 87 códigos municipales distintos. UNGRD 2025 contiene códigos corruptos: muestra SUAITA con `20345`. Resolver por nombre normalizado + departamento contra catálogo validado, conservando código raw y auditoría; no corregir ambiguos mediante fuzzy match silencioso. Panel completo inicial: 87 × 84 = 7,308 filas, antes de lags/censura/cobertura.
+- **PROPUESTA:** target principal: conteo de emergencias UNGRD de una amenaza por municipio y mes siguiente; fuentes globales abajo son alternativas/covariables, no reemplazo automático de esa etiqueta. Detalles en [datos Colombia](06-datos-colombia.md), sujeto a corrección de conteos y armonización.
+- **SUPOSICIÓN:** Santander es el área de interés del reto. Enunciado y distribución de clases del panel limpio aún no verificados.
 - **NO HACER:** crear etiquetas mediante pendiente/lluvia y entrenar con esas mismas variables. El modelo aprendería la regla, no evidencia independiente de eventos.
 
 ## Comparación rápida
@@ -27,7 +29,7 @@ Accesible públicamente no implica que los cinco tengan una licencia abierta est
 
 **HECHOS:** COOLR reúne Global Landslide Catalog, reportes voluntarios y otros inventarios, incluyendo inventarios ligados a eventos. El CSV legado del portal NASA es una instantánea al 2016-03-07, no el catálogo actual. GLC combina prensa, bases de desastres y reportes científicos; su cobertura refleja también el mecanismo de reporte.
 
-**Etiqueta candidata:** presencia o conteo de **eventos reportados** por celda y ventana. Fecha, geometría, desencadenante y precisión de ubicación deben verificarse en el export elegido. Filtrar desencadenante si se quiere exclusivamente deslizamiento por lluvia.
+**Etiqueta alternativa:** presencia o conteo de **eventos reportados** por municipio y ventana, mediante asignación espacial con precisión suficiente. Fecha, geometría, desencadenante y precisión de ubicación deben verificarse en el export elegido. Filtrar desencadenante si se quiere exclusivamente deslizamiento por lluvia.
 
 **No etiqueta:** ausencia de registro no demuestra ausencia de deslizamiento; tamaños narrativos no son una escala clínica/operativa universal de severidad.
 
@@ -83,9 +85,9 @@ Fuentes:
 
 **HECHOS:** archivo CSV/shapefile/JSON; S-NPP desde 2012-01-20, NOAA-20 desde 2018-04-01 y NOAA-21 desde 2024-01-17. Archivo histórico excluye últimos siete días; NRT se reemplaza por producto científico estándar con retraso aproximado de cinco meses.
 
-**Etiqueta candidata:** número de días con al menos una detección térmica admisible por celda durante una ventana futura. Una detección no equivale a incendio forestal, área quemada, víctima ni severidad: incluye otras fuentes de calor y puede omitir incendios por nubes/revisita.
+**Etiqueta alternativa:** número de días con al menos una detección térmica admisible por municipio durante una ventana futura, mediante asignación a polígonos municipales verificados. Una detección no equivale a incendio forestal, área quemada, víctima ni severidad: incluye otras fuentes de calor y puede omitir incendios por nubes/revisita.
 
-**Propuesta de limpieza:** fijar un satélite/producto para evitar cambios artificiales en esfuerzo de observación; excluir detecciones no admisibles usando campos documentados; agrupar celda-día para reducir doble conteo. Sin datos de observabilidad, llamar al target frecuencia de detección, no frecuencia real de incendio.
+**Propuesta de limpieza:** fijar un satélite/producto para evitar cambios artificiales en esfuerzo de observación; excluir detecciones no admisibles usando campos documentados; agrupar municipio-día para reducir doble conteo. Sin datos de observabilidad, llamar al target frecuencia de detección, no frecuencia real de incendio. No mezclar detecciones FIRMS y reportes UNGRD como si contaran la misma unidad.
 
 **Tamaño/licencia:** ni conteos regionales ni bytes verificados. NASA fomenta uso y crédito; no se encontró licencia estandarizada explícita en páginas consultadas. Revisar términos del producto antes de redistribución. Archivo exige login Earthdata o código enviado por correo: no almacenar credenciales en repo.
 
@@ -103,7 +105,7 @@ Fuentes:
 
 **Propuesta:** sumar población por zona para un panel de exposición separado. No sumar/resamplear conteos como si fueran valores continuos de elevación: conservar masa poblacional. No usar población 2020 para afirmar exposición exacta de otro año.
 
-**Por qué sirve:** distingue ocurrencia del fenómeno de personas potencialmente expuestas. Una celda con baja población no es automáticamente segura.
+**Por qué sirve:** distingue ocurrencia del fenómeno de personas potencialmente expuestas. Un municipio con baja población no es automáticamente seguro. Las celdas raster son medición de origen, no unidad del target municipal.
 
 Fuentes:
 - [Metadatos, licencia y tamaño](https://hub.worldpop.org/geodata/summary?id=6349)
@@ -112,9 +114,9 @@ Fuentes:
 
 ## Discretización defendible para un prototipo
 
-**PROPUESTA, no requisito verificado:** una celda fija y horizonte no solapado de 30 días, sujeto a densidad real. Definir `c(z,t)` como días con detección admisible en los siguientes 30 días; para COOLR, cambiar a conteo de reportes y renombrar explícitamente el target.
+**PROPUESTA, no requisito verificado:** panel municipio (DIVIPOLA) × mes calendario. Definir `c(z,t)` como conteo de registros UNGRD deduplicados de la amenaza seleccionada en el mes siguiente, sujeto a cobertura/reporte. No tratar registros como episodios físicos distintos sin revisar duplicados. El target del último mes sin seguimiento futuro completo queda ausente, no cero.
 
-1. Bajo: `c = 0`, descrito como sin detecciones/reportes, nunca como ausencia de amenaza.
+1. Bajo: `c = 0`, descrito como sin reportes en ventana observada completa, nunca como ausencia de amenaza. Construir universo municipal desde catálogo oficial; no excluir municipios solo porque nunca reportaron. Ausencia de cobertura no equivale a cero.
 2. Obtener `q` = mediana de conteos estrictamente positivos **solo en entrenamiento**. Medio: `0 < c <= q`; alto: `c > q`. Congelar `q` al evaluar y servir.
 3. Si `q` coincide con máximo, alguna clase queda vacía o no hay soporte por fold, rechazar discretización: usar target binario/conteo, otra ventana justificada o etiqueta oficial. No fabricar tercera clase para cumplir presentación.
 4. Tres niveles representan frecuencia relativa observada, no severidad oficial. Usar nombres de UI y documentación que no oculten esa limitación.
@@ -127,6 +129,9 @@ La regla solo construye un target ordinal; **no es el predictor**. El predictor 
 - Confirmar dominio/target, permiso de datos, área y horizonte.
 - Export mínimo real, esquema y conteos por clase/espacio/tiempo; medir bytes, registrar hash y fecha de acceso.
 - Revisar fechas, CRS, precisión, duplicados, latencia y observabilidad. Deduplicar antes de partir datos.
-- Definir rejilla/coordenadas y una sola fuente de eventos; lluvia + DEM como mínimo multifuente si aplican.
-- Elegir resolución compatible con medición y decisiones; una rejilla fina no aumenta precisión del satélite.
+- Definir catálogo de 87 municipios DIVIPOLA y una sola fuente de eventos; normalizar nombre + departamento, validar join contra catálogo y códigos de cinco dígitos/prefijo `68`, conservar trazabilidad de correcciones y rechazar ambiguos. Lluvia + DEM como fuentes adicionales si aplican.
+- Agregar covariables por municipio; centroides sirven como aproximación declarada, no como ubicación real del evento. Resolución raster fina no vuelve puntual el target UNGRD.
 - Si no pasa gate, presentar pipeline/prototipo limitado con datos reales disponibles; no afirmar modelo territorial validado.
+
+Consultas verificadas: [tabla 2019–2022](https://www.datos.gov.co/resource/wwkg-r6te.json), [tabla 2023–2024](https://www.datos.gov.co/resource/rgre-6ak4.json), [tabla 2025](https://www.datos.gov.co/resource/2343-nuqp.json). SoQL agregado: `count(*)` con departamento exacto, `count(distinct divipola)` en primera tabla y `count(*)` donde `coordenadas = '0'` en tercera.
+Catálogo verificado: [directorio municipal](https://www.datos.gov.co/resource/kqut-4h4r.json), `count(distinct divipola_municipio)` con departamento `68`.

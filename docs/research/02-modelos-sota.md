@@ -1,14 +1,14 @@
 # Arquitecturas: evidencia y selección pragmática
 
-Consulta: 2026-10-12. No hay benchmark propio ni datos oficiales verificados. Estas referencias son fundamentos relevantes, no prueba de que una arquitectura sea el estado del arte actual para Santander.
+Consulta: 2026-10-12. No hay benchmark propio. UNGRD municipal verificado en `01-datasets.md`; armonización y soporte de clases pendientes. Estas referencias son fundamentos relevantes, no prueba de que una arquitectura sea el estado del arte actual para Santander.
 
 ## Recomendación
 
-**PROPUESTA:** comenzar con gradient boosting sobre features geoespaciales/temporales y compararlo con una red pequeña implementada en PyTorch, entrenada desde pesos aleatorios. Desplegar el que gane en evaluación bloqueada y calibración, no el que use más GPU. No combinar ambos sin mejora medida.
+**PROPUESTA:** comenzar con gradient boosting sobre features geoespaciales/temporales y compararlo con una red pequeña implementada en PyTorch, entrenada desde pesos aleatorios; TabPFN como tercer candidato opcional. Desplegar el que gane en evaluación bloqueada y calibración, no el que use más GPU. No combinar modelos sin mejora medida.
 
 **HECHO:** estudios de tabular muestran baselines MLP/ResNet fuertes y ningún ganador universal entre deep learning y GBDT. Graph WaveNet y TFT prueban ventajas en sus tareas, no superioridad demostrada para este target territorial.
 
-**SUPOSICIÓN:** datos disponibles se pueden transformar en tabla celda-ventana con target independiente. Si no hay suficientes etiquetas, ninguna arquitectura avanzada resuelve ese bloqueo.
+**PROPUESTA:** tabla municipio (DIVIPOLA validado contra catálogo de 87 municipios) × mes, target de reportes UNGRD del mes siguiente. ~7,300 filas es aproximación antes de armonización, lags y censura final; resolver códigos raw corruptos mediante nombre + departamento y auditar ambiguos. Si no hay suficientes etiquetas, ninguna arquitectura avanzada resuelve ese bloqueo.
 
 ## Tres opciones
 
@@ -20,11 +20,13 @@ Consulta: 2026-10-12. No hay benchmark propio ni datos oficiales verificados. Es
 
 ### A. GBDT espacial/temporal y challenger residual
 
-Una fila representa celda y fecha de emisión. Features: relieve estático, lluvia antecedente, estacionalidad y, si procede, historial previo de eventos. Target pertenece a horizonte futuro definido en `01-datasets.md`.
+Una fila representa municipio, mes y fecha de emisión. Features: relieve agregado municipal, lluvia antecedente, estacionalidad y, si procede, historial previo de eventos. Target pertenece a mes futuro definido en `01-datasets.md`; coordenadas de centroides no son ubicaciones de eventos.
 
 **Features a auditar:** imputación, escalado, encoding y estadísticas de vecindad se ajustan dentro de train. Agregados de eventos nunca incluyen etiquetas futuras ni regiones retenidas. Comparar con y sin coordenadas para detectar dependencia de localización.
 
 **Baseline:** predictor de prior de clases y regresión logística; boosting como baseline fuerte/champion candidato. No llamar avanzado a un modelo solo por nombre: entregar ablations, evaluación y manejo de incertidumbre.
+
+**TabPFN opcional:** tercer candidato de costo a medir, no garantía de barato. Ejecutar local con mismos folds espaciales/temporales; fijar paquete, checkpoint y hash. README oficial y Context7 confirman pesos 2.5/2.6 no comerciales y default actual distinto: no asumir que instalar paquete fija versión admisible. Revisar licencia exacta para uso/redistribución antes de descargar/publicar; hackathon académico no implica permiso automático. GPU/acceso a pesos pueden bloquear; omitir si afecta ruta crítica. Es preentrenado: no satisface modelo propio desde cero ni autoriza enviar datos al cliente alojado. Ver [investigación reciente](07-sota-geoespacial.md).
 
 ### B. Grafo / ST-GNN
 
@@ -55,7 +57,7 @@ TFT utiliza covariables estáticas, entradas temporales observadas y entradas co
 - Cross-entropy como pérdida inicial. Si se usan pesos de clase o muestreo, estimarlos solo en train y recalibrar sobre distribución objetivo; logits no son automáticamente probabilidades calibradas.
 - Semillas múltiples cuando alcance tiempo; guardar pesos, preprocesamiento, orden de features y mapping de clases como una unidad.
 
-**Ablations mínimas:** prior/logística → boosting → red residual; luego quitar lluvia o relieve para medir aporte multifuente. Usar mismos folds y recursos acotados. Híbrido de probabilidades solo si pesos se seleccionan en validación y mejora justifica costo de mantener dos modelos.
+**Ablations mínimas:** prior/logística → boosting → red residual → TabPFN opcional; luego quitar lluvia o relieve para medir aporte multifuente. Usar mismos folds y recursos acotados. Híbrido de probabilidades solo si pesos se seleccionan en validación y mejora justifica costo de mantener dos modelos.
 
 ## Gates y pre-mortem
 
@@ -72,3 +74,4 @@ TFT utiliza covariables estáticas, entradas temporales observadas y entradas co
 - [Wu et al., Graph WaveNet, IJCAI 2019](https://www.ijcai.org/proceedings/2019/264)
 - [Lim et al., TFT, 2021](https://doi.org/10.1016/j.ijforecast.2021.03.012)
 - [Documentación PyTorch/ONNX consultada mediante Context7](https://github.com/pytorch/pytorch/blob/main/docs/source/onnx.md)
+- [TabPFN: README oficial y licencias; documentación consultada con Context7](https://github.com/PriorLabs/TabPFN)
