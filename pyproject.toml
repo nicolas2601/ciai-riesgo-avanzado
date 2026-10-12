@@ -14,7 +14,13 @@ dependencies = [
 ]
 
 [dependency-groups]
-dev = ["pytest", "ruff", "jupyterlab", "ipykernel"]
+dev = [
+    "pytest",
+    "ruff",
+    "jupyterlab",
+    "ipykernel",
+    "httpx>=0.28.1",
+]
 dl = ["torch", "pytorch-lightning"]
 
 [tool.ruff]

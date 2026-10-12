@@ -488,6 +488,7 @@ dependencies = [
 
 [package.dev-dependencies]
 dev = [
+    { name = "httpx" },
     { name = "ipykernel" },
     { name = "jupyterlab" },
     { name = "pytest" },
@@ -528,6 +529,7 @@ requires-dist = [
 
 [package.metadata.requires-dev]
 dev = [
+    { name = "httpx", specifier = ">=0.28.1" },
     { name = "ipykernel" },
     { name = "jupyterlab" },
     { name = "pytest" },
