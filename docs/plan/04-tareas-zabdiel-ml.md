@@ -11,7 +11,7 @@ Lider ML. Lee antes: `docs/research/06-datos-colombia.md`, `03-validacion-incert
 ## Tareas
 
 ### 1. Datos (H1, 30 min)
-- [ ] `ml/src/data/ungrd.py`: descarga paginada SoQL de `wwkg-r6te`, `rgre-6ak4`, `2343-nuqp` filtrando Santander; armoniza columnas y nombres de evento; deduplica.
+- [ ] `ml/src/data/ungrd.py`: descarga paginada SoQL de `wwkg-r6te`, `rgre-6ak4`, `2343-nuqp` filtrando con igualdad exacta `departamento = 'SANTANDER'` (NO `LIKE`: arrastra Norte de Santander); armoniza columnas y nombres de evento; resuelve el municipio por nombre normalizado (el DIVIPOLA de 2025 esta corrupto, ver 06); deduplica.
 - [ ] `ml/src/data/panel.py`: panel municipio (DIVIPOLA) x mes con conteo por amenaza.
 - [ ] Guardar Parquet en `data/processed/` y registrar hash SHA-256 y fecha de acceso (alimenta `data_version`).
 - [ ] Centroides desde `kqut-4h4r` (deduplicar por municipio).

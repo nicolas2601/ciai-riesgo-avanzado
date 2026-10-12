@@ -1,0 +1,524 @@
+[
+ {
+  "zone_id": "68001",
+  "municipality": "Bucaramanga",
+  "lat": 7.155475257,
+  "lon": -73.11133233
+ },
+ {
+  "zone_id": "68013",
+  "municipality": "Aguada",
+  "lat": 6.175323379,
+  "lon": -73.53324521
+ },
+ {
+  "zone_id": "68020",
+  "municipality": "Albania - Santander",
+  "lat": 5.777997048,
+  "lon": -73.82827002
+ },
+ {
+  "zone_id": "68051",
+  "municipality": "Aratoca",
+  "lat": 6.716004857,
+  "lon": -73.01182651
+ },
+ {
+  "zone_id": "68077",
+  "municipality": "Barbosa - Santander",
+  "lat": 5.955390841,
+  "lon": -73.6232298
+ },
+ {
+  "zone_id": "68079",
+  "municipality": "Barichara",
+  "lat": 6.64512608,
+  "lon": -73.21573192
+ },
+ {
+  "zone_id": "68081",
+  "municipality": "Barrancabermeja",
+  "lat": 7.062095762,
+  "lon": -73.77671851
+ },
+ {
+  "zone_id": "68092",
+  "municipality": "Betulia - Santander",
+  "lat": 7.011906545,
+  "lon": -73.38716488
+ },
+ {
+  "zone_id": "68101",
+  "municipality": "Bolívar - Santander",
+  "lat": 6.094426504,
+  "lon": -74.11857803
+ },
+ {
+  "zone_id": "68121",
+  "municipality": "Cabrera - Santander",
+  "lat": 6.5623233,
+  "lon": -73.2499812
+ },
+ {
+  "zone_id": "68132",
+  "municipality": "California",
+  "lat": 7.352165142,
+  "lon": -72.92641039
+ },
+ {
+  "zone_id": "68147",
+  "municipality": "Capitanejo",
+  "lat": 6.520212781,
+  "lon": -72.67592914
+ },
+ {
+  "zone_id": "68152",
+  "municipality": "Carcasí",
+  "lat": 6.659267329,
+  "lon": -72.56988011
+ },
+ {
+  "zone_id": "68160",
+  "municipality": "Cepitá",
+  "lat": 6.752207038,
+  "lon": -72.92890947
+ },
+ {
+  "zone_id": "68162",
+  "municipality": "Cerrito",
+  "lat": 6.904072429,
+  "lon": -72.64471512
+ },
+ {
+  "zone_id": "68167",
+  "municipality": "Charalá",
+  "lat": 6.19482908,
+  "lon": -73.15412483
+ },
+ {
+  "zone_id": "68169",
+  "municipality": "Charta",
+  "lat": 7.258874535,
+  "lon": -72.98769786
+ },
+ {
+  "zone_id": "68176",
+  "municipality": "Chima",
+  "lat": 6.373779197,
+  "lon": -73.4152457
+ },
+ {
+  "zone_id": "68179",
+  "municipality": "Chipatá",
+  "lat": 6.067808696,
+  "lon": -73.63230937
+ },
+ {
+  "zone_id": "68190",
+  "municipality": "Cimitarra",
+  "lat": 6.410166349,
+  "lon": -74.16933204
+ },
+ {
+  "zone_id": "68207",
+  "municipality": "Concepción - Santander",
+  "lat": 6.783659986,
+  "lon": -72.60585777
+ },
+ {
+  "zone_id": "68209",
+  "municipality": "Confines",
+  "lat": 6.355000552,
+  "lon": -73.23996706
+ },
+ {
+  "zone_id": "68211",
+  "municipality": "Contratación",
+  "lat": 6.303065916,
+  "lon": -73.50157951
+ },
+ {
+  "zone_id": "68217",
+  "municipality": "Coromoro",
+  "lat": 6.234676727,
+  "lon": -72.9819215
+ },
+ {
+  "zone_id": "68229",
+  "municipality": "Curití",
+  "lat": 6.618593139,
+  "lon": -73.01803315
+ },
+ {
+  "zone_id": "68235",
+  "municipality": "El Carmen De Chucurí",
+  "lat": 6.664972162,
+  "lon": -73.56430475
+ },
+ {
+  "zone_id": "68245",
+  "municipality": "El Guacamayo",
+  "lat": 6.247442467,
+  "lon": -73.53314149
+ },
+ {
+  "zone_id": "68250",
+  "municipality": "El Peñón - Santander",
+  "lat": 6.091186749,
+  "lon": -73.92188513
+ },
+ {
+  "zone_id": "68255",
+  "municipality": "El Playón",
+  "lat": 7.524610429,
+  "lon": -73.18172485
+ },
+ {
+  "zone_id": "68264",
+  "municipality": "Encino",
+  "lat": 6.080088689,
+  "lon": -73.06259589
+ },
+ {
+  "zone_id": "68266",
+  "municipality": "Enciso",
+  "lat": 6.658254491,
+  "lon": -72.68072788
+ },
+ {
+  "zone_id": "68271",
+  "municipality": "Florián",
+  "lat": 5.801415714,
+  "lon": -73.95169683
+ },
+ {
+  "zone_id": "68276",
+  "municipality": "Floridablanca",
+  "lat": 7.078909584,
+  "lon": -73.06880615
+ },
+ {
+  "zone_id": "68296",
+  "municipality": "Galán",
+  "lat": 6.672871699,
+  "lon": -73.32490464
+ },
+ {
+  "zone_id": "68298",
+  "municipality": "Gámbita",
+  "lat": 5.925410575,
+  "lon": -73.31887296
+ },
+ {
+  "zone_id": "68307",
+  "municipality": "Girón",
+  "lat": 7.03746363,
+  "lon": -73.24993924
+ },
+ {
+  "zone_id": "68318",
+  "municipality": "Guaca",
+  "lat": 6.943125205,
+  "lon": -72.82353799
+ },
+ {
+  "zone_id": "68320",
+  "municipality": "Guadalupe - Santander",
+  "lat": 6.232771411,
+  "lon": -73.40748162
+ },
+ {
+  "zone_id": "68322",
+  "municipality": "Guapotá",
+  "lat": 6.318049616,
+  "lon": -73.3297759
+ },
+ {
+  "zone_id": "68324",
+  "municipality": "Guavatá",
+  "lat": 5.945119723,
+  "lon": -73.7227228
+ },
+ {
+  "zone_id": "68327",
+  "municipality": "Güepsa",
+  "lat": 6.033120405,
+  "lon": -73.57835133
+ },
+ {
+  "zone_id": "68344",
+  "municipality": "Hato",
+  "lat": 6.560456631,
+  "lon": -73.36265214
+ },
+ {
+  "zone_id": "68368",
+  "municipality": "Jesús María",
+  "lat": 5.860719629,
+  "lon": -73.82540176
+ },
+ {
+  "zone_id": "68370",
+  "municipality": "Jordán",
+  "lat": 6.714954531,
+  "lon": -73.10031897
+ },
+ {
+  "zone_id": "68377",
+  "municipality": "La Belleza",
+  "lat": 5.910583891,
+  "lon": -74.05083633
+ },
+ {
+  "zone_id": "68385",
+  "municipality": "Landázuri",
+  "lat": 6.331423988,
+  "lon": -73.81913696
+ },
+ {
+  "zone_id": "68397",
+  "municipality": "La Paz - Santander",
+  "lat": 6.222978161,
+  "lon": -73.62526154
+ },
+ {
+  "zone_id": "68406",
+  "municipality": "Lebrija",
+  "lat": 7.203223488,
+  "lon": -73.29083976
+ },
+ {
+  "zone_id": "68418",
+  "municipality": "Los Santos",
+  "lat": 6.812163379,
+  "lon": -73.10775303
+ },
+ {
+  "zone_id": "68425",
+  "municipality": "Macaravita",
+  "lat": 6.512379931,
+  "lon": -72.58601385
+ },
+ {
+  "zone_id": "68432",
+  "municipality": "Málaga",
+  "lat": 6.720512149,
+  "lon": -72.73795766
+ },
+ {
+  "zone_id": "68444",
+  "municipality": "Matanza",
+  "lat": 7.297626363,
+  "lon": -73.0499518
+ },
+ {
+  "zone_id": "68464",
+  "municipality": "Mogotes",
+  "lat": 6.49183531,
+  "lon": -72.95851286
+ },
+ {
+  "zone_id": "68468",
+  "municipality": "Molagavita",
+  "lat": 6.643629326,
+  "lon": -72.81916926
+ },
+ {
+  "zone_id": "68498",
+  "municipality": "Ocamonte",
+  "lat": 6.355794484,
+  "lon": -73.1224781
+ },
+ {
+  "zone_id": "68500",
+  "municipality": "Oiba",
+  "lat": 6.224765404,
+  "lon": -73.27789617
+ },
+ {
+  "zone_id": "68502",
+  "municipality": "Onzaga",
+  "lat": 6.334864742,
+  "lon": -72.81212361
+ },
+ {
+  "zone_id": "68522",
+  "municipality": "Palmar",
+  "lat": 6.524759372,
+  "lon": -73.28921267
+ },
+ {
+  "zone_id": "68524",
+  "municipality": "Palmas Del Socorro",
+  "lat": 6.391791818,
+  "lon": -73.28253601
+ },
+ {
+  "zone_id": "68533",
+  "municipality": "Páramo",
+  "lat": 6.416298667,
+  "lon": -73.17160724
+ },
+ {
+  "zone_id": "68547",
+  "municipality": "Piedecuesta",
+  "lat": 6.962833053,
+  "lon": -73.00550878
+ },
+ {
+  "zone_id": "68549",
+  "municipality": "Pinchote",
+  "lat": 6.515259421,
+  "lon": -73.17432558
+ },
+ {
+  "zone_id": "68572",
+  "municipality": "Puente Nacional",
+  "lat": 5.831348484,
+  "lon": -73.6787639
+ },
+ {
+  "zone_id": "68573",
+  "municipality": "Puerto Parra",
+  "lat": 6.685330079,
+  "lon": -73.95717492
+ },
+ {
+  "zone_id": "68575",
+  "municipality": "Puerto Wilches",
+  "lat": 7.58105075,
+  "lon": -73.78506459
+ },
+ {
+  "zone_id": "68615",
+  "municipality": "Rionegro - Santander",
+  "lat": 7.470321809,
+  "lon": -73.34568971
+ },
+ {
+  "zone_id": "68655",
+  "municipality": "Sabana De Torres",
+  "lat": 7.400572504,
+  "lon": -73.56695938
+ },
+ {
+  "zone_id": "68669",
+  "municipality": "San Andrés",
+  "lat": 6.796509411,
+  "lon": -72.81547064
+ },
+ {
+  "zone_id": "68673",
+  "municipality": "San Benito",
+  "lat": 6.101252259,
+  "lon": -73.5273429
+ },
+ {
+  "zone_id": "68679",
+  "municipality": "San Gil",
+  "lat": 6.550895565,
+  "lon": -73.11819699
+ },
+ {
+  "zone_id": "68682",
+  "municipality": "San Joaquín",
+  "lat": 6.459542058,
+  "lon": -72.85470051
+ },
+ {
+  "zone_id": "68684",
+  "municipality": "San José De Miranda",
+  "lat": 6.629225266,
+  "lon": -72.73966133
+ },
+ {
+  "zone_id": "68686",
+  "municipality": "San Miguel",
+  "lat": 6.567081119,
+  "lon": -72.64354283
+ },
+ {
+  "zone_id": "68689",
+  "municipality": "San Vicente De Chucurí",
+  "lat": 6.894725825,
+  "lon": -73.54030634
+ },
+ {
+  "zone_id": "68705",
+  "municipality": "Santa Bárbara - Santander",
+  "lat": 6.965069097,
+  "lon": -72.90713473
+ },
+ {
+  "zone_id": "68720",
+  "municipality": "Santa Helena Del Opón",
+  "lat": 6.409202016,
+  "lon": -73.5819226
+ },
+ {
+  "zone_id": "68745",
+  "municipality": "Simacota",
+  "lat": 6.666286897,
+  "lon": -73.70430383
+ },
+ {
+  "zone_id": "68755",
+  "municipality": "Socorro",
+  "lat": 6.462512753,
+  "lon": -73.24383349
+ },
+ {
+  "zone_id": "68770",
+  "municipality": "Suaita",
+  "lat": 6.11497435,
+  "lon": -73.36592442
+ },
+ {
+  "zone_id": "68773",
+  "municipality": "Sucre - Santander",
+  "lat": 5.987734208,
+  "lon": -73.96775881
+ },
+ {
+  "zone_id": "68780",
+  "municipality": "Suratá",
+  "lat": 7.475393726,
+  "lon": -72.98764897
+ },
+ {
+  "zone_id": "68820",
+  "municipality": "Tona",
+  "lat": 7.16107261,
+  "lon": -72.92974356
+ },
+ {
+  "zone_id": "68855",
+  "municipality": "Valle De San José",
+  "lat": 6.434686917,
+  "lon": -73.10983732
+ },
+ {
+  "zone_id": "68861",
+  "municipality": "Vélez",
+  "lat": 6.21538391,
+  "lon": -73.69881677
+ },
+ {
+  "zone_id": "68867",
+  "municipality": "Vetas",
+  "lat": 7.322801685,
+  "lon": -72.88164006
+ },
+ {
+  "zone_id": "68872",
+  "municipality": "Villanueva - Santander",
+  "lat": 6.686856965,
+  "lon": -73.16522752
+ },
+ {
+  "zone_id": "68895",
+  "municipality": "Zapatoca",
+  "lat": 6.83510695,
+  "lon": -73.27904563
+ }
+]

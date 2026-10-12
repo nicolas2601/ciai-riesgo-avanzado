@@ -8,7 +8,7 @@ Fuente: enunciado de la categoria AVANZADO del CIAI. Cada requisito tiene un ent
 - HECHO: salida esperada = nivel de riesgo (bajo/medio/alto) por punto o zona, priorizando zonas.
 - SUPOSICION: no tenemos el enunciado del fenomeno ni dataset oficial. Se disena agnostico al fenomeno y se concreta cuando exista dato. Si la organizacion entrega dataset, se usa ese (ver 01-roles-cronograma, hito H1).
 - SUPOSICION: dominio por defecto = riesgo por amenaza natural en Santander con datos abiertos.
-- HECHO (docs/research/06): existe etiqueta real 2019-2025 (UNGRD, ~4 958 eventos en Santander) pero sus coordenadas son inservibles; la unidad espacial es el MUNICIPIO (DIVIPOLA, 85 observados), no una celda H3. Panel municipio x mes (~7 100 filas).
+- HECHO (docs/research/06): existe etiqueta real 2019-2025 (UNGRD, 2 641 eventos en Santander) pero sus coordenadas son inservibles y el DIVIPOLA de 2025 esta corrupto; la unidad espacial es el MUNICIPIO (87, resueltos por nombre normalizado), no una celda H3. Panel municipio x mes (~7 300 filas).
 
 ## Definicion del target (riesgo de la etiqueta)
 

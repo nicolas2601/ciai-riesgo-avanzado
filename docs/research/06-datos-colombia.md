@@ -4,10 +4,10 @@ Consulta: 2026-10-12, directo contra la API Socrata de datos.gov.co y APIs publi
 
 ## Resumen ejecutivo
 
-- HECHO: existe una etiqueta real, publica y continua 2019-2025 de eventos de emergencia por municipio: las tablas "Emergencias UNGRD". Para Santander suman 4 958 registros (2 627 + 1 325 + 1 006).
+- HECHO: existe una etiqueta real, publica y continua 2019-2025 de eventos de emergencia por municipio: las tablas "Emergencias UNGRD". Para Santander (filtro exacto `departamento = 'SANTANDER'`) suman 2 641 registros (1 212 + 927 + 502).
 - HECHO: las coordenadas de esas tablas son inutilizables (ver mas abajo). La unidad espacial viable es el **municipio** (codigo DIVIPOLA), no una celda H3.
 - HECHO: meteorologia diaria por municipio se obtiene sin llave desde Open-Meteo y NASA POWER (probado). Indice ENSO desde NOAA (ONI), actualizado a 2026.
-- INFERENCIA: con ~85 municipios x 84 meses el panel mide ~7 100 filas: viable en CPU, y el valor esta en la validacion y la incertidumbre, no en el tamano del modelo.
+- INFERENCIA: con 87 municipios x 84 meses el panel mide ~7 300 filas y ~2 641 eventos repartidos entre amenazas: viable en CPU. El valor esta en la validacion y la incertidumbre, no en el tamano del modelo. Con tan pocos eventos por amenaza, el gate de clases por fold es una restriccion real.
 - SUPOSICION: que el reto pida Santander y riesgo por amenaza natural. Sin enunciado, esto es lo mejor evidenciado.
 
 ## 1. Emergencias UNGRD (etiqueta)
@@ -16,9 +16,11 @@ Tres tablas que, juntas, cubren 2019-2025 sin huecos. Licencia CC BY 4.0 / CC BY
 
 | ID | Periodo | Filas | Santander | Coordenadas |
 |---|---|---|---|---|
-| `wwkg-r6te` | 2019-01-01 a 2022-12-31 | 25 857 | 2 627 | sin columna |
-| `rgre-6ak4` | 2023-01-01 a 2024-12-31 | 16 036 | 1 325 | columna, pero basura |
-| `2343-nuqp` | 2025-01-01 a 2025-12-31 | 13 012 | 1 006 | columna, pero basura |
+| `wwkg-r6te` | 2019-01-01 a 2022-12-31 | 25 857 | 1 212 | sin columna |
+| `rgre-6ak4` | 2023-01-01 a 2024-12-31 | 16 036 | 927 | columna, pero basura |
+| `2343-nuqp` | 2025-01-01 a 2025-12-31 | 13 012 | 502 | columna, pero basura |
+
+CORRECCION (2026-10-12): una primera version de este documento conto 4 958 porque filtro con `LIKE '%SANTANDER%'`, que incluye NORTE DE SANTANDER (1 415 + 398 + 504 = 2 317). Detectado por la revision cruzada con uts2 y verificado con consultas exactas. Filtrar siempre con igualdad exacta (o prefijo DIVIPOLA `68`, ver riesgo 5).
 
 Endpoint: `https://www.datos.gov.co/resource/<ID>.json` (SoQL: `$select`, `$where`, `$group`, `$limit`; paginar con `$offset`).
 
@@ -42,10 +44,11 @@ El nombre del evento cambia ("INCENDIO DE COBERTURA VEGETAL" vs "INCENDIO FOREST
 2. **Salto en 2022 (HECHO el numero; la causa es SUPOSICION).** Movimiento en masa en Santander: 32, 23, 24 y 156 (2019 a 2022); a nivel nacional 2022 tiene 13 665 filas contra ~4 000 de los otros anos. Dos explicaciones no excluyentes: ano muy lluvioso (La Nina) o cambio en el registro. No se puede distinguir con estos datos. Mitigacion: la validacion temporal debe incluir 2022 en test y en train en corridas distintas, y reportar la sensibilidad.
 3. **Sesgo de reporte (INFERENCIA).** Un evento existe si alguien lo reporto: municipios con mas capacidad institucional reportan mas. Es un indice de "emergencias atendidas", no de amenaza fisica. Documentarlo en la web.
 4. **Tres tablas, tres esquemas.** Deduplicar y validar que no haya eventos repetidos en los bordes de ano.
+5. **DIVIPOLA corrupto en 2025 (HECHO).** En `2343-nuqp`, Santander tiene 198 pares codigo-municipio y solo 70 nombres distintos; hay codigos como `22269` para SUAITA, `22978` para BARRANCABERMEJA o `20696` para GIRON (cuyos codigos reales empiezan por 68). En 2019-2024 los codigos validos de Santander son 85 por tabla. Regla: unir por nombre de municipio normalizado (mayusculas, sin tildes) y departamento, y validar contra los 87 municipios de `kqut-4h4r`; descartar o revisar filas que no resuelvan.
 
 ## 2. Unidad espacial: municipios (DIVIPOLA)
 
-- HECHO: 85 codigos DIVIPOLA distintos de Santander aparecen en 2019-2022.
+- HECHO: `kqut-4h4r` lista 87 municipios de Santander (departamento 68). En 2019-2022 y 2023-2024 aparecen 85 codigos DIVIPOLA distintos de Santander por tabla; en 2025 el codigo no es confiable (riesgo 5).
 - HECHO: `kqut-4h4r` (Directorio Georreferenciado DIVIPOLA) trae `divipola_municipio`, `latitud_municipio`, `longitud_municipio`: sirve para centroides. Tiene una fila por entidad; deduplicar por municipio.
 - PENDIENTE: poligonos municipales para el mapa coropletico (fuente por verificar: DANE MGN). Plan B ya valido: puntos (centroides) con circulo proporcional al score.
 
@@ -72,13 +75,13 @@ Seria util sumar DEM y pendiente por municipio (Copernicus GLO-30, ver 01-datase
 
 Un modelo por amenaza o un target multiclase por amenaza, nunca una mezcla opaca:
 
-1. Panel `municipio x mes` (85 x 84 ~ 7 140 filas) con conteo de eventos de la amenaza en el MES SIGUIENTE.
+1. Panel `municipio x mes` (87 x 84 ~ 7 300 filas) con conteo de eventos de la amenaza en el MES SIGUIENTE.
 2. Nivel por la regla de `01-datasets.md` (cero = bajo; mediana de positivos en train = medio/alto). Con incendios hay soporte; con movimientos en masa (362 eventos) puede faltar soporte en alguna clase: aplicar el gate de la regla y caer a binario si falla.
 3. Features solo del pasado: lluvia y humedad rezagadas, ONI, estacionalidad, eventos previos del municipio y vecinos, pendiente y poblacion.
 
 ## 6. Gate para H1 (30 min)
 
-- Descargar las tres tablas de Santander y armonizar columnas: 15 min.
+- Descargar las tres tablas de Santander (igualdad exacta), armonizar columnas y resolver municipio por nombre normalizado: 15 min.
 - Panel municipio-mes con conteo por amenaza y por clase: 10 min.
 - Decision: amenaza principal y si el nivel es ternario o binario: 5 min.
 
