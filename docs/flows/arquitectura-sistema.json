@@ -1,0 +1,241 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Arquitectura del sistema de riesgo territorial",
+    "output": "arquitectura-sistema.html",
+    "quality_profile": "showcase"
+  },
+  "components": [
+    {
+      "id": "src",
+      "type": "external",
+      "label": "Fuentes abiertas",
+      "sublabel": "series + geoespacial",
+      "pos": [
+        40,
+        300
+      ],
+      "size": [
+        140,
+        60
+      ]
+    },
+    {
+      "id": "etl",
+      "type": "backend",
+      "label": "ETL municipal",
+      "sublabel": "unir por municipio y mes",
+      "pos": [
+        250,
+        300
+      ],
+      "size": [
+        140,
+        60
+      ]
+    },
+    {
+      "id": "store",
+      "type": "database",
+      "label": "Datos versionados",
+      "sublabel": "Parquet + hash",
+      "pos": [
+        460,
+        300
+      ],
+      "size": [
+        140,
+        60
+      ]
+    },
+    {
+      "id": "train",
+      "type": "backend",
+      "label": "Entrenamiento",
+      "sublabel": "GBDT + PyTorch",
+      "pos": [
+        670,
+        300
+      ],
+      "size": [
+        140,
+        60
+      ],
+      "tag": "CV espacial"
+    },
+    {
+      "id": "mlflow",
+      "type": "database",
+      "label": "MLflow",
+      "sublabel": "corridas + registro",
+      "pos": [
+        670,
+        150
+      ],
+      "size": [
+        140,
+        60
+      ]
+    },
+    {
+      "id": "model",
+      "type": "messagebus",
+      "label": "Bundle del modelo",
+      "sublabel": "score + abstencion",
+      "pos": [
+        880,
+        300
+      ],
+      "size": [
+        140,
+        60
+      ]
+    },
+    {
+      "id": "users",
+      "type": "external",
+      "label": "Jurado y usuarios",
+      "sublabel": "navegador",
+      "pos": [
+        250,
+        440
+      ],
+      "size": [
+        140,
+        60
+      ]
+    },
+    {
+      "id": "tunnel",
+      "type": "cloud",
+      "label": "Cloudflare Tunnel",
+      "sublabel": "URL publica",
+      "pos": [
+        460,
+        440
+      ],
+      "size": [
+        140,
+        60
+      ]
+    },
+    {
+      "id": "web",
+      "type": "frontend",
+      "label": "Web (bun)",
+      "sublabel": "mapa + ranking",
+      "pos": [
+        670,
+        440
+      ],
+      "size": [
+        140,
+        60
+      ]
+    },
+    {
+      "id": "api",
+      "type": "backend",
+      "label": "API FastAPI",
+      "sublabel": "/api/v1",
+      "pos": [
+        880,
+        440
+      ],
+      "size": [
+        140,
+        60
+      ],
+      "tag": "model_version"
+    }
+  ],
+  "connections": [
+    {
+      "id": "src-etl",
+      "from": "src",
+      "to": "etl",
+      "label": "ingesta"
+    },
+    {
+      "id": "etl-store",
+      "from": "etl",
+      "to": "store"
+    },
+    {
+      "id": "store-train",
+      "from": "store",
+      "to": "train",
+      "label": "features"
+    },
+    {
+      "id": "train-mlflow",
+      "from": "train",
+      "to": "mlflow",
+      "label": "log",
+      "variant": "dashed",
+      "fromSide": "top",
+      "toSide": "bottom"
+    },
+    {
+      "id": "train-model",
+      "from": "train",
+      "to": "model",
+      "label": "export",
+      "variant": "emphasis"
+    },
+    {
+      "id": "model-api",
+      "from": "model",
+      "to": "api",
+      "label": "carga",
+      "variant": "emphasis",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "labelDy": 24
+    },
+    {
+      "id": "users-tunnel",
+      "from": "users",
+      "to": "tunnel",
+      "label": "HTTPS"
+    },
+    {
+      "id": "tunnel-web",
+      "from": "tunnel",
+      "to": "web"
+    },
+    {
+      "id": "web-api",
+      "from": "web",
+      "to": "api",
+      "label": "REST"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Entrenamiento",
+      "items": [
+        "Cluster UNABIA con MLflow",
+        "Panel municipio-mes (DIVIPOLA)"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "Servicio",
+      "items": [
+        "API sin estado con bundle inmutable",
+        "Respuesta con intervalo y explicacion"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "Trazabilidad",
+      "items": [
+        "model_version y data_version en cada respuesta",
+        "Metricas leidas de MLflow"
+      ]
+    }
+  ]
+}

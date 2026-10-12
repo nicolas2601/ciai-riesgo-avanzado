@@ -1,0 +1,220 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Flujo del proyecto: del dato a la web",
+    "output": "flujo-proyecto.html",
+    "quality_profile": "showcase"
+  },
+  "lanes": [
+    {
+      "id": "ml",
+      "label": "ML (Zabdiel)"
+    },
+    {
+      "id": "platform",
+      "label": "Plataforma (Nico)"
+    },
+    {
+      "id": "web",
+      "label": "Web (Julian)"
+    }
+  ],
+  "phases": [
+    {
+      "id": "datos",
+      "label": "Datos",
+      "fromCol": 0,
+      "toCol": 1
+    },
+    {
+      "id": "modelado",
+      "label": "Modelado y validacion",
+      "fromCol": 2,
+      "toCol": 4,
+      "variant": "emphasis"
+    },
+    {
+      "id": "servicio",
+      "label": "Servicio",
+      "fromCol": 5,
+      "toCol": 5,
+      "variant": "dashed"
+    }
+  ],
+  "mainPath": [
+    "data",
+    "eda",
+    "fe",
+    "model",
+    "validate",
+    "export",
+    "api",
+    "ui_real"
+  ],
+  "nodes": [
+    {
+      "id": "data",
+      "lane": "ml",
+      "col": 0,
+      "type": "database",
+      "label": "Dataset",
+      "sublabel": "fuentes + etiqueta"
+    },
+    {
+      "id": "eda",
+      "lane": "ml",
+      "col": 1,
+      "type": "backend",
+      "label": "EDA",
+      "sublabel": "calidad + Moran"
+    },
+    {
+      "id": "fe",
+      "lane": "ml",
+      "col": 2,
+      "type": "backend",
+      "label": "Features",
+      "sublabel": "municipio-mes + rezagos"
+    },
+    {
+      "id": "model",
+      "lane": "ml",
+      "col": 3,
+      "type": "backend",
+      "label": "Modelado",
+      "sublabel": "GBDT + red PyTorch",
+      "tag": "hibrido"
+    },
+    {
+      "id": "validate",
+      "lane": "ml",
+      "col": 4,
+      "type": "security",
+      "label": "Validacion",
+      "sublabel": "CV bloques + calibrar",
+      "tag": "sin fuga"
+    },
+    {
+      "id": "export",
+      "lane": "ml",
+      "col": 5,
+      "type": "messagebus",
+      "label": "Modelo",
+      "sublabel": "bundle + MLflow"
+    },
+    {
+      "id": "contract",
+      "lane": "platform",
+      "col": 0,
+      "type": "frontend",
+      "label": "Contrato API",
+      "sublabel": "OpenAPI v0.1"
+    },
+    {
+      "id": "mock",
+      "lane": "platform",
+      "col": 1,
+      "type": "backend",
+      "label": "API mock",
+      "sublabel": "respuestas sinteticas"
+    },
+    {
+      "id": "api",
+      "lane": "platform",
+      "col": 5,
+      "type": "cloud",
+      "label": "API + tunel",
+      "sublabel": "FastAPI + Cloudflare"
+    },
+    {
+      "id": "ui",
+      "lane": "web",
+      "col": 1,
+      "type": "frontend",
+      "label": "UI contra mock",
+      "sublabel": "mapa + ranking"
+    },
+    {
+      "id": "ui_real",
+      "lane": "web",
+      "col": 5,
+      "type": "external",
+      "label": "Web publica",
+      "sublabel": "datos reales"
+    }
+  ],
+  "edges": [
+    {
+      "from": "data",
+      "to": "eda"
+    },
+    {
+      "from": "eda",
+      "to": "fe"
+    },
+    {
+      "from": "fe",
+      "to": "model"
+    },
+    {
+      "from": "model",
+      "to": "validate"
+    },
+    {
+      "from": "validate",
+      "to": "export"
+    },
+    {
+      "from": "data",
+      "to": "contract",
+      "label": "esquema"
+    },
+    {
+      "from": "contract",
+      "to": "mock"
+    },
+    {
+      "from": "mock",
+      "to": "ui"
+    },
+    {
+      "from": "export",
+      "to": "api",
+      "label": "sirve",
+      "variant": "emphasis"
+    },
+    {
+      "from": "api",
+      "to": "ui_real",
+      "label": "consume",
+      "variant": "emphasis"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Contrato primero",
+      "items": [
+        "Web trabaja contra el mock desde la hora 0",
+        "El esquema se congela antes de entrenar"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "Camino ML",
+      "items": [
+        "Etiqueta de eventos reales, no de reglas",
+        "Validacion espacial antes de cualquier claim"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "Trazabilidad",
+      "items": [
+        "Cada respuesta lleva model_version y data_version",
+        "Metricas salen de MLflow, no se transcriben"
+      ]
+    }
+  ]
+}
