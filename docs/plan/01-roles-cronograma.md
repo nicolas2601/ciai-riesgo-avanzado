@@ -34,7 +34,7 @@ Regla de apoyo: Nico toma el bloque que se atrase. Se decide en cada hito, no al
 
 ### Julian (web)
 1. Arrancar contra el mock del contrato (`docs/plan/03-contrato-api.md`), sin esperar al modelo.
-2. Vistas: mapa de riesgo por municipio, ranking de zonas, detalle con explicacion e intervalo, pagina de metricas, pagina "como usarlo".
+2. Vistas: mapa de riesgo por municipio, ranking de zonas, detalle con explicacion y conjunto de prediccion, pagina de metricas, pagina "como usarlo".
 3. Cliente tipado generado desde OpenAPI.
 4. Reglas de UI: leer `skills/web-app/SKILL.md`.
 

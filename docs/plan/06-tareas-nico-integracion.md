@@ -10,7 +10,8 @@ Lee: `docs/plan/02-entorno-dependencias.md`, `docs/research/04-mlops.md`, `skill
 - [x] `pyproject.toml` + `uv.lock` (239 paquetes resueltos en Python 3.13).
 
 ### 2. API (H1 a H4)
-- [ ] `app/api/main.py` (FastAPI) con los endpoints de `03-contrato-api.md` y el mock (`model_version = "mock"`).
+- [x] `app/api/` (FastAPI) con los endpoints del contrato v0.2 y el mock; 19 tests de contrato en verde.
+- [ ] Reemplazar el mock por el bundle real manteniendo los mismos tests.
 - [ ] Carga del bundle en `lifespan`; readiness falla si falta el bundle; nunca devolver una clase por defecto ante un fallo.
 - [ ] Validacion de entrada (DIVIPOLA valido, hazard permitido, fecha), errores tipados, CORS especifico.
 - [ ] `/metrics` lee de MLflow; `/zones` precalculado.

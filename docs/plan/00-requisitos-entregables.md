@@ -17,30 +17,30 @@ Riesgo de fondo: fabricar bajo/medio/alto sin una definicion defendible. Reglas:
 1. La etiqueta sale de eventos historicos reales o de un indice con fuente citada, nunca de umbrales arbitrarios sobre las mismas features que el modelo usa (eso es fuga y reduce el ML a reglas).
 2. No se mezclan amenazas distintas en un solo target sin declararlo.
 3. La discretizacion a bajo/medio/alto (por ejemplo cuantiles de frecuencia o severidad por celda y ventana) se decide en `docs/research/01-datasets.md` y se congela en H1.
-4. El modelo predice primero una cantidad continua o probabilidad; el nivel se deriva por umbrales calibrados.
+4. El modelo ordinal predice probabilidades por clase (bajo, medio, alto); el nivel es el argmax y `P(alto)` solo ordena el ranking. No se mezclan los umbrales de conteo del target con umbrales de confianza.
 
 ## Matriz
 
 | # | Requisito | Entregable | Evidencia |
 |---|---|---|---|
 | 1 | Solucion integral de gestion y evaluacion del riesgo | Pipeline datos -> modelo -> API -> web | Demo end-to-end en URL publica |
-| 2 | Priorizar zonas de riesgo | Ranking de zonas con score y nivel; mapa | Endpoint `/zones/ranking` + vista de mapa |
+| 2 | Priorizar zonas de riesgo | Ranking de municipios por P(alto) con nivel (argmax) y conjunto de prediccion; mapa | Endpoint `/zones/ranking` + vista de mapa |
 | 3 | Multiples fuentes o series temporales/geoespaciales | >= 3 fuentes unidas por municipio (DIVIPOLA) y mes: UNGRD, Open-Meteo/NASA POWER, ONI, relieve y poblacion | Tabla de fuentes con licencia y cobertura |
 | 4 | Ingenieria de caracteristicas | Features espaciales (vecindad, distancias), temporales (rezagos, ventanas), derivadas | Notebook de FE + lista de features con importancia |
 | 5 | Modelos avanzados o hibridos | GBDT principal + red residual PyTorch propia (desde cero) + TabPFN opcional; ensamblado solo si mejora medida | Comparacion de modelos en MLflow |
 | 6 | Validacion rigurosa | CV por bloques de municipios + particion temporal con embargo; baseline; IC por remuestreo de bloques y diferencia pareada | Reporte de metricas con intervalos |
 | 7 | Incertidumbre o explicabilidad | SHAP + calibracion probabilistica; conformal con cobertura EMPIRICA (sin prometer garantia espacial) y abstencion | Intervalos en API y grafico SHAP en web |
-| 8 | API / servicio / prototipo funcional | FastAPI + web (bun) desplegados | URL Cloudflare + OpenAPI |
+| 8 | API / servicio / prototipo funcional | FastAPI + web (bun) desplegados; contrato v0.2 con tests ejecutables | URL Cloudflare + OpenAPI + `uv run pytest app/api` |
 | 9 | ML obligatorio | Modelo entrenado, versionado y servido | Run en MLflow + artefacto del modelo |
 | 10 | Solidez metodologica | Protocolo de validacion escrito antes de entrenar | `docs/research/03-validacion-incertidumbre.md` |
 | 11 | Escalabilidad | Servicio sin estado, bundle inmutable, predicciones precalculadas, ONNX opcional, docker-compose | Prueba de carga simple (latencia p95) |
-| 12 | Trazabilidad | DVC o hash de datos + MLflow + semillas + commit en cada run | Cada prediccion devuelve `model_version` y `data_version` |
+| 12 | Trazabilidad | DVC o hash de datos + MLflow + semillas + commit en cada run | Toda respuesta lleva el snapshot: `model_version`, `data_version`, `hazard`, `target_month`, `feature_cutoff` |
 
 ## Definition of Done
 
 - Pipeline reproducible con un comando desde datos crudos hasta modelo.
 - Metricas con intervalos de confianza, incluida la comparacion contra baseline.
-- API documentada (OpenAPI) respondiendo con score, nivel, intervalo y explicacion.
+- API documentada (OpenAPI) respondiendo con probabilidades por clase, nivel, conjunto de prediccion y explicacion.
 - Web desplegada con mapa, ranking, explicacion y pagina de metricas/uso.
 - README con instrucciones de uso y limites conocidos.
 

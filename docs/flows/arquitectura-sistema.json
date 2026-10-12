@@ -226,14 +226,14 @@
       "title": "Servicio",
       "items": [
         "API sin estado con bundle inmutable",
-        "Respuesta con intervalo y explicacion"
+        "Probabilidades, conjunto de prediccion y SHAP"
       ]
     },
     {
       "dot": "rose",
       "title": "Trazabilidad",
       "items": [
-        "model_version y data_version en cada respuesta",
+        "Snapshot de version y mes en cada respuesta",
         "Metricas leidas de MLflow"
       ]
     }
