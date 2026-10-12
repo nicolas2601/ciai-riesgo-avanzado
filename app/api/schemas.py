@@ -8,7 +8,9 @@ from pydantic import BaseModel, StringConstraints
 Hazard = Literal["wildfire", "landslide", "flood"]
 Level = Literal["low", "medium", "high"]
 AbstainReason = Literal["stale_data", "wide_set", "low_support"]
-TargetMonth = Annotated[str, StringConstraints(pattern=r"^\d{4}-(0[1-9]|1[0-2])$")]
+# Supported months run from the start of the UNGRD series (2019-01) to 2099-12.
+TARGET_MONTH_PATTERN = r"^20(19|[2-9]\d)-(0[1-9]|1[0-2])$"
+TargetMonth = Annotated[str, StringConstraints(pattern=TARGET_MONTH_PATTERN)]
 
 
 class Snapshot(BaseModel):
@@ -72,12 +74,14 @@ class Ranking(Snapshot):
 
 
 class HistoryPoint(BaseModel):
-    month: TargetMonth
+    month: str
     risk_score: float
 
 
 class Explanation(Snapshot):
     zone_id: str
+    abstain: bool
+    abstain_reason: AbstainReason | None
     top_factors: list[Factor]
     history: list[HistoryPoint]
 

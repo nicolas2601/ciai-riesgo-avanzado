@@ -164,3 +164,41 @@ def test_cors_allows_the_vite_dev_origin():
 def test_cors_rejects_unknown_origins():
     res = client.get("/api/v1/health", headers={"Origin": "http://evil.example"})
     assert "access-control-allow-origin" not in res.headers
+
+
+@pytest.mark.parametrize("month", ["0000-01", "0001-06", "2018-12", "2100-01", "2026-13"])
+def test_out_of_range_target_month_is_rejected_at_the_edge(month):
+    assert predict(target_month=month).status_code == 422
+    for path in ("/api/v1/zones", "/api/v1/zones/ranking", "/api/v1/zones/68001/explain"):
+        res = client.get(path, params={"target_month": month})
+        assert res.status_code == 422 and res.json()["error"]["code"] == "validation_error"
+
+
+def test_earliest_supported_month_does_not_crash_explain():
+    res = client.get("/api/v1/zones/68001/explain", params={"target_month": "2019-01"})
+    assert res.status_code == 200
+    assert all(p["month"] >= "2019-01" for p in res.json()["history"])
+
+
+STALE = "2026-11"
+
+
+def test_explain_abstains_when_predict_abstains_for_the_same_snapshot():
+    assert predict(target_month=STALE).json()["abstain_reason"] == "stale_data"
+    body = client.get("/api/v1/zones/68001/explain", params={"target_month": STALE}).json()
+    assert body["abstain"] is True and body["abstain_reason"] == "stale_data"
+    assert body["top_factors"] == []
+
+
+def test_explain_history_only_has_months_with_available_data():
+    body = client.get("/api/v1/zones/68001/explain", params={"target_month": "2027-03"}).json()
+    assert all(p["month"] <= "2026-10" for p in body["history"])
+
+
+def test_zones_and_ranking_agree_with_predict_on_stale_target():
+    zones = client.get("/api/v1/zones", params={"target_month": STALE}).json()
+    assert all(
+        f["properties"]["abstain"] and f["properties"]["risk_score"] is None
+        for f in zones["features"]
+    )
+    assert client.get("/api/v1/zones/ranking", params={"target_month": STALE}).json()["items"] == []

@@ -10,6 +10,7 @@ from fastapi.responses import JSONResponse
 
 from app.api import mock
 from app.api.schemas import (
+    TARGET_MONTH_PATTERN,
     Explanation,
     Hazard,
     Metrics,
@@ -24,10 +25,9 @@ DEFAULT_HAZARD: Hazard = "wildfire"
 DEFAULT_RANKING_LIMIT = 20
 MAX_RANKING_LIMIT = 100
 DEFAULT_CORS_ORIGINS = "http://localhost:5173"
-MONTH_PATTERN = r"^\d{4}-(0[1-9]|1[0-2])$"
 
 HazardQ = Annotated[Hazard, Query()]
-MonthQ = Annotated[str | None, Query(pattern=MONTH_PATTERN)]
+MonthQ = Annotated[str | None, Query(pattern=TARGET_MONTH_PATTERN)]
 
 app = FastAPI(title="CIAI territorial risk API", version="0.2.0")
 app.add_middleware(

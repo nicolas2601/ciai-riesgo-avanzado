@@ -21,6 +21,7 @@ MODEL_VERSION = "mock"
 DATA_VERSION = "mock-data"
 SUPPORTED_HAZARDS = ("wildfire", "landslide", "flood")
 DATA_AVAILABLE_THROUGH = date(2026, 9, 30)
+DATA_START_MONTH = "2019-01"
 ALPHA = 0.1
 HISTORY_MONTHS = 6
 LEVELS = ("low", "medium", "high")
@@ -139,22 +140,26 @@ def predict(zone_id: str, hazard: str, target_month: str | None) -> Prediction:
     )
 
 
+def _has_valid_snapshot(month: str) -> bool:
+    return month >= DATA_START_MONTH and feature_cutoff(month) <= DATA_AVAILABLE_THROUGH
+
+
 def explain(zone_id: str, hazard: str, target_month: str | None) -> Explanation:
     snap = snapshot(hazard, target_month)
+    months = [_shift_month(snap.target_month, -back) for back in range(HISTORY_MONTHS, 0, -1)]
     history = [
-        HistoryPoint(
-            month=_shift_month(snap.target_month, -back),
-            risk_score=class_probabilities(zone_id, hazard, _shift_month(snap.target_month, -back))[
-                "high"
-            ],
-        )
-        for back in range(HISTORY_MONTHS, 0, -1)
+        HistoryPoint(month=m, risk_score=class_probabilities(zone_id, hazard, m)["high"])
+        for m in months
+        if _has_valid_snapshot(m)
     ]
+    stale = is_stale(snap)
     return Explanation(
         **snap.model_dump(),
         zone_id=zone_id,
         history=history,
-        top_factors=_factors(zone_id, hazard, snap.target_month),
+        abstain=stale,
+        abstain_reason="stale_data" if stale else None,
+        top_factors=[] if stale else _factors(zone_id, hazard, snap.target_month),
     )
 
 
