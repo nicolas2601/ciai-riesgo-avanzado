@@ -1,18 +1,36 @@
-"""Pydantic models mirroring docs/plan/03-contrato-api.md."""
+"""Pydantic models mirroring docs/plan/03-contrato-api.md (v0.2)."""
 
 from datetime import date
-from typing import Literal
+from typing import Annotated, Literal
 
-from pydantic import BaseModel
+from pydantic import BaseModel, StringConstraints
 
 Hazard = Literal["wildfire", "landslide", "flood"]
 Level = Literal["low", "medium", "high"]
+AbstainReason = Literal["stale_data", "wide_set", "low_support"]
+TargetMonth = Annotated[str, StringConstraints(pattern=r"^\d{4}-(0[1-9]|1[0-2])$")]
 
 
-class Interval(BaseModel):
-    lower: float
-    upper: float
-    coverage: float
+class Snapshot(BaseModel):
+    """Identifies exactly which model, data, hazard and month a response belongs to."""
+
+    model_version: str
+    data_version: str
+    hazard: Hazard
+    target_month: TargetMonth
+    feature_cutoff: date
+    is_mock: bool
+
+
+class Ready(BaseModel):
+    ready: bool
+    is_mock: bool
+    model_version: str
+    data_version: str
+    supported_hazards: list[Hazard]
+    target_month: TargetMonth
+    feature_cutoff: date
+    data_available_through: date
 
 
 class Factor(BaseModel):
@@ -24,20 +42,20 @@ class Factor(BaseModel):
 class PredictRequest(BaseModel):
     zone_id: str
     hazard: Hazard = "wildfire"
-    as_of: date | None = None
+    target_month: TargetMonth | None = None
 
 
-class Prediction(BaseModel):
+class Prediction(Snapshot):
     zone_id: str
     municipality: str
-    hazard: Hazard
     abstain: bool
-    risk_score: float
-    risk_level: Level
-    interval: Interval
+    abstain_reason: AbstainReason | None
+    class_probabilities: dict[Level, float] | None
+    risk_level: Level | None
+    risk_score: float | None
+    prediction_set: list[Level]
+    conformal_alpha: float
     top_factors: list[Factor]
-    model_version: str
-    data_version: str
 
 
 class RankingItem(BaseModel):
@@ -46,21 +64,19 @@ class RankingItem(BaseModel):
     municipality: str
     risk_score: float
     risk_level: Level
-    interval: Interval
+    prediction_set: list[Level]
 
 
-class Ranking(BaseModel):
+class Ranking(Snapshot):
     items: list[RankingItem]
-    model_version: str
-    data_version: str
 
 
 class HistoryPoint(BaseModel):
-    date: date
+    month: TargetMonth
     risk_score: float
 
 
-class Explanation(BaseModel):
+class Explanation(Snapshot):
     zone_id: str
     top_factors: list[Factor]
     history: list[HistoryPoint]
@@ -68,16 +84,20 @@ class Explanation(BaseModel):
 
 class Metric(BaseModel):
     name: str
-    value: float
+    value: float | None = None
     ci_lower: float | None = None
     ci_upper: float | None = None
 
 
-class Metrics(BaseModel):
-    model_version: str
-    data_version: str
+class Conformal(BaseModel):
+    alpha: float
+    empirical_coverage: float | None = None
+    evaluation_scope: str | None = None
+
+
+class Metrics(Snapshot):
     validation: str
     metrics: list[Metric]
     baseline: list[Metric]
-    calibration: dict[str, float]
-    conformal_coverage: float
+    calibration: dict[str, float | None]
+    conformal: Conformal
