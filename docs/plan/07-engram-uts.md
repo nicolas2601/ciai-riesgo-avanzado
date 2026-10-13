@@ -50,6 +50,7 @@ Estan en `AGENTS.md` (seccion Engram uts). Resumen: guardar sin que lo pidan dec
 - Un solo token compartido por los tres: si se filtra, se rota y se avisa a todos. No hay revocacion por persona.
 - El servidor es un solo contenedor en un VPS compartido con otros proyectos (2 vCPU, 7,8 GiB RAM). Esta limitado a 192 MB (servidor) y 256 MB (Postgres).
 - Si Nico apaga el VPS o el tunel, `sync` falla pero tu memoria local sigue intacta.
+- El contador de `sync --import` puede mostrar el doble de observaciones (por ejemplo 22 con 11 reales) porque el watcher del Engram de Nico devuelve al servidor lo que baja; la importacion es idempotente y tu base queda con las 11 (verificado con un cliente limpio).
 - Semilla inicial: 11 observaciones con el alcance, los datos, el contrato, la validacion, el plan y las lecciones.
 
 ## Operacion (Nico)
