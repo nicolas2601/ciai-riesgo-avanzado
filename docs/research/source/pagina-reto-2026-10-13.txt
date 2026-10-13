@@ -1,0 +1,834 @@
+Fuente: https://ciaiuts.com/eventos/hackaton-utsmart-2026
+Extraido con Playwright (document.body.innerText) el 2026-10-13 ~06:25 hora Colombia.
+Texto de la pagina SIN secciones desplegadas (las secciones plegadas estan en pagina-lineamientos.json). No editado.
+======================================================================
+
+Saltar al contenido principal
+CIAI
+Centro de Innovación e Inteligencia Artificial · UTS
+Qué hacemos
+Proyectos
+Cómo participar
+Preguntas
+Contacto
+Inscribirme
+☾
+Ingresar
+UTSMART 2026 · HACKATHON INTERUNIVERSITARIA
+Hackathon CIAI UTSmart 2026
+Santander Inteligente: IA para analizar y clasificar el riesgo sísmico
+CUÁNDO
+del martes 13 al viernes 16 de octubre de 2026
+DÓNDE
+Universitaria Tecnológica de Santander (UTS) · Bucaramanga
+39
+equipos
+110
+participantes
+3
+instituciones
+8
+jurados
+Ver en vivo ↗
+Pantalla con el contador, las salas y quién presenta, actualizada sola
+Empieza a las 7:00 a. m.
+Faltan para la apertura
+00
+DÍAS
+00
+HORAS
+35
+MIN
+14
+SEG
+Faltan para la apertura 35 minutos
+Agenda
+El reto
+Equipos
+Salas
+Presentaciones
+Ganadores
+Jurados y apoyo
+Lineamientos
+Lugar
+PROGRAMACIÓN
+Agenda
+MARTES, 13 DE OCTUBRE DE 2026
+7:00 a. m.
+8:00 a. m.
+Apertura y ceremonia
+Registro y validación de equipos, confirmación de la categoría, instalación del evento con las directivas, presentación del CIAI y UTSmart, la temática, las reglas y las rúbricas.
+8:00 a. m.
+12:00 p. m.
+Desarrollo técnico
+El reto inicia a las 8:00 a. m. con 15 minutos de tolerancia: quien llegue después no recupera el tiempo. Zona y tema, datos, limpieza, entrenamiento, validación, prototipo y mentorías. A las 12:00 m. cada equipo entrega su proyecto.
+12:00 p. m.
+2:00 p. m.
+Receso · entregas cerradas
+Las entregas quedan cerradas. El jurado revisa los proyectos y los requisitos habilitantes antes de las presentaciones.
+2:00 p. m.
+4:45 p. m.
+Presentaciones ante el jurado
+En cuatro salones a la vez, con dos jurados por salón: primero Básico, luego Medio y al final Avanzado. 10 minutos de presentación y demostración, 3 de preguntas y 2 de calificación por equipo. Exponen los integrantes del equipo.
+4:45 p. m.
+6:00 p. m.
+Reevaluación (si hace falta)
+Solo para los equipos con puntajes muy distintos entre sus jurados, empates en el primer puesto o dudas sobre los requisitos: presentan de nuevo ante jurados de otro salón.
+5:30 p. m.
+6:00 p. m.
+Deliberación y suma de puntajes
+Consolidación de puntajes, desempates, firma del acta y registro fotográfico.
+VIERNES, 16 DE OCTUBRE DE 2026
+Por confirmar
+Premiación
+Premiación de un equipo ganador por categoría y registro fotográfico.
+EL RETO
+De qué se trata
+Una jornada presencial en la que equipos de varias universidades construyen, con datos sísmicos reales del Servicio Geológico Colombiano, un modelo de Machine Learning que analiza y clasifica el riesgo sísmico de una zona de Santander. Tres categorías: Básico, Medio y Avanzado.
+Santander es uno de los departamentos con mayor actividad sísmica de Colombia. Bajo la Mesa de Los Santos está el Nido Sísmico de Bucaramanga, una de las zonas de sismicidad intermedia más activas del mundo, que genera cientos de sismos cada mes. El Servicio Geológico Colombiano registra y publica cada uno de esos eventos; el reto es convertir esos datos en modelos que analicen y clasifiquen el riesgo sísmico y, si el equipo lo decide, lo anticipen.
+Temática: sismos, con tema específico libre. Cada equipo elige primero su zona de estudio y después filtra los datos reales que le corresponden. Tema de referencia para quienes participan por primera vez: el comportamiento sísmico de Santander en los últimos 20 años.
+El componente central es obligatorio en los tres niveles: implementar y demostrar un sistema de Machine Learning funcional, entrenado con datos reales de una fuente oficial. No se acepta una presentación conceptual, un prototipo visual sin modelo ni una solución basada solo en reglas fijas.
+Básico
+Clasificación
+Modelo obligatorio
+Modelo supervisado de clasificación
+Variables mínimas
+10
+Salas
+302A · 302B
+Limpiar y preparar los datos de la zona y clasificar su nivel de actividad sísmica como bajo, medio o alto con un modelo supervisado, con métricas para evaluar su desempeño.
+Producto mínimo: Cuaderno ejecutable o interfaz sencilla con una entrada y su resultado.
+Rúbrica · 100 puntos
+Medio
+Clasificación e interpretación territorial
+Modelo obligatorio
+Únicamente modelo no supervisado
+Variables mínimas
+15
+Salas
+315A
+Cumplir el reto Básico y comparar el comportamiento sísmico de la zona con el de otras unidades territoriales mediante patrones o grupos, con variables territoriales y una visualización que facilite la interpretación.
+Producto mínimo: Prototipo funcional con visualización territorial reproducible.
+Rúbrica · 100 puntos
+Avanzado
+Integración y priorización
+Modelo obligatorio
+Obligatoriamente aprendizaje por refuerzo
+Variables mínimas
+20
+Salas
+307B
+Cumplir los retos Básico y Medio e integrar la información sísmica con otra fuente oficial para construir una priorización exploratoria de zonas de Santander, con un agente entrenado por refuerzo.
+Producto mínimo: Flujo funcional y verificable con demostración de la priorización (no se requiere API).
+Rúbrica · 100 puntos
+PARTICIPANTES
+Equipos
+UTS
+Universitaria Tecnológica de Santander
+32 EQUIPOS
+UDES
+Universidad de Santander
+4 EQUIPOS
+UNAB
+Universidad Autónoma de Bucaramanga
+3 EQUIPOS
+Todas 39
+Básico 20
+Medio 10
+Avanzado 9
+Buscar equipo, integrante o institución
+39 equipos
+404 not found
+Básico
+UTS
+2 integrantes
+DESARROLLO
+302B
+PRESENTA
+307B · 2:45 p. m.
+Diego Antonio Martínez Carvajal
+Richard Yulian Marín Delgado
+3AM
+Básico
+UTS
+3 integrantes
+DESARROLLO
+302A
+PRESENTA
+302A · 2:00 p. m.
+Juan Felipe Rubio Sanabria
+Richar Rey Valero
+Freddy Andrés Maldonado Silva
+Equipo TecnoMaster
+Básico
+UTS
+3 integrantes
+DESARROLLO
+302B
+PRESENTA
+302B · 2:00 p. m.
+Edward Andrey Canchila Céspedes
+Juan David Rojas Ojeda
+Johan Andrés Rodríguez Portillo
+Ecuestria girl
+Básico
+UTS
+3 integrantes
+DESARROLLO
+302B
+PRESENTA
+315A · 3:00 p. m.
+Anggie Johanna Candela Caballero
+Danna Nicolle Conde Zulbaran
+Nikol Alejandra Bueno Mejía
+Grupo Estructura de datos
+Básico
+UTS
+3 integrantes
+DESARROLLO
+302A
+PRESENTA
+307B · 3:00 p. m.
+Nikol Fernanda Moreno Toloza
+Hilder Mario Peláez
+Andrés Camilo Jaraba
+SudoGroup
+Básico
+UTS
+3 integrantes
+DESARROLLO
+302B
+PRESENTA
+302A · 2:30 p. m.
+Julián David Infante Vergara
+Jhoan Sebastián Vera Arenas
+Juan David Rojas Argüello
+Bucara Hackers
+Básico
+UTS
+2 integrantes
+DESARROLLO
+302A
+PRESENTA
+302A · 2:45 p. m.
+Juan José Perucho Quintero
+Gabriel Augusto Ortega Martínez
+los πtoners
+Básico
+UNAB
+3 integrantes
+DESARROLLO
+302B
+PRESENTA
+315A · 2:15 p. m.
+Santiago Steven Arias Estupiñán
+Camilo Andrés Bueno Rey
+Duván Andrés Palacio Figueredo
+Reasons
+Básico
+UTS
+3 integrantes
+DESARROLLO
+302B
+PRESENTA
+302A · 2:15 p. m.
+Silvia Juliana Mancilla Padilla
+Jossue Alejandro Eugenio Triana
+Miguel Ángel Esparza Bernal
+Team duo
+Básico
+UTS
+2 integrantes
+DESARROLLO
+302B
+PRESENTA
+302B · 2:45 p. m.
+Leandro Andrés Estupiñán Acevedo
+Wendy Jazney Guerrero Figueroa
+LosTecnicos
+Básico
+UTS
+3 integrantes
+DESARROLLO
+302A
+PRESENTA
+315A · 2:30 p. m.
+Juan Manuel Montagut Jurado
+Kevin Humberto Monsalve Benítez
+Ángel Sebastián Corredor Mora
+Los punto y coma
+Básico
+UTS
+3 integrantes
+DESARROLLO
+302A
+PRESENTA
+302B · 2:15 p. m.
+Samuel Basto del Real
+Miguel Ángel Díaz Ortega
+Santiago Meléndez Gómez
+SisHack
+Básico
+UTS
+3 integrantes
+DESARROLLO
+302A
+PRESENTA
+315A · 2:00 p. m.
+César Andrés Lemus Niño
+Wilson Andrés Sanabria Vargas
+Jhonny de Jesús Ramírez Mestra
+Syntax error
+Básico
+UTS
+3 integrantes
+DESARROLLO
+302A
+PRESENTA
+307B · 2:15 p. m.
+Angie Gonzales
+Diego Pinzón
+Didier Javier Gómez Delgado
+Equipo Delta
+Básico
+UTS
+3 integrantes
+DESARROLLO
+302A
+PRESENTA
+302B · 3:00 p. m.
+David Santiago López Castillo
+Mariana Hernández Gómez
+Jean Sebastián López Moreno
+Her.exe
+Básico
+UTS
+3 integrantes
+DESARROLLO
+302A
+PRESENTA
+302B · 2:30 p. m.
+Kenia Yulieth Hernández Díaz
+Luna María Martínez Santos
+Mariana Rueda Flores
+La banda
+Básico
+UTS
+3 integrantes
+DESARROLLO
+302B
+PRESENTA
+315A · 2:45 p. m.
+Cristian Jair Lamus Chaverra
+Hosman Allen Reinoza Jerez
+Jeison Fabián Madero Bayona
+Grupo GJS
+Básico
+UTS
+3 integrantes
+DESARROLLO
+302B
+PRESENTA
+307B · 2:00 p. m.
+Germán Andrés Hernández Zafra
+Jhon Sneider Monsalve Méndez
+Santiago Maldonado Castro
+Power
+Básico
+UTS
+3 integrantes
+DESARROLLO
+302B
+PRESENTA
+307B · 2:30 p. m.
+Lizeth Andrea Martínez Gómez
+Luis Ángel Niño Afanador
+Erika Paola Gómez Bueno
+Query Masters
+Básico
+UTS
+3 integrantes
+DESARROLLO
+302A
+PRESENTA
+302A · 3:00 p. m.
+Ludwing Harvey Saavedra Santamaría
+Antonio Josué Orama Sánchez
+Raúl David Hernández González
+GreenHackers
+Medio
+UTS
+3 integrantes
+DESARROLLO
+315A
+PRESENTA
+302A · 3:35 p. m.
+Mariana Rivera Pereira
+Johan Sebastián Rojas Orozco
+Edwin Omar Medina Cañas
+JJJ
+Medio
+UTS
+3 integrantes
+DESARROLLO
+315A
+PRESENTA
+302B · 3:35 p. m.
+Jhefferson Arley Delgado Castro
+José David Díaz Rojas
+Juan Andrés Fajardo Movilla
+Cancheros
+Medio
+UTS
+3 integrantes
+DESARROLLO
+315A
+PRESENTA
+307B · 3:35 p. m.
+Jhon Emerson Blanco Pineda
+Miguel Andrés Barrios Rodríguez
+Kevin Santiago Acosta Castro
+Los coleccionistas
+Medio
+UTS
+3 integrantes
+DESARROLLO
+315A
+PRESENTA
+315A · 3:20 p. m.
+Yeiner Steven Sánchez Araque
+Erick Leonel Ruiz Cárdenas
+Lesly León
+Equipo:D
+Medio
+UTS
+3 integrantes
+DESARROLLO
+315A
+PRESENTA
+315A · 3:35 p. m.
+Diego David Angarita Agudelo
+Álvaro Andrés Ortiz Martínez
+Cristian Javier Amado Vega
+zafiro
+Medio
+UTS
+3 integrantes
+DESARROLLO
+315A
+PRESENTA
+307B · 3:20 p. m.
+Diego Alejandro Mojica Guevara
+Yeisson Arley Suárez Beltrán
+Daniel Fabián Maldonado Ramírez
+Prompt Hunters
+Medio
+UTS
+3 integrantes
+DESARROLLO
+315A
+PRESENTA
+302B · 3:20 p. m.
+Sergio Alejandro Bolaños Vallejo
+Heidy Nathalia Sarmiento Núñez
+Gael Nájera de Lira
+Epicentro
+Medio
+UTS
+1 integrante
+nombre provisional
+DESARROLLO
+315A
+PRESENTA
+302A · 3:20 p. m.
+Daniel Alberto Niño Mahecha
+Quantum Santander
+Medio
+UDES
+3 integrantes
+DESARROLLO
+315A
+PRESENTA
+302B · 3:50 p. m.
+Eder Rosadas de Oliveira Barrera
+José Daniel Nova Muñoz
+José Gabriel Plata Ariza
+Null Pointer Slayers
+Medio
+UDES
+3 integrantes
+DESARROLLO
+315A
+PRESENTA
+302A · 3:50 p. m.
+Andrés Gonzalo Beltrán Almeyda
+Edgar Andrés Figueroa Hernández
+Esteban Mauricio Díaz Vargas
+Dynamockapps
+Avanzado
+UTS
+3 integrantes
+DESARROLLO
+307B
+PRESENTA
+302B · 4:10 p. m.
+Diego Andrés Bueno Merchán
+Esteban Alberto Ávila Corredor
+Maicol Cubides Peña
+Grupo Niche
+Avanzado
+UTS
+3 integrantes
+DESARROLLO
+307B
+PRESENTA
+302A · 4:10 p. m.
+Cristian Danilo Pineda Ramírez
+Brayan Esteban Cruz Arango
+César Johan Casado Calderón
+Syntax error II
+Avanzado
+UNAB
+3 integrantes
+DESARROLLO
+307B
+PRESENTA
+315A · 4:10 p. m.
+Nicolás Santiago Moreno Monroy
+Julián Andrés Arteaga Faria
+Zabdiel Julián Quintero Monroy
+CodeForce
+Avanzado
+UTS
+2 integrantes
+DESARROLLO
+307B
+PRESENTA
+302A · 4:25 p. m.
+Jhon Ederson Jaimes Torres
+Joham Eliasid Osorio Quintero
+DS3 Team
+Avanzado
+UTS
+3 integrantes
+DESARROLLO
+307B
+PRESENTA
+302B · 4:25 p. m.
+Jaider Augusto Niño Badillo
+Juan Camilo Pinzón Jaimes
+Javier Andrés Núñez Sánchez
+Monos
+Avanzado
+UTS
+3 integrantes
+DESARROLLO
+307B
+PRESENTA
+307B · 3:55 p. m.
+Julián Hernando Pérez Villamizar
+Emmanuel Moreno Rueda
+John Eduardo Ortiz Castellanos
+UDES Syntax Titans
+Avanzado
+UDES
+2 integrantes
+DESARROLLO
+307B
+PRESENTA
+307B · 4:10 p. m.
+Juan Diego Castellanos Pinzón
+Santiago Afanador Argüello
+Bit Conquistadores
+Avanzado
+UDES
+3 integrantes
+DESARROLLO
+307B
+PRESENTA
+315A · 4:25 p. m.
+Luna Alejandra Jaimes Galarcio
+Mariana Acero Velásquez
+Henry Rodríguez Quintero
+LosPrint
+Avanzado
+UNAB
+3 integrantes
+DESARROLLO
+307B
+PRESENTA
+315A · 3:55 p. m.
+Daniel Fernando Redondo Uribe
+Jesús David Urbiñez Caselles
+Diego Andres Meza Rodriguez
+MAÑANA DE DESARROLLO
+¿En qué sala trabaja cada equipo?
+De 8:00 a. m. a 12:00 p. m. cada equipo trabaja en la sala de su categoría. En la tarde presenta en el salón que indica el orden de presentación.
+302A
+Básico · 10 equipos
+3AM
+UTS
+Bucara Hackers
+UTS
+Equipo Delta
+UTS
+Grupo Estructura de datos
+UTS
+Her.exe
+UTS
+Los punto y coma
+UTS
+LosTecnicos
+UTS
+Query Masters
+UTS
+SisHack
+UTS
+Syntax error
+UTS
+302B
+Básico · 10 equipos
+404 not found
+UTS
+Ecuestria girl
+UTS
+Equipo TecnoMaster
+UTS
+Grupo GJS
+UTS
+La banda
+UTS
+los πtoners
+UNAB
+Power
+UTS
+Reasons
+UTS
+SudoGroup
+UTS
+Team duo
+UTS
+315A
+Medio · 10 equipos
+Cancheros
+UTS
+Epicentro
+UTS
+Equipo:D
+UTS
+GreenHackers
+UTS
+JJJ
+UTS
+Los coleccionistas
+UTS
+Null Pointer Slayers
+UDES
+Prompt Hunters
+UTS
+Quantum Santander
+UDES
+zafiro
+UTS
+307B
+Avanzado · 9 equipos
+Bit Conquistadores
+UDES
+CodeForce
+UTS
+DS3 Team
+UTS
+Dynamockapps
+UTS
+Grupo Niche
+UTS
+LosPrint
+UNAB
+Monos
+UTS
+Syntax error II
+UNAB
+UDES Syntax Titans
+UDES
+TARDE DE EVALUACIÓN
+Orden de presentación
+Cada equipo tiene 10 minutos para presentar, 3 de preguntas y 2 de calificación. Las horas son estimadas y se ajustan en vivo si un salón se atrasa.
+302A
+302B
+315A
+307B
+Jurados: Carlos Pineda · Alain Pérez
+10 equipos
+BÁSICO
+1
+2:00 p. m.
+3AM
+UTS
+Pendiente
+2
+2:15 p. m.
+Reasons
+UTS
+Pendiente
+3
+2:30 p. m.
+SudoGroup
+UTS
+Pendiente
+4
+2:45 p. m.
+Bucara Hackers
+UTS
+Pendiente
+5
+3:00 p. m.
+Query Masters
+UTS
+Pendiente
+MEDIO
+6
+3:20 p. m.
+Epicentro
+UTS
+Pendiente
+7
+3:35 p. m.
+GreenHackers
+UTS
+Pendiente
+8
+3:50 p. m.
+Null Pointer Slayers
+UDES
+Pendiente
+AVANZADO
+9
+4:10 p. m.
+Grupo Niche
+UTS
+Pendiente
+10
+4:25 p. m.
+CodeForce
+UTS
+Pendiente
+RESULTADOS
+Ganadores
+Un equipo ganador por categoría. Se anuncian el viernes, 16 de octubre de 2026 (hora por confirmar), en la premiación, y en ese momento aparecen arriba de esta página.
+?
+GANADOR · BÁSICO
+Por anunciar
+20 equipos compiten
+?
+GANADOR · MEDIO
+Por anunciar
+10 equipos compiten
+?
+GANADOR · AVANZADO
+Por anunciar
+9 equipos compiten
+QUIENES LO HACEN POSIBLE
+Jurados y equipo de apoyo
+Jurados
+8
+Carlos Pineda
+Salón 302A
+Alain Pérez
+Salón 302A
+Indira Cassaleth
+Salón 302B
+Jahir Saavedra
+Salón 302B
+Diego Cruz
+Salón 315A
+Jaidiver Lombo
+Salón 315A
+Carmen Dulcey
+Salón 307B
+Diego Álvarez
+Salón 307B
+Supervisión
+2
+Juan David Gomez Vargas
+Todas (rotativo)
+Johan Alexander Blanco Caicedo
+Todas (rotativo)
+Apoyo logístico
+8
+Wilder Daniel Pardo Gordillo
+Básico (302A)
+Brayan Arturo Castro Luna
+Básico (302A)
+Julieth Katherine Moreno Pineda
+Avanzado (307B) · Cierre
+Ubaldo José Zabaleta Ocando
+Básico (302B)
+Fernando Mendez Vasquez
+Básico (302B)
+Oscar Sebastian Villarreal Angarita
+Avanzado (307B) · Cierre
+Maryi Juliana Ramírez Calderón
+Medio (315A) · Bienvenida
+Erika Viviana Gualdrón Parra
+Medio (315A) · Bienvenida
+Suplentes
+2
+Samuel Esteban Alvarez Tasco
+Básico (302A)
+Daniel Orlando Galvis Jaimes
+Medio (315A)
+Apoyaron en la preparación
+5
+Daniel Eduardo Padilla Cerpa
+Julian Camilo Villamizar Montañez
+Juan David Paredes Cubides
+Jerson Camilo Muñoz Gonzales
+Kevin Santiago Osorio Calderón
+LINEAMIENTOS
+Reglas y requisitos
+Reglas de participación
+Datos: de dónde y cómo
+Entregables (12:00 m.)
+Requisitos habilitantes
+Evaluación y premiación
+Guía paso a paso para el nivel Básico
+DATOS
+Fuentes oficiales
+SGC · Catálogo sísmico de la Red Sismológica Nacional (fuente principal) ↗
+Todos los sismos localizados en Colombia desde junio de 1993: fecha, coordenadas, profundidad, magnitud, fases, RMS, gap y municipio. Se descarga en Excel.
+SGC · Portal de Datos Abiertos ↗
+Zonas de amenaza sísmica, Mapa Geológico de Colombia e inventario de movimientos en masa (CSV, GeoJSON, Shapefile).
+SGC · Sismicidad Histórica ↗
+Catálogo homogeneizado a Mw y fichas de sismos históricos con daños reportados.
+USGS · Earthquake Catalog ↗
+Catálogo mundial filtrable; sirve para contrastar magnitudes y localizaciones.
+Datos Abiertos Colombia ↗
+Incluye el reporte histórico de emergencias por desastres naturales de la Gobernación de Santander.
+DANE e IGAC ↗
+Población y vivienda por municipio, límites, cartografía, altitud y suelos.
+LUGAR
+Cómo llegar
+Universitaria Tecnológica de Santander (UTS)
+Salones 302A, 302B, 315A y 307B · Bucaramanga
+CIAI
+Centro de Innovación e Inteligencia Artificial
+Universitaria Tecnológica de Santander · Bucaramanga, Santander, Colombia
+ciai@correo.uts.edu.co
+SITIO
+Qué hacemos
+Proyectos
+Cómo participar
+Preguntas
+Contacto
+Ingresar al CIAI Hub
+LEGAL
+Términos y condiciones
+Política de tratamiento de datos
+Aviso de privacidad
+Cookies y almacenamiento local
+INSTITUCIONAL
+Sitio web de las UTS
+Normatividad institucional
+Formulario de inscripción
+© 2026 CIAI · Universitaria Tecnológica de Santander.
+Al usar este sitio aceptas los términos y la política de datos.

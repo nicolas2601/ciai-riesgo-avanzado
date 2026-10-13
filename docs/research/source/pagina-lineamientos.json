@@ -1,0 +1,43 @@
+{
+  "fuente": "https://ciaiuts.com/eventos/hackaton-utsmart-2026",
+  "extraido": "2026-10-13T11:25:53.642Z",
+  "nota": "Secciones desplegadas (details) del sitio oficial; texto sin editar",
+  "secciones": [
+    {
+      "titulo": "Rúbrica · 100 puntos",
+      "texto": "Rúbrica · 100 puntos\nDatos: obtención y limpieza\n20\n Fuente oficial citada; conjunto de datos limpio y preparado; 10 variables justificadas.\nPresentación\n20\n Identificación del problema; exponen los integrantes; trabajo en equipo; manejo del tiempo y respuesta a las preguntas.\nModelo supervisado\n25\n Definición clara de cada nivel (bajo, medio, alto); entrenamiento, métricas básicas y comprensión de los resultados.\nDemostración\n10\n Cuaderno o interfaz en la que se observe una entrada y el resultado de la clasificación.\nImpacto e innovación\n15\n Impacto potencial para Santander y, cuando sea posible, un elemento innovador.\nAnálisis de los datos\n10\n Exploración inicial y explicación clara de la metodología y los resultados."
+    },
+    {
+      "titulo": "Rúbrica · 100 puntos",
+      "texto": "Rúbrica · 100 puntos\nDatos y preprocesamiento\n15\n 15 variables justificadas, incluidas territoriales; preparación y transformación de datos.\nModelo no supervisado\n25\n Selección, entrenamiento y evaluación; comparación de enfoques; interpretación de grupos e importancia de variables.\nArquitectura utilizada\n15\n Diagrama e integración de datos, procesamiento, modelo y visualización.\nPrototipo y visualización territorial\n10\n Prototipo funcional y visualización reproducible que compare unidades territoriales.\nImpacto e innovación\n15\n El análisis aporta una explicación útil para estimar o clasificar el riesgo, no solo grupos.\nPresentación\n20\n Identificación del problema; exponen los integrantes; trabajo en equipo."
+    },
+    {
+      "titulo": "Rúbrica · 100 puntos",
+      "texto": "Rúbrica · 100 puntos\nDatos e integración de fuentes\n15\n 20 variables justificadas; evidencia de cómo se unió la información sísmica con otra fuente oficial.\nAprendizaje por refuerzo\n20\n Agente entrenado por refuerzo (entorno, estados, acciones y recompensa); no se aceptan sustitutos.\nValidación e incertidumbre\n10\n Validación que respete el orden temporal; evaluación del agente; incertidumbre o explicación.\nFlujo integrado y trazabilidad\n15\n Flujo funcional, verificable y reproducible; solidez metodológica y trazabilidad.\nImpacto e innovación\n20\n Utilidad de la priorización para decidir en Santander; supuestos, limitaciones y extensiones.\nPresentación\n20\n Identificación del problema; exponen los integrantes; trabajo en equipo."
+    },
+    {
+      "titulo": "Reglas de participación",
+      "texto": "Reglas de participación\nEquipos de 2 o 3 personas, de una misma institución o mixtos. Cada equipo compite en una sola categoría, inscrita antes de iniciar.\nUna persona solo puede estar en un equipo.\nEl reto inicia a las 8:00 a. m. con 15 minutos de tolerancia; el tiempo perdido no se repone.\nLas herramientas son de cada participante: computador portátil con cargador, software y cuentas de nube o de IA (incluidas las de pago).\nLos modelos preentrenados, las APIs y la IA generativa se permiten como apoyo, pero no reemplazan el modelo de Machine Learning que exige la categoría.\nSe respeta la privacidad: nada de datos personales sensibles sin autorización.\nModalidad presencial, con acompañamiento del CIAI."
+    },
+    {
+      "titulo": "Datos: de dónde y cómo",
+      "texto": "Datos: de dónde y cómo\nTodos los equipos trabajan con datos reales de una fuente oficial; no se aceptan datos inventados ni sintéticos como fuente principal. La fuente principal es el catálogo sísmico de la Red Sismológica Nacional (SGC).\nOrigen: citar la fuente, la dirección web, la fecha de descarga y los filtros aplicados.\nEstructura: una sola tabla; cada fila es una observación y cada columna una variable.\nLimpieza: sin duplicados, faltantes tratados, unidades y fechas homogéneas, atípicos revisados.\nVariables mínimas: Básico 10, Medio 15, Avanzado 20 (las derivadas cuentan si se justifican).\nDiccionario de datos: nombre, tipo, unidad, fuente y por qué se incluye cada variable.\nVariable objetivo bien definida y que no se calcule directamente de las variables de entrada.\nEl catálogo del SGC tiene dos consultas (junio de 1993 a febrero de 2018 y desde marzo de 2018) con columnas distintas que el equipo debe unificar. Conviene consultar por meses o años."
+    },
+    {
+      "titulo": "Entregables (12:00 m.)",
+      "texto": "Entregables (12:00 m.)\nDataset limpio (CSV) y diccionario de datos con la justificación de cada variable.\nFuente oficial citada (dirección web, fecha y filtros).\nCódigo del análisis y del entrenamiento (cuaderno o repositorio reproducible).\nEl modelo obligatorio de la categoría con sus métricas y validación.\nEl prototipo o la demostración.\nLa presentación para el pitch final."
+    },
+    {
+      "titulo": "Requisitos habilitantes",
+      "texto": "Requisitos habilitantes\nAntes de calificar, el jurado verifica: un modelo de Machine Learning funcional entrenado por el equipo y demostrado en vivo; el tipo de modelo obligatorio de la categoría (supervisado en Básico, únicamente no supervisado en Medio y aprendizaje por refuerzo en Avanzado); datos reales de una fuente oficial citada, y el número mínimo de variables. Un proyecto que no cumpla puede presentarse, pero no es elegible para premiación."
+    },
+    {
+      "titulo": "Evaluación y premiación",
+      "texto": "Evaluación y premiación\nCada rúbrica suma 100 puntos; el puntaje del equipo es el promedio de sus jurados.\nLas presentaciones son en cuatro salones a la vez, con dos jurados por salón: primero Básico, luego Medio y al final Avanzado.\nCada equipo tiene 10 minutos de presentación y demostración, 3 de preguntas y 2 de calificación.\nReevaluación: si los dos jurados de un salón difieren en más de 20 puntos, si hay empate en el primer puesto entre salones o dudas sobre los requisitos, el equipo presenta de nuevo ante jurados de otro salón.\nDesempate: primero el puntaje en impacto e innovación y después la solidez técnica del componente de Machine Learning.\nUn equipo ganador por categoría: Básico, Medio y Avanzado."
+    },
+    {
+      "titulo": "Guía paso a paso para el nivel Básico",
+      "texto": "Guía paso a paso para el nivel Básico\nPaso 1 · Elegir la zona y la pregunta: definir el área de estudio (un municipio, una provincia, el área metropolitana o un corredor vial) y la pregunta que se quiere responder.\nPaso 2 · Obtener los datos: consultar el catálogo del SGC (departamento, municipio o rectángulo de coordenadas, periodo y magnitud mínima) y descargarlo en Excel. Registrar la dirección web, la fecha de descarga y los filtros.\nPaso 3 · Limpiar y organizar: quitar duplicados y filas sin coordenadas o sin magnitud, unificar fechas y las columnas de los dos periodos del catálogo y dejar mínimo 10 variables justificadas.\nPaso 4 · Definir la variable objetivo: por ejemplo, para cada municipio y año, bajo (sin sismos de magnitud 3,0 o más), medio (entre 3,0 y 3,9) o alto (al menos uno de 4,0 o más).\nPaso 5 · Explorar los datos: al menos tres gráficas (sismos por año, histograma de magnitudes, mapa o dispersión latitud–longitud) y qué se observa en cada una.\nPaso 6 · Entrenar un modelo supervisado: separar entrenamiento y prueba (80/20) y entrenar un modelo sencillo de scikit-learn (árbol de decisión, regresión logística, KNN o random forest).\nPaso 7 · Medir el modelo: exactitud y matriz de confusión; si las clases están desbalanceadas, precisión, recall y F1. Explicar en qué casos se equivoca.\nPaso 8 · Construir la demostración: cuaderno ejecutable o interfaz sencilla (Streamlit o Gradio) con una entrada y su resultado.\nPaso 9 · Preparar el pitch: problema y zona, fuente de datos, variables, modelo y métricas, demostración, impacto y limitaciones.\nHerramientas sugeridas: Python con pandas, scikit-learn y matplotlib en Google Colab o Jupyter."
+    }
+  ]
+}
