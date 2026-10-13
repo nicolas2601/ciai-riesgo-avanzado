@@ -33,7 +33,6 @@ const I = {
   candado: <Svg><rect x="7" y="14" width="18" height="13" rx="2" {...trazo} /><path d="M11 14V10a5 5 0 0110 0v4" {...trazo} /></Svg>,
   fuente: <Svg><ellipse cx="16" cy="8" rx="9" ry="4" {...trazo} /><path d="M7 8v8c0 2 4 4 9 4s9-2 9-4V8M7 16v8c0 2 4 4 9 4s9-2 9-4v-8" {...trazo} /></Svg>,
 }
-export const ICONOS = I
 
 export function SelloTag({ tipo }: { tipo: Sello }) {
   const glifo = tipo === 'HECHO' ? '■' : tipo === 'HIPÓTESIS' ? '◆' : '▲'
