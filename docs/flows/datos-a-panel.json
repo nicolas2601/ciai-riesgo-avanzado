@@ -1,0 +1,176 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "De los datos al panel, sin fuga del futuro",
+    "output": "datos-a-panel.html",
+    "quality_profile": "showcase"
+  },
+  "components": [
+    {
+      "id": "old",
+      "type": "external",
+      "label": "Catalogo antiguo",
+      "sublabel": "1993 a 2018-02",
+      "pos": [
+        40,
+        80
+      ],
+      "size": [
+        170,
+        64
+      ]
+    },
+    {
+      "id": "new",
+      "type": "external",
+      "label": "Catalogo nuevo",
+      "sublabel": "2018-03 en adelante",
+      "pos": [
+        40,
+        380
+      ],
+      "size": [
+        170,
+        64
+      ]
+    },
+    {
+      "id": "uni",
+      "type": "backend",
+      "label": "Unificar",
+      "sublabel": "35 duplicados fuera",
+      "pos": [
+        250,
+        230
+      ],
+      "size": [
+        170,
+        64
+      ]
+    },
+    {
+      "id": "mun",
+      "type": "backend",
+      "label": "Municipios 87/87",
+      "sublabel": "alias El Carmen",
+      "pos": [
+        460,
+        230
+      ],
+      "size": [
+        170,
+        64
+      ]
+    },
+    {
+      "id": "panel",
+      "type": "database",
+      "label": "Panel",
+      "sublabel": "208.215 eventos",
+      "pos": [
+        670,
+        230
+      ],
+      "size": [
+        170,
+        64
+      ]
+    },
+    {
+      "id": "feat",
+      "type": "backend",
+      "label": "Features",
+      "sublabel": "solo meses hasta t",
+      "pos": [
+        670,
+        440
+      ],
+      "size": [
+        170,
+        64
+      ]
+    },
+    {
+      "id": "obj",
+      "type": "backend",
+      "label": "Objetivo",
+      "sublabel": "mes siguiente: bajo, medio, alto",
+      "pos": [
+        460,
+        440
+      ],
+      "size": [
+        170,
+        64
+      ]
+    },
+    {
+      "id": "part",
+      "type": "security",
+      "label": "Particiones",
+      "sublabel": "train, validacion, test",
+      "pos": [
+        250,
+        440
+      ],
+      "size": [
+        170,
+        64
+      ],
+      "tag": "cronologicas"
+    }
+  ],
+  "connections": [
+    {
+      "id": "c1",
+      "from": "old",
+      "to": "uni",
+      "fromSide": "right",
+      "toSide": "left"
+    },
+    {
+      "id": "c2",
+      "from": "new",
+      "to": "uni",
+      "fromSide": "right",
+      "toSide": "left"
+    },
+    {
+      "id": "c3",
+      "from": "uni",
+      "to": "mun",
+      "fromSide": "right",
+      "toSide": "left"
+    },
+    {
+      "id": "c4",
+      "from": "mun",
+      "to": "panel",
+      "fromSide": "right",
+      "toSide": "left"
+    },
+    {
+      "id": "c5",
+      "from": "panel",
+      "to": "feat",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "c6",
+      "from": "feat",
+      "to": "obj",
+      "fromSide": "left",
+      "toSide": "right"
+    },
+    {
+      "id": "c7",
+      "from": "obj",
+      "to": "part",
+      "fromSide": "left",
+      "toSide": "right",
+      "variant": "emphasis"
+    }
+  ]
+}

@@ -1,0 +1,247 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Los tres niveles del reto",
+    "output": "tres-niveles.html",
+    "quality_profile": "showcase"
+  },
+  "components": [
+    {
+      "id": "i0",
+      "type": "external",
+      "label": "Municipio + mes",
+      "sublabel": "Basico: entrada",
+      "pos": [
+        40,
+        80
+      ],
+      "size": [
+        170,
+        64
+      ]
+    },
+    {
+      "id": "m0",
+      "type": "backend",
+      "label": "Random Forest",
+      "sublabel": "balanceado",
+      "pos": [
+        250,
+        80
+      ],
+      "size": [
+        170,
+        64
+      ]
+    },
+    {
+      "id": "s0",
+      "type": "database",
+      "label": "Clase + probabilidades",
+      "sublabel": "salida",
+      "pos": [
+        460,
+        80
+      ],
+      "size": [
+        170,
+        64
+      ]
+    },
+    {
+      "id": "w0",
+      "type": "frontend",
+      "label": "Web /basico",
+      "sublabel": "donde se ve",
+      "pos": [
+        670,
+        80
+      ],
+      "size": [
+        170,
+        64
+      ]
+    },
+    {
+      "id": "i1",
+      "type": "external",
+      "label": "Perfil por municipio",
+      "sublabel": "Medio: entrada",
+      "pos": [
+        40,
+        230
+      ],
+      "size": [
+        170,
+        64
+      ]
+    },
+    {
+      "id": "m1",
+      "type": "backend",
+      "label": "KMeans k=3",
+      "sublabel": "sin etiquetas",
+      "pos": [
+        250,
+        230
+      ],
+      "size": [
+        170,
+        64
+      ]
+    },
+    {
+      "id": "s1",
+      "type": "database",
+      "label": "Grupos en el mapa",
+      "sublabel": "salida",
+      "pos": [
+        460,
+        230
+      ],
+      "size": [
+        170,
+        64
+      ]
+    },
+    {
+      "id": "w1",
+      "type": "frontend",
+      "label": "Web /medio",
+      "sublabel": "donde se ve",
+      "pos": [
+        670,
+        230
+      ],
+      "size": [
+        170,
+        64
+      ]
+    },
+    {
+      "id": "i2",
+      "type": "external",
+      "label": "Estado municipio-mes",
+      "sublabel": "Avanzado: entrada",
+      "pos": [
+        40,
+        380
+      ],
+      "size": [
+        170,
+        64
+      ]
+    },
+    {
+      "id": "m2",
+      "type": "backend",
+      "label": "Agente PPO",
+      "sublabel": "MaskablePPO",
+      "pos": [
+        250,
+        380
+      ],
+      "size": [
+        170,
+        64
+      ]
+    },
+    {
+      "id": "s2",
+      "type": "database",
+      "label": "K=5 municipios",
+      "sublabel": "salida",
+      "pos": [
+        460,
+        380
+      ],
+      "size": [
+        170,
+        64
+      ]
+    },
+    {
+      "id": "w2",
+      "type": "frontend",
+      "label": "Web /avanzado",
+      "sublabel": "donde se ve",
+      "pos": [
+        670,
+        380
+      ],
+      "size": [
+        170,
+        64
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "c1",
+      "from": "i0",
+      "to": "m0",
+      "fromSide": "right",
+      "toSide": "left"
+    },
+    {
+      "id": "c2",
+      "from": "m0",
+      "to": "s0",
+      "fromSide": "right",
+      "toSide": "left"
+    },
+    {
+      "id": "c3",
+      "from": "s0",
+      "to": "w0",
+      "fromSide": "right",
+      "toSide": "left",
+      "variant": "emphasis"
+    },
+    {
+      "id": "c4",
+      "from": "i1",
+      "to": "m1",
+      "fromSide": "right",
+      "toSide": "left"
+    },
+    {
+      "id": "c5",
+      "from": "m1",
+      "to": "s1",
+      "fromSide": "right",
+      "toSide": "left"
+    },
+    {
+      "id": "c6",
+      "from": "s1",
+      "to": "w1",
+      "fromSide": "right",
+      "toSide": "left",
+      "variant": "emphasis"
+    },
+    {
+      "id": "c7",
+      "from": "i2",
+      "to": "m2",
+      "fromSide": "right",
+      "toSide": "left"
+    },
+    {
+      "id": "c8",
+      "from": "m2",
+      "to": "s2",
+      "fromSide": "right",
+      "toSide": "left"
+    },
+    {
+      "id": "c9",
+      "from": "s2",
+      "to": "w2",
+      "fromSide": "right",
+      "toSide": "left",
+      "variant": "emphasis"
+    }
+  ]
+}

@@ -1,0 +1,191 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Como aprende el agente de refuerzo",
+    "output": "agente-refuerzo.html",
+    "quality_profile": "showcase"
+  },
+  "components": [
+    {
+      "id": "ep",
+      "type": "external",
+      "label": "Episodio",
+      "sublabel": "un corte mensual",
+      "pos": [
+        40,
+        80
+      ],
+      "size": [
+        170,
+        64
+      ]
+    },
+    {
+      "id": "st",
+      "type": "database",
+      "label": "Estado",
+      "sublabel": "32 variables por municipio",
+      "pos": [
+        250,
+        80
+      ],
+      "size": [
+        170,
+        64
+      ]
+    },
+    {
+      "id": "ac",
+      "type": "backend",
+      "label": "Accion",
+      "sublabel": "elegir K=5 distintos",
+      "pos": [
+        460,
+        80
+      ],
+      "size": [
+        170,
+        64
+      ],
+      "tag": "con mascara"
+    },
+    {
+      "id": "re",
+      "type": "security",
+      "label": "Recompensa",
+      "sublabel": "solo al final: M>=3 mes siguiente",
+      "pos": [
+        670,
+        80
+      ],
+      "size": [
+        170,
+        64
+      ]
+    },
+    {
+      "id": "b1",
+      "type": "external",
+      "label": "Ranking estatico",
+      "sublabel": "baseline",
+      "pos": [
+        40,
+        305
+      ],
+      "size": [
+        170,
+        64
+      ]
+    },
+    {
+      "id": "b2",
+      "type": "external",
+      "label": "Aleatorio",
+      "sublabel": "baseline",
+      "pos": [
+        250,
+        305
+      ],
+      "size": [
+        170,
+        64
+      ]
+    },
+    {
+      "id": "b3",
+      "type": "external",
+      "label": "Oraculo",
+      "sublabel": "solo para evaluar",
+      "pos": [
+        460,
+        305
+      ],
+      "size": [
+        170,
+        64
+      ]
+    },
+    {
+      "id": "cmp",
+      "type": "backend",
+      "label": "Comparacion",
+      "sublabel": "contra baselines",
+      "pos": [
+        460,
+        530
+      ],
+      "size": [
+        170,
+        64
+      ]
+    },
+    {
+      "id": "hal",
+      "type": "frontend",
+      "label": "Hallazgo honesto",
+      "sublabel": "PPO colapsa a seleccion constante",
+      "pos": [
+        670,
+        530
+      ],
+      "size": [
+        170,
+        64
+      ],
+      "tag": "= ranking"
+    }
+  ],
+  "connections": [
+    {
+      "id": "c1",
+      "from": "ep",
+      "to": "st",
+      "fromSide": "right",
+      "toSide": "left"
+    },
+    {
+      "id": "c2",
+      "from": "st",
+      "to": "ac",
+      "fromSide": "right",
+      "toSide": "left"
+    },
+    {
+      "id": "c3",
+      "from": "ac",
+      "to": "re",
+      "fromSide": "right",
+      "toSide": "left"
+    },
+    {
+      "id": "c4",
+      "from": "b1",
+      "to": "cmp",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "c5",
+      "from": "b2",
+      "to": "cmp",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "c6",
+      "from": "b3",
+      "to": "cmp",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "c7",
+      "from": "cmp",
+      "to": "hal",
+      "fromSide": "right",
+      "toSide": "left",
+      "variant": "emphasis"
+    }
+  ]
+}

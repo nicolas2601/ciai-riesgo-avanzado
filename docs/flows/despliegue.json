@@ -1,0 +1,164 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Despliegue",
+    "output": "despliegue.html",
+    "quality_profile": "showcase"
+  },
+  "components": [
+    {
+      "id": "nav",
+      "type": "frontend",
+      "label": "Navegador",
+      "sublabel": "usuario",
+      "pos": [
+        40,
+        230
+      ],
+      "size": [
+        170,
+        64
+      ]
+    },
+    {
+      "id": "cf",
+      "type": "cloud",
+      "label": "Cloudflare",
+      "sublabel": "DNS y proxy",
+      "pos": [
+        250,
+        230
+      ],
+      "size": [
+        170,
+        64
+      ]
+    },
+    {
+      "id": "web",
+      "type": "frontend",
+      "label": "ciai.nicolasmoreno.site",
+      "sublabel": "nginx, SPA React",
+      "pos": [
+        460,
+        80
+      ],
+      "size": [
+        240,
+        64
+      ]
+    },
+    {
+      "id": "api",
+      "type": "backend",
+      "label": "ciai-api.nicolasmoreno.site",
+      "sublabel": "FastAPI",
+      "pos": [
+        460,
+        380
+      ],
+      "size": [
+        240,
+        64
+      ]
+    },
+    {
+      "id": "mod",
+      "type": "database",
+      "label": "Modelo",
+      "sublabel": "joblib + clusters.json",
+      "pos": [
+        733.0,
+        380
+      ],
+      "size": [
+        170,
+        64
+      ]
+    },
+    {
+      "id": "repo",
+      "type": "external",
+      "label": "Repo publico",
+      "sublabel": "GitHub",
+      "pos": [
+        460,
+        530
+      ],
+      "size": [
+        170,
+        64
+      ]
+    },
+    {
+      "id": "rel",
+      "type": "external",
+      "label": "Release v0.1.0",
+      "sublabel": "con modelos",
+      "pos": [
+        733.0,
+        530
+      ],
+      "size": [
+        170,
+        64
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "c1",
+      "from": "nav",
+      "to": "cf",
+      "fromSide": "right",
+      "toSide": "left"
+    },
+    {
+      "id": "c2",
+      "from": "cf",
+      "to": "web",
+      "fromSide": "right",
+      "toSide": "left"
+    },
+    {
+      "id": "c3",
+      "from": "cf",
+      "to": "api",
+      "fromSide": "right",
+      "toSide": "left"
+    },
+    {
+      "id": "c4",
+      "from": "api",
+      "to": "mod",
+      "fromSide": "right",
+      "toSide": "left"
+    },
+    {
+      "id": "c5",
+      "from": "repo",
+      "to": "rel",
+      "fromSide": "right",
+      "toSide": "left"
+    },
+    {
+      "id": "c6",
+      "from": "rel",
+      "to": "mod",
+      "fromSide": "top",
+      "toSide": "bottom"
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "VPS con Docker",
+      "wraps": [
+        "web",
+        "api",
+        "mod"
+      ]
+    }
+  ]
+}
