@@ -6,6 +6,7 @@ import type { Clase, Clasificacion } from '../api/types.ts'
 import { Estado } from '../components/Estado.tsx'
 import { Nivel } from '../components/Nivel.tsx'
 import { fmtDecimal } from '../lib/formato.ts'
+import { BasicoExplica } from './explicaciones/BasicoExplica.tsx'
 
 const CLASES: Clase[] = ['bajo', 'medio', 'alto']
 const MES_INICIAL = '2024-06'
@@ -130,16 +131,7 @@ export function Basico() {
         </section>
       ) : null}
 
-      <aside className="nota" aria-label="Sobre el modelo">
-        <p className="eyebrow">Sobre este modelo</p>
-        <p>
-          Es un <strong>Random Forest</strong> con <strong>macro-F1 de 0,593</strong> en
-          validación. Una accuracy alta engaña: las clases están desbalanceadas (la mayoría de
-          municipio-mes son «bajo»), así que predecir siempre la clase mayoritaria ya da una
-          accuracy alta sin aprender nada. Por eso reportamos macro-F1, que pesa igual a cada
-          clase.
-        </p>
-      </aside>
+      <BasicoExplica />
     </div>
   )
 }
