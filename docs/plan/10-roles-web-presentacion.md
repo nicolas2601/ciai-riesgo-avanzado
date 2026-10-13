@@ -52,7 +52,7 @@ Cambiar un archivo se avisa al otro lado por Engram uts (`topic_key` `ciai/datos
 
 1. **Mapa**: municipios de Santander coloreados por nivel (Basico) o por grupo (Medio), con selector de mes; marca visible de que es priorizacion exploratoria, no alerta.
 2. **Priorizacion**: K elegidos por el agente frente a las lineas base y al resultado real; control de K y de mes.
-3. **Maquina del tiempo**: deslizador de meses con los sismos historicos de referencia (2015-03-10 M 6,2 en Cepita, 2023 y 2025) y que habria priorizado el agente antes.
+3. **Maquina del tiempo**: deslizador de meses con los sismos historicos de referencia (2015-03-10 en Cepita: M 6,2 segun USGS y M 6,6 segun el SGC, se muestran las dos; 2023 y 2025) y que habria priorizado el agente antes.
 4. **Grupos**: lectura de los clusters del Medio en palabras.
 5. **Metodologia y datos**: fuentes, diccionario, validacion cronologica, incertidumbre y limites, todo desde los JSON.
 6. **`/presentacion`**: el pitch en modo pantalla completa, con flechas y las secciones: problema, datos, modelos, resultados, impacto, limites y equipo.
