@@ -1,0 +1,218 @@
+{
+ "total_eventos": 208215,
+ "anio_min": 1993,
+ "anio_max": 2026,
+ "eventos_por_anio": [
+  {
+   "anio": 1993,
+   "total": 1238,
+   "new": 0,
+   "old": 1238
+  },
+  {
+   "anio": 1994,
+   "total": 1771,
+   "new": 0,
+   "old": 1771
+  },
+  {
+   "anio": 1995,
+   "total": 2037,
+   "new": 0,
+   "old": 2037
+  },
+  {
+   "anio": 1996,
+   "total": 1483,
+   "new": 0,
+   "old": 1483
+  },
+  {
+   "anio": 1997,
+   "total": 1125,
+   "new": 0,
+   "old": 1125
+  },
+  {
+   "anio": 1998,
+   "total": 1564,
+   "new": 0,
+   "old": 1564
+  },
+  {
+   "anio": 1999,
+   "total": 1741,
+   "new": 0,
+   "old": 1741
+  },
+  {
+   "anio": 2000,
+   "total": 1913,
+   "new": 0,
+   "old": 1913
+  },
+  {
+   "anio": 2001,
+   "total": 3060,
+   "new": 0,
+   "old": 3060
+  },
+  {
+   "anio": 2002,
+   "total": 3523,
+   "new": 0,
+   "old": 3523
+  },
+  {
+   "anio": 2003,
+   "total": 3747,
+   "new": 0,
+   "old": 3747
+  },
+  {
+   "anio": 2004,
+   "total": 3786,
+   "new": 0,
+   "old": 3786
+  },
+  {
+   "anio": 2005,
+   "total": 3541,
+   "new": 0,
+   "old": 3541
+  },
+  {
+   "anio": 2006,
+   "total": 3075,
+   "new": 0,
+   "old": 3075
+  },
+  {
+   "anio": 2007,
+   "total": 2414,
+   "new": 0,
+   "old": 2414
+  },
+  {
+   "anio": 2008,
+   "total": 2560,
+   "new": 0,
+   "old": 2560
+  },
+  {
+   "anio": 2009,
+   "total": 5030,
+   "new": 0,
+   "old": 5030
+  },
+  {
+   "anio": 2010,
+   "total": 6730,
+   "new": 0,
+   "old": 6730
+  },
+  {
+   "anio": 2011,
+   "total": 7560,
+   "new": 0,
+   "old": 7560
+  },
+  {
+   "anio": 2012,
+   "total": 8547,
+   "new": 0,
+   "old": 8547
+  },
+  {
+   "anio": 2013,
+   "total": 7857,
+   "new": 0,
+   "old": 7857
+  },
+  {
+   "anio": 2014,
+   "total": 6981,
+   "new": 0,
+   "old": 6981
+  },
+  {
+   "anio": 2015,
+   "total": 5818,
+   "new": 0,
+   "old": 5818
+  },
+  {
+   "anio": 2016,
+   "total": 7964,
+   "new": 0,
+   "old": 7964
+  },
+  {
+   "anio": 2017,
+   "total": 9574,
+   "new": 0,
+   "old": 9574
+  },
+  {
+   "anio": 2018,
+   "total": 10055,
+   "new": 8966,
+   "old": 1089
+  },
+  {
+   "anio": 2019,
+   "total": 12738,
+   "new": 12738,
+   "old": 0
+  },
+  {
+   "anio": 2020,
+   "total": 12841,
+   "new": 12841,
+   "old": 0
+  },
+  {
+   "anio": 2021,
+   "total": 11773,
+   "new": 11773,
+   "old": 0
+  },
+  {
+   "anio": 2022,
+   "total": 11244,
+   "new": 11244,
+   "old": 0
+  },
+  {
+   "anio": 2023,
+   "total": 12250,
+   "new": 12250,
+   "old": 0
+  },
+  {
+   "anio": 2024,
+   "total": 15974,
+   "new": 15974,
+   "old": 0
+  },
+  {
+   "anio": 2025,
+   "total": 11641,
+   "new": 11641,
+   "old": 0
+  },
+  {
+   "anio": 2026,
+   "total": 5060,
+   "new": 5060,
+   "old": 0
+  }
+ ],
+ "balance_clases": {
+  "bajo": 8466,
+  "medio": 242,
+  "alto": 166
+ },
+ "n_variables_panel": 45,
+ "n_filas_panel": 8961
+}
