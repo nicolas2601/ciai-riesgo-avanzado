@@ -21,10 +21,26 @@ dev = [
     "ipykernel",
     "httpx>=0.28.1",
 ]
-dl = ["torch", "pytorch-lightning"]
+dl = ["torch"]
+# Official challenge (UTSmart 2026): data integration, supervised / unsupervised blocks, reinforcement learning, demo.
+reto = [
+  "gymnasium", "stable-baselines3", "sb3-contrib",
+  "openpyxl", "requests", "beautifulsoup4", "lxml",
+  "folium", "seaborn",
+]
+demo = ["streamlit"]
 
 [tool.ruff]
 line-length = 100
 
 [tool.pytest.ini_options]
 testpaths = ["ml", "app/api"]
+
+# CPU wheels of PyTorch: ~200 MB instead of the multi-GB CUDA build, enough for this challenge.
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[tool.uv.sources]
+torch = [{ index = "pytorch-cpu", marker = "sys_platform == 'linux' or sys_platform == 'win32'" }]
