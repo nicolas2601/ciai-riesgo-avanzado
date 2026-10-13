@@ -103,4 +103,10 @@ def load_catalog(raw_dir: str | Path = ROOT / "data/raw/sgc") -> pd.DataFrame:
         raise FileNotFoundError(f"No SGC CSV exports in {raw_dir}")
     frames = [_read_file(path) for path in files]
     catalog = pd.concat(frames, ignore_index=True)
-    return catalog.sort_values("datetime_utc").reset_index(drop=True)
+    before = len(catalog)
+    keys = ["datetime_utc", "lat", "lon", "depth_km", "mag"]
+    catalog = (
+        catalog.drop_duplicates(subset=keys).sort_values("datetime_utc").reset_index(drop=True)
+    )
+    catalog.attrs["duplicate_event_rows_removed"] = before - len(catalog)
+    return catalog

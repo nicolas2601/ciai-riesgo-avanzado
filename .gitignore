@@ -1,5 +1,9 @@
 data/raw/
 data/processed/
+!data/panel/
+!data/panel/**
+!data/sgc/
+!data/sgc/**
 .env
 *.pt
 *.ckpt
