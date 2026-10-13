@@ -195,6 +195,7 @@ export function Diagrama({ id, titulo, intro, archivo, alt }: {
 }) {
   const [fallo, setFallo] = useState(false)
   const src = `${import.meta.env.BASE_URL}diagramas/${archivo}`
+  const interactivo = src.replace(/\.png$/, '.html')
   return (
     <section className="bloque land-seccion" aria-labelledby={id}>
       <h2 id={id} className="land-titulo">{titulo}</h2>
@@ -205,7 +206,7 @@ export function Diagrama({ id, titulo, intro, archivo, alt }: {
         <figure className="land-diagrama">
           <img src={src} alt={alt} loading="lazy" onError={() => setFallo(true)} />
           <figcaption>
-            <a href={src} target="_blank" rel="noreferrer">Abrir el diagrama en grande</a>
+            <a href={interactivo} target="_blank" rel="noreferrer">Abrir el diagrama interactivo</a>
           </figcaption>
         </figure>
       )}

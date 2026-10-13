@@ -298,3 +298,14 @@ uv run pytest -q
 ```
 
 Nota: `uv run uvicorn app.api.main:app` levanta el mock del contrato v0.2 (`is_mock = true`), no el servicio real. Los comandos de ejecución de los módulos fueron tomados de sus docstrings y de los informes generados; la sección de pruebas debe correrse antes de la presentación para confirmar que sigue en verde.
+
+
+## Diagramas
+
+| Diagrama | Descripción | Fuente | PNG | HTML | URL pública |
+|---|---|---|---|---|---|
+| sistema-como-funciona | Visión general del sistema, de datos oficiales a la web | docs/flows/sistema-como-funciona.json | docs/flows/sistema-como-funciona.png | docs/flows/sistema-como-funciona.html | https://ciai.nicolasmoreno.site/diagramas/sistema-como-funciona.html |
+| datos-a-panel | Del dato crudo al panel municipio por mes sin fuga del futuro | docs/flows/datos-a-panel.json | docs/flows/datos-a-panel.png | docs/flows/datos-a-panel.html | https://ciai.nicolasmoreno.site/diagramas/datos-a-panel.html |
+| tres-niveles | Los tres niveles del reto y sus modelos | docs/flows/tres-niveles.json | docs/flows/tres-niveles.png | docs/flows/tres-niveles.html | https://ciai.nicolasmoreno.site/diagramas/tres-niveles.html |
+| agente-refuerzo | Agente de refuerzo PPO: estado, acción y recompensa | docs/flows/agente-refuerzo.json | docs/flows/agente-refuerzo.png | docs/flows/agente-refuerzo.html | https://ciai.nicolasmoreno.site/diagramas/agente-refuerzo.html |
+| despliegue | Despliegue: API, web y datos | docs/flows/despliegue.json | docs/flows/despliegue.png | docs/flows/despliegue.html | https://ciai.nicolasmoreno.site/diagramas/despliegue.html |

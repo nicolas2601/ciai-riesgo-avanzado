@@ -84,6 +84,23 @@ function PasoVista({ p }: { p: Paso }) {
   )
 }
 
+function TodosLosDiagramas() {
+  return (
+    <section className="cf__todos" aria-labelledby="todos">
+      <h2 id="todos" className="cf__h">Todos los diagramas</h2>
+      <ul>
+        {PASOS.map((p) => (
+          <li key={p.png}>
+            {p.titulo}: <a href={`/diagramas/${p.png}.png`} target="_blank" rel="noopener noreferrer">PNG</a>
+            {' · '}
+            <a href={`/diagramas/${p.png}.html`} target="_blank" rel="noopener noreferrer">Interactivo</a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )
+}
+
 export default function ComoFunciona() {
   return (
     <div className="cf">
@@ -98,6 +115,7 @@ export default function ComoFunciona() {
           <li>Ve a <Link to="/avanzado">Avanzado</Link> y mira la priorización con el aviso del PPO.</li>
         </ol>
       </section>
+      <TodosLosDiagramas />
     </div>
   )
 }
