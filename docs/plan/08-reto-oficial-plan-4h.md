@@ -44,6 +44,7 @@ Equipo: **Syntax error II** (UNAB): Nicolas Moreno, Julian Arteaga, Zabdiel Quin
 | P12 | La infraestructura vieja (API, Cloudflare, MLflow, contrato v0.2, web React) ya no paga | Producto minimo oficial | Queda congelada (no se borra); el codigo reutilizable es el entorno `uv` y el diagrama de flujo |
 | P13 | Prototipo/visualizacion territorial exigida en Medio | Rubrica Medio | Mapa por municipio (centroides ya en el repo: `app/api/data/municipios_santander.json`) o poligonos IGAC/DANE |
 | P14 | 9 equipos de Avanzado; el desempate favorece Impacto e innovacion | Pagina oficial | Cuidar la narrativa de impacto desde la hora 1 (seccion 7) |
+| P15 | **El nido domina**: 95 % de los M >= 4 desde 2000 esta a 100-200 km y casi todo cae en pocos municipios; un ranking por municipio del epicentro seria casi constante y el RL, trivial | USGS, consulta de hoy (`docs/research/12-brechas-e-ideas.md`) | **Gate de degeneracion a las 8:30**: medir la variacion del top-K entre cortes; si el mismo top-K aparece en mas del 90 %, recompensa por sacudida esperada y/o revisita (seccion 4 de `12`) |
 
 ## 4. Fuentes: opciones y decision
 
@@ -78,7 +79,7 @@ SGC amenaza/movimientos --/                                                     
                                       demostracion en vivo (cuaderno o Streamlit/Gradio) + pitch
 ```
 
-Diagrama interactivo para la presentacion: `docs/flows/reto-oficial.html` (si se alcanza a generar; si no, usar el de arriba).
+Diagrama interactivo: `docs/flows/reto-oficial.html`. Roles, linea de tiempo por persona, contrato de datos de la web y pitch: `docs/plan/10-roles-web-presentacion.md`. Brechas e ideas creativas: `docs/research/12-brechas-e-ideas.md`.
 
 ### Variable objetivo (opciones y decision)
 
@@ -151,4 +152,4 @@ Recortes si se atrasa (en este orden): visualizacion avanzada, segunda fuente C,
 
 ## 9. Que queda del repo
 
-Se conserva: entorno `uv`, diagramas Archify (el de flujo se reemplaza por el de la seccion 5), Engram uts, reglas de verificacion y revision cruzada. Se congela, sin borrar: API mock, contrato v0.2, web React, tuneles. Decision pendiente de Nico: demo en **Streamlit o Gradio** (mas rapido, mismo entorno Python; recomendado) frente a la web React ya preparada por Julian.
+Se conserva: entorno `uv`, diagramas Archify (el de flujo se reemplaza por el de la seccion 5), Engram uts, reglas de verificacion y revision cruzada. Se congela, sin borrar: API mock, contrato v0.2, web React, tuneles. **Decidido por Nico (2026-10-13): la web React es la demo principal y la presentacion (modo `/presentacion`, sin diapositivas); Streamlit es respaldo con un corte a las 10:30** si la web no tiene mapa, priorizacion y metricas con datos reales. Ambas leen los mismos JSON (`docs/plan/10`).

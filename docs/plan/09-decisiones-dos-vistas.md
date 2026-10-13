@@ -17,17 +17,20 @@ Nico pidio que los dos modelos trabajen como **vistas independientes**: cada uno
 | Cobertura por radio | Extension para romper la aditividad | Solo como sensibilidad, con R ex ante y sin doble conteo | **uts2 (condiciones)** | Analisis separado con greedy de union y oraculo del mismo objetivo; no se vende como area afectada |
 | Preparar antes de las 8:00 | Solo entorno y planificacion | La pagina no lo prohibe; criterio conservador | **Ambas** | Se descarga y procesa desde las 8:00; confirmar en la ceremonia |
 | Roles, cronograma y rubrica | Cronograma hora a hora y mapeo a los 100 puntos | No lo cubrio | **uts** | Es la parte operativa |
-| Demo | Streamlit o Gradio (mismo entorno Python) frente a la web React | Notebook o flujo minimo reproducible; API o web opcional | **Streamlit, pendiente de Nico** | Producto minimo oficial: demostracion; sin API |
+| Demo | Streamlit (mismo entorno Python) | Notebook o flujo minimo reproducible; API o web opcional | **Web React principal; Streamlit de respaldo (decide Nico)** | Nico prefiere la web; sin API: la web lee JSON; corte de respaldo a las 10:30 |
+| Roles | Zabdiel ML, Julian web, Nico datos e integracion con apoyo explicito | Una sola cabeza de ML y una de web; Nico dueño de integracion, datos y pruebas | **Coinciden** | Evita dos lideres del mismo codigo |
+| Presentacion | Diapositivas o web | React con modo pitch | **La web es el pitch** (`/presentacion`) | Decision de Nico |
 
 ## Pendiente de decision de Nico
 
-1. Demo en Streamlit (recomendado) frente a la web React ya preparada por Julian.
-2. Quien lleva el RL (propuesta: Zabdiel) y quien Basico y Medio (Nico), segun fortalezas reales.
+1. (Resuelto) Demo: web React principal, Streamlit de respaldo.
+2. (Resuelto en `docs/plan/10`) Zabdiel lleva ML (Basico y RL), Julian la web, Nico datos, Medio e integracion.
 3. Preguntar al jurado en la apertura: la ambiguedad "Medio: unicamente no supervisado" frente a "cumplir Basico y Medio" (se entregan los tres bloques, cada uno con su tipo de modelo).
 
 ## Gates que se miden a las 8:00 (antes de comprometer el diseno)
 
 - Catalogo SGC descargable por tramos (formato de fecha del formulario por descubrir).
+- **Gate de degeneracion**: variacion del top-K entre cortes (si es casi constante, rediseñar recompensa; ver `12`).
 - Clases bajo, medio y alto con soporte suficiente por mes; si no, ventana anual.
 - Al menos 20 variables reales con justificacion; DANE unido por municipio y anio.
 - Episodios completos para entrenamiento, validacion y prueba cronologicas.
