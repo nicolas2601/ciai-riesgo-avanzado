@@ -12,3 +12,6 @@ data/*
 artifacts/*
 !artifacts/ml/selected_model.joblib
 !app/web/dist
+!app/web/public
+!app/web/public/data
+!app/web/public/data/clusters.json
