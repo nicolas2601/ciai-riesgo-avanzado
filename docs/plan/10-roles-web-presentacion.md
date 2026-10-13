@@ -12,18 +12,26 @@ Version simple: **Zabdiel hace los modelos, Julian hace la web, Nico hace los da
 
 Regla de apoyo: Nico toma el bloque que se atrase (ML o web), pero **solo con aviso**, para no pisar el codigo de otro. Los que presentan son los tres.
 
-## 2. Linea de tiempo por persona (hora Colombia)
+## 2. Linea de tiempo por persona (hora Colombia), unificada con la vista de uts2
 
 | Hora | Nico (datos e integracion) | Zabdiel (ML) | Julian (web) |
 |---|---|---|---|
-| Antes de las 8:00 | Planificacion, entorno listo, ceremonia | Leer `08`, `09` y `12`; esqueleto del entorno de RL con datos de forma **marcados como NO oficiales** (solo para probar codigo) | Estructura de la web con la plantilla y el contrato de datos (seccion 4), sin datos oficiales |
-| 8:00 a 9:00 | **Descarga SGC por HTTPS** y union de los dos periodos | **DANE** (xlsx) y Gobernacion (opcional); borrador del diccionario de variables | Mapa de Santander, navegacion y las vistas vacias leyendo los JSON de ejemplo |
-| 9:00 a 9:30 | Tabla unica v0, gate de clases y **gate de degeneracion** | Revisa el gate con Nico; ajusta objetivo y recompensa | Vista de priorizacion y de grupos con datos de forma |
-| 9:30 a 10:30 | Medio (grupos), diccionario, exporta `municipios.json` y `clusters.json` | Basico (supervisado), entorno y agente de RL, primeras corridas | Conecta los JSON reales conforme salen; vista de metricas |
-| 10:30 a 11:15 | **Corte de respaldo:** si la web no tiene mapa, priorizacion y metricas con datos reales, Nico monta Streamlit con los mismos JSON (30 min) | Entrenamiento final, comparacion con lineas base, intervalos, importancia de variables; exporta `priorizacion.json` y `metricas.json` | Maquina del tiempo, modo presentacion, pulido |
-| 11:15 a 11:30 | Congela datos y revisa trazabilidad | Congela modelos y metricas | Congela la web y la publica |
-| 11:30 a 12:00 | **Entrega 12:00**: CSV, diccionario, fuente citada, codigo, modelos con metricas, demo | Revisa cifras contra lo que sale del codigo | Prueba la demo completa, respaldo local |
-| 12:00 a 14:00 | Ensayo del pitch (10 min) | Ensayo | Ensayo; arregla lo que falle |
+| Antes de las 8:00 | Planificacion, entorno listo, ceremonia | Leer `08`, `09`, `12`; esqueleto del entorno de RL con datos de forma **marcados NO oficiales** | Estructura de la web con la plantilla y el contrato de datos (seccion 4), sin datos oficiales |
+| 8:00 a 8:10 | **Export minimo real del SGC** por HTTPS (URL, filtros, version); valida columnas y tiempos | Contrato de objetivo, horizonte y K; **DANE** si Nico sigue con el SGC | React local, estructura y banner "datos de ejemplo" |
+| 8:10 a 8:30 | Descarga por tramos, une los dos periodos, une DANE, deduplica, registra procedencia | Entorno y politica sobre datos de forma marcados; lineas base y pruebas de mascara y recompensa | UI con datos de forma, nunca metricas que parezcan reales |
+| **8:30** | **Handoff: dataset parcial de un periodo completo** (con version y cobertura) | Recibe y corre la primera vez | Valida lectura de JSON |
+| 8:30 a 8:45 | Panel completo, >= 20 variables y diccionario; cortes y uniones validados | **Gate de clases, degeneracion y completitud**; congela ventanas y particiones con solo entrenamiento | Estados sin datos y errores |
+| 8:45 a 9:15 | Pruebas temporales y de procedencia; exporta muestras reales; **Medio (grupos)** con las definiciones de Zabdiel | Basico supervisado y **primer agente entrenado** (o bloqueo concreto) | Mapa y grupos con datos reales |
+| 9:15 a 10:00 | Integra las salidas al repositorio y a la web | Entrena y evalua el RL en validacion; semillas, configuracion, curvas; congela candidato | Modo presentacion: problema, fuentes, metodo, limites |
+| **10:00** | **Primer flujo completo fuente a modelo a web, aunque el desempeno sea pobre** | | |
+| 10:00 a 10:45 | Prueba de punta a punta con el mismo orden de variables | **Prueba final una sola vez** con la politica congelada; comparacion pareada y limites | Metricas y recorrido del agente; ningun numero a mano |
+| 10:45 a 11:15 | **Decision del respaldo:** si React no funciona, Streamlit con los mismos JSON (30 min); si funciona, nada | Revisa retorno, soportes y mascaras; explica decisiones | Ensayo del pitch con los tres |
+| 11:15 a 11:45 | Congela CSV, diccionario, codigo, modelos y paquete | Congela checkpoints y metricas | Congela build y modo presentacion; prueba local |
+| **11:45** | **Entrega anticipada verificable** (quedan 15 min para fallos reales) | | |
+| 11:45 a 12:00 | Confirma recepcion; **no se agregan funciones** | Verifica que el checkpoint corre | Prueba navegacion y respaldo local |
+| 12:00 a 14:00 | Ensayo del pitch (10 min) | Ensayo | Ensayo y arreglos |
+
+Reparto del Medio (diferencia entre las dos vistas, resuelta): uts2 propone que Zabdiel haga los tres bloques; uts propone que Nico haga el Medio. Se adopta que **Nico implementa el Medio bajo las definiciones de Zabdiel** (objetivo, particiones, escala) y Zabdiel lo revisa: reparte la carga sin dos cabezas sobre la misma logica.
 
 ## 3. Cuellos de botella y plan B
 

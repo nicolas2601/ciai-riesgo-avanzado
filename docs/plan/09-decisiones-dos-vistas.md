@@ -18,7 +18,9 @@ Nico pidio que los dos modelos trabajen como **vistas independientes**: cada uno
 | Preparar antes de las 8:00 | Solo entorno y planificacion | La pagina no lo prohibe; criterio conservador | **Ambas** | Se descarga y procesa desde las 8:00; confirmar en la ceremonia |
 | Roles, cronograma y rubrica | Cronograma hora a hora y mapeo a los 100 puntos | No lo cubrio | **uts** | Es la parte operativa |
 | Demo | Streamlit (mismo entorno Python) | Notebook o flujo minimo reproducible; API o web opcional | **Web React principal; Streamlit de respaldo (decide Nico)** | Nico prefiere la web; sin API: la web lee JSON; corte de respaldo a las 10:30 |
-| Roles | Zabdiel ML, Julian web, Nico datos e integracion con apoyo explicito | Una sola cabeza de ML y una de web; Nico dueño de integracion, datos y pruebas | **Coinciden** | Evita dos lideres del mismo codigo |
+| Roles | Zabdiel ML (Basico y RL), Julian web, Nico datos, **Medio** e integracion | Zabdiel dueño de los tres bloques; Nico ingesta, procedencia, contrato, exportacion y prueba de punta a punta | **Coinciden en la estructura; el Medio lo implementa Nico bajo las definiciones de Zabdiel** | Reparte la carga sin dos cabezas sobre la misma logica |
+| Hitos y entrega | Corte de respaldo 10:30; congelar 11:15; entregar 11:30-12:00 | Handoff de dataset parcial a las 8:30, gate hasta 8:45, primer flujo completo a las 10:00, respaldo 10:45-11:00, **entrega anticipada 11:45** | **uts2** | Mas ruta critica explicita y 15 min de colchon; se adopta como linea de tiempo oficial |
+| Tasa del nido | "Cientos al mes" | 13,5 al dia es el promedio del catalogo de 148 910 eventos en 30 anos, no la tasa actual | **uts2** | No citar la tasa como actual |
 | Presentacion | Diapositivas o web | React con modo pitch | **La web es el pitch** (`/presentacion`) | Decision de Nico |
 
 ## Pendiente de decision de Nico
