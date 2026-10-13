@@ -1,0 +1,40 @@
+/* Páginas explicativas: sellos, pasos, barras, diagramas */
+.explica__titulo { margin: 0 0 var(--s-2); }
+.sello { display: inline-block; font-family: var(--font-data); font-size: 0.75rem; letter-spacing: 0.04em; padding: 2px var(--s-2); border: 1px solid currentColor; border-radius: var(--r-sharp); white-space: nowrap; }
+.sello--hecho { color: var(--accent); }
+.sello--hipotesis { color: var(--ink-2); border-style: dashed; }
+.sello--limitacion { color: var(--risk-alto); }
+.pasos { list-style: none; padding: 0; margin: var(--s-4) 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--s-4); }
+.pasos__item { display: flex; flex-direction: column; gap: var(--s-2); background: var(--surface); border: 1px solid var(--border-hairline); border-radius: var(--r-sharp); padding: var(--s-4); font-size: 0.9rem; color: var(--ink-2); }
+.pasos__item strong { color: var(--ink); }
+.pasos__n { font-family: var(--font-display); font-size: 1.5rem; color: var(--accent); }
+.hbarras { list-style: none; padding: 0; margin: var(--s-4) 0; display: grid; gap: var(--s-3); }
+.hbarras__fila { display: grid; grid-template-columns: minmax(120px, 190px) 1fr 64px; align-items: center; gap: var(--s-3); font-size: 0.9rem; }
+.hbarras__pista { background: var(--inset); height: 14px; border-radius: var(--r-sharp); overflow: hidden; }
+.hbarras__valor { display: block; height: 100%; background: var(--ink-3); }
+.hbarras__fila--sel .hbarras__valor { background: var(--accent); }
+.hbarras__fila--sel .hbarras__nombre { font-weight: 700; }
+.tabla-wrap { overflow-x: auto; }
+.tabla-wrap table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tabla-wrap th, .tabla-wrap td { text-align: left; padding: var(--s-2) var(--s-3); border-bottom: 1px solid var(--border-hairline); }
+.tabla-wrap th { font-weight: 600; color: var(--ink-2); }
+.tabla-wrap tr.fila-sel td { font-weight: 700; background: var(--inset); }
+.dos-col { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--s-5); }
+.mini-tarjeta { background: var(--surface); border: 1px solid var(--border-hairline); border-radius: var(--r-sharp); padding: var(--s-4); }
+.mini-tarjeta h3 { margin: 0 0 var(--s-2); font-size: 1rem; }
+.mini-tarjeta ul { margin: 0; padding-left: var(--s-5); font-size: 0.9rem; }
+.lista-sellos { list-style: none; padding: 0; display: grid; gap: var(--s-3); margin: var(--s-4) 0; }
+.lista-sellos li { display: flex; gap: var(--s-3); align-items: baseline; flex-wrap: wrap; }
+.diagrama { width: 100%; height: auto; display: block; background: var(--surface); border: 1px solid var(--border-hairline); border-radius: var(--r-sharp); }
+.diagrama text { font-family: var(--font-data); font-size: 13px; fill: var(--ink); }
+.diagrama .dg-sub { fill: var(--ink-2); font-size: 11px; }
+.diagrama rect { fill: var(--shell); stroke: var(--border-strong); }
+.diagrama .dg-acento { stroke: var(--accent); stroke-width: 2; }
+.diagrama .dg-flecha { stroke: var(--accent); stroke-width: 2; fill: none; }
+.diagrama .dg-punta { fill: var(--accent); stroke: none; }
+.linea { list-style: none; margin: var(--s-4) 0; padding: 0 0 0 var(--s-5); border-left: 2px solid var(--accent); display: grid; gap: var(--s-4); }
+.linea__item { position: relative; font-size: 0.9rem; color: var(--ink-2); }
+.linea__item::before { content: ''; position: absolute; left: calc(-1 * var(--s-5) - 6px); top: 4px; width: 10px; height: 10px; background: var(--accent); border-radius: 50%; }
+.linea__item strong { display: block; color: var(--ink); }
+@media (max-width: 640px) { .hbarras__fila { grid-template-columns: 1fr 1fr 56px; } }
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }

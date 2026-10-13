@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { usePriorizacion } from '../api/hooks.ts'
 import { Estado } from '../components/Estado.tsx'
 import { fmtDecimal } from '../lib/formato.ts'
+import { AvanzadoExplica } from './explicaciones/AvanzadoExplica.tsx'
 
 const KS = [3, 5, 8, 10]
 const ROTULO_METODO: Record<string, string> = {
@@ -100,15 +101,7 @@ export function Avanzado() {
         </section>
       ) : null}
 
-      <aside className="nota" aria-label="Lectura honesta del resultado">
-        <p className="eyebrow">Lectura honesta</p>
-        <p>
-          El agente PPO <strong>colapsa a una selección constante</strong>: elige casi siempre los
-          mismos municipios y rinde igual que el ranking estático por eventos recientes. No aprende
-          nada que la línea base no capture. Esto es una priorización exploratoria; no es una
-          alerta oficial ni predice sismos.
-        </p>
-      </aside>
+      <AvanzadoExplica />
     </div>
   )
 }
