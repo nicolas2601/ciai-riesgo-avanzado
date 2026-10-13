@@ -1,0 +1,381 @@
+/* Composicion por pagina. Wireframes de DESIGN.md, seccion 5. */
+
+.main {
+  padding-block: var(--s-8) var(--s-9);
+}
+
+.mono {
+  font-family: var(--font-data);
+  font-size: 0.9375rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.visualmente-oculto {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* --- Hero (landing) --- */
+.hero {
+  position: relative;
+  padding-block: var(--s-9) var(--s-8);
+  margin-bottom: var(--s-8);
+  overflow: hidden;
+}
+.hero__onda {
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+      90deg,
+      transparent 0 38px,
+      var(--border-hairline) 38px 39px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 22px,
+      var(--border-hairline) 22px 23px
+    );
+  opacity: 0.35;
+  mask-image: linear-gradient(180deg, #000 0%, transparent 78%);
+  pointer-events: none;
+}
+.hero__titulo {
+  position: relative;
+  font-size: clamp(3rem, 10vw, 8.5rem);
+  font-weight: 800;
+  line-height: 0.88;
+  letter-spacing: -0.03em;
+  font-variation-settings: 'wdth' 125;
+  text-transform: uppercase;
+  margin-bottom: var(--s-5);
+}
+.hero__linea2 {
+  color: var(--accent);
+}
+.hero__bajada {
+  position: relative;
+  font-size: 1.0625rem;
+  color: var(--ink-2);
+  max-width: 60ch;
+  margin-bottom: var(--s-6);
+}
+
+/* --- Secciones del pitch --- */
+.pitch,
+.portada-pagina {
+  margin-block: var(--s-9);
+}
+.portada-pagina {
+  margin-top: 0;
+}
+.pitch__titulo {
+  font-size: clamp(1.75rem, 4vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  margin: 0 0 var(--s-4);
+}
+.pitch__texto {
+  color: var(--ink-2);
+  max-width: 72ch;
+  font-size: 1.0625rem;
+}
+
+/* --- Rejillas y chips --- */
+.rejilla {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--s-5);
+  align-items: start;
+}
+.fila-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-4);
+  margin-block: var(--s-5) var(--s-8);
+}
+.intro {
+  color: var(--ink-2);
+  max-width: 72ch;
+  margin-block: var(--s-5);
+}
+
+.acordeon {
+  background: var(--surface);
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--r-card);
+  box-shadow: var(--shadow-card);
+  padding: var(--s-5);
+}
+.acordeon p {
+  margin: 0 0 var(--s-4);
+  color: var(--ink-2);
+}
+.acordeon p:last-child {
+  margin-bottom: 0;
+}
+
+/* --- Controles y leyenda --- */
+.controles {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: var(--s-6);
+  margin-block: var(--s-5);
+}
+.campo--inline {
+  margin-bottom: 0;
+  min-width: 200px;
+}
+.leyenda {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-3);
+  margin-left: auto;
+}
+
+/* --- Mapa --- */
+.mapa-bloque {
+  position: relative;
+  background: #edeff2;
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--r-panel);
+  overflow: hidden;
+  min-height: 420px;
+}
+.mapa {
+  width: 100%;
+  height: 520px;
+}
+.punto {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid;
+  padding: 0;
+  cursor: pointer;
+  transition: transform 140ms cubic-bezier(0.2, 0, 0, 1);
+}
+.punto:hover {
+  transform: scale(1.35);
+  background-clip: padding-box;
+}
+.detalle {
+  position: absolute;
+  top: var(--s-4);
+  left: var(--s-4);
+  max-width: 300px;
+}
+.detalle__nombre {
+  font-size: 1.3125rem;
+  margin: 0 0 var(--s-2);
+}
+.detalle__lista {
+  display: grid;
+  gap: var(--s-2);
+  margin: var(--s-4) 0;
+}
+.detalle__lista dt {
+  font-size: 0.8125rem;
+  color: var(--ink-2);
+}
+.detalle__lista dd {
+  margin: 0;
+}
+.detalle__nota {
+  font-size: 0.8125rem;
+  color: var(--ink-3);
+  margin: 0;
+  max-width: none;
+}
+
+/* --- Tabla --- */
+.tabla-scroll {
+  overflow-x: auto;
+}
+.enlace-tabla {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--accent);
+  text-decoration: underline;
+  min-height: auto;
+}
+.tarjeta-pie,
+.tarjeta__pie {
+  font-size: 0.8125rem;
+  color: var(--ink-3);
+  margin: var(--s-3) 0 0;
+}
+.tarjeta-panel {
+  background: var(--surface);
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--r-card);
+  box-shadow: var(--shadow-card);
+  padding: var(--s-5);
+  margin-block: var(--s-6);
+}
+.panel__titulo {
+  font-size: 1.3125rem;
+  margin: 0 0 var(--s-3);
+}
+.panel__nota {
+  font-size: 0.875rem;
+  color: var(--ink-2);
+  margin: 0 0 var(--s-4);
+  max-width: 72ch;
+}
+
+/* --- Maquina del tiempo --- */
+.riel {
+  background: var(--surface);
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--r-card);
+  box-shadow: var(--shadow-card);
+  padding: var(--s-5);
+  margin-block: var(--s-5);
+}
+.riel__etiqueta {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--ink-2);
+  margin-bottom: var(--s-3);
+}
+.riel__rango {
+  width: 100%;
+  accent-color: var(--accent);
+}
+.riel__escala {
+  display: flex;
+  justify-content: space-between;
+  margin-top: var(--s-3);
+}
+.riel__marca {
+  background: none;
+  border: none;
+  padding: var(--s-1) 0;
+  min-height: auto;
+  font-family: var(--font-data);
+  font-size: 0.75rem;
+  color: var(--ink-3);
+}
+.riel__marca:hover {
+  color: var(--ink);
+}
+.riel__marca--evento {
+  color: var(--risk-alto);
+  font-weight: 600;
+}
+.riel__marca--activa {
+  color: var(--accent);
+  border-bottom: 2px solid var(--accent);
+}
+.tiempo-panel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s-5);
+  align-items: start;
+}
+.ranking {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: var(--s-2);
+}
+.ranking__item {
+  display: grid;
+  grid-template-columns: 28px 1fr auto;
+  align-items: baseline;
+  gap: var(--s-3);
+  padding: var(--s-2) 0;
+  border-bottom: 1px solid var(--border-hairline);
+}
+.ranking__puesto {
+  color: var(--ink-3);
+}
+.ranking__vacio {
+  color: var(--ink-2);
+}
+.evento {
+  display: grid;
+  gap: var(--s-3);
+  margin: 0;
+}
+.evento dt {
+  font-size: 0.8125rem;
+  color: var(--ink-2);
+}
+.evento dd {
+  margin: 0;
+  font-size: 1.125rem;
+}
+.puente {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-4);
+  margin-block: var(--s-4);
+}
+.navbar__marca-sello {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--warning);
+}
+
+/* --- Graficas --- */
+.grafica {
+  background: var(--surface);
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--r-card);
+  box-shadow: var(--shadow-card);
+  padding: var(--s-5);
+  margin-block: var(--s-5);
+}
+
+/* --- Barras de importancia (Grupos) --- */
+.barras {
+  list-style: none;
+  padding: 0;
+  margin: var(--s-4) 0 0;
+  display: grid;
+  gap: var(--s-3);
+}
+.barras li {
+  display: grid;
+  grid-template-columns: 1fr 1fr 48px;
+  align-items: center;
+  gap: var(--s-3);
+  font-size: 0.8125rem;
+}
+.barra {
+  height: 6px;
+  background: var(--inset);
+  border-radius: var(--r-sharp);
+  overflow: hidden;
+}
+.barra__relleno {
+  display: block;
+  height: 100%;
+  background: var(--accent);
+}
+
+@media (max-width: 900px) {
+  .tiempo-panel {
+    grid-template-columns: 1fr;
+  }
+  .detalle {
+    position: static;
+    max-width: none;
+    margin: var(--s-4);
+  }
+  .mapa {
+    height: 60vh;
+  }
+}
