@@ -1,0 +1,239 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Reto UTSmart 2026: un dataset, tres bloques",
+    "output": "reto-oficial.html",
+    "quality_profile": "showcase"
+  },
+  "components": [
+    {
+      "id": "sgc",
+      "type": "external",
+      "label": "SGC catalogo",
+      "sublabel": "sismos 1993-hoy",
+      "pos": [
+        40,
+        90
+      ],
+      "size": [
+        150,
+        60
+      ]
+    },
+    {
+      "id": "dane",
+      "type": "external",
+      "label": "DANE",
+      "sublabel": "poblacion municipal",
+      "pos": [
+        40,
+        230
+      ],
+      "size": [
+        150,
+        60
+      ]
+    },
+    {
+      "id": "gob",
+      "type": "external",
+      "label": "Gobernacion",
+      "sublabel": "eventos e impactos",
+      "pos": [
+        40,
+        370
+      ],
+      "size": [
+        150,
+        60
+      ]
+    },
+    {
+      "id": "table",
+      "type": "database",
+      "label": "Tabla unica",
+      "sublabel": ">= 20 variables + diccionario",
+      "pos": [
+        290,
+        230
+      ],
+      "size": [
+        170,
+        60
+      ],
+      "tag": "CSV"
+    },
+    {
+      "id": "basic",
+      "type": "backend",
+      "label": "Basico",
+      "sublabel": "supervisado bajo/medio/alto",
+      "pos": [
+        560,
+        90
+      ],
+      "size": [
+        170,
+        60
+      ]
+    },
+    {
+      "id": "mid",
+      "type": "backend",
+      "label": "Medio",
+      "sublabel": "no supervisado + mapa",
+      "pos": [
+        560,
+        230
+      ],
+      "size": [
+        170,
+        60
+      ]
+    },
+    {
+      "id": "rl",
+      "type": "backend",
+      "label": "Avanzado",
+      "sublabel": "agente de refuerzo",
+      "pos": [
+        560,
+        370
+      ],
+      "size": [
+        170,
+        60
+      ],
+      "tag": "PPO / DQN"
+    },
+    {
+      "id": "val",
+      "type": "security",
+      "label": "Validacion",
+      "sublabel": "orden temporal + incertidumbre",
+      "pos": [
+        830,
+        230
+      ],
+      "size": [
+        170,
+        60
+      ]
+    },
+    {
+      "id": "demo",
+      "type": "frontend",
+      "label": "Demo en vivo",
+      "sublabel": "priorizacion + pitch",
+      "pos": [
+        830,
+        400
+      ],
+      "size": [
+        170,
+        60
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "c1",
+      "from": "sgc",
+      "to": "table",
+      "label": "unir",
+      "fromSide": "right",
+      "toSide": "left"
+    },
+    {
+      "id": "c2",
+      "from": "dane",
+      "to": "table",
+      "fromSide": "right",
+      "toSide": "left"
+    },
+    {
+      "id": "c3",
+      "from": "gob",
+      "to": "table",
+      "fromSide": "right",
+      "toSide": "left"
+    },
+    {
+      "id": "c4",
+      "from": "table",
+      "to": "mid",
+      "fromSide": "right",
+      "toSide": "left"
+    },
+    {
+      "id": "c5",
+      "from": "mid",
+      "to": "val",
+      "fromSide": "right",
+      "toSide": "left"
+    },
+    {
+      "id": "c6",
+      "from": "val",
+      "to": "demo",
+      "variant": "emphasis",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "c7",
+      "from": "table",
+      "to": "basic",
+      "fromSide": "right",
+      "toSide": "left"
+    },
+    {
+      "id": "c8",
+      "from": "table",
+      "to": "rl",
+      "fromSide": "right",
+      "toSide": "left"
+    },
+    {
+      "id": "c9",
+      "from": "basic",
+      "to": "val",
+      "fromSide": "right",
+      "toSide": "left"
+    },
+    {
+      "id": "c10",
+      "from": "rl",
+      "to": "val",
+      "fromSide": "right",
+      "toSide": "left"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Un solo dataset",
+      "items": [
+        "SGC mas dos fuentes oficiales",
+        "Objetivo del anio siguiente, sin fuga"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "Tres bloques",
+      "items": [
+        "Supervisado, no supervisado, refuerzo",
+        "Comparados con lineas base"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "Honestidad",
+      "items": [
+        "Actividad sismica no es dano",
+        "Priorizacion exploratoria"
+      ]
+    }
+  ]
+}
