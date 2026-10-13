@@ -6,6 +6,10 @@ Equipo **Syntax error II** (UNAB): Nicolas Moreno, Julian Arteaga y Zabdiel Quin
 
 Roles y presentacion (la web React es el pitch): [docs/plan/10-roles-web-presentacion.md](docs/plan/10-roles-web-presentacion.md). Brechas e ideas con evidencia: [docs/research/12-brechas-e-ideas.md](docs/research/12-brechas-e-ideas.md).
 
+Documentación completa del proyecto: [docs/DOCUMENTACION.md](docs/DOCUMENTACION.md).
+
+Auditoría de requisitos oficiales (cumple, parcial, no cumple, con evidencia): [docs/AUDITORIA_REQUISITOS.md](docs/AUDITORIA_REQUISITOS.md).
+
 Los documentos `00` a `07` de `docs/plan/` corresponden al plan anterior (amenazas varias, API y web desplegada): quedan **congelados**, no borrados.
 
 ## Estado
