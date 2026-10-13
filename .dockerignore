@@ -1,0 +1,12 @@
+**/__pycache__
+**/.venv
+**/tests
+.git
+.github
+app/web
+ml
+docs
+data/*
+!data/panel
+artifacts/*
+!artifacts/ml/selected_model.joblib

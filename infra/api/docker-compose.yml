@@ -1,0 +1,47 @@
+# Runs the API on a private Docker network. Only the Cloudflare tunnel joins it; no host ports.
+name: ciai
+
+x-hardening: &hardening
+  security_opt:
+    - no-new-privileges:true
+  cap_drop:
+    - ALL
+  restart: unless-stopped
+
+services:
+  ciai-api:
+    <<: *hardening
+    build:
+      context: ../..
+      dockerfile: infra/api/Dockerfile
+    image: ciai-api:local
+    environment:
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:5173}
+    mem_limit: 768m
+    cpus: 1.0
+    pids_limit: 128
+    read_only: true
+    tmpfs:
+      - /tmp
+    networks: [ciai]
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://127.0.0.1:8000/api/v1/health', timeout=4).status == 200 else 1)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  ciai-tunnel:
+    <<: *hardening
+    image: cloudflare/cloudflared:latest
+    command: ["--no-autoupdate", "--origincert", "/etc/cf/cert.pem", "tunnel", "--config", "/etc/cf/config-ciai.yml", "run"]
+    volumes:
+      - ${CLOUDFLARED_DIR:?set CLOUDFLARED_DIR}:/etc/cf:ro
+    mem_limit: 128m
+    depends_on:
+      ciai-api:
+        condition: service_healthy
+    networks: [ciai]
+
+networks:
+  ciai:
+    name: ciai_default
