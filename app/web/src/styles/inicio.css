@@ -1,0 +1,56 @@
+.land-botones { display: flex; flex-wrap: wrap; gap: var(--s-3); margin-top: var(--s-5); }
+.land-botones .btn { text-decoration: none; }
+.land-seccion { max-width: 1100px; }
+.land-titulo { font-family: var(--font-display); font-size: clamp(1.6rem, 3.5vw, 2.4rem); line-height: 1.1; margin: var(--s-2) 0 var(--s-4); color: var(--ink); }
+.land-lead { max-width: 68ch; color: var(--ink-2); line-height: 1.6; margin: 0 0 var(--s-5); }
+.land-datos, .land-tarjetas { display: grid; gap: var(--s-4); grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.land-dato, .land-tarjeta { background: var(--surface); border: 1px solid var(--border-hairline); border-radius: var(--r-card); box-shadow: var(--shadow-card); padding: var(--s-5); }
+.land-dato__valor { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 2.8rem); line-height: 1; margin: 0 0 var(--s-2); color: var(--accent); }
+.land-dato__texto { margin: 0; color: var(--ink-2); line-height: 1.5; }
+.land-dato__nota { margin: var(--s-2) 0 0; font-size: 0.8rem; color: var(--ink-3); }
+.land-cifras { list-style: none; padding: 0; margin: var(--s-3) 0 0; display: grid; gap: var(--s-1); color: var(--ink); }
+.land-cifras li { border-left: 3px solid var(--accent); padding-left: var(--s-3); }
+.land-pregunta { margin: var(--s-5) 0 0; padding: var(--s-4) var(--s-5); border-left: 4px solid var(--accent); background: var(--accent-quiet); border-radius: 0 var(--r-card) var(--r-card) 0; font-family: var(--font-display); font-size: clamp(1.2rem, 2.5vw, 1.6rem); color: var(--ink); }
+.land-tarjeta__icono { display: inline-flex; color: var(--accent); margin-bottom: var(--s-3); }
+.land-tarjeta__titulo { font-family: var(--font-display); font-size: 1.25rem; margin: 0 0 var(--s-2); color: var(--ink); }
+.land-tarjeta__texto { margin: 0; color: var(--ink-2); line-height: 1.5; }
+.land-hallazgo { display: block; text-decoration: none; color: inherit; }
+.land-limites { display: grid; gap: var(--s-3); padding: 0; margin: 0 0 var(--s-4); list-style: none; max-width: 70ch; }
+.land-limites li { position: relative; padding-left: var(--s-6); color: var(--ink-2); line-height: 1.5; }
+.land-limites li::before { content: ''; position: absolute; left: 0; top: 0.35em; width: 12px; height: 12px; border: 2px solid var(--warning); transform: rotate(45deg); }
+.land-enlace a, .land-enlaces a { color: var(--accent); font-weight: 600; }
+.land-enlaces { display: flex; flex-wrap: wrap; gap: var(--s-5); margin: 0; }
+@media (prefers-reduced-motion: reduce) { .land-hallazgo { transition: none; } }
+
+/* Tipografia grande: presentacion ante jurado. Nada por debajo de 14px. */
+.land { font-size: 1.25rem; line-height: 1.6; }
+.land .hero__bajada { font-size: clamp(1.25rem, 2.4vw, 1.75rem); max-width: 40ch; }
+.land .btn { font-size: 1.125rem; padding: var(--s-4) var(--s-6); min-height: 56px; display: inline-flex; align-items: center; }
+.land .bloque { margin-block: var(--s-9); }
+.land .eyebrow { font-size: 1rem; }
+.land .land-titulo { font-size: clamp(2.25rem, 5vw, 3.75rem); margin-bottom: var(--s-5); }
+.land .land-lead { font-size: 1.375rem; max-width: 60ch; }
+.land .land-dato__valor { font-size: clamp(3rem, 6vw, 4.5rem); }
+.land .land-dato__texto { font-size: 1.25rem; }
+.land .land-dato__nota { font-size: 1rem; }
+.land .land-cifras { font-size: 1.25rem; }
+.land .land-pregunta { font-size: clamp(1.5rem, 3.5vw, 2.25rem); }
+.land .land-tarjeta__titulo { font-size: 1.625rem; }
+.land .land-tarjeta__texto, .land .tarjeta__texto { font-size: 1.25rem; }
+.land .land-tarjeta__icono svg { width: 48px; height: 48px; }
+.land .land-limites li { font-size: 1.25rem; }
+.land .land-enlace, .land .land-enlaces { font-size: 1.25rem; }
+.land .land-enlaces { margin-top: var(--s-5); }
+.land .flujo__caja { font-size: 1rem; padding: var(--s-4); }
+.land .flujo__caja strong { font-size: 1.125rem; }
+.land .grafica__nota { font-size: 1rem; }
+.land .grafica__valor { font-size: 18px; }
+.land .grafica__eje { font-size: 15px; }
+.land .graficas-par { grid-template-columns: 1fr; gap: var(--s-6); }
+.land .grafica { overflow-x: auto; }
+.land .grafica__svg { min-width: 560px; }
+.land-diagrama { margin: 0; background: var(--surface); border: 1px solid var(--border-hairline); border-radius: var(--r-card); padding: var(--s-4); }
+.land-diagrama img { width: 100%; height: auto; display: block; }
+.land-diagrama figcaption { margin-top: var(--s-3); font-size: 1rem; }
+.land-diagrama figcaption a { color: var(--accent); font-weight: 600; }
+.land-diagrama__falla { padding: var(--s-5); border: 1px dashed var(--border-strong); border-radius: var(--r-card); font-size: 1.125rem; color: var(--ink-2); }
