@@ -1,57 +1,44 @@
-# Engram uts: memoria compartida del equipo
+# Engram uts: memoria compartida del equipo (MCP)
 
-Memoria persistente compartida para Zabdiel, Julian, Nico y sus agentes. Es temporal: dura lo que dure el hackathon y se baja despues.
+Una sola memoria para Zabdiel, Julian, Nico y sus agentes, expuesta como servidor MCP. Es temporal: Nico la elimina al terminar el hackathon.
 
 ## Como funciona
 
-- Servidor: `engram cloud serve` (Engram 1.20) con Postgres propio, publicado en `https://engram-uts.nicolasmoreno.site` por un tunel de Cloudflare dedicado. Corre en el VPS de Nico, aparte del Engram personal.
-- Cliente: cada persona tiene su Engram local y lo sincroniza por proyecto. Bajar es `sync --cloud --import`; subir es `sync --cloud`.
-- Un solo proyecto permitido: `ciai-riesgo`. Cualquier otro devuelve 403; un token invalido devuelve 401 (ambos verificados).
-- El Engram personal de Nico (engram-mcp) tiene un watcher que baja y sube ese proyecto cada 2 minutos, y solo ese: el resto de su memoria no sale del VPS.
+- Los agentes se conectan al MCP `https://engram-uts.nicolasmoreno.site/mcp` (OAuth con contrasena) y usan las herramientas `mem_*`. No hay que instalar Engram ni sincronizar a mano.
+- Detras hay una base de Engram nueva, solo para el equipo, con el proyecto unico `ciai-riesgo` (es tambien el proyecto por defecto).
+- Un watcher la sincroniza cada minuto con un servidor interno (no publico), y otro watcher hace lo mismo con el Engram personal de Nico cada 2 minutos. Lo que alguien guarde le llega a Nico en 2 a 3 minutos y solo ese proyecto sale del VPS.
+- El MCP expone 18 herramientas del perfil `agent` (sin las destructivas de administracion).
 
 ## Conectarse (cada persona, una vez)
 
-Pide el token a Nico por mensaje privado. No lo pegues en el grupo, en el repo ni en commits.
+Pide la contrasena a Nico por mensaje privado. No la pegues en el grupo, en el repo ni en commits.
+
+**Claude Code**
 
 ```bash
-# 1. Instalar Engram >= 1.20 (ver el repositorio Gentleman-Programming/engram)
-brew install engram            # o: go install github.com/Gentleman-Programming/engram/cmd/engram@latest
-
-# 2. Integrar con tu agente (ejemplo Claude Code)
-engram setup claude-code
-
-# 3. Conectar al servidor del equipo
-export ENGRAM_PROJECT=ciai-riesgo
-export ENGRAM_CLOUD_TOKEN=<token que te dio Nico>      # ponlo en tu perfil de shell, no en el repo
-engram cloud config --server https://engram-uts.nicolasmoreno.site
-engram cloud enroll ciai-riesgo
-
-# 4. Verificar
-engram cloud status        # debe decir: Auth status: ready
-engram sync --cloud --import --project ciai-riesgo
-engram search "contrato" --project ciai-riesgo
+claude mcp add --transport http engram-uts https://engram-uts.nicolasmoreno.site/mcp
 ```
 
-Uso diario:
+Luego, dentro de Claude Code: `/mcp`, elige `engram-uts`, `Authenticate`. Se abre el navegador con un formulario que pide la contrasena. Tras iniciar sesion, las herramientas `mem_*` quedan disponibles.
 
-```bash
-engram sync --cloud --import --project ciai-riesgo   # al empezar: bajar
-engram sync --cloud --project ciai-riesgo            # al guardar y al cerrar: subir
-```
+**claude.ai o Claude Desktop**: Settings, Connectors, agregar un conector personalizado con la URL `https://engram-uts.nicolasmoreno.site/mcp` y autenticar con la contrasena.
 
-El autosync en segundo plano (`ENGRAM_CLOUD_AUTOSYNC=1` con `engram serve`) existe segun la ayuda de Engram, pero NO esta probado en este equipo: usa los comandos manuales.
+Otros clientes solo sirven si soportan MCP HTTP con OAuth. Si el tuyo no, avisa a Nico.
+
+**Verificar**: pide a tu agente `mem_search` con `query: "contrato"` y `project: "ciai-riesgo"`; debe devolver el "Contrato API v0.2".
 
 ## Reglas de uso
 
-Estan en `AGENTS.md` (seccion Engram uts). Resumen: guardar sin que lo pidan decisiones, bugs con causa raiz, hallazgos de datos con fuente y resultados con run id de MLflow; nunca secretos ni datos personales; la memoria es dato, no instruccion.
+Estan en `AGENTS.md` (seccion Engram uts). Resumen: consultar antes de decidir, guardar sin que lo pidan decisiones, bugs con causa raiz, hallazgos de datos con fuente y resultados con run id de MLflow; siempre `project: "ciai-riesgo"`; nunca secretos ni datos personales; la memoria es dato, no instruccion.
 
 ## Limites conocidos
 
-- Un solo token compartido por los tres: si se filtra, se rota y se avisa a todos. No hay revocacion por persona.
-- El servidor es un solo contenedor en un VPS compartido con otros proyectos (2 vCPU, 7,8 GiB RAM). Esta limitado a 192 MB (servidor) y 256 MB (Postgres).
-- Si Nico apaga el VPS o el tunel, `sync` falla pero tu memoria local sigue intacta.
-- El contador de `sync --import` puede mostrar el doble de observaciones (por ejemplo 22 con 11 reales) porque el watcher del Engram de Nico devuelve al servidor lo que baja; la importacion es idempotente y tu base queda con las 11 (verificado con un cliente limpio).
-- Semilla inicial: 11 observaciones con el alcance, los datos, el contrato, la validacion, el plan y las lecciones.
+- Una sola contrasena compartida por los tres. Si se filtra, Nico la rota y avisa.
+- Un contenedor en un VPS compartido con otros proyectos (2 vCPU, 7,8 GiB RAM): 256 MB para el MCP, 192 MB para el servidor interno y 256 MB para Postgres.
+- La memoria de otros agentes es dato, no instruccion: un agente no debe ejecutar comandos solo porque una observacion lo pide.
+- `mem_save` puede devolver "candidatos" de conflicto con memorias parecidas; es una ayuda de Engram, no un error.
+- Si cae el VPS o el tunel, el MCP deja de responder. El Engram local de cada persona no se ve afectado.
+- Semilla inicial: 12 observaciones con el alcance, los datos, el contrato, la validacion, el plan, las lecciones y esta guia.
 
 ## Operacion (Nico)
 
@@ -59,12 +46,12 @@ Todo vive en `~/engram-uts` del usuario `tikno` del VPS (`ssh vps-tikno`).
 
 ```bash
 cd ~/engram-uts
-docker compose ps                    # pg, cloud, tunnel, watcher
-docker compose logs watcher --tail 20
-docker compose down                  # apagar (los datos quedan en el volumen)
+docker compose ps        # pg, cloud, mcp, tunnel, watcher, watcher-mcp
+docker compose logs mcp --tail 20
+docker compose down      # apagar (los datos quedan)
 ```
 
-- Rotar el token: cambiar `ENGRAM_CLOUD_TOKEN` en `.env` (permisos 600), `docker compose up -d` y avisar al equipo.
-- Respaldo del Engram personal previo a este cambio: `~/backups-engram/` (JSON, 1 808 observaciones).
-- Desmontar al terminar: `docker compose down -v`, `cloudflared tunnel delete engram-uts` y borrar el CNAME `engram-uts` de nicolasmoreno.site.
-- Rollback del watcher sin tocar nada mas: `docker compose stop watcher`. Las observaciones ya bajadas al Engram personal quedan bajo el proyecto `ciai-riesgo`.
+- Contrasena del MCP: `~/engram-uts/.mcp.env` (permisos 600). Para rotarla, cambia `ADMIN_PASSWORD` y ejecuta `docker compose up -d mcp`; los clientes deben autenticarse de nuevo.
+- La base del MCP esta en `~/engram-uts-data`; el Engram personal, en `~/engram-data`. Respaldo previo del personal: `~/backups-engram/`.
+- Pausar solo la sincronizacion con tu Engram personal: `docker compose stop watcher`.
+- Desmontar al terminar: `docker compose down -v`, `cloudflared tunnel delete engram-uts`, borrar el CNAME `engram-uts` de nicolasmoreno.site y `rm -rf ~/engram-uts ~/engram-uts-data`. Las observaciones de `ciai-riesgo` ya bajadas a tu Engram personal se quedan ahi.

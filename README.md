@@ -49,7 +49,7 @@ Los diagramas son interactivos (descarga el HTML y abrelo en el navegador: busqu
 | `docs/plan/01-roles-cronograma.md` | Roles, hitos y flujo de cada persona (5 h) |
 | `docs/plan/02-entorno-dependencias.md` | uv, PyTorch, bun, cluster UNABIA, despliegue |
 | `docs/plan/03-contrato-api.md` | Contrato entre ML y web (v0.2, ejecutable) |
-| `docs/plan/07-engram-uts.md` | Memoria compartida del equipo: como conectarse |
+| `docs/plan/07-engram-uts.md` | Memoria compartida del equipo (MCP): como conectarse |
 | `docs/research/` | Datasets, modelos, validacion, MLOps, ideas, datos de Colombia, estado del arte |
 | `skills/` | Instrucciones por area (ML, web, MLOps, Engram) |
 
