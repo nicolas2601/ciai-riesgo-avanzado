@@ -411,3 +411,23 @@
 .grupo__rasgos, .lista-fuentes { padding-left: var(--s-5); margin: 0 0 var(--s-3); }
 .ranking { padding-left: var(--s-5); margin: 0 0 var(--s-3); }
 @media (max-width: 640px) { .detalle { position: static; max-width: none; margin: var(--s-3); } .mapa-bloque { min-height: 0; } .barras__fila { grid-template-columns: 90px 1fr 60px; } }
+
+/* Inicio: KPIs, flujo y gráficas */
+.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: var(--s-4); margin-block: var(--s-6); }
+.kpi { background: var(--surface); border: 1px solid var(--border-hairline); border-radius: var(--r-sharp); padding: var(--s-4); }
+.kpi__valor { font-family: var(--font-display); font-size: 2rem; color: var(--accent); margin: 0; }
+.kpi__etiqueta { font-size: 0.875rem; color: var(--ink-2); margin: 0; }
+.grafica { margin: 0; background: var(--surface); border: 1px solid var(--border-hairline); border-radius: var(--r-sharp); padding: var(--s-4); }
+.grafica__svg { width: 100%; height: auto; display: block; }
+.grafica__valor { font-family: var(--font-data); font-size: 13px; fill: var(--ink); }
+.grafica__eje { font-family: var(--font-data); font-size: 11px; fill: var(--ink-3); }
+.grafica__nota { font-size: 0.875rem; color: var(--ink-2); margin-top: var(--s-3); }
+.graficas-par { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--s-5); }
+.flujo { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: var(--s-5); }
+.flujo__caja { position: relative; display: flex; flex-direction: column; gap: var(--s-2); padding: var(--s-3); border: 1px solid var(--border-strong); border-radius: var(--r-sharp); background: var(--shell); font-size: 0.875rem; color: var(--ink-2); }
+.flujo__caja strong { color: var(--ink); }
+.flujo__caja:not(:last-child)::after { content: '\2192'; position: absolute; right: -20px; top: 50%; transform: translateY(-50%); color: var(--accent); font-size: 1.25rem; }
+.flujo__modelo { color: var(--accent); text-decoration: underline; }
+.enlaces { display: flex; gap: var(--s-5); flex-wrap: wrap; }
+.enlaces a { color: var(--accent); text-decoration: underline; }
+@media (max-width: 700px) { .flujo__caja:not(:last-child)::after { content: '\2193'; right: 50%; top: auto; bottom: -26px; transform: translateX(50%); } }
