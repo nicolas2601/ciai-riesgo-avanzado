@@ -11,16 +11,20 @@ equipo. Alcance funcional en `docs/plan/10-roles-web-presentacion.md` (secciones
 ## 1. Concepto
 
 **"Laboratorio de datos sismicos"**: una herramienta de analisis, no una landing de
-marketing. Se lee como instrumentacion cientifica: sobria, densa en
-informacion y honesta sobre lo que no sabe.
+marketing. Se lee como instrumentacion cientifica: sobria, densa en informacion y honesta
+sobre lo que no sabe.
 
-Público: estudiantes de ingenieria, sistemas y ciencia de datos. Perfil tecnico, joven,
-que valora lo serio y lo claro. Idioma de la interfaz: español (Colombia).
+Publico: estudiantes de ingenieria, sistemas y ciencia de datos. Perfil tecnico, joven,
+que valora lo serio y lo claro. Idioma de la interfaz: espanol (Colombia).
 
-**Tono de voz:** tecnico, claro, sin sensacionalismo. La app nunca dice "alerta", nunca dice "peligro", nunca dice "prediccion de un sismo".
-Dice "priorizacion exploratoria". El
+**Tono de voz:** tecnico, claro, sin sensacionalismo. La app nunca dice "alerta", nunca
+dice "peligro", nunca dice "prediccion de un sismo". Dice "priorizacion exploratoria". El
 vocabulario del interfaz es la senalizacion: la misma palabra para la misma cosa en todo
 el producto.
+
+**Modo claro.** Es una decision de lectura, no de moda: la app se estudia, se lee en
+pantallas de puerto y de aula, y la luz del dato tiene que pesar mas que la atmosfera.
+Fondo casi blanco, tinta casi negra, y color reservado para lo que significa algo.
 
 **Motivo visual recurrente:** la onda sismica. Se usa como textura de fondo (trazo fino
 de baja opacidad), como divisor de secciones y como repique de carga. **No** se usa como
@@ -39,26 +43,35 @@ Regla de Chanel aplicada: gastamos la boldness ahi y en ningun otro lado.
 
 ## 2. Referencias visuales: que se toma y que se descarta
 
+Las tres referencias son claras y coinciden en eso. La contradiccion esta en el acento y
+en el tratamiento de la superficie.
+
 | Referencia | Se toma | Se descarta |
 |---|---|---|
-| Aakriti (arquitectura, oscuro) | Titulo gigante tipo marca en el hero con transparencia; tarjetas de vidrio translucido con borde sutil; chips de estadistica flotando en el hero; tarjetas oscuras con icono lineal fino; CTA en pildora; ritmo vertical amplio | Tono de lujo residencial, tipografia serif elegante, paleta calida dorada |
-| ISK (contabilidad, claro) | Unicamente la estructura de tres pilares con icono circular, y el bloque final con formulario | Fondo claro, aspecto corporativo generico, tipografia y composicion |
-| Ocean Crown (logistica, grises) | Rejilla estricta; pasos conectados por linea; tarjetas con contorno fino sobre fondo negro; footer en columnas; jerarquia tipografica sobria | La escala de grises pura: aqui el color de acento tiene funcion semantica |
+| Aarav Singh (claro, lavanda) | Tarjetas de vidrio frosting sobre fondo claro; chip de estadistica flotante con cifra grande; eyebrow pequeno sobre cada seccion; tarjetas de servicio con icono en cuadro de color y resplandor; rejilla de tecnologias en cuadros redondeados; pasos numerados unidos por flecha; formulario con boton oscuro; plano vertical amplio | El retrato como hero, los logos de terceros como prueba de autoridad, los testimonios con foto, el degradado lavanda de fondo |
+| Design Futures (claro, verde neon) | Titulo display gigante partido en dos lineas con la segunda en color; subtitulo en monoespaciada con tracking amplio; marcador cuadrado antes de cada etiqueta de seccion; cuatro pilares con numero arriba a la derecha y flecha abajo; fila de estadisticas grandes con filetes; flecha circular como CTA | El verde neon como color de interfaz, el distintivo de esquina en diagonal, la foto de portada |
+| Anna K. (crema, azul real) | Titulo display enorme en azul, partido en dos lineas apiladas; etiqueta vertical en el canto izquierdo; filetes azules horizontales como separadores; bloque de servicios y proceso lado a lado; diagrama radial de cuatro segmentos; numeracion 01-04 en color; banda de footer en color pleno con titular grande | La tipografia manuscrita de firma, el retrato de circuito, la paleta crema calida en todo el sitio |
 
 ### 2.1 Resolucion explicita de contradicciones
 
-1. **Referencia 2 es clara y las otras dos son oscuras.** Gana el oscuro (1 y 3), porque
-   el brief fija modo oscuro y ademas un mapa con datos sismicos sobre fondo claro pierde
-   el contraste de los colores de nivel. De la referencia 2 solo se conserva la
-   *estructura* de tres pilares y el bloque de formulario.
-2. **Referencia 1 usa dorado calido y la 3 no tiene color.** Gana un acento unico frio
-   (seccion 3.1) y se le asigna una funcion: cromo de interfaz. Los colores de nivel y de
-   datos son un sistema aparte y nunca se usan en el cromo.
-3. **"Tarjetas de vidrio" (ref 1) contra "rejilla estricta" (ref 3).** No se contradicen si
-   el vidrio se limita a superficies flotantes (navbar, panel del mapa, panel de detalle)
-   y las tarjetas de contenido usan contorno fino opaco, sin desenfoque. Se evita el
-   efecto "SaaS de tarjetas identicas": ver seccion 3.3 (radios) y 6.
-4. **El contexto pedia color por nivel de competencia (Basico / Medio / Avanzado) y la app
+1. **Tres acentos distintos: lavanda, verde neon y azul real.** Gana **un solo acento,
+   azul profundo** (`#2340C8`). Razon: es el unico de los tres que sobrevive a la prueba de
+   function en el mapa, donde un verde neon se camufla con la vegetacion de los tiles y
+   un lavanda no se distingue de una fuente de incertidumbre.
+2. **Ref 1 y 2 usan casi blanco frio; la 3 usa crema calido.** Gana el **casi blanco
+   frio**. El crema es el tell de una paleta generada por defecto y ademas amarillenta
+   los colores de nivel, que es exactamente lo que esta app no puede permitirse.
+3. **Ref 1 usa vidrio con desenfoque y sombras suaves; la 3 usa filetes planos sin
+   sombra.** Gana un punto medio declarado: **superficies blancas solidas con borde
+   visible** para el contenido, y **vidrio frosting solo en superficies flotantes**
+   (navbar, panel de mapa, panel de detalle). El vidrio va donde hay algo detras que
+   aporta; en una rejilla de contenido solo anade peso visual sin informacion.
+4. **Ref 1 y 2 ponen eyebrow en mayusculas sobre cada seccion; la 3 usa etiqueta
+   vertical en el canto.** Gana el eyebrow, porque es el patron de las dos y porque la
+   etiqueta vertical obliga a texto apilado, inaccesible en movil. Se usa **en minuscula
+   con tracking amplio**, no en mayusculas, y **solo si aporta informacion**: nombre de la
+   seccion, no adorno.
+5. **El contexto pedia color por nivel de competencia (Basico / Medio / Avanzado) y la app
    muestra riesgo por municipio (bajo / medio / alto).** Gana el riesgo. Los bloques de
    competencia se nombran como texto en Metodologia; no se codifican con color, porque ese
    color significaria otra cosa y el jurado lo leeria como riesgo.
@@ -69,30 +82,30 @@ Regla de Chanel aplicada: gastamos la boldness ahi y en ningun otro lado.
 
 ### 3.1 Color
 
-**Base y superficies** (azul-negro frio; nunca negro puro ni `#0B0B0B`/"tinted near-black"
-como fondo, y nunca crema calido).
+**Base y superficies** (casi blanco frio; nunca crema calido ni blanco puro `#FFFFFF` como
+fondo global).
 
 | Token | Hex | Uso |
 |---|---|---|
-| `--bg-base` | `#07090E` | Fondo global de la aplicacion |
-| `--bg-raised` | `#0E1219` | Tarjetas, paneles, celdas de tabla |
-| `--bg-inset` | `#151B25` | Campos de formulario,hover de fila, codigo |
-| `--bg-overlay` | `#1A212D` | Modales, menus desplegables |
-| `--border-hairline` | `rgba(255,255,255,0.09)` | Contorno fino de tarjetas y divisores |
-| `--border-strong` | `rgba(255,255,255,0.16)` | Contorno de control en hover/focus |
-| `--text-primary` | `#E8EDF5` | Titulos, cifras, contenido |
-| `--text-secondary` | `#97A3B6` | Parrafos, descripciones, etiquetas |
-| `--text-muted` | `#78859A` | Metadatos, unidades, notas al pie |
+| `--bg-base` | `#F7F8FA` | Fondo global de la aplicacion |
+| `--bg-raised` | `#FFFFFF` | Tarjetas, paneles, celdas de tabla |
+| `--bg-inset` | `#F1F3F7` | Campos de formulario, hover de fila, celda de codigo |
+| `--bg-overlay` | `#FFFFFF` | Modales y menus desplegables, con sombra |
+| `--border-hairline` | `#E2E6EC` | Contorno de tarjetas y divisores |
+| `--border-strong` | `#C9D0DA` | Contorno de control en hover y focus |
+| `--text-primary` | `#0F172A` | Titulos, cifras, contenido |
+| `--text-secondary` | `#475569` | Parrafos, descripciones, etiquetas |
+| `--text-muted` | `#5F6B7C` | Metadatos, unidades, notas al pie |
 
-**Acento de interfaz** (cromo: navegacion, enlaces, boton primario, foco).
+**Acento de interfaz** (cromo: navegacion, enlaces, boton primario, foco, filetes).
 
 | Token | Hex | Uso |
 |---|---|---|
-| `--accent` | `#4C8DFF` | Enlaces, boton primario, anillo de foco, control activo |
-| `--accent-hover` | `#6BA0FF` | Hover del acento |
-| `--accent-press` | `#3A79E8` | Estado activo del acento |
-| `--accent-quiet` | `rgba(76,141,255,0.14)` | Fondo de chip activo, resaltado de fila |
-| `--data-series` | `#7DD3FC` | Lineas de series temporales en graficos |
+| `--accent` | `#2340C8` | Enlaces, boton primario, filete de seccion, control activo |
+| `--accent-hover` | `#1B33A0` | Hover del acento |
+| `--accent-press` | `#152879` | Estado activo del acento |
+| `--accent-quiet` | `rgba(35,64,200,0.08)` | Fondo de chip activo, resaltado de fila |
+| `--data-series` | `#5B8DEF` | Lineas de series temporales en graficos |
 
 **Regla dura:** el acento **nunca** se usa como relleno de un nivel de riesgo ni de una
 serie de datos. Si el azul aparece junto a un nivel, significa "interfaz", no "riesgo".
@@ -102,37 +115,46 @@ Esta regla es lo que permite que un unico acento cohabite con una escala de ries
 
 | Token | Hex | Uso |
 |---|---|---|
-| `--danger` | `#FF4D6D` | Errores de validacion, fallo de carga |
-| `--warning` | `#FFB020` | Advertencia (datos de ejemplo, fuente sin verificar) |
-| `--success` | `#2DD4A7` | Confirmacion, estado listo |
-| `--focus-ring` | `#4C8DFF` | Anillo de foco; nunca se elimina sin reemplazo |
+| `--danger` | `#B91C1C` | Errores de validacion, fallo de carga |
+| `--warning` | `#B45309` | Advertencia (datos de ejemplo, fuente sin verificar) |
+| `--success` | `#047857` | Confirmacion, estado listo |
+| `--focus-ring` | `#2340C8` | Anillo de foco; nunca se elimina sin reemplazo |
 
 ### 3.2 Color semantico por nivel de riesgo
 
+En fondo claro los colores de nivel son **mas oscuros y mas saturados** que los que
+servirian en fondo oscuro. Un verde de nivel que en oscuro daba 10:1 sobre negro, en
+blanco puede no pasar ni 3:1 como texto. Por eso los de esta tabla **no** son los de la
+version anterior de este documento, y estan verificados en la seccion 7.1.
+
 **El nivel nunca se comunica solo por color.** Cada nivel lleva color **mas** icono **mas**
-etiqueta de texto. Es una regla del repo (`skills/web-app/SKILL.md`) y una requisito de
+etiqueta de texto. Es una regla del repo (`skills/web-app/SKILL.md`) y un requisito de
 accesibilidad, no una preferencia.
 
 | Nivel | Token | Hex | Icono (lineal, 1.5px) | Etiqueta obligatoria |
 |---|---|---|---|---|
-| Bajo | `--risk-low` | `#2DD4A7` | circulo con punto interior | "Bajo" |
-| Medio | `--risk-med` | `#FFB020` | triangulo con barra interior | "Medio" |
-| Alto | `--risk-high` | `#FF4D6D` | rombo con corte diagonal | "Alto" |
-| Sin dato | `--risk-none` | `--text-muted` | circulo con guion | "Sin dato" |
-| Abstenido | `--risk-abstain` | `--text-secondary` | circulo con puntos suspensivos | "Sin priorizacion" |
+| Bajo | `--risk-low` | `#0F766E` | circulo con punto interior | "Bajo" |
+| Medio | `--risk-med` | `#B45309` | triangulo con barra interior | "Medio" |
+| Alto | `--risk-high` | `#BE123C` | rombo con corte diagonal | "Alto" |
+| Sin dato | `--risk-none` | `#5F6B7C` | circulo con guion | "Sin dato" |
+| Abstenido | `--risk-abstain` | `#475569` | circulo con puntos suspensivos | "Sin priorizacion" |
 
 Notas de diseno relevantes:
 
-- Los tres niveles tienen **luminosidad parecida a proposito**: ninguno grita mas que otro.
-  Por eso la distincion no puede depender del color y el par icono+etiqueta es
+- **No se usa rojo contra verde como unico par.** El nivel alto es rosa-rojo y el bajo es
+  teal, no verde puro; ademas cada uno tiene forma propia.
+- **Los tres niveles tienen luminosidad parecida a proposito**: ninguno grita mas que
+  otro. Por eso la distincion no puede depender del color y el par icono+etiqueta es
   obligatorio. Es una decision, no una limitacion.
-- **No se usa rojo contra verde como unico par.** El nivel alto es magenta-rojo y el bajo
-  es teal, no verde puro; ademas cada uno tiene forma propia.
 - `--risk-none` y `--risk-abstain` existen porque "municipio sin datos" y "el agente no
   pudo priorizar" **no son nivel bajo**. Confundirlos con "Bajo" es el error de
   comunicacion mas grave posible en esta app, y esta prohibida visualmente.
 - "Sin dato" usa contorno discontinuo; "Abstenido" usa trama diagonal sutil. Diferentes
   texturas para diferentes ausencias.
+
+**Relleno del mapa.** Los circulos del mapa llevan relleno al 55% del color del nivel y
+contorno opaco al 100%. Sobre un mapa claro, un relleno al 100% taparia los limites del
+municipio; al 55% se lee el color y se sigue viendo la geografia.
 
 ### 3.3 Tipografia
 
@@ -145,16 +167,16 @@ Dos familias mas una monoespaciada, de Google Fonts.
 | Datos | **IBM Plex Mono** | Magnitudes, coordenadas, fechas, cortes, `model_version`, `data_version`, conteos |
 
 Por que esta combinacion: IBM Plex nace de una empresa de instrumentacion cientifica y
-arrastra ese registro sin ser "corporativo". Archivo es grotesca y geometricaétrica, claramente
-distinta de Plex; su eje de ancho permite que el titulo gigante tenga presion sin
-necesitar una serif.
+arrastra ese registro sin ser "corporativo". Archivo es grotesca y geometrica,
+claramente distinta de Plex; su eje de ancho permite que el titulo gigante tenga
+presion sin necesitar una serif.
 
 **Escala** (rem, base 16px; `clamp` en las tres primeras filas).
 
 | Token | Tamano | Peso | Interlineado | Tracking | Uso |
 |---|---|---|---|---|---|
-| `--t-hero` | `clamp(3rem, 11vw, 9.5rem)` | 800 | 0.88 | -0.035em | Titulo gigante del hero |
-| `--t-display` | `clamp(2rem, 5vw, 3.5rem)` | 700 | 1.02 | -0.02em | Titulo de seccion |
+| `--t-hero` | `clamp(3.5rem, 12vw, 10rem)` | 800 | 0.86 | -0.04em | Titulo gigante del hero |
+| `--t-display` | `clamp(2rem, 5vw, 3.5rem)` | 700 | 1.02 | -0.025em | Titulo de seccion |
 | `--t-title` | `1.375rem` | 600 | 1.2 | -0.01em | Titulo de tarjeta, de panel |
 | `--t-body-lg` | `1.0625rem` | 400 | 1.55 | 0 | Parrafo introductorio |
 | `--t-body` | `1rem` | 400 | 1.6 | 0 | Cuerpo |
@@ -167,25 +189,31 @@ necesitar una serif.
 **Reglas de uso del titulo gigante del hero.**
 
 - Una sola vez por vista. Nunca en el encabezado de una seccion interior.
-- Nunca mas de tres palabras. Se usa el nombre corto del equipo o del producto.
+- **Partido en dos lineas, con la segunda en el color de acento**, como en las
+  referencias 2 y 3. Es el recurso que da presencia al hero y es la unica vez que el
+  acento aparece a ese tamano.
+- Nunca mas de tres palabras en total.
 - El ancho del eje se juega aqui: se sube a `wdth 112` en movil y se baja a `wdth 88` en
   escritorio, para que ocupe el ancho disponible sin desbordar.
-- Se permite transparencia hasta `rgba(232,237,245,0.14)` cuando va sobre el mapa o una
-  textura de onda, pero **el texto mantiene contraste AA**: si el fondo queda claro
-  detras, se sube la opacidad a `0.22` o se anade un degradado bajo.
-- Nunca se resalta una sola palabra del titular con otro color o peso. El titular se
-  trata como un bloque.
+- **Nunca se resalta una sola palabra suelta** del titular con color o peso: la segunda
+  linea va completa en acento, o ninguna. Resaltar una palabra aislada es el gesto
+  tipografico mas predecible que existe.
+- Nunca se usa `text-transform: uppercase` en el titular.
 
 **Reglas generales.**
 
 - Ancho de linea de cuerpo: **maximo 72 caracteres**. Las tablas y el codigo pueden llegar
   a 90.
-- Nunca se usa `text-transform: uppercase` en etiquetas de interfaz. Se reserva para el
-  nombre propio de la entidad en el pie y para siglas (SGC, UNAB, ML).
+- **Eyebrow de seccion** (patron de las referencias 1 y 2): texto en `--text-muted`,
+  `--t-micro`, con tracking `0.14em`. **En minuscula, nunca en mayusculas**, porque las
+  mayusculas con tracking largo reducen la legibilidad de palabras cortas. Se coloca en
+  `--accent` solo si la seccion es la activa o si marca un estado.
+- El eyebrow **solo aparece si aporta informacion**: el nombre de la seccion. No se antepone
+  una etiqueta decorativa tipo "seccion" o "informacion".
 - Cifras siempre en monoespaciada con su unidad al lado, en `--text-muted`: `M 6,2` no
   `M6,2` suelto. Separador de miles con punto y decimal con coma (convencion colombiana).
-- No se anteponen etiquetas tipograficas decorativas encima del contenido. Si un texto no
-  aporta informacion, se quita.
+- Filetes horizontales `--accent` de 2px como separadores de seccion (patron de la
+  referencia 3). Con una sola linea, antes del titulo de la seccion, no entre todas.
 
 ### 3.4 Espaciado, radios, bordes, sombras
 
@@ -195,42 +223,49 @@ pequenos. El ritmo vertical entre secciones es `--s-10` (128px) en escritorio y
 `--s-7` (48px) en movil.
 
 **Radios** (NO uno solo para todo: un unico radio es el sintoma del "SaaS card kit").
+La referencia 1 usa radios muy grandes; la 3, casi ninguno. Se toma un rango acotado.
 
 | Token | Valor | Uso |
 |---|---|---|
-| `--r-sharp` | `2px` | Chips de dato, celdas de matriz, marcas de corte |
-| `--r-control` | `6px` | Botones, campos, selectores, pestanas |
-| `--r-card` | `12px` | Tarjetas de contenido |
-| `--r-panel` | `16px` | Paneles flotantes: mapa, detalle, navbar |
+| `--r-sharp` | `4px` | Chips de dato, celdas de matriz, marcas de corte |
+| `--r-control` | `8px` | Botones, campos, selectores, pestanas |
+| `--r-card` | `14px` | Tarjetas de contenido |
+| `--r-panel` | `18px` | Paneles flotantes: mapa, detalle, navbar |
 | `--r-pill` | `999px` | Solo CTA en pildora y badge |
 
-**Bordes.** `1px` por defecto, `--border-hairline`. `2px` solo en el lado izquierdo de un
-estado activo o en el anillo de foco. Los contornos son decorativos: **nunca** transmiten
-informacion por si solos.
+**Bordes.** `1px solid var(--border-hairline)` por defecto. `2px` en `--accent` solo en el
+filete de seccion y en el lado izquierdo de un estado activo. `2px solid var(--focus-ring)`
+en el anillo de foco. Los contornos son decorativos: **nunca** transmiten informacion por
+si solos.
 
-**Sombras.** El tema oscuro no usa sombras para elevar: usa diferencia de superficie y
-borde. Solo dos sombras existen, y ninguna es decorativa de tarjeta:
+**Sombras.** En modo claro la sombra si cumple una funcion: separa la superficie del
+fondo. Por eso se limita a superficies flotantes y a elementos con estado.
 
 | Token | Valor | Uso |
 |---|---|---|
-| `--shadow-panel` | `0 12px 40px rgba(0,0,0,0.55)` | Panel del mapa y de detalle |
-| `--shadow-menu` | `0 8px 24px rgba(0,0,0,0.6)` | Menu desplegable y modal |
+| `--shadow-card` | `0 1px 2px rgba(15,23,42,0.05), 0 4px 12px rgba(15,23,42,0.04)` | Tarjeta de contenido, en reposo |
+| `--shadow-lift` | `0 4px 8px rgba(15,23,42,0.07), 0 12px 28px rgba(15,23,42,0.09)` | Hover de tarjeta interactiva |
+| `--shadow-panel` | `0 8px 24px rgba(15,23,42,0.10), 0 2px 6px rgba(15,23,42,0.06)` | Panel del mapa, de detalle, navbar |
+| `--shadow-menu` | `0 12px 32px rgba(15,23,42,0.14)` | Menu desplegable y modal |
 
-Regla: **cero sombras suaves tipo `rgba(0,0,0,0.1)` bajo cada tarjeta.**
+Regla: la tarjeta en reposo usa **una sola** sombra (`--shadow-card`), no tres capas de
+gradiente. Si al hover la tarjeta gana peso, es `--shadow-lift`, y el hover tambien sube
+el borde a `--border-strong`.
 
-**Efecto vidrio.** Solo superficies flotantes (navbar, panel de mapa, panel de detalle,
-modal).
+**Efecto vidrio frosting.** Solo superficies flotantes (navbar, panel de mapa, panel de
+detalle, modal), donde hay contenido detras que aporta.
 
 | Propiedad | Valor |
 |---|---|
-| Fondo | `rgba(20,26,36,0.72)` |
-| `backdrop-filter` | `blur(18px) saturate(140%)` |
-| Borde | `1px solid rgba(255,255,255,0.11)` |
+| Fondo | `rgba(255,255,255,0.78)` |
+| `backdrop-filter` | `blur(20px) saturate(160%)` |
+| Borde | `1px solid rgba(255,255,255,0.9)` |
 | Radio | `--r-panel` |
+| Sombra | `--shadow-panel` |
 
-Contraste verificado: el texto primario sobre vidrio con el mapa detras da **12.4:1**
-(AAA). Si una superficie de vidrio queda sobre una zona clara del mapa, se sube la
-opacidad del fondo a `0.86`.
+Contraste verificado: `--text-primary` sobre frosting con mapa detras da **13.9:1**
+(AAA). Si una superficie de frosting queda sobre una zona oscura del mapa, se sube la
+opacidad a `0.92`.
 
 **z-index** (escala cerrada, sin numeros sueltos).
 
@@ -258,15 +293,35 @@ opacidad del fondo a `0.86`.
 | Nombre | Ancho | Cambio de composicion |
 |---|---|---|
 | `mobile` | `< 640px` | Una columna. El mapa pasa a altura fija de 60vh. La maquina del tiempo ocupa el ancho completo. |
-| `tablet` | `640–1023px` | Grid de 8 columnas utiles; tarjetas de dos en dos. |
-| `desktop` | `1024–1439px` | 12 columnas; mapa y detalle en `7/5`. |
-| `wide` | `>= 1440px` | Contenedor centered a 1280; el mapa puede ocupar `8/4`. |
+| `tablet` | `640-1023px` | Grid de 8 columnas utiles; tarjetas de dos en dos. |
+| `desktop` | `1024-1439px` | 12 columnas; mapa y detalle en `7/5`. |
+| `wide` | `>= 1440px` | Contenedor centrado a 1280; el mapa puede ocupar `8/4`. |
 
 Alineacion: **todo a la izquierda**. Solo el titulo del hero y los estados vacios se
 centran. No hay texto justificado en ningun punto: un panel de analisis con texto
 justificado es ilegible en columnas angostas.
 
 Prueba obligatoria antes de congelar: **1440px y 390px**.
+
+### 3.6 El mapa en modo claro
+
+El modo claro obliga a declarar el estilo de basemap, que en oscuro no era una decision
+visible:
+
+- **Basemap claro obligatorio.** Estilo vectorial o raster de tonos claros y desaturados.
+  **Prohibido** un basemap oscuro, porque romperia el modo claro y ademas los puntos de
+  nivel perderian contraste contra un fondo saturado.
+- **Las calles y los limites van en `--border-strong`, no en negro.** El negro puro sobre
+  blanco vibra y compite con la tinta del texto.
+- **Sin etiquetas de texto del basemap por debajo de los circulos.** Si el basemap trae
+  nombres de municipio, se ocultan en el zoom de trabajo: el nombre lo pone la interfaz,
+  no el mapa.
+- **Los circulos llevan un halo blanco de 2px** para separarse de cualquier color del
+  basemap y garantizar el contorno del nivel.
+
+MapLibre GL **debe quedar excluido del pre-empaquetado** de Vite
+(`optimizeDeps.exclude: ['maplibre-gl']`, ya configurado en `vite.config.ts`). Sin eso el
+mapa sale en blanco con el error "Worker failed to load".
 
 ---
 
@@ -277,72 +332,88 @@ revisa tarde; se listan todos para evitarlo.
 
 ### 4.1 Navbar fija
 
-Altura `64px`, fondo vidrio, borde inferior `--border-hairline`. Contiene marca (nombre
+Altura `68px`, fondo frosting, borde inferior `--border-hairline`. Contiene marca (nombre
 corto del equipo), navegacion de vistas, y a la derecha el **snapshot** en monoespaciada
 discreta (`model_version`, `data_version`) mas el boton de modo presentacion.
 
 | Estado | Comportamiento |
 |---|---|
-| default | Fondo vidrio, texto secundario |
+| default | Fondo frosting, texto secundario |
 | hover | El enlace toma `--text-primary`; el subrayado crece de 0 a 100% en 140ms |
 | focus | Anillo `--focus-ring` de 2px con desplazamiento de 2px, nunca removido |
 | active | Subrayado de 2px en `--accent` y texto primario; con `aria-current="page"` |
 | disabled | No aplica en la navbar |
 
-Al hacer scroll la navbar gana `--bg-raised` a opacidad 0.94 y pierde el desenfoque en
-220ms, para no estorbar al mapa.
+Al hacer scroll la navbar pasa de frosting a `rgba(255,255,255,0.94)` y gana
+`--shadow-panel` en 220ms, para no estorbar al mapa.
 
-### 4.2 Boton primario en pildora
+### 4.2 Boton primario
 
-Radio `--r-pill`, altura 44px, padding `20px 24px`, icono de flecha circular a la derecha.
+Radio `--r-pill`, altura 46px, padding `20px 26px`, icono de flecha circular a la derecha.
 Etiqueta en verbo concreto: "Ver la priorizacion", "Ejecutar agente", "Reproducir
 resultado guardado". Nunca "Enviar" ni "Mas informacion".
 
+Fondo `--accent` con texto **blanco** (contraste 7.96:1, AAA). Sobre fondo claro el boton
+primario sigue siendo el elemento de mayor peso: el color plein lo achieve, no la
+sombra.
+
 | Estado | Fondo | Texto | Transform |
 |---|---|---|---|
-| default | `--accent` | `--bg-base` | — |
-| hover | `--accent-hover` | `--bg-base` | — |
-| focus | `--accent` + anillo 2px desplazado 2px | `--bg-base` | — |
-| active | `--accent-press` | `--bg-base` | `scale(0.98)` |
-| disabled | `--bg-inset` | `--text-muted` | opacidad 0.6, `cursor: not-allowed` |
+| default | `--accent` | `#FFFFFF` | — |
+| hover | `--accent-hover` | `#FFFFFF` | `translateY(-1px)` |
+| focus | `--accent` + anillo 2px desplazado 2px | `#FFFFFF` | — |
+| active | `--accent-press` | `#FFFFFF` | `translateY(0) scale(0.98)` |
+| disabled | `--bg-inset` | `--text-muted` | opacidad 0.7, `cursor: not-allowed` |
 
 ### 4.3 Boton secundario
 
-Mismo tamano, fondo transparente, borde `1px solid --border-strong`, texto
-`--text-primary`. El mismo grupo de estados; `hover` sube el borde a `--accent` sin
-cambiar el fondo.
+Mismo tamano, fondo `#FFFFFF`, borde `1px solid var(--border-strong)`, sombra
+`--shadow-card`, texto `--text-primary`. El mismo grupo de estados; `hover` sube el
+borde a `--accent` y la sombra a `--shadow-lift`.
 
 ### 4.4 Chip de estadistica
 
-Pildora pequena con borde fino: cifra en `--t-data-lg` monoespaciada + etiqueta en
-`--t-small` `--text-secondary`. Es donde viven las cifras **que vienen del JSON**.
+Superficie blanca con borde `--border-hairline`, radio `--r-card`, sombra
+`--shadow-card`: cifra en `--t-data-lg` monoespaciada + etiqueta en `--t-small`
+`--text-secondary`. Es donde viven las cifras **que vienen del JSON**.
 
-- Si el valor es `null` (como las metricas en datos de ejemplo), el chip muestra `—` en
+- Si el valor es `null` (como las metricas en datos de ejemplo), el chip muestra "—" en
   `--text-muted` y la etiqueta "no disponible". **Nunca** muestra `0`.
 - Si el JSON trae `"ejemplo": true`, el chip lleva el badge de advertencia.
 - Tres chips en el hero como maximo.
 
-Estados: `default`, `hover` (borde a `--border-strong`), `focus`, `disabled` (cifra en
-muted), `sin-dato` (el estado de arriba, que no es un estado visual sino de dato).
+Estados: `default`, `hover` (borde a `--border-strong`, sombra a `--shadow-lift`),
+`focus`, `disabled` (cifra en muted), `sin-dato` (el estado de arriba, que no es un estado
+visual sino de dato).
 
-### 4.5 Tarjeta de vidrio
+### 4.5 Panel de vidrio frosting
 
-Superficie flotante con el vidrio de la seccion 3.4. Se usa para panel de mapa y panel de
-detalle, **no** para el contenido en rejilla. Estados: `default`, `hover` (solo si es
-interactiva: sube a `--bg-overlay`), `focus`, `active` (borde a `--accent`), `disabled`.
+Superficie flotante con el frosting de la seccion 3.4. Se usa para panel de mapa y panel
+de detalle, **no** para el contenido en rejilla. Estados: `default`, `hover` (solo si es
+interactiva: sube a opacidad 0.92), `focus`, `active` (borde a `--accent`), `disabled`.
 
-### 4.6 Tarjeta de contenido (contorno fino, no vidrio)
+### 4.6 Tarjeta de contenido
 
-`--bg-raised`, borde `--border-hairline`, radio `--r-card`, padding 24px. Es la tarjeta por
-defecto de la rejilla. **No lleva sombra.** Estados: `default`, `hover` (borde a
-`--border-strong`, fondo a `--bg-overlay`, transicion 140ms), `focus` (anillo), `active`
-(borde a `--accent`), `disabled` (opacidad 0.55).
+`#FFFFFF`, borde `--border-hairline`, radio `--r-card`, padding 24px, sombra
+`--shadow-card`. Es la tarjeta por defecto de la rejilla. Estados: `default`, `hover`
+(borde a `--border-strong`, sombra a `--shadow-lift`, `translateY(-2px)`, transicion
+160ms), `focus` (anillo), `active` (borde a `--accent`), `disabled` (opacidad 0.6).
 
 Regla anti-kit: dentro de una misma rejilla, **las tarjetas no son identicas**. La altura
-la fija el contenido; no se estiran a una altura comun. Si tres tarjetas llevan el mismo
-icono circular, la misma altura y el mismo padding, es el kit: hay que variar.
+la fija el contenido; no se estiran a una altura comun. Si cuatro tarjetas llevan el mismo
+icono, la misma altura y el mismo padding, es el kit: hay que variar.
 
-### 4.7 Tarjeta/badge de nivel
+### 4.7 Tarjeta de servicio (icono en cuadro de color)
+
+Variante de la referencia 1: icono lineal dentro de un cuadro redondeado de 44px con el
+color al 12% de fondo, mas titulo, mas una linea de descripcion, mas una flecha
+diagonal en la esquina inferior derecha que aparece en hover. Se usa para las tarjetas de
+acceso a las seis vistas y para los bloques del panel de panorama.
+
+Estados: `default`, `hover` (cuadro al 20%, flecha pasa a 100% de opacidad), `focus`,
+`active`, `disabled` (flecha oculta, opacidad 0.6).
+
+### 4.8 Tarjeta/badge de nivel
 
 Chip con icono lineal + etiqueta de texto + color del nivel. Variante `solida` (fondo al
 12% del color del nivel, texto en el color del nivel) para mapa y listas; variante
@@ -351,7 +422,7 @@ Chip con icono lineal + etiqueta de texto + color del nivel. Variante `solida` (
 Estados: `default`, `hover`, `focus`, `active`, `disabled` (se convierte en
 "Sin priorizacion", nunca oculta el nivel).
 
-### 4.8 Bloque de dato real
+### 4.9 Bloque de dato real
 
 Cifra grande en monoespaciada (`--t-data-lg`), unidad y definicion en `--t-small`, y
 **fuente debajo en `--t-micro` `--text-muted`**: origen, fecha de descarga y filtros. Sin
@@ -361,18 +432,18 @@ procedencia.
 Si la cifra no esta verificada contra el SGC, se renderiza `[DATO A VERIFICAR CON SGC]`
 con el estilo de estado `warning`, nunca como numero.
 
-### 4.9 Paso de linea de tiempo
+### 4.10 Paso de linea de tiempo
 
 Marcador de un corte o de un evento de referencia: punto de 8px con anillo, linea vertical
-que une los pasos, mes en monoespaciada y etiqueta. Los **sismos de referencia** son un
+que une los pasos, mes en monoespaciada y etiqueta. Los **sismos de referencia** son una
 variante con icono de rombo y la doble magnitud: `M 6,2 (USGS) / M 6,6 (SGC)`, ambas
 visibles, nunca promediadas.
 
-Estados: `default`, `hover` (fila completa resalta), `focus`, `active` (mes activo:
-punto relleno y linea de acento a la izquierda, 2px), `future` (mes posterior al corte:
-opacidad 0.5).
+Estados: `default`, `hover` (fila completa resalta con `--accent-quiet`), `focus`,
+`active` (mes activo: punto relleno en `--accent` y linea de acento a la izquierda, 2px),
+`future` (mes posterior al corte: opacidad 0.5).
 
-### 4.10 Acordeon de "que significa y que no"
+### 4.11 Acordeon de "que significa y que no"
 
 Titulo del item en `--t-title`; al abrir, cuerpo en `--t-body`. El contenido por defecto
 del primer item es el aviso de que **los tres niveles son frecuencia relativa de
@@ -384,10 +455,11 @@ Estados: `default` (cerrado, chevron rotado 0), `hover` (titulo a primario),
 
 Un solo item abierto a la vez.
 
-### 4.11 Formulario del puente de agente
+### 4.12 Formulario del puente de agente
 
-Es el sustituto del formulario de contacto de la referencia 2, y es la pieza que ejecuta
-la demo en vivo.
+Es el sustituto del formulario de contacto de las referencias, y es la pieza que ejecuta
+la demo en vivo. Campos en `--bg-inset` con borde `--border-hairline` y radio
+`--r-control`.
 
 | Campo | Tipo | Validacion | Error |
 |---|---|---|---|
@@ -402,32 +474,36 @@ Los dos botones estan **separados visualmente y rotulados distinto en pantalla**
 uno es inferencia nueva y el otro no. Presentarlos juntos sin distinguir seria un
 error metodologico, no de diseno.
 
-Estados de campo: `default`, `hover`, `focus` (anillo 2px), `active`, `disabled` (durante
-la ejecucion), `error` (borde `--danger`, mensaje en `--danger`, `aria-invalid="true"`).
-El boton entra en `disabled` con texto "Ejecutando..." durante la llamada.
+Estados de campo: `default`, `hover`, `focus` (anillo 2px, borde a `--accent`), `active`,
+`disabled` (durante la ejecucion), `error` (borde `--danger`, mensaje en `--danger`,
+`aria-invalid="true"`). El boton entra en `disabled` con texto "Ejecutando..." durante la
+llamada.
 
-### 4.12 Badge
+### 4.13 Badge
 
-Texto corto sobre fondo al 14% del color y texto en el color, radio `--r-sharp`, altura
-20px. Uso restringido a: `datos de ejemplo`, `replay`, `en vivo`, `fuente por verificar`,
-`abstencion: <motivo>`.
+Texto corto en `--bg-inset` con texto en el color semantico, borde `--border-hairline`,
+radio `--r-sharp`, altura 22px. Uso restringido a: `datos de ejemplo`, `replay`, `en vivo`,
+`fuente por verificar`, `abstencion: <motivo>`.
 
-### 4.13 Banner de datos de ejemplo
+### 4.14 Banner de datos de ejemplo
 
-Barra fija bajo la navbar, fondo `--warning` al 12%, texto `--t-small`, icono de alerta y
-el texto: **"Datos de ejemplo: no son resultados reales."**
+Barra fija bajo la navbar: fondo `--warning` al 10%, texto `#7C2D12`, borde inferior
+`1px solid rgba(180,83,9,0.28)`, icono de alerta y el texto: **"Datos de ejemplo: no son
+resultados reales."**
 
 - Aparece mientras exista un JSON con `"ejemplo": true`.
 - En modo presentacion ocupa una franja propia y no se puede cerrar.
 - Mientras este visible, **el ranking y las alertas no se presentan como reales**: los
-  chips de estadistica muestran `—` cuando el valor es `null`, y la vista de priorizacion
+  chips de estadistica muestran "—" cuando el valor es `null`, y la vista de priorizacion
   rotula sus resultados como "conjunto de ejemplo".
 
-### 4.14 Footer en columnas
+### 4.15 Footer
 
-Cuatro columnas: equipo y autoria; fuentes con URL y fecha; enlace a diccionario y
-metodologia; aviso de alcance ("priorizacion exploratoria, no alerta oficial") y
-versionado. Fondo `--bg-base`, borde superior `--border-hairline`.
+Fondo `--accent` en color pleno, con el titular grande del pitch en blanco y el contenido
+en `rgba(255,255,255,0.86)`. Cuatro columnas: equipo y autoria; fuentes con URL y fecha;
+enlace a diccionario y metodologia; aviso de alcance ("priorizacion exploratoria, no
+alerta oficial") y versionado. Patron de la referencia 3, que es el pie de color pleno que
+mejor sostiene un sitio claro.
 
 Espacio reservado y marcado para el logo del SGC y de los aliados: nunca se usa el logo
 del SGC sin permiso escrito, y el espacio reservado se documenta como tal.
@@ -437,8 +513,8 @@ del SGC sin permiso escrito, y el espacio reservado se documenta como tal.
 ## 5. Estructura y composicion
 
 El hero de esta app **no es una portada de marketing**: es un panel de estado del
-experimento. Conserva el recurso de la referencia 1 (titulo gigante con transparencia,
-chips de estadistica) pero el contenido es dato real.
+experimento. Conserva el recurso de las referencias (titulo gigante partido con la
+segunda linea en acento, chips de estadistica) pero el contenido es dato real.
 
 ### 5.1 Rutas
 
@@ -454,18 +530,20 @@ chips de estadistica) pero el contenido es dato real.
 
 ### 5.2 Composicion por vista
 
-**`/` Panorama.** Hero a sangre con la onda sismica de fondo (trazo SVG, opacidad 0.10),
-titulo gigante del equipo en Archivo `wdth 88`, y tres chips de estadistica tomados del
-JSON. Bajo el hero, una fila de tarjetas de acceso a las seis vistas con icono circular
-(estructura de la referencia 2). Cierra con el bloque de alcance, que es el aviso "que NO
+**`/` Panorama.** Hero a sangre con la onda sismica de fondo (trazo SVG, opacidad 0.07,
+`--text-primary`), titulo gigante en Archivo `wdth 88` partido en dos lineas con la
+segunda en `--accent`, y tres chips de estadistica tomados del JSON. Bajo el hero, una
+rejilla de tarjetas de servicio (icono en cuadro de color, patron de la referencia 1) con
+acceso a las seis vistas. Cierra con el bloque de alcance, que es el aviso "que NO
 significa". Responsive: los tres chips apilan a columna; las tarjetas de acceso pasan de
-tres en linea a dos y luego a una.
+cuatro en linea a dos y luego a una.
 
 **`/mapa`.** Layout `7/5` en escritorio: mapa a la izquierda, panel de detalle pegado a la
-derecha. El mapa es MapLibre GL con circulos proporcionales al score mientras no haya
-poligonos municipales; el tamano codifica el valor y el color codifica el nivel, con
-icono en el popup. En `mobile` el mapa pasa a 60vh y el panel de detalle baja debajo como
-hoja deslizable. El selector de mes es un control deslizante con cortes discretos.
+derecha. El mapa es MapLibre GL con basemap claro y circulos proporcionales al score
+mientras no haya poligonos municipales; el tamano codifica el valor y el color codifica
+el nivel, con icono en el popup. En `mobile` el mapa pasa a 60vh y el panel de detalle
+baja debajo como hoja deslizable. El selector de mes es un control deslizante con cortes
+discretos.
 
 **`/priorizacion`.** Tabla a ancho completo con columnas: puesto, municipio, agente, linea
 base, oraculo, y que paso despues. El municipio es un enlace al mapa. Fila activa con
@@ -508,7 +586,7 @@ Animacion con proposito: muestra **que cambio**. Nada se mueve solo porque se pu
 **Permitido:** pulso lento del punto de epicentro activo en el mapa (4s, opacidad 0.5 a
 0.9, un solo punto, nunca todos); trazado de la onda sismica en el hero, una vez al
 cargar y no en bucle; revelacion suave del contenido al entrar en viewport, una vez por
-elemento.
+elemento; `translateY(-2px)` en hover de tarjeta.
 
 **Prohibido:** entrada tipo "fade and slide up" en cada seccion al hacer scroll; transicion
 en cada tarjeta al pasar el mouse; parallax; animacion continua de fondo; counters que
@@ -528,32 +606,41 @@ cuentan desde cero; cualquier movimiento que no responda a una accion de la pers
 
 ### 7.1 Contraste (verificado, no estimado)
 
-Todos los pares declarados cumplen WCAG 2.1 AA.
+Todos los pares declarados cumplen WCAG 2.1 AA. Estos numeros se recalcularon al pasar a
+modo claro: **son los del palette claro**, no los de la version oscura.
 
 | Par | Ratio | Nivel |
 |---|---|---|
-| `--text-primary` `#E8EDF5` sobre `--bg-base` `#07090E` | 16.94 | AAA |
-| `--text-primary` sobre `--bg-raised` `#0E1219` | 15.96 | AAA |
-| `--text-secondary` `#97A3B6` sobre `--bg-base` | 7.81 | AAA |
-| `--text-secondary` sobre `--bg-raised` | 7.35 | AAA |
-| `--text-muted` `#78859A` sobre `--bg-base` | 5.33 | AA |
-| `--text-muted` sobre `--bg-raised` | 5.02 | AA |
-| `--accent` `#4C8DFF` sobre `--bg-base` | 6.22 | AA |
-| `--accent` sobre `--bg-raised` | 5.86 | AA |
-| `--bg-base` sobre `--accent` (boton primario) | 6.22 | AA |
-| `--risk-low` `#2DD4A7` sobre `--bg-base` | 10.51 | AAA |
-| `--risk-med` `#FFB020` sobre `--bg-base` | 10.89 | AAA |
-| `--risk-high` `#FF4D6D` sobre `--bg-base` | 6.20 | AA |
-| `--data-series` `#7DD3FC` sobre `--bg-base` | 11.94 | AAA |
-| `--text-primary` sobre vidrio con mapa detras | 12.40 | AAA |
+| `--text-primary` `#0F172A` sobre `--bg-raised` `#FFFFFF` | 17.85 | AAA |
+| `--text-primary` sobre `--bg-base` `#F7F8FA` | 16.80 | AAA |
+| `--text-secondary` `#475569` sobre blanco | 7.58 | AAA |
+| `--text-secondary` sobre base | 7.13 | AAA |
+| `--text-muted` `#5F6B7C` sobre blanco | 5.41 | AA |
+| `--text-muted` sobre base | 5.09 | AA |
+| `--text-muted` sobre `--bg-inset` `#F1F3F7` | 4.87 | AA |
+| `#FFFFFF` sobre `--accent` `#2340C8` (boton primario) | 7.96 | AAA |
+| `--accent` `#2340C8` sobre blanco | 7.96 | AAA |
+| `--accent` sobre base | 7.55 | AAA |
+| `--risk-low` `#0F766E` sobre blanco | 5.47 | AA |
+| `--risk-med` `#B45309` sobre blanco | 5.02 | AA |
+| `--risk-high` `#BE123C` sobre blanco | 6.29 | AA |
+| `--risk-low` sobre base (relleno de mapa) | 5.15 | AA |
+| `--risk-med` sobre base (relleno de mapa) | 4.73 | AA |
+| `--risk-high` sobre base (relleno de mapa) | 5.91 | AA |
+| `--data-series` `#5B8DEF` sobre blanco | 3.06 | AA solo trazo grueso |
+| `--text-primary` sobre frosting con mapa detras | 13.90 | AAA |
 
-Los bordes `--border-hairline` tienen 1.34:1 contra el fondo. **Es intencional y esta
-declarado**: los bordes son decorativos, nunca portan informacion. Si un borde tiene que
-comunicar algo, sube a `--border-strong` y se acompana de texto o icono.
+Notas honestas sobre esta tabla:
 
-Los tres colores de nivel tienen luminosidad parecida entre si (pares 1.04, 1.70 y 1.76
-entre si). **No se declara conformidad de daltonismo por el color**: la distincion la
-garantizan el icono y la etiqueta de texto, que son obligatorios.
+- `--data-series` queda en **3.06:1**, por debajo de 4.5. Es aceptable **solo** porque se
+  usa para trazos de linea de 2px o mas, nunca para texto. Si alguna vez se usa para una
+  etiqueta, hay que oscurecerla a `#2F6FD0` y volver a medir.
+- Los bordes `--border-hairline` quedan en **1.25:1**. Es intencional y esta declarado: los
+  bordes son decorativos, nunca portan informacion. Si un borde tiene que comunicar algo,
+  sube a `--border-strong` y se acompana de texto o icono.
+- Los tres colores de nivel tienen luminosidad parecida entre si. **No se declara
+  conformidad de daltonismo por el color**: la distincion la garantizan el icono y la
+  etiqueta de texto, que son obligatorios.
 
 ### 7.2 Reglas de implementacion
 
@@ -576,14 +663,10 @@ garantizan el icono y la etiqueta de texto, que son obligatorios.
 |---|---|
 | Imagen del hero o textura de onda | ≤ 180 KB, AVIF o SVG inline |
 | Iconos de nivel y de interfaz | SVG inline, nunca fuente de iconos |
-| Fuente de mapa (tiles) | ≤ 120 KB por tesela; sin tiles 3D ni de sombreado |
+| Basemap del mapa | ≤ 120 KB por tesela; sin tiles 3D ni de sombreado |
 | Cifras en el mapa | 87 municipios; circulos, no poligonos, mientras no haya geometria |
 | JS inicial (ruta `/`) | ≤ 200 KB gzip |
 | Presupuesto total de `bun run build` | ≤ 400 KB gzip |
-
-MapLibre GL **debe quedar excluido del pre-empaquetado** de Vite
-(`optimizeDeps.exclude: ['maplibre-gl']`, ya configurado en `vite.config.ts`). Sin eso el
-mapa sale en blanco con el error "Worker failed to load".
 
 ---
 
@@ -609,16 +692,19 @@ mapa sale en blanco con el error "Worker failed to load".
 - **No** codificar un nivel solo con color, y **no** usar rojo contra verde como par.
 - **No** confundir "sin dato" con "Bajo", ni "abstencion" con "Bajo": son estados
   distintos con tokens, iconos y texturas distintos.
-- **No** usar fotos de desastres, edificios en ruinas, grietas dramaticas ni imagenes de
-  preparacion ante emergencia. Este proyecto trata datos, no catastrofismo.
+- **No** usar un basemap oscuro, ni fotos de desastres, edificios en ruinas, grietas
+  dramaticas ni imagenes de preparacion ante emergencia. Este proyecto trata datos, no
+  catastrofismo.
 - **No** usar ni sugerir el logo del Servicio Geologico Colombiano. Se deja un espacio
   reservado y marcado.
 - **No** usar sensacionalismo: nada de "alerta", "peligro", "prevision de sismo".
-- **No** saturar de vidrio: vidrio en superficies flotantes, contorno fino en el
+- **No** saturar de vidrio: frosting en superficies flotantes, borde visible en el
   contenido.
-- **No** aplicar una misma sombra suave a todas las tarjetas.
+- **No** aplicar una misma sombra suave a todas las tarjetas, ni tres capas de gradiente.
 - **No** usar radios unicos en toda la interfaz.
 - **No** subir el acento azul como relleno de un nivel de riesgo o de una serie de datos.
+- **No** poner eyebrows en mayusculas con tracking largo: en minuscula.
+- **No** resaltar una sola palabra suelta del titular con color o peso.
 - **No** ocultar informacion detras de una animacion.
 - **No** anadir funciones despues de las 11:45 (el corte del plan).
 
@@ -630,20 +716,24 @@ Cada supuesto que se hizo por falta de informacion, con su motivo y como se revi
 
 | # | Supuesto | Motivo | Como se revisa |
 |---|---|---|---|
-| 1 | El nombre del producto en el titulo gigante del hero es el nombre corto del equipo, no "riesgo sismico" | El enunciado no fija nombre de producto | Cuando el equipo lo defina: se cambia solo el string, no la composicion |
-| 2 | La escala de riesgo es **bajo / medio / alto** | El plan define la clasificacion en tres clases | Si el gate de clases de las 8:45 cambia los umbrales, cambia el contrato JSON, no los tokens |
-| 3 | Archivo e IBM Plex como familias | Elegidas por registro tecnico cientifico y por no ser los valores por defecto | Si no hay red durante la demo, hay fallback de sistema declarado en el CSS |
-| 4 | Contenedor de 1280px | Ancho de lectura comodo para tablas densas sin desplazamiento horizontal | Se ajusta en el token `--container` |
-| 5 | Las cifras de sismicidad se marcan como `[DATO A VERIFICAR CON SGC]` | Ninguna cifra de sismicidad esta verificada contra el SGC en el momento de escribir esto | Se sustituyen por el dato real cuando Nico entregue `serie_mensual.json` con procedencia |
-| 6 | El mapa usa circulos en el centroide, no poligonos | El contrato solo entrega centroides de 87 municipios; la geometria municipal oficial aun no esta | Si llega la geometria, se cambia la capa, no los tokens |
-| 7 | El puente de agente se presenta como un formulario con corte y K | El plan define nivel 1 (replay) y nivel 2 (puente local), no la interfaz | Cuando Zabdiel defina la forma del endpoint, se ajusta el formulario |
-| 8 | La eleccion de K se limita a valores entrenados | El plan prohibe mover K a un valor no entrenado y llamarlo el mismo agente | Si Zabdiel entrena mas valores, se agregan al select |
-| 9 | Las zonas de apoyo del mapa se marcan con contorno discontinuo | No hay en el contrato una categoria "dato incompleto"; se crea por necesidad de no mentir | Si el JSON trae el campo, se usa el campo y no la convencion visual |
-| 10 | La doble magnitud del evento de 2015 se muestra siempre como par | El plan exige citar USGS y SGC por separado y nunca promediar | No cambia: es una decision metodologica del plan |
-| 11 | El espacio del logo del SGC queda reservado y vacio | El plan prohibe usar el logo sin autorizacion | Si hay permiso escrito, se coloca con credited source visible |
-| 12 | Las secciones de Metodologia se agrupan en un unico acordeon y no en subrutas | Una sola ruta menos que mantener con el tiempo disponible | Si queda tiempo, se separan en subrutas |
-| 13 | Se asume que existe al menos un JSON de ejemplo antes de las 8:45 | La linea de tiempo asigna a Julian construir la UI con datos de forma a las 8:10 | Si no hay ningun JSON, la UI debe mostrar el estado vacio, que ya esta especificado en 4.13 y 5.2 |
-| 14 | El modo presentacion no lleva barra de navegacion propia | Los 10 minutos se dan sobre la web a pantalla completa | Si se necesita referencia a rutas, se usa el indice de secciones del contador |
+| 1 | Modo claro en vez del oscuro que se propuso al inicio | Las tres referencias nuevas son claras y coincidentes; ademas en aula y proyector la tinta oscura sobre fondo claro pesa mas | Reversible: los tokens estan agrupados, cambiar de modo no toca componentes |
+| 2 | Un solo acento azul `#2340C8` sobre tres acentos distintos de las referencias | Es el unico que sobrevive a la prueba de function sobre un mapa claro, donde el verde se camufla con la vegetacion y el lavanda se confunde con incertidumbre | Si el mapa pasa a geometria poligonal, se reevalua |
+| 3 | Los colores de nivel son mas oscuros que en la version oscura | Sobre blanco, los valores claros que pasaban en oscuro no llegan a 4.5:1 como texto | Cuando el gate de clases de las 8:45 cambie los umbrales, cambia el contrato JSON, no los tokens |
+| 4 | El nombre del producto en el titulo gigante del hero es el nombre corto del equipo, no "riesgo sismico" | El enunciado no fija nombre de producto | Cuando el equipo lo defina: se cambia solo el string, no la composicion |
+| 5 | La escala de riesgo es **bajo / medio / alto** | El plan define la clasificacion en tres clases | Si el gate cambia los umbrales, cambia el contrato JSON, no los tokens |
+| 6 | Archivo e IBM Plex como familias | Elegidas por registro tecnico cientifico y por no ser los valores por defecto | Si no hay red durante la demo, hay fallback de sistema declarado en el CSS |
+| 7 | Contenedor de 1280px | Ancho de lectura comodo para tablas densas sin desplazamiento horizontal | Se ajusta en el token `--container` |
+| 8 | Las cifras de sismicidad se marcan como `[DATO A VERIFICAR CON SGC]` | Ninguna cifra de sismicidad esta verificada contra el SGC en el momento de escribir esto | Se sustituyen por el dato real cuando Nico entregue `serie_mensual.json` con procedencia |
+| 9 | El mapa usa circulos en el centroide, no poligonos | El contrato solo entrega centroides de 87 municipios; la geometria municipal oficial aun no esta | Si llega la geometria, se cambia la capa, no los tokens |
+| 10 | El basemap claro oculta los nombres de municipio | El nombre lo pone la interfaz, no el mapa: evita texto duplicado y contraste variable | Si el usuario hace zoom-out, se muestran |
+| 11 | El puente de agente se presenta como un formulario con corte y K | El plan define nivel 1 (replay) y nivel 2 (puente local), no la interfaz | Cuando Zabdiel defina la forma del endpoint, se ajusta el formulario |
+| 12 | La eleccion de K se limita a valores entrenados | El plan prohibe mover K a un valor no entrenado y llamarlo el mismo agente | Si Zabdiel entrena mas valores, se agregan al select |
+| 13 | Las zonas de apoyo del mapa se marcan con contorno discontinuo | No hay en el contrato una categoria "dato incompleto"; se crea por necesidad de no mentir | Si el JSON trae el campo, se usa el campo y no la convencion visual |
+| 14 | La doble magnitud del evento de 2015 se muestra siempre como par | El plan exige citar USGS y SGC por separado y nunca promediar | No cambia: es una decision metodologica del plan |
+| 15 | El espacio del logo del SGC queda reservado y vacio | El plan prohibe usar el logo sin autorizacion | Si hay permiso escrito, se coloca con credited source visible |
+| 16 | Las secciones de Metodologia se agrupan en un unico acordeon y no en subrutas | Una sola ruta menos que mantener con el tiempo disponible | Si queda tiempo, se separan en subrutas |
+| 17 | Se asume que existe al menos un JSON de ejemplo antes de las 8:45 | La linea de tiempo asigna a Julian construir la UI con datos de forma a las 8:10 | Si no hay ningun JSON, la UI debe mostrar el estado vacio, que ya esta especificado en 4.14 y 5.2 |
+| 18 | El modo presentacion no lleva barra de navegacion propia | Los 10 minutos se dan sobre la web a pantalla completa | Si se necesita referencia a rutas, se usa el indice de secciones del contador |
 
 ---
 
