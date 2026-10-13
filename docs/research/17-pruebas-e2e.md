@@ -13,3 +13,24 @@ Fecha: 2026-10-13. Objetivo: https://ciai.nicolasmoreno.site y https://ciai-api.
 | Extra: 403 con User-Agent Python-urllib | Reproducido antes (error 1010 de Cloudflare). No repetido en esta pasada. | — |
 
 Fallos reales: ninguno bloqueante. Limitaciones: (a) `/medio` no verifica el texto de la ficha de grupo al seleccionar; (b) `/clusters` y el "Ejecutar agente" no se probaron con ejecución real; (c) el User-Agent Python sigue bloqueado por Cloudflare.
+
+## Redespliegue final (origin/main 0f5e3d9), 2026-10-13 12:06
+
+| Paso | Resultado | Evidencia |
+|---|---|---|
+| Build | Falla en origin/main: `MapaSantander.tsx:31` usa `maplibregl.ExpressionSpecification`, que maplibre-gl 6.14.0 no exporta (tsc). Se compiló con un parche local (`as never`) no subido al repo. | — |
+| Ficheros estáticos | OK: `/data/santander_municipios.geojson` 200 `application/geo+json`; `pruebas.json`, `inicio.json`, `panel-metadata.json` 200 `application/json`. Añadido el tipo geojson en `infra/web/nginx.conf`. | curl |
+| CSP | No hay cabecera CSP ni en la web ni en la API. Los tiles de `basemaps.cartocdn.com` cargan (200). | curl, red |
+| `/` | OK: sin errores de consola; sin peticiones fallidas | `final-home.png` |
+| `/medio` | FALLA: 2 errores de consola "Worker failed to load" y `GET /assets/maplibre-gl-worker.mjs?v=6.14.0` → 404. El canvas del mapa existe (971x240) y los tiles cargan. El texto "Cargando los grupos…" no se resolvió en 15 s. Polígonos y tooltip NO verificados. | `final-medio.png` |
+| `/avanzado`, `/pruebas`, `/metodologia`, `/basico` | OK: sin errores de consola | — |
+
+## Redespliegue final 3 (origin/main 1be407a), 2026-10-13 12:16
+
+| Paso | Resultado | Evidencia |
+|---|---|---|
+| Build origin/main | OK sin parches (tsc pasa). Worker emitido `assets/maplibre-gl-worker-*.mjs`. | — |
+| nginx MIME | `.mjs` como `application/javascript` (antes octet-stream, bloqueaba workers de módulo); `.geojson` como `application/geo+json`. Commit d8075ac en feature/deploy-api. | curl |
+| Diagramas | `/diagramas/*.png` image/png y `*.html` text/html; los 5 PNG cargan en la landing (lazy, verificado con scroll). | `final3-home.png` |
+| `/medio` | Canvas 1214x520, sin "Cargando", `/api/v1/clusters` 200, 0 errores de consola. Polígonos coloreados vistos en captura; tooltip al pasar NO probado. | `final3-medio.png` |
+| `/`, `/basico`, `/avanzado`, `/pruebas`, `/metodologia` | OK: sin errores de consola. | — |
