@@ -24,3 +24,13 @@ Fallos reales: ninguno bloqueante. Limitaciones: (a) `/medio` no verifica el tex
 | `/` | OK: sin errores de consola; sin peticiones fallidas | `final-home.png` |
 | `/medio` | FALLA: 2 errores de consola "Worker failed to load" y `GET /assets/maplibre-gl-worker.mjs?v=6.14.0` → 404. El canvas del mapa existe (971x240) y los tiles cargan. El texto "Cargando los grupos…" no se resolvió en 15 s. Polígonos y tooltip NO verificados. | `final-medio.png` |
 | `/avanzado`, `/pruebas`, `/metodologia`, `/basico` | OK: sin errores de consola | — |
+
+## Redespliegue final 3 (origin/main 1be407a), 2026-10-13 12:16
+
+| Paso | Resultado | Evidencia |
+|---|---|---|
+| Build origin/main | OK sin parches (tsc pasa). Worker emitido `assets/maplibre-gl-worker-*.mjs`. | — |
+| nginx MIME | `.mjs` como `application/javascript` (antes octet-stream, bloqueaba workers de módulo); `.geojson` como `application/geo+json`. Commit d8075ac en feature/deploy-api. | curl |
+| Diagramas | `/diagramas/*.png` image/png y `*.html` text/html; los 5 PNG cargan en la landing (lazy, verificado con scroll). | `final3-home.png` |
+| `/medio` | Canvas 1214x520, sin "Cargando", `/api/v1/clusters` 200, 0 errores de consola. Polígonos coloreados vistos en captura; tooltip al pasar NO probado. | `final3-medio.png` |
+| `/`, `/basico`, `/avanzado`, `/pruebas`, `/metodologia` | OK: sin errores de consola. | — |
