@@ -5,12 +5,14 @@ import { Basico } from './pages/Basico.tsx'
 import { Medio } from './pages/Medio.tsx'
 import { Avanzado } from './pages/Avanzado.tsx'
 import { Metodologia } from './pages/Metodologia.tsx'
+import Pruebas from './pages/Pruebas.tsx'
 
 const RUTAS: Record<string, () => React.JSX.Element> = {
   '/': Inicio,
   '/basico': Basico,
   '/medio': Medio,
   '/avanzado': Avanzado,
+  '/pruebas': Pruebas,
   '/metodologia': Metodologia,
 }
 

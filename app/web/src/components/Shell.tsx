@@ -7,6 +7,7 @@ export const PAGINAS = [
   { to: '/basico', texto: 'Básico' },
   { to: '/medio', texto: 'Medio' },
   { to: '/avanzado', texto: 'Avanzado' },
+  { to: '/pruebas', texto: 'Pruebas' },
   { to: '/metodologia', texto: 'Metodología' },
 ] as const
 
