@@ -1,58 +1,15 @@
-import { useMemo, useState } from 'react'
+import { useState } from 'react'
 import { useClusters } from '../api/hooks.ts'
 import type { MunicipioCluster } from '../api/types.ts'
 import { Estado } from '../components/Estado.tsx'
+import { MapaSantander } from '../components/MapaSantander.tsx'
+import { estilo } from '../lib/gruposMapa.ts'
 import { fmtDecimal } from '../lib/formato.ts'
-
-// Categorical palette, deliberately outside the risk scale (no teal/amber/crimson).
-// Each group also has its own marker shape, so the group never depends on color alone.
-const ESTILOS = [
-  { color: '#2438c8', forma: 'círculo' },
-  { color: '#6d28d9', forma: 'cuadrado' },
-  { color: '#101418', forma: 'rombo' },
-  { color: '#5a6472', forma: 'triángulo' },
-  { color: '#0f766e', forma: 'cruz' },
-] as const
-
-const W = 640
-const H = 560
-const PAD = 28
-
-function Marca({ forma, color, r = 6 }: { forma: string; color: string; r?: number }) {
-  const p = { fill: color, stroke: '#fff', strokeWidth: 1.5 }
-  if (forma === 'cuadrado') return <rect x={-r} y={-r} width={2 * r} height={2 * r} {...p} />
-  if (forma === 'rombo') return <polygon points={`0,${-r - 1} ${r + 1},0 0,${r + 1} ${-r - 1},0`} {...p} />
-  if (forma === 'triángulo') return <polygon points={`0,${-r - 1} ${r + 1},${r} ${-r - 1},${r}`} {...p} />
-  if (forma === 'cruz') return <path d={`M${-r} 0H${r}M0 ${-r}V${r}`} stroke={color} strokeWidth={3} />
-  return <circle r={r} {...p} />
-}
-
-function estilo(cluster: number) {
-  return ESTILOS[cluster % ESTILOS.length]
-}
-
-function proyector(ms: MunicipioCluster[]) {
-  const lats = ms.map((m) => m.lat)
-  const lons = ms.map((m) => m.lon)
-  const [minLat, maxLat] = [Math.min(...lats), Math.max(...lats)]
-  const [minLon, maxLon] = [Math.min(...lons), Math.max(...lons)]
-  const kx = Math.cos((((minLat + maxLat) / 2) * Math.PI) / 180)
-  const ancho = (maxLon - minLon) * kx || 1
-  const alto = maxLat - minLat || 1
-  const esc = Math.min((W - 2 * PAD) / ancho, (H - 2 * PAD) / alto)
-  const ox = (W - ancho * esc) / 2
-  const oy = (H - alto * esc) / 2
-  return (m: MunicipioCluster) => ({
-    x: ox + (m.lon - minLon) * kx * esc,
-    y: oy + (maxLat - m.lat) * esc,
-  })
-}
 
 export function Medio() {
   const cl = useClusters()
   const [sel, setSel] = useState<MunicipioCluster | null>(null)
   const datos = cl.data
-  const proy = useMemo(() => (datos ? proyector(datos.municipios) : null), [datos])
 
   return (
     <div className="contenedor">
@@ -65,34 +22,21 @@ export function Medio() {
         </p>
       </section>
 
+      <section className="nota" aria-label="Cómo leer este mapa">
+        <p className="eyebrow">Cómo leer este mapa</p>
+        <ul className="grupo__rasgos">
+          <li><strong>Qué es KMeans:</strong> un método no supervisado; agrupa municipios por parecido de perfil sísmico sin usar etiquetas de riesgo.</li>
+          <li><strong>Por qué k = 3:</strong> silhouette de 0,28 y estabilidad entre semillas de 1,0 / 0,39 / 1,0. Es una elección modesta, no una separación nítida.</li>
+          <li><strong>Qué NO significa:</strong> los grupos describen el perfil del catálogo, no una amenaza.</li>
+        </ul>
+      </section>
+
       <Estado e={cl} que="los grupos" />
 
-      {datos && proy ? (
+      {datos ? (
         <>
           <section className="mapa-bloque" aria-label="Mapa de municipios por grupo">
-            <svg viewBox={`0 0 ${W} ${H}`} className="mapa-svg" role="group" aria-label="Municipios de Santander">
-              {datos.municipios.map((m) => {
-                const { x, y } = proy(m)
-                const e = estilo(m.cluster)
-                const activo = sel?.divipola === m.divipola
-                return (
-                  <g
-                    key={m.divipola}
-                    transform={`translate(${x} ${y})${activo ? ' scale(1.6)' : ''}`}
-                    tabIndex={0}
-                    role="button"
-                    aria-label={`${m.municipio}, grupo ${m.cluster}, ${e.forma}`}
-                    className="mapa-punto"
-                    onClick={() => setSel(m)}
-                    onFocus={() => setSel(m)}
-                    onKeyDown={(ev) => ev.key === 'Enter' && setSel(m)}
-                  >
-                    <title>{`${m.municipio} · grupo ${m.cluster}`}</title>
-                    <Marca forma={e.forma} color={e.color} />
-                  </g>
-                )
-              })}
-            </svg>
+            <MapaSantander municipios={datos.municipios} seleccionado={sel?.divipola ?? null} onSelect={setSel} />
             <div className="detalle panel" aria-live="polite">
               {sel ? (
                 <>
@@ -108,6 +52,22 @@ export function Medio() {
             </div>
           </section>
 
+          <details className="bloque tabla-mun">
+            <summary>Tabla de municipios (alternativa de teclado)</summary>
+            <table>
+              <thead><tr><th>Municipio</th><th>Grupo</th><th>Etiqueta</th></tr></thead>
+              <tbody>
+                {datos.municipios.map((m) => (
+                  <tr key={m.divipola}>
+                    <td><button type="button" className="enlace-tabla" onClick={() => setSel(m)}>{m.municipio}</button></td>
+                    <td>{m.cluster} · {estilo(m.cluster).forma}</td>
+                    <td>{m.etiqueta}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </details>
+
           <section className="bloque">
             <p className="eyebrow">Leyenda y lectura de cada grupo</p>
             <div className="grupos">
@@ -116,9 +76,7 @@ export function Medio() {
                 return (
                   <article key={g.cluster} className="tarjeta tarjeta--estatica">
                     <h3 className="tarjeta__titulo grupo__titulo">
-                      <svg width="20" height="20" viewBox="-10 -10 20 20" aria-hidden="true">
-                        <Marca forma={e.forma} color={e.color} r={7} />
-                      </svg>
+                      <span className={`marca-leyenda marca--${e.forma}`} style={{ '--c': e.color } as React.CSSProperties} aria-hidden="true" />
                       Grupo {g.cluster} · {g.n_municipios} municipios
                     </h3>
                     <ul className="grupo__rasgos">
