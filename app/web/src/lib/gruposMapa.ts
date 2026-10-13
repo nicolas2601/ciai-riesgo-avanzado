@@ -15,11 +15,11 @@ export const BASE_STYLE = {
   sources: {
     carto: {
       type: 'raster' as const,
-      tiles: ['a', 'b', 'c'].map(
-        (s) => `https://${s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png`,
-      ),
+      // CARTO raster tiles now return an "API KEY REQUIRED" watermark without a key,
+      // so the keyless OpenStreetMap standard tiles are used instead.
+      tiles: ['https://tile.openstreetmap.org/{z}/{x}/{y}.png'],
       tileSize: 256,
-      attribution: '© OpenStreetMap contributors © CARTO',
+      attribution: '© OpenStreetMap contributors',
     },
   },
   layers: [{ id: 'carto', type: 'raster' as const, source: 'carto' }],
