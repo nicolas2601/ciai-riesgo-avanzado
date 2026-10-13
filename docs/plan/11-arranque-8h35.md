@@ -184,7 +184,7 @@ eprofmin=0, eprofmax=999, elongmin=0, elongmax=999
 elatmin=0, elatmax=999, Submit=Consultar
 ```
 
-**HECHO local:** se leyó `scripts/sgc_download.py`, creado por UTS; CLI existente y ayuda verificable. Se mantuvo sin editar/commitear en esta tarea. Hace una consulta por año/sistema y escribe CSV **sin encabezados** + provenance con filtros/hashes. No da panel limpio ni prueba completitud.
+**HECHO local:** se leyó `scripts/sgc_download.py`, creado por UTS; CLI existente y ayuda verificable. Se mantuvo sin editar/commitear en esta tarea. Hace consultas por año/sistema y escribe CSV **sin encabezados** + provenance con filtros/hashes. Actualización UTS08:46: el antiguo usa export Excel completo y exige filas recibidas iguales a `tregistros`; esa comprobación se confirmó en código. No da panel limpio ni prueba completitud instrumental.
 
 ```bash
 uv run --group reto python scripts/sgc_download.py --help
@@ -196,7 +196,13 @@ uv run --group reto python scripts/sgc_download.py --from-year 2017 --to-year 20
 
 **Advertencias operativas:** `provenance.json` se reescribe por ejecución, no hace append: preservar/combinar manifests de tramos anteriores antes de otro run. Script no tiene reanudación; no repetir años ya recibidos. 2026 termina en fecha actual: octubre/futuros incompletos no sirven como labels completos. Unificar posiciones/headers distintos a partir de tablas oficiales, no leer CSV raw como si primera fila fuera header.
 
-UTS reporta nuevo2025=11,641 filas/~11MB y antiguo2017=35. Diferencia es señal para auditar parámetros, parser, filtros/completitud y sistema; **no demuestra por sí sola causa de detección ni tasa física**. Cobertura por mes de2018–2026 aún pendiente según UTS.
+**CORRECCIÓN UTS08:46:** las35 filas del HTML antiguo eran **una página**, no el total anual ni evidencia de cambio de detección. Marzo2015 declara `tregistros=681`; export `descargar_exel_experta.php?...&tregistros=N&id=...` devuelve681 según prueba UTS. Descargar ese enlace generado por consulta, sin inventar `id`; exigir `rows == tregistros`, no tratar primera página como catálogo completo. Ejecución de red fue de UTS, no repetida aquí.
+
+Columnas antiguas reportadas (16, en orden): fecha, hora, lat, lon, prof, Ml, Mw, departamento, municipio, fases, rms, gap, errlat, errlon, errprof, estado. Municipio puede venir `LOS_SANTOS`. Nuevo devuelve17 columnas HTML y fecha-horaUTC combinada: no aplicar offsets del antiguo al nuevo.
+
+UTS reporta nuevo2018=8,966 filas (marzo–diciembre),2019=12,738 y2025=11,641. Conteos quedan atribuidos a esas consultas; comparación entre sistemas y cobertura mensual se medirán al completar descarga. No inferir cambios físicos/instrumentales de una página truncada.
+
+**Evento de referencia, fuentes/versiones distintas:** USGS `us10001ldx` reviewed: Mww6.2/155km; comunicado SGC005:6.6/161km sin tipo explícito; catálogo antiguo SGC marzo2015, según export verificado por UTS: evento `2015-03-10 20:55:44 UTC`, **Ml6.3 / Mw6.4**. Conservar agencias/tipos/versión y no promediar ni forzar equivalencia entre esas cifras.
 
 Receta manual para Nico/UTS, **una sola persona ejecuta cada tramo**:
 
