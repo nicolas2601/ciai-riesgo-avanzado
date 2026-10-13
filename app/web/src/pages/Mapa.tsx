@@ -1,7 +1,12 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import type { Map as MapLibreMap, Marker } from 'maplibre-gl'
 import * as maplibregl from 'maplibre-gl'
+import maplibreglWorkerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?url'
 import 'maplibre-gl/dist/maplibre-gl.css'
+
+// optimizeDeps.exclude solo arregla el worker en dev. En build hay que darle
+// la URL del worker ya emitido, o el mapa sale en blanco con "Worker failed to load".
+maplibregl.setWorkerUrl(maplibreglWorkerUrl)
 import { TarjetaNivel } from '../components/TarjetaNivel.tsx'
 import { EstadoVacio } from '../components/EstadoVacio.tsx'
 import { useMunicipios, useSerie } from '../lib/datos.ts'

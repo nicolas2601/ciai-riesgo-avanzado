@@ -1,4 +1,5 @@
-import { Link } from 'react-router-dom'
+// App multipagina: navegacion con <a href>, no con router. No hay contexto de
+// Router en estas paginas, y usar <Link> sin router tumba el render completo.
 
 export function Footer() {
   return (
@@ -16,9 +17,15 @@ export function Footer() {
           </p>
         </div>
         <div>
-          <h3 className="footer__titulo">Datos</h3>
+          <h3 className="footer__titulo">Los tres modelos</h3>
           <p className="footer__texto">
-            <Link to="/metodologia">Fuentes y diccionario</Link>
+            <a href="/modelo-clasificacion.html">Clasificación</a>
+          </p>
+          <p className="footer__texto">
+            <a href="/modelo-supervisado.html">Supervisado</a>
+          </p>
+          <p className="footer__texto">
+            <a href="/modelo-refuerzo.html">Refuerzo</a>
           </p>
         </div>
         <div>
