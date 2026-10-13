@@ -67,18 +67,8 @@ def fit_clusters(profiles: pd.DataFrame, seed: int = 7) -> dict:
     imputer = SimpleImputer(strategy="median", keep_empty_features=True)
     scaler = StandardScaler()
     values = scaler.fit_transform(imputer.fit_transform(profiles))
-    candidates = []
     with threadpool_limits(limits=1):
-        for k in range(3, 8):
-            model = KMeans(n_clusters=k, n_init=20, random_state=seed).fit(values)
-            candidates.append(
-                {
-                    "k": k,
-                    "silhouette": float(silhouette_score(values, model.labels_)),
-                    "davies_bouldin": float(davies_bouldin_score(values, model.labels_)),
-                    "model": model,
-                }
-            )
+        candidates = candidate_models(values, seed)
         winner = max(
             candidates, key=lambda row: (row["silhouette"], -row["davies_bouldin"], -row["k"])
         )
@@ -106,3 +96,18 @@ def fit_clusters(profiles: pd.DataFrame, seed: int = 7) -> dict:
         "agglomerative_silhouette": float(silhouette_score(values, comparison)),
         "agglomerative_ari": float(adjusted_rand_score(labels, comparison)),
     }
+
+
+def candidate_models(values, seed: int) -> list[dict]:
+    candidates = []
+    for k in range(3, 8):
+        model = KMeans(n_clusters=k, n_init=20, random_state=seed).fit(values)
+        candidates.append(
+            {
+                "k": k,
+                "silhouette": float(silhouette_score(values, model.labels_)),
+                "davies_bouldin": float(davies_bouldin_score(values, model.labels_)),
+                "model": model,
+            }
+        )
+    return candidates
