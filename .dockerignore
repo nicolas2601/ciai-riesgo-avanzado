@@ -3,10 +3,12 @@
 **/tests
 .git
 .github
-app/web
+app/web/*
+!app/web/dist
 ml
 docs
 data/*
 !data/panel
 artifacts/*
 !artifacts/ml/selected_model.joblib
+!app/web/dist
