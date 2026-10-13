@@ -1,0 +1,210 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Como funciona, de punta a punta",
+    "output": "sistema-como-funciona.html",
+    "quality_profile": "showcase"
+  },
+  "components": [
+    {
+      "id": "sgc",
+      "type": "external",
+      "label": "SGC catalogo",
+      "sublabel": "fuente oficial",
+      "pos": [
+        40,
+        80
+      ],
+      "size": [
+        170,
+        64
+      ]
+    },
+    {
+      "id": "dane",
+      "type": "external",
+      "label": "DANE",
+      "sublabel": "poblacion",
+      "pos": [
+        40,
+        380
+      ],
+      "size": [
+        170,
+        64
+      ]
+    },
+    {
+      "id": "desc",
+      "type": "backend",
+      "label": "Descarga",
+      "sublabel": "reproducible",
+      "pos": [
+        250,
+        230
+      ],
+      "size": [
+        170,
+        64
+      ]
+    },
+    {
+      "id": "panel",
+      "type": "database",
+      "label": "Panel 32 variables",
+      "sublabel": "87 municipios x mes",
+      "pos": [
+        460,
+        230
+      ],
+      "size": [
+        170,
+        64
+      ]
+    },
+    {
+      "id": "basic",
+      "type": "backend",
+      "label": "Basico",
+      "sublabel": "supervisado",
+      "pos": [
+        670,
+        80
+      ],
+      "size": [
+        170,
+        64
+      ]
+    },
+    {
+      "id": "mid",
+      "type": "backend",
+      "label": "Medio",
+      "sublabel": "no supervisado",
+      "pos": [
+        670,
+        230
+      ],
+      "size": [
+        170,
+        64
+      ]
+    },
+    {
+      "id": "rl",
+      "type": "backend",
+      "label": "Avanzado",
+      "sublabel": "refuerzo",
+      "pos": [
+        670,
+        380
+      ],
+      "size": [
+        170,
+        64
+      ]
+    },
+    {
+      "id": "api",
+      "type": "cloud",
+      "label": "API FastAPI",
+      "sublabel": "/docs",
+      "pos": [
+        880,
+        230
+      ],
+      "size": [
+        170,
+        64
+      ]
+    },
+    {
+      "id": "web",
+      "type": "frontend",
+      "label": "Web",
+      "sublabel": "Inicio, Basico, Medio, Avanzado, Pruebas",
+      "pos": [
+        712.0,
+        455
+      ],
+      "size": [
+        300,
+        64
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "c1",
+      "from": "sgc",
+      "to": "desc",
+      "fromSide": "right",
+      "toSide": "left"
+    },
+    {
+      "id": "c2",
+      "from": "dane",
+      "to": "desc",
+      "fromSide": "right",
+      "toSide": "left"
+    },
+    {
+      "id": "c3",
+      "from": "desc",
+      "to": "panel",
+      "fromSide": "right",
+      "toSide": "left"
+    },
+    {
+      "id": "c4",
+      "from": "panel",
+      "to": "basic",
+      "fromSide": "right",
+      "toSide": "left"
+    },
+    {
+      "id": "c5",
+      "from": "panel",
+      "to": "mid",
+      "fromSide": "right",
+      "toSide": "left"
+    },
+    {
+      "id": "c6",
+      "from": "panel",
+      "to": "rl",
+      "fromSide": "right",
+      "toSide": "left"
+    },
+    {
+      "id": "c7",
+      "from": "basic",
+      "to": "api",
+      "fromSide": "right",
+      "toSide": "left"
+    },
+    {
+      "id": "c8",
+      "from": "mid",
+      "to": "api",
+      "fromSide": "right",
+      "toSide": "left"
+    },
+    {
+      "id": "c9",
+      "from": "rl",
+      "to": "api",
+      "fromSide": "right",
+      "toSide": "left"
+    },
+    {
+      "id": "c10",
+      "from": "api",
+      "to": "web",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "variant": "emphasis"
+    }
+  ]
+}
