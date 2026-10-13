@@ -1,0 +1,143 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Flujo de Zabdiel: ML",
+    "output": "flujo-ml.html",
+    "quality_profile": "showcase"
+  },
+  "lanes": [
+    {
+      "id": "l",
+      "label": "ML (Zabdiel)"
+    }
+  ],
+  "phases": [
+    {
+      "id": "datos",
+      "label": "Datos",
+      "fromCol": 0,
+      "toCol": 2
+    },
+    {
+      "id": "modelado",
+      "label": "Modelado",
+      "fromCol": 3,
+      "toCol": 4,
+      "variant": "emphasis"
+    },
+    {
+      "id": "entrega",
+      "label": "Entrega",
+      "fromCol": 5,
+      "toCol": 5,
+      "variant": "dashed"
+    }
+  ],
+  "mainPath": [
+    "data",
+    "panel",
+    "feat",
+    "model",
+    "eval",
+    "bundle"
+  ],
+  "nodes": [
+    {
+      "id": "data",
+      "lane": "l",
+      "col": 0,
+      "type": "database",
+      "label": "Datos",
+      "sublabel": "3 tablas UNGRD"
+    },
+    {
+      "id": "panel",
+      "lane": "l",
+      "col": 1,
+      "type": "backend",
+      "label": "Panel",
+      "sublabel": "municipio-mes"
+    },
+    {
+      "id": "feat",
+      "lane": "l",
+      "col": 2,
+      "type": "backend",
+      "label": "Features",
+      "sublabel": "clima + ONI"
+    },
+    {
+      "id": "model",
+      "lane": "l",
+      "col": 3,
+      "type": "backend",
+      "label": "Modelos",
+      "sublabel": "GBDT + red"
+    },
+    {
+      "id": "eval",
+      "lane": "l",
+      "col": 4,
+      "type": "security",
+      "label": "Validacion",
+      "sublabel": "bloques + tiempo"
+    },
+    {
+      "id": "bundle",
+      "lane": "l",
+      "col": 5,
+      "type": "messagebus",
+      "label": "Bundle",
+      "sublabel": "modelo + calibrador"
+    }
+  ],
+  "edges": [
+    {
+      "from": "data",
+      "to": "panel"
+    },
+    {
+      "from": "panel",
+      "to": "feat"
+    },
+    {
+      "from": "feat",
+      "to": "model"
+    },
+    {
+      "from": "model",
+      "to": "eval"
+    },
+    {
+      "from": "eval",
+      "to": "bundle"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Antes de entrenar",
+      "items": [
+        "Igualdad exacta en Santander",
+        "Municipio por nombre normalizado"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "Definition of Done",
+      "items": [
+        "Corridas en MLflow con semilla",
+        "Gana solo con diferencia pareada"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "Si te atrasas",
+      "items": [
+        "Recorta TabPFN y tuning",
+        "Nunca baseline ni validacion"
+      ]
+    }
+  ]
+}

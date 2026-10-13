@@ -109,7 +109,7 @@
       "col": 0,
       "type": "frontend",
       "label": "Contrato API",
-      "sublabel": "OpenAPI v0.1"
+      "sublabel": "OpenAPI v0.2"
     },
     {
       "id": "mock",

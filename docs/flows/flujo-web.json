@@ -1,0 +1,143 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Flujo de Julian: web",
+    "output": "flujo-web.html",
+    "quality_profile": "showcase"
+  },
+  "lanes": [
+    {
+      "id": "l",
+      "label": "Web (Julian)"
+    }
+  ],
+  "phases": [
+    {
+      "id": "base",
+      "label": "Base",
+      "fromCol": 0,
+      "toCol": 1
+    },
+    {
+      "id": "vistas",
+      "label": "Vistas",
+      "fromCol": 2,
+      "toCol": 4,
+      "variant": "emphasis"
+    },
+    {
+      "id": "integra",
+      "label": "Integracion",
+      "fromCol": 5,
+      "toCol": 5,
+      "variant": "dashed"
+    }
+  ],
+  "mainPath": [
+    "skel",
+    "mock",
+    "map",
+    "rank",
+    "metr",
+    "real"
+  ],
+  "nodes": [
+    {
+      "id": "skel",
+      "lane": "l",
+      "col": 0,
+      "type": "frontend",
+      "label": "Esqueleto",
+      "sublabel": "bun + Vite + TS"
+    },
+    {
+      "id": "mock",
+      "lane": "l",
+      "col": 1,
+      "type": "backend",
+      "label": "API mock",
+      "sublabel": "contrato v0.2"
+    },
+    {
+      "id": "map",
+      "lane": "l",
+      "col": 2,
+      "type": "frontend",
+      "label": "Mapa",
+      "sublabel": "nivel por municipio"
+    },
+    {
+      "id": "rank",
+      "lane": "l",
+      "col": 3,
+      "type": "frontend",
+      "label": "Ranking",
+      "sublabel": "P(alto) + conjunto"
+    },
+    {
+      "id": "metr",
+      "lane": "l",
+      "col": 4,
+      "type": "frontend",
+      "label": "Metricas",
+      "sublabel": "desde /metrics"
+    },
+    {
+      "id": "real",
+      "lane": "l",
+      "col": 5,
+      "type": "external",
+      "label": "API real",
+      "sublabel": "sin banner mock"
+    }
+  ],
+  "edges": [
+    {
+      "from": "skel",
+      "to": "mock"
+    },
+    {
+      "from": "mock",
+      "to": "map"
+    },
+    {
+      "from": "map",
+      "to": "rank"
+    },
+    {
+      "from": "rank",
+      "to": "metr"
+    },
+    {
+      "from": "metr",
+      "to": "real"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Contrato primero",
+      "items": [
+        "Trabaja contra el mock desde la hora 0",
+        "Banner mientras is_mock sea true"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "Definition of Done",
+      "items": [
+        "Todas las vistas con la API real",
+        "Sin cifras escritas a mano"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "Si te atrasas",
+      "items": [
+        "Recorta animaciones y what-if",
+        "Nunca mapa, ranking ni metricas"
+      ]
+    }
+  ]
+}

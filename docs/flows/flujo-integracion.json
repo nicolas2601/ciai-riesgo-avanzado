@@ -1,0 +1,143 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Flujo de Nico: integracion",
+    "output": "flujo-integracion.html",
+    "quality_profile": "showcase"
+  },
+  "lanes": [
+    {
+      "id": "l",
+      "label": "Integracion (Nico)"
+    }
+  ],
+  "phases": [
+    {
+      "id": "api",
+      "label": "API",
+      "fromCol": 0,
+      "toCol": 1
+    },
+    {
+      "id": "deploy",
+      "label": "Despliegue",
+      "fromCol": 2,
+      "toCol": 3,
+      "variant": "emphasis"
+    },
+    {
+      "id": "cierre",
+      "label": "Cierre",
+      "fromCol": 4,
+      "toCol": 5,
+      "variant": "dashed"
+    }
+  ],
+  "mainPath": [
+    "api",
+    "bundle",
+    "docker",
+    "tunnel",
+    "load",
+    "deliver"
+  ],
+  "nodes": [
+    {
+      "id": "api",
+      "lane": "l",
+      "col": 0,
+      "type": "backend",
+      "label": "API mock",
+      "sublabel": "30 tests"
+    },
+    {
+      "id": "bundle",
+      "lane": "l",
+      "col": 1,
+      "type": "messagebus",
+      "label": "Bundle real",
+      "sublabel": "misma suite"
+    },
+    {
+      "id": "docker",
+      "lane": "l",
+      "col": 2,
+      "type": "cloud",
+      "label": "Docker",
+      "sublabel": "compose"
+    },
+    {
+      "id": "tunnel",
+      "lane": "l",
+      "col": 3,
+      "type": "cloud",
+      "label": "Tunel",
+      "sublabel": "Cloudflare"
+    },
+    {
+      "id": "load",
+      "lane": "l",
+      "col": 4,
+      "type": "security",
+      "label": "Carga",
+      "sublabel": "p95 medido"
+    },
+    {
+      "id": "deliver",
+      "lane": "l",
+      "col": 5,
+      "type": "external",
+      "label": "Entrega",
+      "sublabel": "README + URL"
+    }
+  ],
+  "edges": [
+    {
+      "from": "api",
+      "to": "bundle"
+    },
+    {
+      "from": "bundle",
+      "to": "docker"
+    },
+    {
+      "from": "docker",
+      "to": "tunnel"
+    },
+    {
+      "from": "tunnel",
+      "to": "load"
+    },
+    {
+      "from": "load",
+      "to": "deliver"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Despliegue temprano",
+      "items": [
+        "Esqueleto arriba en la hora 2",
+        "Health antes de publicar la URL"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "Definition of Done",
+      "items": [
+        "URL publica verificada con curl",
+        "Latencia medida, no estimada"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "Riesgos",
+      "items": [
+        "Tunel rapido cambia de URL",
+        "Demo local de respaldo"
+      ]
+    }
+  ]
+}
