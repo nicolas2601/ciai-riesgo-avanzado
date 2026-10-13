@@ -1,0 +1,1000 @@
+{
+  "municipios": [
+    {
+      "divipola": "68001",
+      "municipio": "BUCARAMANGA",
+      "lat": 7.155475256999999,
+      "lon": -73.11133233,
+      "cluster": 1,
+      "etiqueta": "frac_prof_lt30 menor; centroid_lon menor; gap_media_mes menor"
+    },
+    {
+      "divipola": "68013",
+      "municipio": "AGUADA",
+      "lat": 6.175323379,
+      "lon": -73.53324521,
+      "cluster": 1,
+      "etiqueta": "frac_prof_lt30 menor; centroid_lon menor; gap_media_mes menor"
+    },
+    {
+      "divipola": "68020",
+      "municipio": "ALBANIA",
+      "lat": 5.777997048,
+      "lon": -73.82827002,
+      "cluster": 1,
+      "etiqueta": "frac_prof_lt30 menor; centroid_lon menor; gap_media_mes menor"
+    },
+    {
+      "divipola": "68051",
+      "municipio": "ARATOCA",
+      "lat": 6.716004857,
+      "lon": -73.01182651,
+      "cluster": 1,
+      "etiqueta": "frac_prof_lt30 menor; centroid_lon menor; gap_media_mes menor"
+    },
+    {
+      "divipola": "68077",
+      "municipio": "BARBOSA",
+      "lat": 5.955390841,
+      "lon": -73.6232298,
+      "cluster": 1,
+      "etiqueta": "frac_prof_lt30 menor; centroid_lon menor; gap_media_mes menor"
+    },
+    {
+      "divipola": "68079",
+      "municipio": "BARICHARA",
+      "lat": 6.64512608,
+      "lon": -73.21573192,
+      "cluster": 1,
+      "etiqueta": "frac_prof_lt30 menor; centroid_lon menor; gap_media_mes menor"
+    },
+    {
+      "divipola": "68081",
+      "municipio": "BARRANCABERMEJA",
+      "lat": 7.062095761999999,
+      "lon": -73.77671851,
+      "cluster": 1,
+      "etiqueta": "frac_prof_lt30 menor; centroid_lon menor; gap_media_mes menor"
+    },
+    {
+      "divipola": "68092",
+      "municipio": "BETULIA",
+      "lat": 7.011906545000001,
+      "lon": -73.38716488,
+      "cluster": 1,
+      "etiqueta": "frac_prof_lt30 menor; centroid_lon menor; gap_media_mes menor"
+    },
+    {
+      "divipola": "68101",
+      "municipio": "BOLIVAR",
+      "lat": 6.094426504,
+      "lon": -74.11857803,
+      "cluster": 1,
+      "etiqueta": "frac_prof_lt30 menor; centroid_lon menor; gap_media_mes menor"
+    },
+    {
+      "divipola": "68121",
+      "municipio": "CABRERA",
+      "lat": 6.5623233,
+      "lon": -73.2499812,
+      "cluster": 1,
+      "etiqueta": "frac_prof_lt30 menor; centroid_lon menor; gap_media_mes menor"
+    },
+    {
+      "divipola": "68132",
+      "municipio": "CALIFORNIA",
+      "lat": 7.352165141999999,
+      "lon": -72.92641039,
+      "cluster": 0,
+      "etiqueta": "frac_prof_lt30 mayor; frac_70_300 menor; gap_media_mes mayor"
+    },
+    {
+      "divipola": "68147",
+      "municipio": "CAPITANEJO",
+      "lat": 6.520212781,
+      "lon": -72.67592914,
+      "cluster": 0,
+      "etiqueta": "frac_prof_lt30 mayor; frac_70_300 menor; gap_media_mes mayor"
+    },
+    {
+      "divipola": "68152",
+      "municipio": "CARCASI",
+      "lat": 6.659267329,
+      "lon": -72.56988011,
+      "cluster": 0,
+      "etiqueta": "frac_prof_lt30 mayor; frac_70_300 menor; gap_media_mes mayor"
+    },
+    {
+      "divipola": "68160",
+      "municipio": "CEPITA",
+      "lat": 6.752207038000001,
+      "lon": -72.92890947,
+      "cluster": 1,
+      "etiqueta": "frac_prof_lt30 menor; centroid_lon menor; gap_media_mes menor"
+    },
+    {
+      "divipola": "68162",
+      "municipio": "CERRITO",
+      "lat": 6.904072429,
+      "lon": -72.64471512,
+      "cluster": 0,
+      "etiqueta": "frac_prof_lt30 mayor; frac_70_300 menor; gap_media_mes mayor"
+    },
+    {
+      "divipola": "68167",
+      "municipio": "CHARALA",
+      "lat": 6.19482908,
+      "lon": -73.15412483,
+      "cluster": 1,
+      "etiqueta": "frac_prof_lt30 menor; centroid_lon menor; gap_media_mes menor"
+    },
+    {
+      "divipola": "68169",
+      "municipio": "CHARTA",
+      "lat": 7.2588745349999995,
+      "lon": -72.98769786,
+      "cluster": 1,
+      "etiqueta": "frac_prof_lt30 menor; centroid_lon menor; gap_media_mes menor"
+    },
+    {
+      "divipola": "68176",
+      "municipio": "CHIMA",
+      "lat": 6.373779196999999,
+      "lon": -73.4152457,
+      "cluster": 1,
+      "etiqueta": "frac_prof_lt30 menor; centroid_lon menor; gap_media_mes menor"
+    },
+    {
+      "divipola": "68179",
+      "municipio": "CHIPATA",
+      "lat": 6.067808695999999,
+      "lon": -73.63230937,
+      "cluster": 1,
+      "etiqueta": "frac_prof_lt30 menor; centroid_lon menor; gap_media_mes menor"
+    },
+    {
+      "divipola": "68190",
+      "municipio": "CIMITARRA",
+      "lat": 6.410166348999999,
+      "lon": -74.16933204,
+      "cluster": 1,
+      "etiqueta": "frac_prof_lt30 menor; centroid_lon menor; gap_media_mes menor"
+    },
+    {
+      "divipola": "68207",
+      "municipio": "CONCEPCION",
+      "lat": 6.783659986,
+      "lon": -72.60585777,
+      "cluster": 0,
+      "etiqueta": "frac_prof_lt30 mayor; frac_70_300 menor; gap_media_mes mayor"
+    },
+    {
+      "divipola": "68209",
+      "municipio": "CONFINES",
+      "lat": 6.355000552,
+      "lon": -73.23996706,
+      "cluster": 1,
+      "etiqueta": "frac_prof_lt30 menor; centroid_lon menor; gap_media_mes menor"
+    },
+    {
+      "divipola": "68211",
+      "municipio": "CONTRATACION",
+      "lat": 6.303065916,
+      "lon": -73.50157951,
+      "cluster": 1,
+      "etiqueta": "frac_prof_lt30 menor; centroid_lon menor; gap_media_mes menor"
+    },
+    {
+      "divipola": "68217",
+      "municipio": "COROMORO",
+      "lat": 6.234676727,
+      "lon": -72.9819215,
+      "cluster": 0,
+      "etiqueta": "frac_prof_lt30 mayor; frac_70_300 menor; gap_media_mes mayor"
+    },
+    {
+      "divipola": "68229",
+      "municipio": "CURITI",
+      "lat": 6.618593139,
+      "lon": -73.01803315,
+      "cluster": 1,
+      "etiqueta": "frac_prof_lt30 menor; centroid_lon menor; gap_media_mes menor"
+    },
+    {
+      "divipola": "68235",
+      "municipio": "EL CARMEN DE CHUCURI",
+      "lat": 6.664972162000001,
+      "lon": -73.56430475,
+      "cluster": 1,
+      "etiqueta": "frac_prof_lt30 menor; centroid_lon menor; gap_media_mes menor"
+    },
+    {
+      "divipola": "68245",
+      "municipio": "EL GUACAMAYO",
+      "lat": 6.247442467,
+      "lon": -73.53314149,
+      "cluster": 1,
+      "etiqueta": "frac_prof_lt30 menor; centroid_lon menor; gap_media_mes menor"
+    },
+    {
+      "divipola": "68250",
+      "municipio": "EL PENON",
+      "lat": 6.091186749,
+      "lon": -73.92188513,
+      "cluster": 1,
+      "etiqueta": "frac_prof_lt30 menor; centroid_lon menor; gap_media_mes menor"
+    },
+    {
+      "divipola": "68255",
+      "municipio": "EL PLAYON",
+      "lat": 7.524610429,
+      "lon": -73.18172485,
+      "cluster": 1,
+      "etiqueta": "frac_prof_lt30 menor; centroid_lon menor; gap_media_mes menor"
+    },
+    {
+      "divipola": "68264",
+      "municipio": "ENCINO",
+      "lat": 6.080088689,
+      "lon": -73.06259589,
+      "cluster": 0,
+      "etiqueta": "frac_prof_lt30 mayor; frac_70_300 menor; gap_media_mes mayor"
+    },
+    {
+      "divipola": "68266",
+      "municipio": "ENCISO",
+      "lat": 6.658254491000001,
+      "lon": -72.68072788,
+      "cluster": 0,
+      "etiqueta": "frac_prof_lt30 mayor; frac_70_300 menor; gap_media_mes mayor"
+    },
+    {
+      "divipola": "68271",
+      "municipio": "FLORIAN",
+      "lat": 5.801415714,
+      "lon": -73.95169683,
+      "cluster": 1,
+      "etiqueta": "frac_prof_lt30 menor; centroid_lon menor; gap_media_mes menor"
+    },
+    {
+      "divipola": "68276",
+      "municipio": "FLORIDABLANCA",
+      "lat": 7.078909584,
+      "lon": -73.06880615,
+      "cluster": 1,
+      "etiqueta": "frac_prof_lt30 menor; centroid_lon menor; gap_media_mes menor"
+    },
+    {
+      "divipola": "68296",
+      "municipio": "GALAN",
+      "lat": 6.672871699,
+      "lon": -73.32490464,
+      "cluster": 1,
+      "etiqueta": "frac_prof_lt30 menor; centroid_lon menor; gap_media_mes menor"
+    },
+    {
+      "divipola": "68298",
+      "municipio": "GAMBITA",
+      "lat": 5.925410575,
+      "lon": -73.31887296,
+      "cluster": 1,
+      "etiqueta": "frac_prof_lt30 menor; centroid_lon menor; gap_media_mes menor"
+    },
+    {
+      "divipola": "68307",
+      "municipio": "GIRON",
+      "lat": 7.03746363,
+      "lon": -73.24993924,
+      "cluster": 1,
+      "etiqueta": "frac_prof_lt30 menor; centroid_lon menor; gap_media_mes menor"
+    },
+    {
+      "divipola": "68318",
+      "municipio": "GUACA",
+      "lat": 6.943125205,
+      "lon": -72.82353799,
+      "cluster": 0,
+      "etiqueta": "frac_prof_lt30 mayor; frac_70_300 menor; gap_media_mes mayor"
+    },
+    {
+      "divipola": "68320",
+      "municipio": "GUADALUPE",
+      "lat": 6.232771411,
+      "lon": -73.40748162,
+      "cluster": 1,
+      "etiqueta": "frac_prof_lt30 menor; centroid_lon menor; gap_media_mes menor"
+    },
+    {
+      "divipola": "68322",
+      "municipio": "GUAPOTA",
+      "lat": 6.318049616,
+      "lon": -73.3297759,
+      "cluster": 1,
+      "etiqueta": "frac_prof_lt30 menor; centroid_lon menor; gap_media_mes menor"
+    },
+    {
+      "divipola": "68324",
+      "municipio": "GUAVATA",
+      "lat": 5.945119723,
+      "lon": -73.7227228,
+      "cluster": 1,
+      "etiqueta": "frac_prof_lt30 menor; centroid_lon menor; gap_media_mes menor"
+    },
+    {
+      "divipola": "68327",
+      "municipio": "GUEPSA",
+      "lat": 6.033120405,
+      "lon": -73.57835133,
+      "cluster": 1,
+      "etiqueta": "frac_prof_lt30 menor; centroid_lon menor; gap_media_mes menor"
+    },
+    {
+      "divipola": "68344",
+      "municipio": "HATO",
+      "lat": 6.560456631000001,
+      "lon": -73.36265214,
+      "cluster": 1,
+      "etiqueta": "frac_prof_lt30 menor; centroid_lon menor; gap_media_mes menor"
+    },
+    {
+      "divipola": "68368",
+      "municipio": "JESUS MARIA",
+      "lat": 5.860719629,
+      "lon": -73.82540176,
+      "cluster": 1,
+      "etiqueta": "frac_prof_lt30 menor; centroid_lon menor; gap_media_mes menor"
+    },
+    {
+      "divipola": "68370",
+      "municipio": "JORDAN",
+      "lat": 6.714954531,
+      "lon": -73.10031897,
+      "cluster": 1,
+      "etiqueta": "frac_prof_lt30 menor; centroid_lon menor; gap_media_mes menor"
+    },
+    {
+      "divipola": "68377",
+      "municipio": "LA BELLEZA",
+      "lat": 5.910583891000001,
+      "lon": -74.05083633,
+      "cluster": 1,
+      "etiqueta": "frac_prof_lt30 menor; centroid_lon menor; gap_media_mes menor"
+    },
+    {
+      "divipola": "68385",
+      "municipio": "LANDAZURI",
+      "lat": 6.331423988,
+      "lon": -73.81913696,
+      "cluster": 1,
+      "etiqueta": "frac_prof_lt30 menor; centroid_lon menor; gap_media_mes menor"
+    },
+    {
+      "divipola": "68397",
+      "municipio": "LA PAZ",
+      "lat": 6.222978161,
+      "lon": -73.62526154,
+      "cluster": 1,
+      "etiqueta": "frac_prof_lt30 menor; centroid_lon menor; gap_media_mes menor"
+    },
+    {
+      "divipola": "68406",
+      "municipio": "LEBRIJA",
+      "lat": 7.203223488000001,
+      "lon": -73.29083976,
+      "cluster": 1,
+      "etiqueta": "frac_prof_lt30 menor; centroid_lon menor; gap_media_mes menor"
+    },
+    {
+      "divipola": "68418",
+      "municipio": "LOS SANTOS",
+      "lat": 6.812163379,
+      "lon": -73.10775303,
+      "cluster": 2,
+      "etiqueta": "fraction_months_m4 mayor; n_m_ge_4_mes mayor; fraction_months_m3 mayor"
+    },
+    {
+      "divipola": "68425",
+      "municipio": "MACARAVITA",
+      "lat": 6.512379931,
+      "lon": -72.58601385,
+      "cluster": 0,
+      "etiqueta": "frac_prof_lt30 mayor; frac_70_300 menor; gap_media_mes mayor"
+    },
+    {
+      "divipola": "68432",
+      "municipio": "MALAGA",
+      "lat": 6.720512149,
+      "lon": -72.73795766,
+      "cluster": 0,
+      "etiqueta": "frac_prof_lt30 mayor; frac_70_300 menor; gap_media_mes mayor"
+    },
+    {
+      "divipola": "68444",
+      "municipio": "MATANZA",
+      "lat": 7.297626363,
+      "lon": -73.0499518,
+      "cluster": 1,
+      "etiqueta": "frac_prof_lt30 menor; centroid_lon menor; gap_media_mes menor"
+    },
+    {
+      "divipola": "68464",
+      "municipio": "MOGOTES",
+      "lat": 6.49183531,
+      "lon": -72.95851286,
+      "cluster": 0,
+      "etiqueta": "frac_prof_lt30 mayor; frac_70_300 menor; gap_media_mes mayor"
+    },
+    {
+      "divipola": "68468",
+      "municipio": "MOLAGAVITA",
+      "lat": 6.643629325999999,
+      "lon": -72.81916926,
+      "cluster": 0,
+      "etiqueta": "frac_prof_lt30 mayor; frac_70_300 menor; gap_media_mes mayor"
+    },
+    {
+      "divipola": "68498",
+      "municipio": "OCAMONTE",
+      "lat": 6.355794484,
+      "lon": -73.1224781,
+      "cluster": 1,
+      "etiqueta": "frac_prof_lt30 menor; centroid_lon menor; gap_media_mes menor"
+    },
+    {
+      "divipola": "68500",
+      "municipio": "OIBA",
+      "lat": 6.224765404,
+      "lon": -73.27789617,
+      "cluster": 1,
+      "etiqueta": "frac_prof_lt30 menor; centroid_lon menor; gap_media_mes menor"
+    },
+    {
+      "divipola": "68502",
+      "municipio": "ONZAGA",
+      "lat": 6.334864742,
+      "lon": -72.81212361,
+      "cluster": 0,
+      "etiqueta": "frac_prof_lt30 mayor; frac_70_300 menor; gap_media_mes mayor"
+    },
+    {
+      "divipola": "68522",
+      "municipio": "PALMAR",
+      "lat": 6.524759371999999,
+      "lon": -73.28921267,
+      "cluster": 1,
+      "etiqueta": "frac_prof_lt30 menor; centroid_lon menor; gap_media_mes menor"
+    },
+    {
+      "divipola": "68524",
+      "municipio": "PALMAS DEL SOCORRO",
+      "lat": 6.391791818000001,
+      "lon": -73.28253601,
+      "cluster": 1,
+      "etiqueta": "frac_prof_lt30 menor; centroid_lon menor; gap_media_mes menor"
+    },
+    {
+      "divipola": "68533",
+      "municipio": "PARAMO",
+      "lat": 6.416298667,
+      "lon": -73.17160724,
+      "cluster": 1,
+      "etiqueta": "frac_prof_lt30 menor; centroid_lon menor; gap_media_mes menor"
+    },
+    {
+      "divipola": "68547",
+      "municipio": "PIEDECUESTA",
+      "lat": 6.962833053000001,
+      "lon": -73.00550878,
+      "cluster": 1,
+      "etiqueta": "frac_prof_lt30 menor; centroid_lon menor; gap_media_mes menor"
+    },
+    {
+      "divipola": "68549",
+      "municipio": "PINCHOTE",
+      "lat": 6.515259421,
+      "lon": -73.17432558,
+      "cluster": 1,
+      "etiqueta": "frac_prof_lt30 menor; centroid_lon menor; gap_media_mes menor"
+    },
+    {
+      "divipola": "68572",
+      "municipio": "PUENTE NACIONAL",
+      "lat": 5.831348484,
+      "lon": -73.6787639,
+      "cluster": 1,
+      "etiqueta": "frac_prof_lt30 menor; centroid_lon menor; gap_media_mes menor"
+    },
+    {
+      "divipola": "68573",
+      "municipio": "PUERTO PARRA",
+      "lat": 6.685330079000001,
+      "lon": -73.95717492,
+      "cluster": 1,
+      "etiqueta": "frac_prof_lt30 menor; centroid_lon menor; gap_media_mes menor"
+    },
+    {
+      "divipola": "68575",
+      "municipio": "PUERTO WILCHES",
+      "lat": 7.58105075,
+      "lon": -73.78506459,
+      "cluster": 1,
+      "etiqueta": "frac_prof_lt30 menor; centroid_lon menor; gap_media_mes menor"
+    },
+    {
+      "divipola": "68615",
+      "municipio": "RIONEGRO",
+      "lat": 7.470321809,
+      "lon": -73.34568971,
+      "cluster": 1,
+      "etiqueta": "frac_prof_lt30 menor; centroid_lon menor; gap_media_mes menor"
+    },
+    {
+      "divipola": "68655",
+      "municipio": "SABANA DE TORRES",
+      "lat": 7.400572504000001,
+      "lon": -73.56695938,
+      "cluster": 1,
+      "etiqueta": "frac_prof_lt30 menor; centroid_lon menor; gap_media_mes menor"
+    },
+    {
+      "divipola": "68669",
+      "municipio": "SAN ANDRES",
+      "lat": 6.796509411,
+      "lon": -72.81547064,
+      "cluster": 1,
+      "etiqueta": "frac_prof_lt30 menor; centroid_lon menor; gap_media_mes menor"
+    },
+    {
+      "divipola": "68673",
+      "municipio": "SAN BENITO",
+      "lat": 6.101252258999999,
+      "lon": -73.5273429,
+      "cluster": 1,
+      "etiqueta": "frac_prof_lt30 menor; centroid_lon menor; gap_media_mes menor"
+    },
+    {
+      "divipola": "68679",
+      "municipio": "SAN GIL",
+      "lat": 6.550895565,
+      "lon": -73.11819699,
+      "cluster": 1,
+      "etiqueta": "frac_prof_lt30 menor; centroid_lon menor; gap_media_mes menor"
+    },
+    {
+      "divipola": "68682",
+      "municipio": "SAN JOAQUIN",
+      "lat": 6.459542058,
+      "lon": -72.85470051,
+      "cluster": 0,
+      "etiqueta": "frac_prof_lt30 mayor; frac_70_300 menor; gap_media_mes mayor"
+    },
+    {
+      "divipola": "68684",
+      "municipio": "SAN JOSE DE MIRANDA",
+      "lat": 6.629225266000001,
+      "lon": -72.73966133,
+      "cluster": 0,
+      "etiqueta": "frac_prof_lt30 mayor; frac_70_300 menor; gap_media_mes mayor"
+    },
+    {
+      "divipola": "68686",
+      "municipio": "SAN MIGUEL",
+      "lat": 6.567081119,
+      "lon": -72.64354283,
+      "cluster": 0,
+      "etiqueta": "frac_prof_lt30 mayor; frac_70_300 menor; gap_media_mes mayor"
+    },
+    {
+      "divipola": "68689",
+      "municipio": "SAN VICENTE DE CHUCURI",
+      "lat": 6.894725825,
+      "lon": -73.54030634,
+      "cluster": 1,
+      "etiqueta": "frac_prof_lt30 menor; centroid_lon menor; gap_media_mes menor"
+    },
+    {
+      "divipola": "68705",
+      "municipio": "SANTA BARBARA",
+      "lat": 6.965069097,
+      "lon": -72.90713473,
+      "cluster": 0,
+      "etiqueta": "frac_prof_lt30 mayor; frac_70_300 menor; gap_media_mes mayor"
+    },
+    {
+      "divipola": "68720",
+      "municipio": "SANTA HELENA DEL OPON",
+      "lat": 6.409202016,
+      "lon": -73.5819226,
+      "cluster": 1,
+      "etiqueta": "frac_prof_lt30 menor; centroid_lon menor; gap_media_mes menor"
+    },
+    {
+      "divipola": "68745",
+      "municipio": "SIMACOTA",
+      "lat": 6.666286897,
+      "lon": -73.70430383,
+      "cluster": 1,
+      "etiqueta": "frac_prof_lt30 menor; centroid_lon menor; gap_media_mes menor"
+    },
+    {
+      "divipola": "68755",
+      "municipio": "SOCORRO",
+      "lat": 6.462512753,
+      "lon": -73.24383349,
+      "cluster": 1,
+      "etiqueta": "frac_prof_lt30 menor; centroid_lon menor; gap_media_mes menor"
+    },
+    {
+      "divipola": "68770",
+      "municipio": "SUAITA",
+      "lat": 6.11497435,
+      "lon": -73.36592442,
+      "cluster": 1,
+      "etiqueta": "frac_prof_lt30 menor; centroid_lon menor; gap_media_mes menor"
+    },
+    {
+      "divipola": "68773",
+      "municipio": "SUCRE",
+      "lat": 5.987734208,
+      "lon": -73.96775881,
+      "cluster": 1,
+      "etiqueta": "frac_prof_lt30 menor; centroid_lon menor; gap_media_mes menor"
+    },
+    {
+      "divipola": "68780",
+      "municipio": "SURATA",
+      "lat": 7.475393725999999,
+      "lon": -72.98764897,
+      "cluster": 1,
+      "etiqueta": "frac_prof_lt30 menor; centroid_lon menor; gap_media_mes menor"
+    },
+    {
+      "divipola": "68820",
+      "municipio": "TONA",
+      "lat": 7.16107261,
+      "lon": -72.92974356,
+      "cluster": 1,
+      "etiqueta": "frac_prof_lt30 menor; centroid_lon menor; gap_media_mes menor"
+    },
+    {
+      "divipola": "68855",
+      "municipio": "VALLE DE SAN JOSE",
+      "lat": 6.434686917,
+      "lon": -73.10983732,
+      "cluster": 1,
+      "etiqueta": "frac_prof_lt30 menor; centroid_lon menor; gap_media_mes menor"
+    },
+    {
+      "divipola": "68861",
+      "municipio": "VELEZ",
+      "lat": 6.21538391,
+      "lon": -73.69881677,
+      "cluster": 1,
+      "etiqueta": "frac_prof_lt30 menor; centroid_lon menor; gap_media_mes menor"
+    },
+    {
+      "divipola": "68867",
+      "municipio": "VETAS",
+      "lat": 7.322801685,
+      "lon": -72.88164006,
+      "cluster": 0,
+      "etiqueta": "frac_prof_lt30 mayor; frac_70_300 menor; gap_media_mes mayor"
+    },
+    {
+      "divipola": "68872",
+      "municipio": "VILLANUEVA",
+      "lat": 6.686856965,
+      "lon": -73.16522752,
+      "cluster": 1,
+      "etiqueta": "frac_prof_lt30 menor; centroid_lon menor; gap_media_mes menor"
+    },
+    {
+      "divipola": "68895",
+      "municipio": "ZAPATOCA",
+      "lat": 6.835106949999999,
+      "lon": -73.27904563,
+      "cluster": 2,
+      "etiqueta": "fraction_months_m4 mayor; n_m_ge_4_mes mayor; fraction_months_m3 mayor"
+    }
+  ],
+  "perfiles": [
+    {
+      "cluster": 0,
+      "etiqueta": "frac_prof_lt30 mayor; frac_70_300 menor; gap_media_mes mayor",
+      "n_municipios": 19,
+      "municipios": [
+        "68132",
+        "68147",
+        "68152",
+        "68162",
+        "68207",
+        "68217",
+        "68264",
+        "68266",
+        "68318",
+        "68425",
+        "68432",
+        "68464",
+        "68468",
+        "68502",
+        "68682",
+        "68684",
+        "68686",
+        "68705",
+        "68867"
+      ],
+      "rasgos": [
+        {
+          "variable": "frac_prof_lt30",
+          "direccion": "mayor",
+          "desviaciones_estandar": 1.443
+        },
+        {
+          "variable": "frac_70_300",
+          "direccion": "menor",
+          "desviaciones_estandar": -1.341
+        },
+        {
+          "variable": "gap_media_mes",
+          "direccion": "mayor",
+          "desviaciones_estandar": 1.298
+        }
+      ],
+      "medias": {
+        "n_eventos_mes": 0.2444041137326074,
+        "mag_max_mes": 2.3210526315789473,
+        "mag_media_mes": 1.689418361262947,
+        "prof_media_mes": 69.4892341161382,
+        "frac_prof_lt30": 0.49176701433962644,
+        "frac_30_70": 0.03854444489119411,
+        "frac_70_300": 0.4696885407691795,
+        "frac_gt300": 0.0,
+        "rms_media_mes": 0.6333168381211604,
+        "gap_media_mes": 181.9236431355594,
+        "fases_media_mes": 11.085449695988414,
+        "energia_log_3m": 2.4410523079504864,
+        "n_eventos_vecinos_mes": 267.7235329703569,
+        "poblacion": 5457.320629159104,
+        "centroid_lat": 6.672761234842105,
+        "centroid_lon": -72.78484381526316,
+        "n_m_ge_3_mes": 0.0006049606775559588,
+        "n_m_ge_4_mes": 0.0,
+        "event_frequency_std": 0.5133226723240035,
+        "fraction_months_m3": 0.0006049606775559588,
+        "fraction_months_m4": 0.0
+      }
+    },
+    {
+      "cluster": 1,
+      "etiqueta": "frac_prof_lt30 menor; centroid_lon menor; gap_media_mes menor",
+      "n_municipios": 66,
+      "municipios": [
+        "68001",
+        "68013",
+        "68020",
+        "68051",
+        "68077",
+        "68079",
+        "68081",
+        "68092",
+        "68101",
+        "68121",
+        "68160",
+        "68167",
+        "68169",
+        "68176",
+        "68179",
+        "68190",
+        "68209",
+        "68211",
+        "68229",
+        "68235",
+        "68245",
+        "68250",
+        "68255",
+        "68271",
+        "68276",
+        "68296",
+        "68298",
+        "68307",
+        "68320",
+        "68322",
+        "68324",
+        "68327",
+        "68344",
+        "68368",
+        "68370",
+        "68377",
+        "68385",
+        "68397",
+        "68406",
+        "68444",
+        "68498",
+        "68500",
+        "68522",
+        "68524",
+        "68533",
+        "68547",
+        "68549",
+        "68572",
+        "68573",
+        "68575",
+        "68615",
+        "68655",
+        "68669",
+        "68673",
+        "68679",
+        "68689",
+        "68720",
+        "68745",
+        "68755",
+        "68770",
+        "68773",
+        "68780",
+        "68820",
+        "68855",
+        "68861",
+        "68872"
+      ],
+      "rasgos": [
+        {
+          "variable": "frac_prof_lt30",
+          "direccion": "menor",
+          "desviaciones_estandar": -0.39
+        },
+        {
+          "variable": "centroid_lon",
+          "direccion": "menor",
+          "desviaciones_estandar": -0.367
+        },
+        {
+          "variable": "gap_media_mes",
+          "direccion": "menor",
+          "desviaciones_estandar": -0.364
+        }
+      ],
+      "medias": {
+        "n_eventos_mes": 5.032044583768722,
+        "mag_max_mes": 3.289393939393939,
+        "mag_media_mes": 1.6852554233447523,
+        "prof_media_mes": 114.08644600849584,
+        "frac_prof_lt30": 0.09609267993658777,
+        "frac_30_70": 0.03894832951126048,
+        "frac_70_300": 0.864958990552152,
+        "frac_gt300": 0.0,
+        "rms_media_mes": 0.5304005457118192,
+        "gap_media_mes": 129.94699389665254,
+        "fases_media_mes": 17.27579750442709,
+        "energia_log_3m": 7.386411756372905,
+        "n_eventos_vecinos_mes": 350.98711250435383,
+        "poblacion": 33026.75026123302,
+        "centroid_lat": 6.5376260330000004,
+        "centroid_lon": -73.41810356909092,
+        "n_m_ge_3_mes": 0.03587600139324276,
+        "n_m_ge_4_mes": 0.0031347962382445144,
+        "event_frequency_std": 3.3766593048843374,
+        "fraction_months_m3": 0.03221873911529084,
+        "fraction_months_m4": 0.0031347962382445144
+      }
+    },
+    {
+      "cluster": 2,
+      "etiqueta": "fraction_months_m4 mayor; n_m_ge_4_mes mayor; fraction_months_m3 mayor",
+      "n_municipios": 2,
+      "municipios": [
+        "68418",
+        "68895"
+      ],
+      "rasgos": [
+        {
+          "variable": "fraction_months_m4",
+          "direccion": "mayor",
+          "desviaciones_estandar": 6.433
+        },
+        {
+          "variable": "n_m_ge_4_mes",
+          "direccion": "mayor",
+          "desviaciones_estandar": 6.216
+        },
+        {
+          "variable": "fraction_months_m3",
+          "direccion": "mayor",
+          "desviaciones_estandar": 6.101
+        }
+      ],
+      "medias": {
+        "n_eventos_mes": 353.45977011494256,
+        "mag_max_mes": 5.6,
+        "mag_media_mes": 1.9160627298630315,
+        "prof_media_mes": 141.26204051873947,
+        "frac_prof_lt30": 0.001060689245261254,
+        "frac_30_70": 0.00025899268435341377,
+        "frac_70_300": 0.9986803180703853,
+        "frac_gt300": 0.0,
+        "rms_media_mes": 0.5621322383460583,
+        "gap_media_mes": 130.80832412882836,
+        "fases_media_mes": 18.52473103455148,
+        "energia_log_3m": 16.990773788199487,
+        "n_eventos_vecinos_mes": 534.183908045977,
+        "poblacion": 12846.896551724138,
+        "centroid_lat": 6.8236351645,
+        "centroid_lon": -73.19339933,
+        "n_m_ge_3_mes": 11.120689655172415,
+        "n_m_ge_4_mes": 1.4827586206896552,
+        "event_frequency_std": 116.42951608453245,
+        "fraction_months_m3": 0.9195402298850575,
+        "fraction_months_m4": 0.7413793103448276
+      }
+    }
+  ],
+  "metricas": {
+    "k": 3,
+    "silhouette": 0.27774697577747365,
+    "davies_bouldin": 1.062346808657855,
+    "stability_ari": {
+      "7": 1.0,
+      "21": 0.3869513481667637,
+      "42": 1.0
+    },
+    "agglomerative_silhouette": 0.2853822998779911,
+    "agglomerative_ari": 0.6791734284793414,
+    "candidatos": [
+      {
+        "k": 3,
+        "silhouette": 0.27774697577747365,
+        "davies_bouldin": 1.062346808657855
+      },
+      {
+        "k": 4,
+        "silhouette": 0.24110369058663247,
+        "davies_bouldin": 1.232270990325022
+      },
+      {
+        "k": 5,
+        "silhouette": 0.22248386776004642,
+        "davies_bouldin": 1.2457651748744276
+      },
+      {
+        "k": 6,
+        "silhouette": 0.229172383066465,
+        "davies_bouldin": 1.2571683881180342
+      },
+      {
+        "k": 7,
+        "silhouette": 0.2470266981929362,
+        "davies_bouldin": 1.000236992485957
+      }
+    ]
+  },
+  "metadata": {
+    "fit_until": "2025-05",
+    "features": [
+      "n_eventos_mes",
+      "mag_max_mes",
+      "mag_media_mes",
+      "prof_media_mes",
+      "frac_prof_lt30",
+      "frac_30_70",
+      "frac_70_300",
+      "frac_gt300",
+      "rms_media_mes",
+      "gap_media_mes",
+      "fases_media_mes",
+      "energia_log_3m",
+      "n_eventos_vecinos_mes",
+      "poblacion",
+      "centroid_lat",
+      "centroid_lon",
+      "n_m_ge_3_mes",
+      "n_m_ge_4_mes",
+      "event_frequency_std",
+      "fraction_months_m3",
+      "fraction_months_m4"
+    ],
+    "metodo": "KMeans",
+    "ejemplo": false,
+    "targets_usados": false,
+    "data_sha256": "92cb622123e471487df9ef6e617023ef216a82617bd3dbc8ffbd5da3db63e400",
+    "scope": "Medio pre-test; includes original supervised/RL validation months"
+  }
+}
