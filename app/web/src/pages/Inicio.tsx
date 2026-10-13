@@ -37,6 +37,9 @@ export function Inicio() {
   return (
     <div className="contenedor land">
       <Hero />
+      <div className="land-cta">
+        <Link to="/como-funciona" className="btn btn--primario">Ver cómo funciona todo</Link>
+      </div>
       <Problematica total={total} />
       <PorQueEsDificil />
 

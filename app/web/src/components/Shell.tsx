@@ -4,6 +4,7 @@ import { Footer } from './Footer.tsx'
 
 export const PAGINAS = [
   { to: '/', texto: 'Inicio' },
+  { to: '/como-funciona', texto: 'Cómo funciona' },
   { to: '/basico', texto: 'Básico' },
   { to: '/medio', texto: 'Medio' },
   { to: '/avanzado', texto: 'Avanzado' },
