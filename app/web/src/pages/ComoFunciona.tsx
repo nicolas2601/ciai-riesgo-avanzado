@@ -56,7 +56,7 @@ const PASOS: readonly Paso[] = [
 function Diagrama({ png, alt }: { png: string; alt: string }) {
   return (
     <>
-      <img className="cf__img" src={`/diagramas/${png}.png`} alt={alt} loading="lazy" />
+      <img className="cf__img" src={`/diagramas/${png}.png?v=2`} alt={alt} loading="lazy" />
       <a href={`/diagramas/${png}.html`} target="_blank" rel="noopener noreferrer">Abrir interactivo</a>
     </>
   )

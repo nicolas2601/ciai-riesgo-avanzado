@@ -194,7 +194,7 @@ export function Diagrama({ id, titulo, intro, archivo, alt }: {
   alt: string
 }) {
   const [fallo, setFallo] = useState(false)
-  const src = `${import.meta.env.BASE_URL}diagramas/${archivo}`
+  const src = `${import.meta.env.BASE_URL}diagramas/${archivo}?v=2`
   const interactivo = src.replace(/\.png$/, '.html')
   return (
     <section className="bloque land-seccion" aria-labelledby={id}>
