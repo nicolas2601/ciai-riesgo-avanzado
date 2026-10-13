@@ -81,6 +81,39 @@ Reglas:
 9. Si dos memorias se contradicen, no se borra: se guarda una nueva que la reemplaza y explica por que.
 10. El Engram personal de Nico revisa uts cada 2 minutos por un watcher; no hace falta avisarle.
 
+### Prompt para configurar el MCP (pegalo en tu agente)
+
+```text
+Configura el MCP de memoria compartida del equipo.
+1. Ejecuta: claude mcp add --transport http engram-uts https://engram-uts.nicolasmoreno.site/mcp
+2. Dime que abra /mcp, elija engram-uts y pulse Authenticate; la contrasena se escribe en el navegador (me la dio Nico en privado). No la pegues en ningun archivo ni commit.
+3. Cuando diga que esta conectado, verifica con mem_search (query "contrato", project "ciai-riesgo"): debe aparecer "Contrato API v0.2". Si no aparece, dime el error exacto.
+4. Lee AGENTS.md del repo y sigue sus reglas de Engram desde ahora.
+```
+
+### Prompt de arranque de cada sesion
+
+```text
+Inicio de sesion en el repo ciai-riesgo-avanzado.
+1. git pull --rebase y dime la rama y el ultimo commit.
+2. Con el MCP engram-uts (project "ciai-riesgo"): mem_context, mem_search "handoff" y mem_search "claim"; resume que dejaron las otras sesiones y que archivos estan reclamados.
+3. Lee mi documento de tareas en docs/plan/ (ML: 04, web: 05, integracion: 06) y dime el siguiente paso segun los hitos.
+4. Trabaja en commits pequenos. Antes de cerrar: guarda las memorias del trabajo, escribe el handoff y haz git push.
+```
+
+### Trabajar entre sesiones y computadores
+
+Git lleva el codigo; Engram lleva el contexto (decisiones, hallazgos, estado). Ninguno reemplaza al otro: lo importante se escribe en los dos.
+
+1. **Al empezar**: `git pull --rebase` y luego la memoria (`mem_context`, `mem_search "handoff"`). Una sesion nueva o un computador distinto arranca sabiendo lo que hicieron las demas.
+2. **Reclamar antes de tocar algo compartido** (contrato de la API, AGENTS.md, esquema de datos, `pyproject.toml`): `mem_save` con `topic_key` `ciai/claims/<archivo>` diciendo quien lo edita y por cuanto tiempo. Si hay un claim vigente de otra persona, pidele que lo libere o coordina antes de editar. Al hacer `git push`, actualiza el claim a "liberado".
+3. **Dueno por area** (ver el mapa del repo): cada quien edita lo suyo; los cambios en lo ajeno se piden por memoria o por mensaje, no se hacen por tu cuenta.
+4. **Handoff al cerrar** (cada sesion, siempre): `mem_save` con `topic_key` `ciai/handoff/<persona>-<equipo>` (por ejemplo `ciai/handoff/zabdiel-laptop`) que diga: rama, SHA del ultimo commit, que quedo hecho, que esta corriendo (entrenamientos, servidores), siguiente paso exacto y bloqueos. Se sobrescribe en cada cierre. Despues `mem_session_summary` y `git push`.
+5. **Mismo trabajo en dos computadores**: usa un handoff por equipo y nunca dos sesiones sobre los mismos archivos a la vez. Al cambiar de computador: `git pull --rebase`, lee el handoff del otro equipo y continua desde ahi.
+6. **Lo que no esta en git no existe**: los datos crudos, los pesos y las corridas se referencian por ruta, hash y run id de MLflow en la memoria (nunca el archivo ni secretos).
+7. **Conflictos**: si dos memorias dicen cosas distintas, gana la mas reciente con fuente verificable; se registra una nueva que explica el cambio (regla 9). Si dos commits chocan, resuelve quien hizo `pull` despues, y avisa por memoria.
+8. **Cuando termine el hackathon** Nico elimina el servidor. Lo guardado ya esta en su Engram personal bajo el proyecto `ciai-riesgo`; quien quiera una copia puede pedir un export a Nico.
+
 ## Revision cruzada
 
 Antes de congelar un contrato, un modelo o un resultado, otra persona o sesion lo revisa buscando problemas concretos y reproducibles (no estilo). En este proyecto una sola ronda encontro 9 errores reales: se repite en cada hito.
