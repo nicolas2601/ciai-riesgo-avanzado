@@ -1,0 +1,6 @@
+model,status,reason,note,macro_f1,balanced_accuracy,accuracy
+A_dummy_majority,evaluated,,no-learning baseline,0.3249,0.3333,0.9505
+B_logreg_balanced,evaluated,,"class_weight=balanced, no resampling",0.5253,0.6759,0.7887
+C_ros_logreg,evaluated,,RandomOverSampler on train only; plain LR,0.5113,0.6817,0.779
+D_smote_logreg,evaluated,,"k_neighbors=5 for smallest class n=111; binary-like columns ['frac_gt300', 'hay_eventos_mes'] are interpolated without rounding (documented caveat); plain LR, never combined with class weights",0.5367,0.6914,0.8329
+E_rf_balanced,evaluated,,no tuning; reasonable default under time pressure,0.5933,0.6188,0.9576

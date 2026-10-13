@@ -1,0 +1,20 @@
+{
+  "seed": 7,
+  "budget_k": 5,
+  "total_timesteps": 8192,
+  "n_steps": 64,
+  "batch_size": 32,
+  "learning_rate": 0.0003,
+  "net_arch": [
+    64
+  ],
+  "gamma": 1.0,
+  "device": "cpu",
+  "train_months": [
+    "2019-02",
+    "2024-04"
+  ],
+  "n_train_cutoffs": 63,
+  "train_seconds": 13.45,
+  "init": "random weights (MaskablePPO default)"
+}

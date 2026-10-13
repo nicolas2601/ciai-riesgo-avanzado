@@ -1,0 +1,35 @@
+{
+  "train": {
+    "start": "2019-02",
+    "end": "2024-04",
+    "n_months": 63,
+    "n_rows": 5481,
+    "classes": {
+      "bajo": 5225,
+      "medio": 145,
+      "alto": 111
+    }
+  },
+  "val": {
+    "start": "2024-05",
+    "end": "2025-05",
+    "n_months": 13,
+    "n_rows": 1131,
+    "classes": {
+      "bajo": 1075,
+      "medio": 35,
+      "alto": 21
+    }
+  },
+  "test": {
+    "start": "2025-06",
+    "end": "2026-08",
+    "n_months": 15,
+    "n_rows": 1305,
+    "classes": {
+      "bajo": 1245,
+      "medio": 41,
+      "alto": 19
+    }
+  }
+}

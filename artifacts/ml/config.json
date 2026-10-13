@@ -1,0 +1,36 @@
+{
+  "random_state": 7,
+  "selection_metric": "macro_f1",
+  "models": [
+    {
+      "model": "A_dummy_majority",
+      "status": "evaluated",
+      "reason": null,
+      "note": "no-learning baseline"
+    },
+    {
+      "model": "B_logreg_balanced",
+      "status": "evaluated",
+      "reason": null,
+      "note": "class_weight=balanced, no resampling"
+    },
+    {
+      "model": "C_ros_logreg",
+      "status": "evaluated",
+      "reason": null,
+      "note": "RandomOverSampler on train only; plain LR"
+    },
+    {
+      "model": "D_smote_logreg",
+      "status": "evaluated",
+      "reason": null,
+      "note": "k_neighbors=5 for smallest class n=111; binary-like columns ['frac_gt300', 'hay_eventos_mes'] are interpolated without rounding (documented caveat); plain LR, never combined with class weights"
+    },
+    {
+      "model": "E_rf_balanced",
+      "status": "evaluated",
+      "reason": null,
+      "note": "no tuning; reasonable default under time pressure"
+    }
+  ]
+}

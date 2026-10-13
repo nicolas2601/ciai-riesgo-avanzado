@@ -24,9 +24,16 @@ dev = [
 dl = ["torch"]
 # Official challenge (UTSmart 2026): data integration, supervised / unsupervised blocks, reinforcement learning, demo.
 reto = [
-  "gymnasium", "stable-baselines3", "sb3-contrib",
-  "openpyxl", "requests", "beautifulsoup4", "lxml",
-  "folium", "seaborn",
+  "gymnasium",
+  "stable-baselines3",
+  "sb3-contrib",
+  "openpyxl",
+  "requests",
+  "beautifulsoup4",
+  "lxml",
+  "folium",
+  "seaborn",
+  "imbalanced-learn>=0.14.2",
 ]
 demo = ["streamlit"]
 

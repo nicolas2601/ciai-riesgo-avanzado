@@ -1,0 +1,506 @@
+{
+  "data_sha256": "92cb622123e471487df9ef6e617023ef216a82617bd3dbc8ffbd5da3db63e400",
+  "panel_rows": 8961,
+  "supervised_rows": 7917,
+  "features": [
+    "n_eventos_mes",
+    "n_eventos_3m",
+    "n_eventos_12m",
+    "mag_max_mes",
+    "mag_max_3m",
+    "mag_media_mes",
+    "mag_std_mes",
+    "n_m_ge_3_mes",
+    "n_m_ge_3_12m",
+    "n_m_ge_4_mes",
+    "n_m_ge_4_12m",
+    "energia_log_3m",
+    "prof_media_mes",
+    "prof_std_mes",
+    "frac_prof_lt30",
+    "frac_30_70",
+    "frac_70_300",
+    "frac_gt300",
+    "rms_media_mes",
+    "gap_media_mes",
+    "fases_media_mes",
+    "dias_desde_ultimo_evento",
+    "dias_desde_ultimo_m3",
+    "n_eventos_vecinos_mes",
+    "centroid_lat",
+    "centroid_lon",
+    "hay_eventos_mes",
+    "mc_maxc_12m",
+    "n_m_ge_mc_mes",
+    "n_eventos_departamento_mes",
+    "year_context",
+    "poblacion"
+  ],
+  "partitions": {
+    "train": {
+      "start": "2019-02",
+      "end": "2024-04",
+      "n_months": 63,
+      "n_rows": 5481,
+      "classes": {
+        "bajo": 5225,
+        "medio": 145,
+        "alto": 111
+      }
+    },
+    "val": {
+      "start": "2024-05",
+      "end": "2025-05",
+      "n_months": 13,
+      "n_rows": 1131,
+      "classes": {
+        "bajo": 1075,
+        "medio": 35,
+        "alto": 21
+      }
+    },
+    "test": {
+      "start": "2025-06",
+      "end": "2026-08",
+      "n_months": 15,
+      "n_rows": 1305,
+      "classes": {
+        "bajo": 1245,
+        "medio": 41,
+        "alto": 19
+      }
+    }
+  },
+  "seeds": {
+    "random_state": 7
+  },
+  "selection": {
+    "metric": "macro_f1",
+    "split": "val",
+    "winner": "E_rf_balanced"
+  },
+  "validation": {
+    "A_dummy_majority": {
+      "model": "A_dummy_majority",
+      "status": "evaluated",
+      "metrics": {
+        "macro_f1": 0.3249,
+        "balanced_accuracy": 0.3333,
+        "accuracy": 0.9505,
+        "per_class": {
+          "bajo": {
+            "precision": 0.9505,
+            "recall": 1.0,
+            "f1": 0.9746,
+            "support": 1075
+          },
+          "medio": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 35
+          },
+          "alto": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 21
+          }
+        },
+        "confusion_matrix": {
+          "labels": [
+            "bajo",
+            "medio",
+            "alto"
+          ],
+          "matrix": [
+            [
+              1075,
+              0,
+              0
+            ],
+            [
+              35,
+              0,
+              0
+            ],
+            [
+              21,
+              0,
+              0
+            ]
+          ]
+        },
+        "high_class_ovr": {
+          "label": "alto",
+          "roc_auc": null,
+          "note": "AUC unavailable: high class absent from y_true or proba"
+        }
+      },
+      "train_seconds": 0.04,
+      "eval_seconds": 0.0,
+      "note": "no-learning baseline"
+    },
+    "B_logreg_balanced": {
+      "model": "B_logreg_balanced",
+      "status": "evaluated",
+      "metrics": {
+        "macro_f1": 0.5253,
+        "balanced_accuracy": 0.6759,
+        "accuracy": 0.7887,
+        "per_class": {
+          "bajo": {
+            "precision": 0.9851,
+            "recall": 0.7991,
+            "f1": 0.8824,
+            "support": 1075
+          },
+          "medio": {
+            "precision": 0.0796,
+            "recall": 0.5143,
+            "f1": 0.1379,
+            "support": 35
+          },
+          "alto": {
+            "precision": 0.4545,
+            "recall": 0.7143,
+            "f1": 0.5556,
+            "support": 21
+          }
+        },
+        "confusion_matrix": {
+          "labels": [
+            "bajo",
+            "medio",
+            "alto"
+          ],
+          "matrix": [
+            [
+              859,
+              204,
+              12
+            ],
+            [
+              11,
+              18,
+              6
+            ],
+            [
+              2,
+              4,
+              15
+            ]
+          ]
+        },
+        "high_class_ovr": {
+          "label": "alto",
+          "roc_auc": null,
+          "note": "AUC unavailable: high class absent from y_true or proba"
+        }
+      },
+      "train_seconds": 0.56,
+      "eval_seconds": 0.0,
+      "note": "class_weight=balanced, no resampling"
+    },
+    "C_ros_logreg": {
+      "model": "C_ros_logreg",
+      "status": "evaluated",
+      "metrics": {
+        "macro_f1": 0.5113,
+        "balanced_accuracy": 0.6817,
+        "accuracy": 0.779,
+        "per_class": {
+          "bajo": {
+            "precision": 0.986,
+            "recall": 0.7879,
+            "f1": 0.8759,
+            "support": 1075
+          },
+          "medio": {
+            "precision": 0.0809,
+            "recall": 0.5429,
+            "f1": 0.1407,
+            "support": 35
+          },
+          "alto": {
+            "precision": 0.4054,
+            "recall": 0.7143,
+            "f1": 0.5172,
+            "support": 21
+          }
+        },
+        "confusion_matrix": {
+          "labels": [
+            "bajo",
+            "medio",
+            "alto"
+          ],
+          "matrix": [
+            [
+              847,
+              212,
+              16
+            ],
+            [
+              10,
+              19,
+              6
+            ],
+            [
+              2,
+              4,
+              15
+            ]
+          ]
+        },
+        "high_class_ovr": {
+          "label": "alto",
+          "roc_auc": null,
+          "note": "AUC unavailable: high class absent from y_true or proba"
+        }
+      },
+      "train_seconds": 5.56,
+      "eval_seconds": 0.0,
+      "note": "RandomOverSampler on train only; plain LR"
+    },
+    "D_smote_logreg": {
+      "model": "D_smote_logreg",
+      "status": "evaluated",
+      "metrics": {
+        "macro_f1": 0.5367,
+        "balanced_accuracy": 0.6914,
+        "accuracy": 0.8329,
+        "per_class": {
+          "bajo": {
+            "precision": 0.9848,
+            "recall": 0.8456,
+            "f1": 0.9099,
+            "support": 1075
+          },
+          "medio": {
+            "precision": 0.1047,
+            "recall": 0.5143,
+            "f1": 0.1739,
+            "support": 35
+          },
+          "alto": {
+            "precision": 0.4167,
+            "recall": 0.7143,
+            "f1": 0.5263,
+            "support": 21
+          }
+        },
+        "confusion_matrix": {
+          "labels": [
+            "bajo",
+            "medio",
+            "alto"
+          ],
+          "matrix": [
+            [
+              909,
+              150,
+              16
+            ],
+            [
+              12,
+              18,
+              5
+            ],
+            [
+              2,
+              4,
+              15
+            ]
+          ]
+        },
+        "high_class_ovr": {
+          "label": "alto",
+          "roc_auc": null,
+          "note": "AUC unavailable: high class absent from y_true or proba"
+        }
+      },
+      "train_seconds": 5.91,
+      "eval_seconds": 0.0,
+      "note": "k_neighbors=5 for smallest class n=111; binary-like columns ['frac_gt300', 'hay_eventos_mes'] are interpolated without rounding (documented caveat); plain LR, never combined with class weights"
+    },
+    "E_rf_balanced": {
+      "model": "E_rf_balanced",
+      "status": "evaluated",
+      "metrics": {
+        "macro_f1": 0.5933,
+        "balanced_accuracy": 0.6188,
+        "accuracy": 0.9576,
+        "per_class": {
+          "bajo": {
+            "precision": 0.9717,
+            "recall": 0.9898,
+            "f1": 0.9806,
+            "support": 1075
+          },
+          "medio": {
+            "precision": 0.2222,
+            "recall": 0.0571,
+            "f1": 0.0909,
+            "support": 35
+          },
+          "alto": {
+            "precision": 0.6296,
+            "recall": 0.8095,
+            "f1": 0.7083,
+            "support": 21
+          }
+        },
+        "confusion_matrix": {
+          "labels": [
+            "bajo",
+            "medio",
+            "alto"
+          ],
+          "matrix": [
+            [
+              1064,
+              7,
+              4
+            ],
+            [
+              27,
+              2,
+              6
+            ],
+            [
+              4,
+              0,
+              17
+            ]
+          ]
+        },
+        "high_class_ovr": {
+          "label": "alto",
+          "roc_auc": null,
+          "note": "AUC unavailable: high class absent from y_true or proba"
+        }
+      },
+      "train_seconds": 0.72,
+      "eval_seconds": 0.05,
+      "note": "no tuning; reasonable default under time pressure"
+    }
+  },
+  "test": {
+    "model": "E_rf_balanced",
+    "metrics": {
+      "macro_f1": 0.5296,
+      "balanced_accuracy": 0.5757,
+      "accuracy": 0.9556,
+      "per_class": {
+        "bajo": {
+          "precision": 0.9701,
+          "recall": 0.9904,
+          "f1": 0.9801,
+          "support": 1245
+        },
+        "medio": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 41
+        },
+        "alto": {
+          "precision": 0.5185,
+          "recall": 0.7368,
+          "f1": 0.6087,
+          "support": 19
+        }
+      },
+      "confusion_matrix": {
+        "labels": [
+          "bajo",
+          "medio",
+          "alto"
+        ],
+        "matrix": [
+          [
+            1233,
+            7,
+            5
+          ],
+          [
+            33,
+            0,
+            8
+          ],
+          [
+            5,
+            0,
+            14
+          ]
+        ]
+      },
+      "high_class_ovr": {
+        "label": "alto",
+        "roc_auc": null,
+        "note": "AUC unavailable: high class absent from y_true or proba"
+      }
+    },
+    "eval_seconds": 0.06,
+    "dummy_reference": {
+      "macro_f1": 0.3255,
+      "balanced_accuracy": 0.3333,
+      "accuracy": 0.954,
+      "per_class": {
+        "bajo": {
+          "precision": 0.954,
+          "recall": 1.0,
+          "f1": 0.9765,
+          "support": 1245
+        },
+        "medio": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 41
+        },
+        "alto": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 19
+        }
+      },
+      "confusion_matrix": {
+        "labels": [
+          "bajo",
+          "medio",
+          "alto"
+        ],
+        "matrix": [
+          [
+            1245,
+            0,
+            0
+          ],
+          [
+            41,
+            0,
+            0
+          ],
+          [
+            19,
+            0,
+            0
+          ]
+        ]
+      },
+      "high_class_ovr": {
+        "label": "alto",
+        "roc_auc": null,
+        "note": "AUC unavailable: high class absent from y_true or proba"
+      }
+    }
+  },
+  "caveats": [
+    "DANE poblacion is a retrospective CNPV2018 projection, not as-of data.",
+    "SGC catalog is retrospective/revised; results are a backtest.",
+    "Not an operational forecast of earthquakes, damage or official hazard."
+  ]
+}

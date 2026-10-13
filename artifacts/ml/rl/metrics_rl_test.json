@@ -1,0 +1,58 @@
+{
+  "n_cutoffs": 15,
+  "cutoffs_with_positive": 15,
+  "agent": {
+    "mean": 0.4667,
+    "std": 0.1578,
+    "min": 0.2,
+    "max": 0.8
+  },
+  "random": {
+    "mean": 0.0133,
+    "std": 0.0239,
+    "min": 0.0,
+    "max": 0.08
+  },
+  "static": {
+    "mean": 0.4667,
+    "std": 0.1578,
+    "min": 0.2,
+    "max": 0.8
+  },
+  "ranker": {
+    "mean": 0.3733,
+    "std": 0.1436,
+    "min": 0.2,
+    "max": 0.6
+  },
+  "agent_minus_static": {
+    "mean": 0.0,
+    "std": 0.0
+  },
+  "oracle_gap_agent": 0.32,
+  "split": "test",
+  "eval_months": [
+    "2025-06",
+    "2026-08"
+  ],
+  "budget_k": 5,
+  "random_seeds": [
+    7,
+    11,
+    23,
+    41,
+    59
+  ],
+  "data_sha256": "92cb622123e471487df9ef6e617023ef216a82617bd3dbc8ffbd5da3db63e400",
+  "ranker_binary_check": {
+    "support_pos": 60,
+    "n": 1305,
+    "macro_f1": 0.6385
+  },
+  "ranker_train_support": {
+    "0": 5225,
+    "1": 256
+  },
+  "oracle_note": "retrospective reference only; not an operative policy",
+  "reward_note": "terminal mean of observed future activity; not damage"
+}

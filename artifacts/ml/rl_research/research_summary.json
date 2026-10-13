@@ -1,0 +1,43 @@
+{
+  "selection_rule": "highest seed-averaged val mean reward; tie-breaks: paired win-rate vs static, then simpler variant (V0 < V1 < V2)",
+  "variant_val_mean": {
+    "V0_ref": 0.4974,
+    "V1_clip": 0.4923,
+    "V2_permuni": 0.0257
+  },
+  "winner": {
+    "variant": "V0_ref",
+    "seed": 7
+  },
+  "hyper": {
+    "total_timesteps": 8192,
+    "n_steps": 64,
+    "batch_size": 32,
+    "learning_rate": 0.0003,
+    "gamma": 1.0,
+    "device": "cpu"
+  },
+  "train_seeds": [
+    7,
+    21,
+    42
+  ],
+  "budget_k": 5,
+  "val_months": [
+    "2024-05",
+    "2025-05"
+  ],
+  "data_sha256": "92cb622123e471487df9ef6e617023ef216a82617bd3dbc8ffbd5da3db63e400",
+  "test_caveat": "test months were exposed by the earlier reference track; the single test run below is confirmatory, not an intact firewall",
+  "test": {
+    "variant": "V0_ref",
+    "seed": 7,
+    "test_months": [
+      "2025-06",
+      "2026-08"
+    ],
+    "mean": 0.4667,
+    "static_mean": 0.4667,
+    "ranker_mean": 0.3733
+  }
+}

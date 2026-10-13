@@ -1,0 +1,10 @@
+variant,seed,model_path,train_episodes,train_reward_last10_mean,train_reward_first10_mean,val_mean,val_entropy,probe_n_cutoffs,probe_distinct_sets,probe_zero_agree,probe_swap_agree
+V0_ref,7,artifacts/ml/rl_research/policies/V0_ref_seed7.zip,1638,0.5146,0.0699,0.5231,1.1743,13,1,13,13
+V0_ref,21,artifacts/ml/rl_research/policies/V0_ref_seed21.zip,1638,0.4817,0.0564,0.4615,1.4165,13,1,13,13
+V0_ref,42,artifacts/ml/rl_research/policies/V0_ref_seed42.zip,1638,0.4622,0.0417,0.5077,1.5342,13,1,13,13
+V1_clip,7,artifacts/ml/rl_research/policies/V1_clip_seed7.zip,1638,0.4817,0.0699,0.4769,1.4963,13,1,13,13
+V1_clip,21,artifacts/ml/rl_research/policies/V1_clip_seed21.zip,1638,0.4793,0.0589,0.4769,1.5984,13,1,13,13
+V1_clip,42,artifacts/ml/rl_research/policies/V1_clip_seed42.zip,1638,0.4671,0.0491,0.5231,1.5248,13,1,13,13
+V2_permuni,7,artifacts/ml/rl_research/policies/V2_permuni_seed7.zip,1638,0.0415,0.038,0.0154,4.4389,13,11,0,0
+V2_permuni,21,artifacts/ml/rl_research/policies/V2_permuni_seed21.zip,1638,0.0561,0.0393,0.0462,4.4384,13,13,0,0
+V2_permuni,42,artifacts/ml/rl_research/policies/V2_permuni_seed42.zip,1638,0.0549,0.0429,0.0154,4.4214,13,13,0,0

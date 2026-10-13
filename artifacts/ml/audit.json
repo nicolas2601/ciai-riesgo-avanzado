@@ -1,0 +1,887 @@
+{
+  "panel_path": "/home/hotpot/Descargas/ciai-riesgo-avanzado/data/panel/panel_municipio_mes.csv.gz",
+  "sha256": "92cb622123e471487df9ef6e617023ef216a82617bd3dbc8ffbd5da3db63e400",
+  "rows": 8961,
+  "columns": 45,
+  "municipalities": 87,
+  "months_total": 103,
+  "month_min": "2018-03",
+  "month_max": "2026-09",
+  "dtypes": {
+    "zone_id": "int64",
+    "divipola": "int64",
+    "municipio": "str",
+    "month": "str",
+    "feature_cutoff": "str",
+    "source_system": "str",
+    "coverage_complete": "bool",
+    "history_12m_complete": "bool",
+    "eligible": "bool",
+    "n_eventos_mes": "float64",
+    "n_eventos_3m": "float64",
+    "n_eventos_12m": "float64",
+    "mag_max_mes": "float64",
+    "mag_max_3m": "float64",
+    "mag_media_mes": "float64",
+    "mag_std_mes": "float64",
+    "n_m_ge_3_mes": "float64",
+    "n_m_ge_3_12m": "float64",
+    "n_m_ge_4_mes": "float64",
+    "n_m_ge_4_12m": "float64",
+    "energia_log_3m": "float64",
+    "prof_media_mes": "float64",
+    "prof_std_mes": "float64",
+    "frac_prof_lt30": "float64",
+    "frac_30_70": "float64",
+    "frac_70_300": "float64",
+    "frac_gt300": "float64",
+    "rms_media_mes": "float64",
+    "gap_media_mes": "float64",
+    "fases_media_mes": "float64",
+    "dias_desde_ultimo_evento": "float64",
+    "dias_desde_ultimo_m3": "float64",
+    "n_eventos_vecinos_mes": "float64",
+    "centroid_lat": "float64",
+    "centroid_lon": "float64",
+    "hay_eventos_mes": "int64",
+    "mc_maxc_12m": "float64",
+    "n_m_ge_mc_mes": "float64",
+    "n_eventos_departamento_mes": "float64",
+    "year_context": "int64",
+    "poblacion": "int64",
+    "target_n_eventos_mes_siguiente": "float64",
+    "target_clase_mes_siguiente": "str",
+    "target_actividad_m3_mes_siguiente": "float64",
+    "target_month": "str"
+  },
+  "duplicate_zone_month": 0,
+  "nulls": {
+    "n_eventos_3m": 174,
+    "n_eventos_12m": 957,
+    "mag_max_3m": 174,
+    "mag_std_mes": 1463,
+    "n_m_ge_3_12m": 957,
+    "n_m_ge_4_12m": 957,
+    "energia_log_3m": 174,
+    "prof_std_mes": 1463,
+    "target_n_eventos_mes_siguiente": 87,
+    "target_clase_mes_siguiente": 87,
+    "target_actividad_m3_mes_siguiente": 87
+  },
+  "target_counts_all": {
+    "bajo": 8466,
+    "medio": 242,
+    "alto": 166
+  },
+  "target_null_rows": 87,
+  "eligible_rows": 8004,
+  "eligible_labeled_rows": 7917,
+  "low_fraction_labeled": 0.954,
+  "activity_positives": 408,
+  "features_in_contract": 32,
+  "constant_features": [
+    "frac_gt300"
+  ],
+  "infinite_features": [],
+  "object_features": {},
+  "feature_types": {
+    "numeric": [
+      "n_eventos_mes",
+      "n_eventos_3m",
+      "n_eventos_12m",
+      "mag_max_mes",
+      "mag_max_3m",
+      "mag_media_mes",
+      "mag_std_mes",
+      "n_m_ge_3_mes",
+      "n_m_ge_3_12m",
+      "n_m_ge_4_mes",
+      "n_m_ge_4_12m",
+      "energia_log_3m",
+      "prof_media_mes",
+      "prof_std_mes",
+      "frac_prof_lt30",
+      "frac_30_70",
+      "frac_70_300",
+      "rms_media_mes",
+      "gap_media_mes",
+      "fases_media_mes",
+      "dias_desde_ultimo_evento",
+      "dias_desde_ultimo_m3",
+      "n_eventos_vecinos_mes",
+      "centroid_lat",
+      "centroid_lon",
+      "mc_maxc_12m",
+      "n_m_ge_mc_mes",
+      "n_eventos_departamento_mes",
+      "year_context",
+      "poblacion"
+    ],
+    "boolean_like": [
+      "frac_gt300",
+      "hay_eventos_mes"
+    ],
+    "categorical": []
+  },
+  "future_cols_in_x": [],
+  "id_or_meta_in_x": [],
+  "target_by_month": {
+    "2018-03": {
+      "alto": 2,
+      "bajo": 83,
+      "medio": 2,
+      "sin_target": 0
+    },
+    "2018-04": {
+      "alto": 1,
+      "bajo": 85,
+      "medio": 1,
+      "sin_target": 0
+    },
+    "2018-05": {
+      "alto": 2,
+      "bajo": 84,
+      "medio": 1,
+      "sin_target": 0
+    },
+    "2018-06": {
+      "alto": 1,
+      "bajo": 83,
+      "medio": 3,
+      "sin_target": 0
+    },
+    "2018-07": {
+      "alto": 2,
+      "bajo": 82,
+      "medio": 3,
+      "sin_target": 0
+    },
+    "2018-08": {
+      "alto": 1,
+      "bajo": 85,
+      "medio": 1,
+      "sin_target": 0
+    },
+    "2018-09": {
+      "alto": 1,
+      "bajo": 84,
+      "medio": 2,
+      "sin_target": 0
+    },
+    "2018-10": {
+      "alto": 1,
+      "bajo": 83,
+      "medio": 3,
+      "sin_target": 0
+    },
+    "2018-11": {
+      "alto": 1,
+      "bajo": 85,
+      "medio": 1,
+      "sin_target": 0
+    },
+    "2018-12": {
+      "alto": 2,
+      "bajo": 84,
+      "medio": 1,
+      "sin_target": 0
+    },
+    "2019-01": {
+      "alto": 1,
+      "bajo": 83,
+      "medio": 3,
+      "sin_target": 0
+    },
+    "2019-02": {
+      "alto": 1,
+      "bajo": 85,
+      "medio": 1,
+      "sin_target": 0
+    },
+    "2019-03": {
+      "alto": 2,
+      "bajo": 82,
+      "medio": 3,
+      "sin_target": 0
+    },
+    "2019-04": {
+      "alto": 2,
+      "bajo": 84,
+      "medio": 1,
+      "sin_target": 0
+    },
+    "2019-05": {
+      "alto": 1,
+      "bajo": 86,
+      "medio": 0,
+      "sin_target": 0
+    },
+    "2019-06": {
+      "alto": 1,
+      "bajo": 84,
+      "medio": 2,
+      "sin_target": 0
+    },
+    "2019-07": {
+      "alto": 1,
+      "bajo": 84,
+      "medio": 2,
+      "sin_target": 0
+    },
+    "2019-08": {
+      "alto": 1,
+      "bajo": 84,
+      "medio": 2,
+      "sin_target": 0
+    },
+    "2019-09": {
+      "alto": 1,
+      "bajo": 85,
+      "medio": 1,
+      "sin_target": 0
+    },
+    "2019-10": {
+      "alto": 1,
+      "bajo": 83,
+      "medio": 3,
+      "sin_target": 0
+    },
+    "2019-11": {
+      "alto": 1,
+      "bajo": 84,
+      "medio": 2,
+      "sin_target": 0
+    },
+    "2019-12": {
+      "alto": 2,
+      "bajo": 83,
+      "medio": 2,
+      "sin_target": 0
+    },
+    "2020-01": {
+      "alto": 3,
+      "bajo": 83,
+      "medio": 1,
+      "sin_target": 0
+    },
+    "2020-02": {
+      "alto": 2,
+      "bajo": 82,
+      "medio": 3,
+      "sin_target": 0
+    },
+    "2020-03": {
+      "alto": 1,
+      "bajo": 82,
+      "medio": 4,
+      "sin_target": 0
+    },
+    "2020-04": {
+      "alto": 3,
+      "bajo": 81,
+      "medio": 3,
+      "sin_target": 0
+    },
+    "2020-05": {
+      "alto": 1,
+      "bajo": 82,
+      "medio": 4,
+      "sin_target": 0
+    },
+    "2020-06": {
+      "alto": 3,
+      "bajo": 83,
+      "medio": 1,
+      "sin_target": 0
+    },
+    "2020-07": {
+      "alto": 2,
+      "bajo": 85,
+      "medio": 0,
+      "sin_target": 0
+    },
+    "2020-08": {
+      "alto": 2,
+      "bajo": 84,
+      "medio": 1,
+      "sin_target": 0
+    },
+    "2020-09": {
+      "alto": 2,
+      "bajo": 81,
+      "medio": 4,
+      "sin_target": 0
+    },
+    "2020-10": {
+      "alto": 3,
+      "bajo": 81,
+      "medio": 3,
+      "sin_target": 0
+    },
+    "2020-11": {
+      "alto": 1,
+      "bajo": 84,
+      "medio": 2,
+      "sin_target": 0
+    },
+    "2020-12": {
+      "alto": 3,
+      "bajo": 83,
+      "medio": 1,
+      "sin_target": 0
+    },
+    "2021-01": {
+      "alto": 2,
+      "bajo": 83,
+      "medio": 2,
+      "sin_target": 0
+    },
+    "2021-02": {
+      "alto": 2,
+      "bajo": 83,
+      "medio": 2,
+      "sin_target": 0
+    },
+    "2021-03": {
+      "alto": 2,
+      "bajo": 83,
+      "medio": 2,
+      "sin_target": 0
+    },
+    "2021-04": {
+      "alto": 2,
+      "bajo": 82,
+      "medio": 3,
+      "sin_target": 0
+    },
+    "2021-05": {
+      "alto": 2,
+      "bajo": 82,
+      "medio": 3,
+      "sin_target": 0
+    },
+    "2021-06": {
+      "alto": 3,
+      "bajo": 83,
+      "medio": 1,
+      "sin_target": 0
+    },
+    "2021-07": {
+      "alto": 2,
+      "bajo": 82,
+      "medio": 3,
+      "sin_target": 0
+    },
+    "2021-08": {
+      "alto": 2,
+      "bajo": 84,
+      "medio": 1,
+      "sin_target": 0
+    },
+    "2021-09": {
+      "alto": 1,
+      "bajo": 84,
+      "medio": 2,
+      "sin_target": 0
+    },
+    "2021-10": {
+      "alto": 1,
+      "bajo": 84,
+      "medio": 2,
+      "sin_target": 0
+    },
+    "2021-11": {
+      "alto": 2,
+      "bajo": 84,
+      "medio": 1,
+      "sin_target": 0
+    },
+    "2021-12": {
+      "alto": 0,
+      "bajo": 82,
+      "medio": 5,
+      "sin_target": 0
+    },
+    "2022-01": {
+      "alto": 2,
+      "bajo": 82,
+      "medio": 3,
+      "sin_target": 0
+    },
+    "2022-02": {
+      "alto": 2,
+      "bajo": 84,
+      "medio": 1,
+      "sin_target": 0
+    },
+    "2022-03": {
+      "alto": 2,
+      "bajo": 83,
+      "medio": 2,
+      "sin_target": 0
+    },
+    "2022-04": {
+      "alto": 3,
+      "bajo": 83,
+      "medio": 1,
+      "sin_target": 0
+    },
+    "2022-05": {
+      "alto": 2,
+      "bajo": 85,
+      "medio": 0,
+      "sin_target": 0
+    },
+    "2022-06": {
+      "alto": 2,
+      "bajo": 80,
+      "medio": 5,
+      "sin_target": 0
+    },
+    "2022-07": {
+      "alto": 1,
+      "bajo": 82,
+      "medio": 4,
+      "sin_target": 0
+    },
+    "2022-08": {
+      "alto": 3,
+      "bajo": 82,
+      "medio": 2,
+      "sin_target": 0
+    },
+    "2022-09": {
+      "alto": 1,
+      "bajo": 83,
+      "medio": 3,
+      "sin_target": 0
+    },
+    "2022-10": {
+      "alto": 0,
+      "bajo": 81,
+      "medio": 6,
+      "sin_target": 0
+    },
+    "2022-11": {
+      "alto": 2,
+      "bajo": 81,
+      "medio": 4,
+      "sin_target": 0
+    },
+    "2022-12": {
+      "alto": 2,
+      "bajo": 81,
+      "medio": 4,
+      "sin_target": 0
+    },
+    "2023-01": {
+      "alto": 2,
+      "bajo": 84,
+      "medio": 1,
+      "sin_target": 0
+    },
+    "2023-02": {
+      "alto": 2,
+      "bajo": 82,
+      "medio": 3,
+      "sin_target": 0
+    },
+    "2023-03": {
+      "alto": 1,
+      "bajo": 85,
+      "medio": 1,
+      "sin_target": 0
+    },
+    "2023-04": {
+      "alto": 2,
+      "bajo": 81,
+      "medio": 4,
+      "sin_target": 0
+    },
+    "2023-05": {
+      "alto": 1,
+      "bajo": 82,
+      "medio": 4,
+      "sin_target": 0
+    },
+    "2023-06": {
+      "alto": 2,
+      "bajo": 83,
+      "medio": 2,
+      "sin_target": 0
+    },
+    "2023-07": {
+      "alto": 2,
+      "bajo": 83,
+      "medio": 2,
+      "sin_target": 0
+    },
+    "2023-08": {
+      "alto": 2,
+      "bajo": 84,
+      "medio": 1,
+      "sin_target": 0
+    },
+    "2023-09": {
+      "alto": 1,
+      "bajo": 85,
+      "medio": 1,
+      "sin_target": 0
+    },
+    "2023-10": {
+      "alto": 3,
+      "bajo": 82,
+      "medio": 2,
+      "sin_target": 0
+    },
+    "2023-11": {
+      "alto": 1,
+      "bajo": 81,
+      "medio": 5,
+      "sin_target": 0
+    },
+    "2023-12": {
+      "alto": 2,
+      "bajo": 84,
+      "medio": 1,
+      "sin_target": 0
+    },
+    "2024-01": {
+      "alto": 2,
+      "bajo": 82,
+      "medio": 3,
+      "sin_target": 0
+    },
+    "2024-02": {
+      "alto": 1,
+      "bajo": 82,
+      "medio": 4,
+      "sin_target": 0
+    },
+    "2024-03": {
+      "alto": 2,
+      "bajo": 84,
+      "medio": 1,
+      "sin_target": 0
+    },
+    "2024-04": {
+      "alto": 2,
+      "bajo": 83,
+      "medio": 2,
+      "sin_target": 0
+    },
+    "2024-05": {
+      "alto": 1,
+      "bajo": 83,
+      "medio": 3,
+      "sin_target": 0
+    },
+    "2024-06": {
+      "alto": 2,
+      "bajo": 85,
+      "medio": 0,
+      "sin_target": 0
+    },
+    "2024-07": {
+      "alto": 2,
+      "bajo": 83,
+      "medio": 2,
+      "sin_target": 0
+    },
+    "2024-08": {
+      "alto": 2,
+      "bajo": 84,
+      "medio": 1,
+      "sin_target": 0
+    },
+    "2024-09": {
+      "alto": 1,
+      "bajo": 82,
+      "medio": 4,
+      "sin_target": 0
+    },
+    "2024-10": {
+      "alto": 3,
+      "bajo": 82,
+      "medio": 2,
+      "sin_target": 0
+    },
+    "2024-11": {
+      "alto": 2,
+      "bajo": 80,
+      "medio": 5,
+      "sin_target": 0
+    },
+    "2024-12": {
+      "alto": 1,
+      "bajo": 83,
+      "medio": 3,
+      "sin_target": 0
+    },
+    "2025-01": {
+      "alto": 1,
+      "bajo": 82,
+      "medio": 4,
+      "sin_target": 0
+    },
+    "2025-02": {
+      "alto": 2,
+      "bajo": 84,
+      "medio": 1,
+      "sin_target": 0
+    },
+    "2025-03": {
+      "alto": 1,
+      "bajo": 83,
+      "medio": 3,
+      "sin_target": 0
+    },
+    "2025-04": {
+      "alto": 2,
+      "bajo": 82,
+      "medio": 3,
+      "sin_target": 0
+    },
+    "2025-05": {
+      "alto": 1,
+      "bajo": 82,
+      "medio": 4,
+      "sin_target": 0
+    },
+    "2025-06": {
+      "alto": 1,
+      "bajo": 85,
+      "medio": 1,
+      "sin_target": 0
+    },
+    "2025-07": {
+      "alto": 1,
+      "bajo": 82,
+      "medio": 4,
+      "sin_target": 0
+    },
+    "2025-08": {
+      "alto": 1,
+      "bajo": 82,
+      "medio": 4,
+      "sin_target": 0
+    },
+    "2025-09": {
+      "alto": 2,
+      "bajo": 83,
+      "medio": 2,
+      "sin_target": 0
+    },
+    "2025-10": {
+      "alto": 2,
+      "bajo": 83,
+      "medio": 2,
+      "sin_target": 0
+    },
+    "2025-11": {
+      "alto": 1,
+      "bajo": 82,
+      "medio": 4,
+      "sin_target": 0
+    },
+    "2025-12": {
+      "alto": 1,
+      "bajo": 81,
+      "medio": 5,
+      "sin_target": 0
+    },
+    "2026-01": {
+      "alto": 1,
+      "bajo": 84,
+      "medio": 2,
+      "sin_target": 0
+    },
+    "2026-02": {
+      "alto": 2,
+      "bajo": 82,
+      "medio": 3,
+      "sin_target": 0
+    },
+    "2026-03": {
+      "alto": 1,
+      "bajo": 83,
+      "medio": 3,
+      "sin_target": 0
+    },
+    "2026-04": {
+      "alto": 1,
+      "bajo": 83,
+      "medio": 3,
+      "sin_target": 0
+    },
+    "2026-05": {
+      "alto": 2,
+      "bajo": 83,
+      "medio": 2,
+      "sin_target": 0
+    },
+    "2026-06": {
+      "alto": 1,
+      "bajo": 84,
+      "medio": 2,
+      "sin_target": 0
+    },
+    "2026-07": {
+      "alto": 1,
+      "bajo": 83,
+      "medio": 3,
+      "sin_target": 0
+    },
+    "2026-08": {
+      "alto": 1,
+      "bajo": 85,
+      "medio": 1,
+      "sin_target": 0
+    },
+    "2026-09": {
+      "alto": 0,
+      "bajo": 0,
+      "medio": 0,
+      "sin_target": 87
+    }
+  },
+  "usable_months": [
+    "2019-02",
+    "2019-03",
+    "2019-04",
+    "2019-05",
+    "2019-06",
+    "2019-07",
+    "2019-08",
+    "2019-09",
+    "2019-10",
+    "2019-11",
+    "2019-12",
+    "2020-01",
+    "2020-02",
+    "2020-03",
+    "2020-04",
+    "2020-05",
+    "2020-06",
+    "2020-07",
+    "2020-08",
+    "2020-09",
+    "2020-10",
+    "2020-11",
+    "2020-12",
+    "2021-01",
+    "2021-02",
+    "2021-03",
+    "2021-04",
+    "2021-05",
+    "2021-06",
+    "2021-07",
+    "2021-08",
+    "2021-09",
+    "2021-10",
+    "2021-11",
+    "2021-12",
+    "2022-01",
+    "2022-02",
+    "2022-03",
+    "2022-04",
+    "2022-05",
+    "2022-06",
+    "2022-07",
+    "2022-08",
+    "2022-09",
+    "2022-10",
+    "2022-11",
+    "2022-12",
+    "2023-01",
+    "2023-02",
+    "2023-03",
+    "2023-04",
+    "2023-05",
+    "2023-06",
+    "2023-07",
+    "2023-08",
+    "2023-09",
+    "2023-10",
+    "2023-11",
+    "2023-12",
+    "2024-01",
+    "2024-02",
+    "2024-03",
+    "2024-04",
+    "2024-05",
+    "2024-06",
+    "2024-07",
+    "2024-08",
+    "2024-09",
+    "2024-10",
+    "2024-11",
+    "2024-12",
+    "2025-01",
+    "2025-02",
+    "2025-03",
+    "2025-04",
+    "2025-05",
+    "2025-06",
+    "2025-07",
+    "2025-08",
+    "2025-09",
+    "2025-10",
+    "2025-11",
+    "2025-12",
+    "2026-01",
+    "2026-02",
+    "2026-03",
+    "2026-04",
+    "2026-05",
+    "2026-06",
+    "2026-07",
+    "2026-08"
+  ],
+  "splits": {
+    "train": {
+      "months": [
+        "2019-02",
+        "2024-04"
+      ],
+      "n_months": 63,
+      "n_rows": 5481,
+      "classes": {
+        "bajo": 5225,
+        "medio": 145,
+        "alto": 111
+      }
+    },
+    "val": {
+      "months": [
+        "2024-05",
+        "2025-05"
+      ],
+      "n_months": 13,
+      "n_rows": 1131,
+      "classes": {
+        "bajo": 1075,
+        "medio": 35,
+        "alto": 21
+      }
+    },
+    "test": {
+      "months": [
+        "2025-06",
+        "2026-08"
+      ],
+      "n_months": 15,
+      "n_rows": 1305,
+      "classes": {
+        "bajo": 1245,
+        "medio": 41,
+        "alto": 19
+      }
+    }
+  },
+  "contract_notes": {
+    "poblacion": "DANE CNPV2018 retrospective projection; not as-of availability",
+    "catalog": "retrospective/revised SGC catalog; backtest, not as-of operation",
+    "year_context": "cutoff year kept per contract; may memorize time trends"
+  }
+}
