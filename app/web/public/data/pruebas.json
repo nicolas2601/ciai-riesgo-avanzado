@@ -1,0 +1,177 @@
+{
+  "supervisado": {
+    "modelos": [
+      {
+        "modelo": "A_dummy_majority",
+        "macro_f1": 0.3249,
+        "balanced_accuracy": 0.3333,
+        "accuracy": 0.9505
+      },
+      {
+        "modelo": "B_logreg_balanced",
+        "macro_f1": 0.5253,
+        "balanced_accuracy": 0.6759,
+        "accuracy": 0.7887
+      },
+      {
+        "modelo": "C_ros_logreg",
+        "macro_f1": 0.5113,
+        "balanced_accuracy": 0.6817,
+        "accuracy": 0.779
+      },
+      {
+        "modelo": "D_smote_logreg",
+        "macro_f1": 0.5367,
+        "balanced_accuracy": 0.6914,
+        "accuracy": 0.8329
+      },
+      {
+        "modelo": "E_rf_balanced",
+        "macro_f1": 0.5933,
+        "balanced_accuracy": 0.6188,
+        "accuracy": 0.9576
+      }
+    ],
+    "seleccionado": "E_rf_balanced",
+    "baseline_mayoritario": "A_dummy_majority",
+    "particiones": {
+      "train": {
+        "start": "2019-02",
+        "end": "2024-04",
+        "n_months": 63,
+        "n_rows": 5481,
+        "classes": {
+          "bajo": 5225,
+          "medio": 145,
+          "alto": 111
+        }
+      },
+      "val": {
+        "start": "2024-05",
+        "end": "2025-05",
+        "n_months": 13,
+        "n_rows": 1131,
+        "classes": {
+          "bajo": 1075,
+          "medio": 35,
+          "alto": 21
+        }
+      },
+      "test": {
+        "start": "2025-06",
+        "end": "2026-08",
+        "n_months": 15,
+        "n_rows": 1305,
+        "classes": {
+          "bajo": 1245,
+          "medio": 41,
+          "alto": 19
+        }
+      }
+    }
+  },
+  "medio": {
+    "k": 3,
+    "silhouette": 0.27774697577747365,
+    "davies_bouldin": 1.062346808657855,
+    "ari_por_semilla": {
+      "7": 1.0,
+      "21": 0.3869513481667637,
+      "42": 1.0
+    },
+    "tamanos": [
+      {
+        "grupo": 0,
+        "n_municipios": 19
+      },
+      {
+        "grupo": 1,
+        "n_municipios": 66
+      },
+      {
+        "grupo": 2,
+        "n_municipios": 2
+      }
+    ]
+  },
+  "rl": {
+    "validacion": [
+      {
+        "politica": "V0_ref",
+        "val_media": 0.4974,
+        "val_desv": 0.0321,
+        "conjuntos_distintos": "1,1,1"
+      },
+      {
+        "politica": "V1_clip",
+        "val_media": 0.4923,
+        "val_desv": 0.0267,
+        "conjuntos_distintos": "1,1,1"
+      },
+      {
+        "politica": "V2_permuni",
+        "val_media": 0.0257,
+        "val_desv": 0.0178,
+        "conjuntos_distintos": "11,13,13"
+      },
+      {
+        "politica": "static_topk",
+        "val_media": 0.5231,
+        "val_desv": null,
+        "conjuntos_distintos": "1"
+      },
+      {
+        "politica": "ranker_ctx",
+        "val_media": 0.4462,
+        "val_desv": null,
+        "conjuntos_distintos": "12"
+      },
+      {
+        "politica": "random",
+        "val_media": 0.0092,
+        "val_desv": null,
+        "conjuntos_distintos": "-"
+      },
+      {
+        "politica": "oracle_ref",
+        "val_media": 0.8308,
+        "val_desv": null,
+        "conjuntos_distintos": "-"
+      }
+    ],
+    "ganador": {
+      "variant": "V0_ref",
+      "seed": 7
+    },
+    "test": {
+      "variant": "V0_ref",
+      "seed": 7,
+      "test_months": [
+        "2025-06",
+        "2026-08"
+      ],
+      "mean": 0.4667,
+      "static_mean": 0.4667,
+      "ranker_mean": 0.3733
+    },
+    "test_caveat": "test months were exposed by the earlier reference track; the single test run below is confirmatory, not an intact firewall",
+    "presupuesto_k": 5,
+    "monitores": [
+      "monitor_V0_ref_seed21.monitor.csv",
+      "monitor_V0_ref_seed42.monitor.csv",
+      "monitor_V0_ref_seed7.monitor.csv",
+      "monitor_V1_clip_seed21.monitor.csv",
+      "monitor_V1_clip_seed42.monitor.csv",
+      "monitor_V1_clip_seed7.monitor.csv",
+      "monitor_V2_permuni_seed21.monitor.csv",
+      "monitor_V2_permuni_seed42.monitor.csv",
+      "monitor_V2_permuni_seed7.monitor.csv"
+    ]
+  },
+  "pruebas": {
+    "estado": "ejecutado",
+    "pasan": 45,
+    "fallan": 0,
+    "resumen": "45 passed in 6.55s"
+  }
+}
