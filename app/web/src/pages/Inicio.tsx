@@ -1,4 +1,5 @@
 import '../styles/inicio.css'
+import '../styles/landing-problemas.css'
 import { Link } from '../router.tsx'
 import {
   BalanceClases,
@@ -16,6 +17,8 @@ import {
   Problematica,
   type Hallazgo,
 } from '../components/LandingSecciones.tsx'
+import { LandingImpacto, LandingContexto, LandingMedidas, LandingSiete } from '../components/LandingProblemas.tsx'
+import { LandingCumplimiento } from '../components/LandingCumplimiento.tsx'
 
 const HALLAZGOS: Hallazgo[] = [
   { to: '/basico', nivel: 'Básico', modelo: 'Random Forest', cifra: '0,593', texto: 'macro-F1 del Random Forest, contra 0,325 del baseline que siempre responde "bajo".' },
@@ -41,6 +44,9 @@ export function Inicio() {
         <Link to="/como-funciona" className="btn btn--primario">Ver cómo funciona todo</Link>
       </div>
       <Problematica total={total} />
+      <LandingContexto />
+      <LandingSiete />
+      <LandingMedidas />
       <PorQueEsDificil />
 
       <Diagrama
@@ -97,6 +103,9 @@ export function Inicio() {
           <p className="mono" role="status">Cargando gráficas…</p>
         )}
       </section>
+
+      <LandingImpacto />
+      <LandingCumplimiento />
 
       <Diagrama
         id="agente"
