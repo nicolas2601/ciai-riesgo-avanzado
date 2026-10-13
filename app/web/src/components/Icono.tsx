@@ -1,7 +1,7 @@
 // Iconos de nivel. Cada nivel tiene su propia forma: la distincion no depende
 // del color (regla de accesibilidad y de DESIGN.md, seccion 3.2).
 import type { ReactElement } from 'react'
-import type { Nivel } from '../lib/tipos.ts'
+import type { Nivel } from '../api/types.ts'
 
 const trazo = {
   fill: 'none',

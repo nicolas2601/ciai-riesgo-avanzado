@@ -379,3 +379,35 @@
     height: 60vh;
   }
 }
+
+/* --- Rescate: SPA contra la API real --- */
+.navbar__marca { display: inline-flex; align-items: center; gap: var(--s-2); }
+.navbar__logo { border-radius: 6px; }
+.tarjetas-niveles { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--s-5); margin-bottom: var(--s-8); }
+.tarjeta--estatica:hover { transform: none; box-shadow: var(--shadow-card); border-color: var(--border-hairline); }
+.bloque { margin-block: var(--s-7); }
+.formulario { max-width: 520px; margin-bottom: var(--s-6); }
+.formulario input { background: var(--inset); border: 1px solid var(--border-hairline); border-radius: var(--r-control); padding: var(--s-2) var(--s-3); color: var(--ink); font: inherit; }
+.formulario input:focus-visible, .formulario select:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 2px; }
+.acciones { display: flex; flex-wrap: wrap; gap: var(--s-3); margin-bottom: var(--s-3); }
+.btn:disabled { opacity: 0.55; cursor: not-allowed; }
+.resultado { margin-block: var(--s-6); }
+.resultado__clase { display: flex; align-items: center; gap: var(--s-3); flex-wrap: wrap; font-size: 1.5rem; }
+.barras { list-style: none; padding: 0; margin: var(--s-4) 0; display: grid; gap: var(--s-3); max-width: 560px; }
+.barras__fila { display: grid; grid-template-columns: 110px 1fr 70px; align-items: center; gap: var(--s-3); }
+.barras__pista { background: var(--inset); border-radius: var(--r-sharp); height: 12px; overflow: hidden; }
+.barras__valor { display: block; height: 100%; }
+.barras__valor--bajo { background: var(--risk-bajo); }
+.barras__valor--medio { background: var(--risk-medio); }
+.barras__valor--alto { background: var(--risk-alto); }
+.nota { background: var(--inset); border-left: 3px solid var(--accent); border-radius: var(--r-control); padding: var(--s-4) var(--s-5); margin-block: var(--s-6); max-width: 72ch; }
+.nota p { margin: 0 0 var(--s-2); }
+.estado--error { background: rgba(185, 28, 28, 0.06); border: 1px solid rgba(185, 28, 28, 0.3); border-radius: var(--r-control); padding: var(--s-3) var(--s-4); }
+.mapa-svg { width: 100%; height: auto; max-height: 640px; display: block; }
+.mapa-punto { cursor: pointer; }
+.mapa-punto:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 2px; }
+.grupos { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--s-5); margin-block: var(--s-4); }
+.grupo__titulo { display: flex; align-items: center; gap: var(--s-2); }
+.grupo__rasgos, .lista-fuentes { padding-left: var(--s-5); margin: 0 0 var(--s-3); }
+.ranking { padding-left: var(--s-5); margin: 0 0 var(--s-3); }
+@media (max-width: 640px) { .detalle { position: static; max-width: none; margin: var(--s-3); } .mapa-bloque { min-height: 0; } .barras__fila { grid-template-columns: 90px 1fr 60px; } }

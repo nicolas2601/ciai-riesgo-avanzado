@@ -1,5 +1,4 @@
-// App multipagina: navegacion con <a href>, no con router. No hay contexto de
-// Router en estas paginas, y usar <Link> sin router tumba el render completo.
+import { Link } from '../router.tsx'
 
 export function Footer() {
   return (
@@ -17,21 +16,25 @@ export function Footer() {
           </p>
         </div>
         <div>
-          <h3 className="footer__titulo">Los tres modelos</h3>
+          <h3 className="footer__titulo">Los tres niveles</h3>
           <p className="footer__texto">
-            <a href="/modelo-clasificacion.html">Clasificación</a>
+            <Link to="/basico">Básico: clasificación</Link>
           </p>
           <p className="footer__texto">
-            <a href="/modelo-supervisado.html">Supervisado</a>
+            <Link to="/medio">Medio: grupos</Link>
           </p>
           <p className="footer__texto">
-            <a href="/modelo-refuerzo.html">Refuerzo</a>
+            <Link to="/avanzado">Avanzado: priorización</Link>
           </p>
         </div>
         <div>
-          <h3 className="footer__titulo">Logos</h3>
-          {/* Espacio reservado. El logo del SGC no se usa sin permiso escrito. */}
-          <div className="footer__logos" aria-label="Espacio reservado para logos de aliados" />
+          <h3 className="footer__titulo">Fuentes</h3>
+          <p className="footer__texto">
+            <a href="https://bdrsnc.sgc.gov.co/paginas1/catalogo/">Catálogo SGC</a>
+          </p>
+          <p className="footer__texto">
+            <Link to="/metodologia">Metodología y límites</Link>
+          </p>
         </div>
       </div>
     </footer>

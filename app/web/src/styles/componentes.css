@@ -143,26 +143,6 @@
   transform: scaleX(1);
 }
 
-/* --- Banner de ejemplo --- */
-.banner {
-  display: flex;
-  align-items: center;
-  gap: var(--s-3);
-  background: rgba(168, 91, 0, 0.1);
-  color: #7c2d12;
-  border-bottom: 1px solid rgba(168, 91, 0, 0.28);
-  padding: var(--s-3) var(--s-6);
-}
-.banner--fijo {
-  border-radius: var(--r-control);
-  border: 1px solid rgba(168, 91, 0, 0.28);
-  margin-bottom: var(--s-5);
-}
-.banner__texto {
-  margin: 0;
-  font-size: 0.875rem;
-  max-width: none;
-}
 
 /* --- Chip de cifra --- */
 .chip {

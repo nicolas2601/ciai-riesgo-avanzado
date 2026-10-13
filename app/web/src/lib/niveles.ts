@@ -1,5 +1,5 @@
 // Meta de cada nivel: color + etiqueta. El nivel nunca va solo con color.
-import type { Nivel } from './tipos.ts'
+import type { Nivel } from '../api/types.ts'
 
 export interface NivelMeta {
   color: string

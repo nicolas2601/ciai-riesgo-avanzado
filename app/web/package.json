@@ -9,8 +9,7 @@
     "lint": "oxlint",
     "preview": "vite preview",
     "test": "vitest run --passWithNoTests",
-    "gen:api": "node scripts/gen-api.mjs",
-    "gen:ejemplo": "node scripts/gen-ejemplo.mjs"
+    "gen:api": "node scripts/gen-api.mjs"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.104.2",
