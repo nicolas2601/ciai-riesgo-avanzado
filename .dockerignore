@@ -1,0 +1,17 @@
+**/__pycache__
+**/.venv
+**/tests
+.git
+.github
+app/web/*
+!app/web/dist
+ml
+docs
+data/*
+!data/panel
+artifacts/*
+!artifacts/ml/selected_model.joblib
+!app/web/dist
+!app/web/public
+!app/web/public/data
+!app/web/public/data/clusters.json
