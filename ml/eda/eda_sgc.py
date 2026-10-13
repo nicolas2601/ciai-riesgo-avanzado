@@ -54,7 +54,7 @@ def _class_balance(
     municipalities: list[str] | None = None,
     months: pd.PeriodIndex | None = None,
     panel_path: Path | None = None,
-) -> tuple[dict[str, int], dict[str, int], int, int]:
+) -> tuple[dict[str, int], dict[str, int], int, dict[str, object]]:
     comparable = catalog.loc[
         catalog.source_system.eq("new") & catalog.datetime_utc.ge(NEW_START)
     ].copy()
@@ -68,7 +68,14 @@ def _class_balance(
     if panel_path is not None and panel_path.exists():
         panel = pd.read_csv(
             panel_path,
-            usecols=["divipola", "month", "coverage_complete", "n_m_ge_3_mes", "n_m_ge_4_mes"],
+            usecols=[
+                "divipola",
+                "month",
+                "coverage_complete",
+                "n_m_ge_3_mes",
+                "n_m_ge_4_mes",
+                "target_clase_mes_siguiente",
+            ],
         )
         panel = panel.loc[panel.coverage_complete].copy()
         panel["year"] = panel.month.str[:4].astype(int)
@@ -80,16 +87,24 @@ def _class_balance(
         annual = panel.groupby(["divipola", "year"], observed=True).agg(
             m3=("n_m_ge_3_mes", "sum"), m4=("n_m_ge_4_mes", "sum")
         )
+        months_per_year = panel.groupby("year").month.nunique()
+        complete_years = months_per_year.loc[months_per_year.eq(12)].index
+        partial_years = months_per_year.loc[months_per_year.ne(12)].to_dict()
+        annual = annual.loc[annual.index.get_level_values("year").isin(complete_years)]
         year_classes = (
             annual.apply(lambda row: _classify(int(row.m3), int(row.m4)), axis=1)
             .value_counts()
             .reindex(CLASS_COLUMNS, fill_value=0)
         )
+        target_classes = panel.target_clase_mes_siguiente.dropna()
+        target_counts = target_classes.value_counts().reindex(CLASS_COLUMNS, fill_value=0)
+        target_summary = {key: int(target_counts[key]) for key in CLASS_COLUMNS}
+        target_summary["missing"] = int(len(panel) - len(target_classes))
         return (
             {key: int(month_classes[key]) for key in CLASS_COLUMNS},
             {key: int(year_classes[key]) for key in CLASS_COLUMNS},
             len(panel),
-            len(annual),
+            {"rows": len(annual), "partial_years": partial_years, "target": target_summary},
         )
 
     municipalities = municipalities or sorted(comparable.municipio.dropna().unique())
@@ -130,7 +145,7 @@ def _class_balance(
         {key: int(month_classes[key]) for key in CLASS_COLUMNS},
         {key: int(year_classes[key]) for key in CLASS_COLUMNS},
         len(municipal_month),
-        len(municipal_year),
+        {"rows": len(municipal_year), "partial_years": {}, "target": {}},
     )
 
 
@@ -155,12 +170,6 @@ def build_report(catalog: pd.DataFrame, duplicates_removed: int) -> str:
     total = len(catalog)
     new = catalog.loc[catalog.source_system.eq("new")].copy()
     counts = catalog.groupby([catalog.datetime_utc.dt.year, "source_system"]).size()
-    annual_rows = [
-        [str(year), str(int(counts.get((year, system), 0)))]
-        for year in sorted(catalog.datetime_utc.dt.year.unique())
-        for system in ("old", "new")
-        if counts.get((year, system), 0)
-    ]
     null_rows = [[column, str(int(count))] for column, count in catalog.isna().sum().items()]
     quantiles = [0, 0.25, 0.5, 0.75, 0.9, 0.95, 0.99, 1]
     magnitude = new.mag.quantile(quantiles)
@@ -176,21 +185,27 @@ def build_report(catalog: pd.DataFrame, duplicates_removed: int) -> str:
     los_santos_share = float(municipality_counts.get("LOS SANTOS", 0) / len(new) * 100)
     completeness = _maxc_by_year(catalog)
     panel_path = ROOT / "data" / "panel" / "panel_municipio_mes.csv.gz"
-    month_classes, year_classes, month_row_count, year_row_count = _class_balance(
+    month_classes, year_classes, month_row_count, annual_summary = _class_balance(
         catalog, panel_path=panel_path
+    )
+    year_row_count = int(annual_summary["rows"])
+    target_classes = annual_summary["target"]
+    partial_years = ", ".join(
+        f"{year}:{months}m" for year, months in annual_summary["partial_years"].items()
     )
     class_rows = [
         [name, str(month_classes[name]), str(year_classes[name])] for name in CLASS_COLUMNS
     ]
     annual_compact = []
-    for row in annual_rows:
-        year, count = row
+    for year in sorted(catalog.datetime_utc.dt.year.unique()):
+        old_count = int(counts.get((year, "old"), 0))
+        new_count = int(counts.get((year, "new"), 0))
         existing = next((item for item in annual_compact if item[0] == year), None)
         if existing is None:
             annual_compact.append([year, "0", "0"])
             existing = annual_compact[-1]
-        source = "old" if counts.get((int(year), "old"), 0) else "new"
-        existing[1 if source == "old" else 2] = f"{int(count):,}"
+        existing[1] = f"{old_count:,}"
+        existing[2] = f"{new_count:,}"
     maxc_summary = ", ".join(
         f"{row.year} {row.system[0]}:{row.mc}" for row in completeness.itertuples()
     )
@@ -288,13 +303,14 @@ def build_report(catalog: pd.DataFrame, duplicates_removed: int) -> str:
         "",
         "## Balance de clases por municipio",
         "",
-        "Clases: bajo sin M≥3; medio ≥1 M3.0–3.9 y sin M≥4; alto ≥1 M≥4. New comparable desde 2018-03. Municipio-mes usa cuadrícula del panel (87×103); municipio-año 2018–2026. Vacíos = bajo.",
+        "Clases observadas en t: bajo sin M≥3; medio ≥1 M3.0–3.9 y sin M≥4; alto ≥1 M≥4. New comparable desde 2018-03.",
         "",
-        f"Filas: municipio-mes **{month_row_count:,}**; municipio-año **{year_row_count:,}**.",
+        f"Observado t: municipio-mes **{month_row_count:,}**. Municipio-año completo **{year_row_count:,}**; años parciales omitidos ({partial_years}).",
         "",
         *_table(["Clase", "Municipio-mes", "Municipio-año"], class_rows),
         "",
-        f"**Recomendación:** municipio-mes preserva horizonte mensual ({month_classes['alto']} alto, {month_classes['medio']} medio de {month_row_count:,}; desbalance). Municipio-año agrega a {year_row_count:,} celdas y pierde variación intranual; usar como sensibilidad, comparar baseline.",
+        f"**Balance target entrenamiento t+1:** {target_classes['bajo']} bajo / {target_classes['medio']} medio / {target_classes['alto']} alto; {target_classes['missing']} sin siguiente mes completo (total {month_row_count:,}). No confundir con clase observada en t.",
+        f"**Recomendación:** usar municipio-mes para horizonte mensual. Balance target t+1 es {target_classes['bajo']}/{target_classes['medio']}/{target_classes['alto']}, muy desbalanceado; anual completo ({year_row_count:,}) como sensibilidad, pierde orden intranual. Comparar con baseline.",
         "",
         "## Limitaciones",
         "",

@@ -36,7 +36,7 @@ Generado por `uv run --group reto python -m ml.eda.eda_sgc`; cifras generadas po
 | 2015 | 5,818 | 0 |
 | 2016 | 7,964 | 0 |
 | 2017 | 9,574 | 0 |
-| 2018 | 8,966 | 0 |
+| 2018 | 1,089 | 8,966 |
 | 2019 | 0 | 12,738 |
 | 2020 | 0 | 12,841 |
 | 2021 | 0 | 11,773 |
@@ -76,17 +76,18 @@ Año/sistema:Mc/N — 1993 o:2.8, 1994 o:3.1, 1995 o:3.0, 1996 o:3.0, 1997 o:2.9
 
 ## Balance de clases por municipio
 
-Clases: bajo sin M≥3; medio ≥1 M3.0–3.9 y sin M≥4; alto ≥1 M≥4. New comparable desde 2018-03. Municipio-mes usa cuadrícula del panel (87×103); municipio-año 2018–2026. Vacíos = bajo.
+Clases observadas en t: bajo sin M≥3; medio ≥1 M3.0–3.9 y sin M≥4; alto ≥1 M≥4. New comparable desde 2018-03.
 
-Filas: municipio-mes **8,961**; municipio-año **783**.
+Observado t: municipio-mes **8,961**. Municipio-año completo **609**; años parciales omitidos (2018:10m, 2026:9m).
 
 | Clase | Municipio-mes | Municipio-año |
 |---|---|---|
-| bajo | 8550 | 625 |
-| medio | 244 | 121 |
-| alto | 167 | 37 |
+| bajo | 8550 | 481 |
+| medio | 244 | 99 |
+| alto | 167 | 29 |
 
-**Recomendación:** municipio-mes preserva horizonte mensual (167 alto, 244 medio de 8,961; desbalance). Municipio-año agrega a 783 celdas y pierde variación intranual; usar como sensibilidad, comparar baseline.
+**Balance target entrenamiento t+1:** 8466 bajo / 242 medio / 166 alto; 87 sin siguiente mes completo (total 8,961). No confundir con clase observada en t.
+**Recomendación:** usar municipio-mes para horizonte mensual. Balance target t+1 es 8466/242/166, muy desbalanceado; anual completo (609) como sensibilidad, pierde orden intranual. Comparar con baseline.
 
 ## Limitaciones
 
