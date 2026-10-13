@@ -1,16 +1,22 @@
-# CIAI: priorizacion de zonas de riesgo (categoria AVANZADO)
+# Hackathon CIAI UTSmart 2026: riesgo sismico en Santander (categoria AVANZADO)
 
-Solucion de Machine Learning que estima y prioriza el riesgo de emergencias por municipio de Santander, con incertidumbre, explicabilidad, API y prototipo web. Reto CIAI, categoria AVANZADO: ML obligatorio, no reglas fijas.
+Equipo **Syntax error II** (UNAB): Nicolas Moreno, Julian Arteaga y Zabdiel Quintero. Reto oficial: con datos reales del Servicio Geologico Colombiano (SGC), analizar y clasificar el riesgo sismico de zonas de Santander. En Avanzado: cumplir los retos Basico (supervisado) y Medio (no supervisado) e integrar otra fuente oficial para una **priorizacion exploratoria de zonas con un agente de aprendizaje por refuerzo**.
+
+**Plan vigente (2026-10-13): [docs/plan/08-reto-oficial-plan-4h.md](docs/plan/08-reto-oficial-plan-4h.md).** Desarrollo de 8:00 a 12:00; entrega a las 12:00 m.; presentacion a las 4:10 p. m. en 315A. El texto oficial, sin editar, esta en [docs/research/source/](docs/research/source/) y su resumen citado en [docs/research/08-enunciado-oficial.md](docs/research/08-enunciado-oficial.md). El diseno de RL esta en [docs/research/09-rl-diseno.md](docs/research/09-rl-diseno.md).
+
+Los documentos `00` a `07` de `docs/plan/` corresponden al plan anterior (amenazas varias, API y web desplegada): quedan **congelados**, no borrados.
 
 ## Estado
 
 | Pieza | Estado |
 |---|---|
-| Plan, roles, hitos y requisitos | Listo (`docs/plan/`) |
+| Plan oficial del reto (4 h), riesgos, opciones y rubrica | Listo (`docs/plan/08-reto-oficial-plan-4h.md`) |
+| Plan anterior (API, contrato, tareas por persona) | Congelado (`docs/plan/00` a `07`) |
 | Investigacion de datos, modelos, validacion y MLOps | Lista (`docs/research/`) |
 | Contrato de la API (v0.2) y API mock con 30 tests | Listo; CI en verde |
 | Web | Andamiaje con la plantilla de Vite + React; sin pantallas todavia |
-| Modelo y metricas | NO entrenado: no hay resultados todavia |
+| Entorno de RL, datos y demo (`uv sync --group reto --group demo`) | Listo y verificado; CPU |
+| Datos, modelos y metricas | NO hechos: el reto empieza a las 8:00; no hay resultados todavia |
 | Memoria compartida del equipo (Engram uts, MCP) | Operativa y temporal |
 
 Los resultados se publican aqui cuando salgan de MLflow, nunca antes.
@@ -25,7 +31,13 @@ Los resultados se publican aqui cuando salgan de MLflow, nunca antes.
 
 Hitos de las 5 h y reglas de apoyo: [01-roles-cronograma.md](docs/plan/01-roles-cronograma.md).
 
-## Arquitectura y flujos
+## Arquitectura del reto
+
+**Un dataset, tres bloques** ([interactivo](docs/flows/reto-oficial.html))
+
+![Reto oficial: un dataset, tres bloques](docs/flows/reto-oficial.png)
+
+## Arquitectura y flujos del plan anterior (congelado)
 
 Los diagramas son interactivos: descarga el HTML y abrelo en el navegador (busqueda, zoom, recorrido de rutas). Abajo, su captura.
 

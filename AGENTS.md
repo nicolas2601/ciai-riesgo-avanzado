@@ -8,7 +8,9 @@ Solucion integral de Machine Learning para priorizar zonas de riesgo territorial
 
 El enunciado del dominio y el dataset oficial pueden no existir al arrancar: el diseno es agnostico al fenomeno (ver `docs/plan/00-requisitos-entregables.md`, seccion Supuestos).
 
-Estado: plan, investigacion, contrato de la API (v0.2, con mock y tests) y andamiaje del web listos; el modelo aun NO esta entrenado. Panorama completo y diagramas en `README.md`.
+**Vigente desde 2026-10-13: el enunciado oficial (sismos del SGC, tres bloques, aprendizaje por refuerzo obligatorio en Avanzado, desarrollo de 8:00 a 12:00) manda sobre todo lo demas.** Plan: `docs/plan/08-reto-oficial-plan-4h.md`. Texto oficial sin editar: `docs/research/source/`. Las reglas y documentos del plan anterior (API, contrato v0.2, web React, tareas `04` a `06`) quedan congelados: no se borran, pero no son prioridad.
+
+Estado: plan oficial, investigacion, entorno (`uv sync --group dev --group dl --group reto --group demo`) y Engram uts listos; los datos y los modelos NO estan hechos. Panorama completo y diagramas en `README.md`.
 
 Antes de empezar, cada persona lee: este archivo, `docs/plan/01-roles-cronograma.md` y su documento de tareas (ML: `04`, web: `05`, integracion: `06`).
 
@@ -31,7 +33,7 @@ Antes de empezar, cada persona lee: este archivo, `docs/plan/01-roles-cronograma
 
 ## Reglas no negociables
 
-1. Contrato primero: `docs/plan/03-contrato-api.md` es la frontera ML <-> web. Cambiarlo requiere avisar a los otros dos.
+1. Cumplir lo oficial: datos reales de fuente oficial citada (URL, fecha, filtros), tabla unica con diccionario, >= 20 variables, objetivo que no se calcule de las entradas, modelo entrenado por el equipo y demostrado en vivo. (El contrato de la API `03` esta congelado: no se requiere API.)
 2. Sin fuga espacial ni temporal: validacion por bloques de municipios (clusters de centroides o provincias) y particion temporal con embargo; nunca aleatoria sobre unidades vecinas.
 3. Todo experimento deja rastro: corrida en MLflow, semilla fija, hash de datos, version de codigo. Sin rastro no cuenta como resultado.
 4. Reportar metricas tal como salen, con intervalos por remuestreo de bloques. Para decir que un modelo gana se usa el intervalo de la diferencia pareada por bloques; el solapamiento de intervalos marginales no prueba empate ni diferencia. Si es inconcluso, se prefiere el modelo mas simple.
