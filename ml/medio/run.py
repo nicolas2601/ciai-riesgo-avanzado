@@ -47,19 +47,7 @@ def make_payload(panel: pd.DataFrame, profiles: pd.DataFrame, result: dict) -> d
     names = panel[["divipola", "municipio"]].drop_duplicates().set_index("divipola").municipio
     groups = describe_groups(profiles, result)
     labels = {group["cluster"]: group["etiqueta"] for group in groups}
-    records = []
-    for position, (code, row) in enumerate(profiles.iterrows()):
-        cluster = int(result["labels"][position])
-        records.append(
-            {
-                "divipola": code,
-                "municipio": names.loc[code],
-                "lat": float(row.centroid_lat),
-                "lon": float(row.centroid_lon),
-                "cluster": cluster,
-                "etiqueta": labels[cluster],
-            }
-        )
+    records = municipality_records(profiles, result, names, labels)
     metrics = {
         key: result[key]
         for key in [
@@ -91,6 +79,25 @@ def make_payload(panel: pd.DataFrame, profiles: pd.DataFrame, result: dict) -> d
     }
 
 
+def municipality_records(
+    profiles: pd.DataFrame, result: dict, names: pd.Series, labels: dict
+) -> list:
+    records = []
+    for position, (code, row) in enumerate(profiles.iterrows()):
+        cluster = int(result["labels"][position])
+        records.append(
+            {
+                "divipola": code,
+                "municipio": names.loc[code],
+                "lat": float(row.centroid_lat),
+                "lon": float(row.centroid_lon),
+                "cluster": cluster,
+                "etiqueta": labels[cluster],
+            }
+        )
+    return records
+
+
 def write_map(payload: dict) -> Path:
     import matplotlib
 
@@ -119,6 +126,15 @@ def write_map(payload: dict) -> Path:
         textcoords="offset points",
         arrowprops={"arrowstyle": "-", "color": "#555555"},
     )
+    decorate_map(ax, frame)
+    output = ROOT / "docs/figures/medio-clusters.png"
+    output.parent.mkdir(parents=True, exist_ok=True)
+    fig.savefig(output, dpi=160)
+    plt.close(fig)
+    return output
+
+
+def decorate_map(ax, frame: pd.DataFrame) -> None:
     ax.set(
         xlabel="Longitude (degrees)",
         ylabel="Latitude (degrees)",
@@ -127,11 +143,6 @@ def write_map(payload: dict) -> Path:
     ax.set_aspect(1 / np.cos(np.radians(frame.lat.mean())))
     ax.legend(loc="lower left", fontsize=8, frameon=True)
     ax.grid(alpha=0.15)
-    output = ROOT / "docs/figures/medio-clusters.png"
-    output.parent.mkdir(parents=True, exist_ok=True)
-    fig.savefig(output, dpi=160)
-    plt.close(fig)
-    return output
 
 
 def write_report(payload: dict) -> None:
