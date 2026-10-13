@@ -165,21 +165,50 @@ Añadir a cada bundle: `model_version`, `data_version`, cutoff/ventana, `source_
 
 **HECHO:** catálogo oficial enlazado en reto; HTTPS confirmado por UTS en investigación previa: https://bdrsnc.sgc.gov.co/paginas1/catalogo/ . No repetir la descarga que UTS está probando.
 
-**Reporte de UTS, no formulario enviado por esta sesión:** consultas POST `Consulta_Experta/consulsismo3.php` (1993-06..2018-02) y `Consulta_Experta_Seiscomp/consulta_sismo.php` (desde2018-03), departamento `27-Santander`, campos municipio/inicial/final y rangos de magnitud/profundidad/RMS/gap; salida HTML y botón Generar Excel.
+**HECHO reportado por UTS, probado aproximadamente08:40 con curl/requests; no reenviado por esta sesión:** fechas POST **`dd/mm/yyyy`**, p.ej. `01/01/2025`–`31/12/2025`. Datepicker `dd/mm/yy` representa año de cuatro dígitos. Otro formato produjo error MySQL en pruebas UTS.
 
-**Formato de fecha de entrada: NO descubierto por esta sesión.** No deducir formato POST de fechas UTC de salida; no publicar curl/requests con payload inventado.
+| Consulta | Endpoint relativo a catálogo HTTPS | Campos que difieren |
+|---|---|---|
+| Desde2018-03 | `Consulta_Experta_Seiscomp/consulta_sismo.php` | `departamento=27-Santander`, **`ubi=cuadrante` oculto obligatorio**; omitirlo produjo `mysql_fetch_row ... not valid MySQL result` |
+| 1993-06..2018-02 | `Consulta_Experta/consulsismo3.php` | `departamento=SANTANDER`, **`radiobutton=cuadrante`**, `magnitudmwStart=0`, `magnitudmwEnd=9` |
+| Lista municipal nueva | `Consulta_Experta_Seiscomp/municipios.php` | `id_departamento=27-Santander` |
+
+Defaults reportados/verificados por UTS, comunes salvo diferencias anteriores:
+
+```text
+municipio=(empty), inicial=dd/mm/yyyy, final=dd/mm/yyyy
+longitudStart=-90, longitudEnd=-66, latitudStart=-07, latitudEnd=15
+magnitudStart=0, magnitudEnd=9, depthStart=0, depthEnd=700
+rmsStart=0, rmsEnd=10, gapStart=0, gapEnd=360
+eprofmin=0, eprofmax=999, elongmin=0, elongmax=999
+elatmin=0, elatmax=999, Submit=Consultar
+```
+
+**HECHO local:** se leyó `scripts/sgc_download.py`, creado por UTS; CLI existente y ayuda verificable. Se mantuvo sin editar/commitear en esta tarea. Hace una consulta por año/sistema y escribe CSV **sin encabezados** + provenance con filtros/hashes. No da panel limpio ni prueba completitud.
+
+```bash
+uv run --group reto python scripts/sgc_download.py --help
+# ONLY the SGC owner, only if that tranche has NOT already been downloaded:
+uv run --group reto python scripts/sgc_download.py --from-year 2025 --to-year 2025 --systems new
+# Historical system has different selectors and magnitude columns:
+uv run --group reto python scripts/sgc_download.py --from-year 2017 --to-year 2017 --systems old
+```
+
+**Advertencias operativas:** `provenance.json` se reescribe por ejecución, no hace append: preservar/combinar manifests de tramos anteriores antes de otro run. Script no tiene reanudación; no repetir años ya recibidos. 2026 termina en fecha actual: octubre/futuros incompletos no sirven como labels completos. Unificar posiciones/headers distintos a partir de tablas oficiales, no leer CSV raw como si primera fila fuera header.
+
+UTS reporta nuevo2025=11,641 filas/~11MB y antiguo2017=35. Diferencia es señal para auditar parámetros, parser, filtros/completitud y sistema; **no demuestra por sí sola causa de detección ni tasa física**. Cobertura por mes de2018–2026 aún pendiente según UTS.
 
 Receta manual para Nico/UTS, **una sola persona ejecuta cada tramo**:
 
 1. Registrar claim `ciai/datos/sgc`: dueño, consulta/tramo, inicio y salida; UTS está al frente. Si MCP no está conectado, mensaje directo y posterior registro por quien sí tenga acceso, sin instalar/autenticar cuentas en medio del reto.
 2. Abrir catálogo HTTPS con Playwright; seleccionar consulta según fecha. Inspeccionar etiquetas/placeholders y el request real de una consulta mínima; guardar nombres/payload/formato observados en provenance sin cookies/tokens.
-3. Departamento Santander, valor reportado27-Santander; confirmar en formulario activo. No restringir municipio hasta definir zona; confirmar que magnitud mínima no elimina eventos necesarios para labels/completitud.
+3. Departamento según sistema: nuevo27-Santander, antiguoSANTANDER; selector oculto obligatorio según tabla. No restringir municipio hasta definir zona; confirmar que magnitud mínima no elimina eventos necesarios para labels/completitud.
 4. Primer tramo pequeño de **periodo cerrado**; comprobar que respuesta es tabla/export real y no error/login/vacío. Generar Excel, registrar filas/columnas y fecha/filtros/hash. Excel real podría llegar HTML: verificar contenido antes de elegir parser.
 5. Ampliar por años si responde rápido, por meses si volumen/timeout lo exige. Nunca >1 consulta equivalente simultánea; registrar tramos completados para reanudar.
 6. No cruzar corte marzo2018 en mismo formulario. Separar y armonizar antes de concatenar. Verificar límites inclusivos/exclusivos con muestras de frontera; dedup por identificador o combinación validada tiempo/localización, no por magnitud sola.
 7. Nico recibe export primero, sin esperar catálogo entero. A09:00 sin export útil, recortar periodo/zona y usar interfaz manual; no sustituir SGC principal por datos sintéticos o USGS sin decisión de organizador.
 
-Provenance mínimo por tramo: URL/endpoint, fecha descarga, fechas/rangos enviados, timezone, formato de entrada observado, escala de magnitud, fila mínima/máxima, count, hash y estado completo/incompleto. Comunicar formato cuando UTS lo confirme; no asumirlo mientras tanto.
+Provenance mínimo por tramo: URL/endpoint, fecha descarga, fechas/rangos enviados, timezone, formato de entrada observado, escala de magnitud, fila mínima/máxima, count, hash y estado completo/incompleto. Formato confirmado por UTS queda atribuido arriba; su validación no prueba meses sin huecos.
 
 ## 6. Cambios precisos en flujos viejos (no regenerados aquí)
 
