@@ -49,7 +49,12 @@ def _classify(count_m3: int, count_m4: int) -> str:
     return "bajo"
 
 
-def _class_balance(catalog: pd.DataFrame) -> tuple[dict[str, int], dict[str, int], int, int]:
+def _class_balance(
+    catalog: pd.DataFrame,
+    municipalities: list[str] | None = None,
+    months: pd.PeriodIndex | None = None,
+    panel_path: Path | None = None,
+) -> tuple[dict[str, int], dict[str, int], int, int]:
     comparable = catalog.loc[
         catalog.source_system.eq("new") & catalog.datetime_utc.ge(NEW_START)
     ].copy()
@@ -60,11 +65,42 @@ def _class_balance(catalog: pd.DataFrame) -> tuple[dict[str, int], dict[str, int
     municipal_month = comparable.groupby(["municipio", "month"], observed=True).agg(
         m3=("m3", "sum"), m4=("m4", "sum")
     )
-    municipalities = sorted(comparable.municipio.dropna().unique())
-    months = pd.period_range(
-        municipal_month.index.get_level_values("month").min(),
-        municipal_month.index.get_level_values("month").max(),
-        freq="M",
+    if panel_path is not None and panel_path.exists():
+        panel = pd.read_csv(
+            panel_path,
+            usecols=["divipola", "month", "coverage_complete", "n_m_ge_3_mes", "n_m_ge_4_mes"],
+        )
+        panel = panel.loc[panel.coverage_complete].copy()
+        panel["year"] = panel.month.str[:4].astype(int)
+        panel["class"] = [
+            _classify(int(m3), int(m4))
+            for m3, m4 in zip(panel.n_m_ge_3_mes, panel.n_m_ge_4_mes, strict=True)
+        ]
+        month_classes = panel["class"].value_counts().reindex(CLASS_COLUMNS, fill_value=0)
+        annual = panel.groupby(["divipola", "year"], observed=True).agg(
+            m3=("n_m_ge_3_mes", "sum"), m4=("n_m_ge_4_mes", "sum")
+        )
+        year_classes = (
+            annual.apply(lambda row: _classify(int(row.m3), int(row.m4)), axis=1)
+            .value_counts()
+            .reindex(CLASS_COLUMNS, fill_value=0)
+        )
+        return (
+            {key: int(month_classes[key]) for key in CLASS_COLUMNS},
+            {key: int(year_classes[key]) for key in CLASS_COLUMNS},
+            len(panel),
+            len(annual),
+        )
+
+    municipalities = municipalities or sorted(comparable.municipio.dropna().unique())
+    months = (
+        months
+        if months is not None
+        else pd.period_range(
+            municipal_month.index.get_level_values("month").min(),
+            municipal_month.index.get_level_values("month").max(),
+            freq="M",
+        )
     )
     full_month_index = pd.MultiIndex.from_product(
         [municipalities, months], names=["municipio", "month"]
@@ -119,7 +155,12 @@ def build_report(catalog: pd.DataFrame, duplicates_removed: int) -> str:
     total = len(catalog)
     new = catalog.loc[catalog.source_system.eq("new")].copy()
     counts = catalog.groupby([catalog.datetime_utc.dt.year, "source_system"]).size()
-    annual_rows = [[str(year), system, str(int(count))] for (year, system), count in counts.items()]
+    annual_rows = [
+        [str(year), str(int(counts.get((year, system), 0)))]
+        for year in sorted(catalog.datetime_utc.dt.year.unique())
+        for system in ("old", "new")
+        if counts.get((year, system), 0)
+    ]
     null_rows = [[column, str(int(count))] for column, count in catalog.isna().sum().items()]
     quantiles = [0, 0.25, 0.5, 0.75, 0.9, 0.95, 0.99, 1]
     magnitude = new.mag.quantile(quantiles)
@@ -129,15 +170,30 @@ def build_report(catalog: pd.DataFrame, duplicates_removed: int) -> str:
     ]
     municipality_counts = new.municipio.value_counts()
     top_municipalities = [
-        [name, str(int(value)), _number(value / len(new) * 100, 1)]
+        [name, f"{int(value):,}", _number(value / len(new) * 100, 1)]
         for name, value in municipality_counts.head(10).items()
     ]
     los_santos_share = float(municipality_counts.get("LOS SANTOS", 0) / len(new) * 100)
     completeness = _maxc_by_year(catalog)
-    month_classes, year_classes, month_rows, year_rows = _class_balance(catalog)
+    panel_path = ROOT / "data" / "panel" / "panel_municipio_mes.csv.gz"
+    month_classes, year_classes, month_row_count, year_row_count = _class_balance(
+        catalog, panel_path=panel_path
+    )
     class_rows = [
         [name, str(month_classes[name]), str(year_classes[name])] for name in CLASS_COLUMNS
     ]
+    annual_compact = []
+    for row in annual_rows:
+        year, count = row
+        existing = next((item for item in annual_compact if item[0] == year), None)
+        if existing is None:
+            annual_compact.append([year, "0", "0"])
+            existing = annual_compact[-1]
+        source = "old" if counts.get((int(year), "old"), 0) else "new"
+        existing[1 if source == "old" else 2] = f"{int(count):,}"
+    maxc_summary = ", ".join(
+        f"{row.year} {row.system[0]}:{row.mc}" for row in completeness.itertuples()
+    )
     high_events = (
         new.loc[new.datetime_utc.ge(NEW_START) & new.mag.ge(5)]
         .sort_values(["mag", "datetime_utc"], ascending=[False, True])
@@ -189,58 +245,60 @@ def build_report(catalog: pd.DataFrame, duplicates_removed: int) -> str:
     lines = [
         "# EDA del catálogo sísmico SGC",
         "",
-        "Generado por `uv run --group reto python -m ml.eda.eda_sgc`; todas las cifras de este informe salen del script.",
+        "Generado por `uv run --group reto python -m ml.eda.eda_sgc`; cifras generadas por script.",
         "",
         "## Cobertura y calidad",
         "",
         f"- Filas tras deduplicación: **{total:,}**; duplicados exactos removidos por `(datetime_utc, lat, lon, depth_km, mag)`: **{duplicates_removed}**.",
         f"- Rango: **{catalog.datetime_utc.min():%Y-%m-%d %H:%M UTC}–{catalog.datetime_utc.max():%Y-%m-%d %H:%M UTC}**. Sistemas: old **{int(catalog.source_system.eq('old').sum()):,}**, new **{int(catalog.source_system.eq('new').sum()):,}**.",
-        "- Nulos por columna:",
-        "",
-        *_table(["Columna", "Nulos"], null_rows),
-        "",
+        "- Nulos: " + "; ".join(f"{name}={count}" for name, count in null_rows) + ".",
         "### Eventos por año y sistema",
         "",
-        *_table(["Año", "Sistema", "Eventos"], annual_rows),
+        "| Año | Old | New |",
+        "|---|---:|---:|",
+        *[
+            f"| {year} | {old_count} | {new_count} |"
+            for year, old_count, new_count in annual_compact
+        ],
         "",
-        "## Distribuciones (sistema nuevo; 2018-03 en adelante)",
+        "## Distribuciones (new; 2018-03+)",
         "",
-        *_table(["Cuantil", "Magnitud", "Profundidad (km)"], quantile_rows),
-        "",
+        "Cuantil: "
+        + "; ".join(f"{q} M={mag}, z={depth} km" for q, mag, depth in quantile_rows)
+        + ".",
         "### Municipios con más eventos",
         "",
-        f"Los Santos representa **{_number(los_santos_share, 1)}%** de los {len(new):,} registros nuevos.",
+        f"Los Santos: **{_number(los_santos_share, 1)}%** de {len(new):,} eventos new.",
         "",
-        *_table(["Municipio", "Eventos", "% del catálogo nuevo"], top_municipalities),
+        "; ".join(f"{name}: {count} ({pct}%)" for name, count, pct in top_municipalities) + ".",
         "",
         "## Completitud aproximada por año",
         "",
-        "MAXC aproximado: magnitud con mayor frecuencia en histograma de ancho 0.1; se informa como descriptor de la moda, **no como Mc validada** ni como umbral de completitud robusto. Mezcla sistemas/escalas y cortes anuales; comparar con cautela.",
+        "MAXC = moda anual de bins 0.1; aproximación exploratoria, no Mc validada. Escalas old/new difieren.",
         "",
-        *_table(["Año", "Sistema", "N", "Moda MAXC (M)"], completeness.values.tolist()),
+        "Año/sistema:Mc/N — " + maxc_summary + ".",
         "",
         "**HIPÓTESIS:** el aumento de registros entre 2008 y 2012 es consistente con mejoras/cambios de instrumentación y cobertura; el catálogo por sí solo no establece causalidad.",
         "",
         "## Eventos de referencia del catálogo",
         "",
-        "2015-03-10 usa la magnitud Mw disponible en el catálogo antiguo; puede diferir de estimaciones de otras agencias. Se muestran también los dos mayores eventos del sistema nuevo; no se convierten escalas.",
+        "2015-03-10 Mw old y dos mayores new; escalas no convertidas.",
         "",
         *_table(["Fecha UTC", "M", "Tipo", "Prof. km", "Municipio", "Sistema"], reference_rows),
         "",
         "## Balance de clases por municipio",
         "",
-        "Definición por período: bajo = sin M≥3; medio = al menos un M3.0–3.9 y sin M≥4; alto = al menos un M≥4. Sistema nuevo comparable desde 2018-03. Los conteos usan la cuadrícula completa de municipios observados × todos los meses y años del período; una celda sin evento catalogado queda como bajo.",
+        "Clases: bajo sin M≥3; medio ≥1 M3.0–3.9 y sin M≥4; alto ≥1 M≥4. New comparable desde 2018-03. Municipio-mes usa cuadrícula del panel (87×103); municipio-año 2018–2026. Vacíos = bajo.",
         "",
-        f"Filas: municipio-mes **{month_rows:,}**; municipio-año **{year_rows:,}**.",
+        f"Filas: municipio-mes **{month_row_count:,}**; municipio-año **{year_row_count:,}**.",
         "",
         *_table(["Clase", "Municipio-mes", "Municipio-año"], class_rows),
         "",
-        f"**Recomendación:** usar municipio-mes para priorización temporal: hay {month_classes['alto']} períodos altos y {month_classes['medio']} medios ({month_rows:,} celdas; fuerte desbalance), lo que preserva resolución y permite horizonte mensual. Municipio-año reduce el número de celdas a {year_rows:,} y oculta variación intranual; usarlo como sensibilidad/agregado, no como unidad primaria. Reportar desbalance y comparar con baseline.",
+        f"**Recomendación:** municipio-mes preserva horizonte mensual ({month_classes['alto']} alto, {month_classes['medio']} medio de {month_row_count:,}; desbalance). Municipio-año agrega a {year_row_count:,} celdas y pierde variación intranual; usar como sensibilidad, comparar baseline.",
         "",
         "## Limitaciones",
         "",
-        "- El salto de versión old→new alrededor de 2018 impide interpretar diferencias de conteo/magnitud sin armonización; el tipo de magnitud se conserva.",
-        "- MAXC anual con muestras y escalas mezcladas es solo exploratorio; no inferir cambio físico de amenaza desde más detecciones.",
+        "- old/new y escalas no armonizadas; MAXC exploratoria. Más detecciones no prueba cambio físico de amenaza.",
         "",
     ]
     return "\n".join(lines)
