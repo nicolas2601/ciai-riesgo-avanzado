@@ -4,6 +4,8 @@ Equipo **Syntax error II** (UNAB): Nicolas Moreno, Julian Arteaga y Zabdiel Quin
 
 **Plan vigente (2026-10-13): [docs/plan/08-reto-oficial-plan-4h.md](docs/plan/08-reto-oficial-plan-4h.md).** Desarrollo de 8:00 a 12:00; entrega a las 12:00 m.; presentacion a las 4:10 p. m. en 315A. El texto oficial, sin editar, esta en [docs/research/source/](docs/research/source/) y su resumen citado en [docs/research/08-enunciado-oficial.md](docs/research/08-enunciado-oficial.md). El diseno de RL esta en [docs/research/09-rl-diseno.md](docs/research/09-rl-diseno.md).
 
+Roles y presentacion (la web React es el pitch): [docs/plan/10-roles-web-presentacion.md](docs/plan/10-roles-web-presentacion.md). Brechas e ideas con evidencia: [docs/research/12-brechas-e-ideas.md](docs/research/12-brechas-e-ideas.md).
+
 Los documentos `00` a `07` de `docs/plan/` corresponden al plan anterior (amenazas varias, API y web desplegada): quedan **congelados**, no borrados.
 
 ## Estado

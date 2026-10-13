@@ -8,7 +8,7 @@ Solucion integral de Machine Learning para priorizar zonas de riesgo territorial
 
 El enunciado del dominio y el dataset oficial pueden no existir al arrancar: el diseno es agnostico al fenomeno (ver `docs/plan/00-requisitos-entregables.md`, seccion Supuestos).
 
-**Vigente desde 2026-10-13: el enunciado oficial (sismos del SGC, tres bloques, aprendizaje por refuerzo obligatorio en Avanzado, desarrollo de 8:00 a 12:00) manda sobre todo lo demas.** Plan: `docs/plan/08-reto-oficial-plan-4h.md`. Texto oficial sin editar: `docs/research/source/`. Las reglas y documentos del plan anterior (API, contrato v0.2, web React, tareas `04` a `06`) quedan congelados: no se borran, pero no son prioridad.
+**Vigente desde 2026-10-13: el enunciado oficial (sismos del SGC, tres bloques, aprendizaje por refuerzo obligatorio en Avanzado, desarrollo de 8:00 a 12:00) manda sobre todo lo demas.** Plan: `docs/plan/08-reto-oficial-plan-4h.md`; **roles, linea de tiempo por persona, web React como presentacion y contrato de datos: `docs/plan/10-roles-web-presentacion.md`**; brechas e ideas creativas con evidencia: `docs/research/12-brechas-e-ideas.md`; decisiones de las dos vistas: `docs/plan/09`. Texto oficial sin editar: `docs/research/source/`. Las reglas y documentos del plan anterior (API, contrato v0.2, web React, tareas `04` a `06`) quedan congelados: no se borran, pero no son prioridad.
 
 Estado: plan oficial, investigacion, entorno (`uv sync --group dev --group dl --group reto --group demo`) y Engram uts listos; los datos y los modelos NO estan hechos. Panorama completo y diagramas en `README.md`.
 
@@ -18,11 +18,11 @@ Antes de empezar, cada persona lee: este archivo, `docs/plan/01-roles-cronograma
 
 | Ruta | Dueno | Contenido |
 |---|---|---|
-| `ml/src/` | ML (Zabdiel) | paquete Python: datos, features, modelos, evaluacion |
+| `ml/src/` | ML (Zabdiel) | modelos: Basico (supervisado), agente de refuerzo, lineas base, validacion cronologica |
 | `ml/notebooks/` | ML | EDA y experimentos (Jupyter), numerados `01_`, `02_` |
 | `ml/configs/` | ML | configuracion Hydra/YAML de corridas |
 | `app/api/` | Nico | API FastAPI: mock del contrato v0.2 con tests; ahi se conecta el bundle del modelo |
-| `app/web/` | Web (Julian) | plantilla oficial de Vite + React + TypeScript con bun, dependencias y carpetas; sin pantallas todavia |
+| `app/web/` | Web (Julian) | Web React: demo y **presentacion** (modo `/presentacion`, sin diapositivas); lee JSON de `app/web/public/data/` (contrato en `docs/plan/10`) |
 | `infra/` | Nico | Docker, tunel Cloudflare, scripts de despliegue |
 | `docs/plan/` | Nico | plan, roles, cronograma, contrato API |
 | `docs/research/` | equipo | datos, modelos, validacion, MLOps y estado del arte (cada afirmacion con fuente) |
@@ -31,8 +31,16 @@ Antes de empezar, cada persona lee: este archivo, `docs/plan/01-roles-cronograma
 | `skills/` | todos | instrucciones reutilizables por area |
 | `data/` | no versionado | `raw/` y `processed/` fuera de git |
 
+## Roles (version corta; detalle en `docs/plan/10`)
+
+- **Zabdiel**: cabeza de ML. Basico (supervisado), agente de refuerzo (Gymnasium + MaskablePPO), lineas base, validacion cronologica e incertidumbre. Entrega `priorizacion.json` y `metricas.json`.
+- **Julian**: cabeza de la web React. Mapa, priorizacion, maquina del tiempo, grupos, metodologia y modo presentacion. Lee los JSON; no necesita API.
+- **Nico**: datos (SGC por HTTPS, DANE), tabla unica y diccionario, Medio (no supervisado), exportar los JSON, trazabilidad y entregables; apoya al lado que se atrase, con aviso.
+- Una sola cabeza por area: nadie edita el codigo de otro sin avisarle.
+
 ## Reglas no negociables
 
+0. **Gate de degeneracion** (nuevo): antes de entrenar el RL, medir cuanto varia el top-K entre cortes; si el mismo top-K aparece en mas del 90 %, rediseñar la recompensa (`docs/research/12-brechas-e-ideas.md`, seccion 4).
 1. Cumplir lo oficial: datos reales de fuente oficial citada (URL, fecha, filtros), tabla unica con diccionario, >= 20 variables, objetivo que no se calcule de las entradas, modelo entrenado por el equipo y demostrado en vivo. (El contrato de la API `03` esta congelado: no se requiere API.)
 2. Sin fuga espacial ni temporal: validacion por bloques de municipios (clusters de centroides o provincias) y particion temporal con embargo; nunca aleatoria sobre unidades vecinas.
 3. Todo experimento deja rastro: corrida en MLflow, semilla fija, hash de datos, version de codigo. Sin rastro no cuenta como resultado.
