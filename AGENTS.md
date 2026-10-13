@@ -8,6 +8,10 @@ Solucion integral de Machine Learning para priorizar zonas de riesgo territorial
 
 El enunciado del dominio y el dataset oficial pueden no existir al arrancar: el diseno es agnostico al fenomeno (ver `docs/plan/00-requisitos-entregables.md`, seccion Supuestos).
 
+Estado: plan, investigacion, contrato de la API (v0.2, con mock y tests) y andamiaje del web listos; el modelo aun NO esta entrenado. Panorama completo y diagramas en `README.md`.
+
+Antes de empezar, cada persona lee: este archivo, `docs/plan/01-roles-cronograma.md` y su documento de tareas (ML: `04`, web: `05`, integracion: `06`).
+
 ## Mapa del repo
 
 | Ruta | Dueno | Contenido |
@@ -15,12 +19,13 @@ El enunciado del dominio y el dataset oficial pueden no existir al arrancar: el 
 | `ml/src/` | ML (Zabdiel) | paquete Python: datos, features, modelos, evaluacion |
 | `ml/notebooks/` | ML | EDA y experimentos (Jupyter), numerados `01_`, `02_` |
 | `ml/configs/` | ML | configuracion Hydra/YAML de corridas |
-| `app/api/` | Nico | API FastAPI que sirve el modelo |
-| `app/web/` | Web (Julian) | prototipo web (bun) |
+| `app/api/` | Nico | API FastAPI: mock del contrato v0.2 con tests; ahi se conecta el bundle del modelo |
+| `app/web/` | Web (Julian) | plantilla oficial de Vite + React + TypeScript con bun, dependencias y carpetas; sin pantallas todavia |
 | `infra/` | Nico | Docker, tunel Cloudflare, scripts de despliegue |
 | `docs/plan/` | Nico | plan, roles, cronograma, contrato API |
-| `docs/research/` | uts2 | estado del arte y decisiones tecnicas |
-| `docs/flows/` | Nico | diagramas Archify (HTML autocontenido) |
+| `docs/research/` | equipo | datos, modelos, validacion, MLOps y estado del arte (cada afirmacion con fuente) |
+| `docs/flows/` | Nico | diagramas Archify: HTML interactivo y PNG |
+| `.github/workflows/` | Nico | CI: ruff y tests del contrato de la API |
 | `skills/` | todos | instrucciones reutilizables por area |
 | `data/` | no versionado | `raw/` y `processed/` fuera de git |
 
@@ -38,19 +43,42 @@ El enunciado del dominio y el dataset oficial pueden no existir al arrancar: el 
 - Commits convencionales (`feat:`, `fix:`, `docs:`, `chore:`), pequenos, atomicos. Sin co-autor ni marca de IA.
 - Ramas: `main` estable; trabajo en `feature/<area>-<tema>` y PR a `main`. En la ventana de 5 h se permite push directo a `main` solo si los archivos son disjuntos.
 - Python 3.11-3.13 con `uv`; formato y lint con `ruff`; tests con `pytest`.
-- Web con `bun`; TypeScript estricto.
+- Web con `bun`; TypeScript estricto. Se queda en la version de la plantilla (6.x): TypeScript 7 rompe `openapi-typescript`.
 - Funciones <= 40 lineas, archivos <= 300 lineas, nombres descriptivos, sin codigo muerto.
 - Codigo y commits en ingles; documentacion en espanol, sin emojis.
 
 ## Comandos
 
 ```bash
-uv sync                          # entorno Python
-uv run pytest                    # tests
+# Python (API, ML)
+uv sync --group dev                              # entorno
+uv run pytest app/api -q                         # contrato de la API
 uv run ruff check . && uv run ruff format --check .
-uv run uvicorn app.api.main:app --reload   # API local
-cd app/web && bun install && bun dev       # web local
+uv run uvicorn app.api.main:app --reload         # API mock en http://localhost:8000
+
+# Web
+cd app/web
+bun install && bun dev                           # http://localhost:5173
+bun run build                                    # tsc -b + vite build
+bun run lint                                     # oxlint
+bun run test                                     # vitest (pasa sin tests)
+bun run gen:api                                  # regenera src/api/schema.d.ts con la API arriba
 ```
+
+Notas del web: `schema.d.ts` es generado, no se edita a mano. `vite.config.ts` excluye `maplibre-gl` del pre-empaquetado; sin eso el mapa sale en blanco ("Worker failed to load"). Antes de tocar UI: crear `app/web/DESIGN.md` y leer `skills/web-app/SKILL.md`.
+
+## Instalacion de herramientas (checklist)
+
+1. Aceptar la invitacion de GitHub y clonar: `git clone https://github.com/nicolas2601/ciai-riesgo-avanzado`.
+2. Node.js 18 o superior (lo usan `npx` y el MCP de Playwright).
+3. bun: `curl -fsSL https://bun.sh/install | bash` (Windows: `powershell -c "irm bun.sh/install.ps1 | iex"`).
+4. uv: `curl -LsSf https://astral.sh/uv/install.sh | sh` (Windows: `powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"`).
+5. MCP de memoria compartida: seccion Engram uts de este archivo.
+6. MCP de Playwright:
+   - Claude Code: `claude mcp add playwright -- npx @playwright/mcp@latest`
+   - opencode, dentro de `mcp` en `opencode.json`: `"playwright": { "type": "local", "command": ["npx", "-y", "@playwright/mcp@latest"], "enabled": true }`
+   - Navegador: `npx playwright install chromium`
+7. Skills: tabla de Skills recomendadas, mas abajo. Instalar con `npx skills add <skill> -g -y` despues de leer su `SKILL.md`.
 
 ## Entorno de entrenamiento
 
@@ -67,6 +95,14 @@ Servidor MCP: `https://engram-uts.nicolasmoreno.site/mcp` (OAuth con contrasena;
 ```bash
 claude mcp add --transport http engram-uts https://engram-uts.nicolasmoreno.site/mcp   # luego /mcp y Authenticate
 ```
+
+opencode: en `opencode.json`, dentro de `mcp`:
+
+```json
+"engram-uts": { "type": "remote", "url": "https://engram-uts.nicolasmoreno.site/mcp", "oauth": {}, "enabled": true }
+```
+
+y luego `opencode mcp auth engram-uts` (abre el navegador; pega la contrasena) y `opencode mcp list`, que debe decir `engram-uts connected (OAuth)`.
 
 Reglas:
 
@@ -132,6 +168,16 @@ Buscadas con `npx skills find` el 2026-10-13; se priorizaron fuentes oficiales o
 | Geoespacial | `k-dense-ai/scientific-agent-skills@geomaster` | 1.8K |
 | Estadistica y series temporales | `k-dense-ai/scientific-agent-skills@statsmodels`, `@aeon` | 1.9K y 1.8K |
 | Explicabilidad SHAP | `davila7/claude-code-templates@shap` | 360 |
+
+Frontend (web, Julian):
+
+| Para que | Skill | Instalaciones |
+|---|---|---|
+| Diseno de interfaces | `anthropics/skills@frontend-design` | 979K |
+| React y rendimiento | `vercel-labs/agent-skills@vercel-react-best-practices` | 791.9K |
+| Guias de interfaz web | `vercel-labs/agent-skills@web-design-guidelines` | 725.8K |
+| Detalle de interaccion y movimiento | `emilkowalski/skills@emil-design-eng` | 346.2K |
+| Revision de animaciones | `emilkowalski/skills@review-animations` | 219.6K |
 
 Adopcion baja, revisar con cuidado antes de usar: `eyadsibai/ltk@geopandas` (85), `fixmyberlin/fixmyskills@react-map-gl` (73).
 
