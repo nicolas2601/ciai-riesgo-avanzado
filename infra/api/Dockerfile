@@ -15,6 +15,7 @@ RUN pip install --no-cache-dir -r /tmp/requirements.txt && rm /tmp/requirements.
 COPY app/__init__.py app/__init__.py
 COPY app/api/__init__.py app/api/service.py app/api/ranking.py app/api/schemas_v1.py app/api/schemas.py app/api/mock.py app/api/main.py app/api/
 COPY app/api/data/ app/api/data/
+COPY app/web/public/data/clusters.json app/web/public/data/clusters.json
 COPY data/panel/panel_municipio_mes.csv.gz data/panel/
 COPY artifacts/ml/selected_model.joblib artifacts/ml/
 
