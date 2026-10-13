@@ -44,7 +44,7 @@ Equipo: **Syntax error II** (UNAB): Nicolas Moreno, Julian Arteaga, Zabdiel Quin
 | P12 | La infraestructura vieja (API, Cloudflare, MLflow, contrato v0.2, web React) ya no paga | Producto minimo oficial | Queda congelada (no se borra); el codigo reutilizable es el entorno `uv` y el diagrama de flujo |
 | P13 | Prototipo/visualizacion territorial exigida en Medio | Rubrica Medio | Mapa por municipio (centroides ya en el repo: `app/api/data/municipios_santander.json`) o poligonos IGAC/DANE |
 | P14 | 9 equipos de Avanzado; el desempate favorece Impacto e innovacion | Pagina oficial | Cuidar la narrativa de impacto desde la hora 1 (seccion 7) |
-| P15 | **El nido domina**: 95 % de los M >= 4 desde 2000 esta a 100-200 km y casi todo cae en pocos municipios; un ranking por municipio del epicentro seria casi constante y el RL, trivial | USGS, consulta de hoy (`docs/research/12-brechas-e-ideas.md`) | **Gate de degeneracion a las 8:30**: medir la variacion del top-K entre cortes; si el mismo top-K aparece en mas del 90 %, recompensa por sacudida esperada y/o revisita (seccion 4 de `12`) |
+| P15 | **El nido domina**: 95 % de los M >= 4 desde 2000 esta a 100-200 km y casi todo cae en pocos municipios; un ranking por municipio del epicentro seria casi constante y el RL, trivial | USGS, consulta de hoy (`docs/research/12-brechas-e-ideas.md`) | **Gate de degeneracion (8:30 a 8:45), solo con entrenamiento**: medir la variacion del top-K entre cortes; si es casi constante, comparar contra el top-K estatico y declararlo; opcionalmente recompensa por proxy de sacudida estimada (seccion 4 de `12`). Variacion baja no es fallo por si misma |
 
 ## 4. Fuentes: opciones y decision
 

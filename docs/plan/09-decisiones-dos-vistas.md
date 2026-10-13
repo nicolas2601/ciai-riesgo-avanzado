@@ -32,7 +32,7 @@ Nico pidio que los dos modelos trabajen como **vistas independientes**: cada uno
 ## Gates que se miden a las 8:00 (antes de comprometer el diseno)
 
 - Catalogo SGC descargable por tramos (formato de fecha del formulario por descubrir).
-- **Gate de degeneracion**: variacion del top-K entre cortes (si es casi constante, rediseñar recompensa; ver `12`).
+- **Gate de degeneracion** (solo con entrenamiento): variacion del top-K entre cortes; si es casi constante se compara contra el top-K estatico y se declara (ver `12`).
 - Clases bajo, medio y alto con soporte suficiente por mes; si no, ventana anual.
 - Al menos 20 variables reales con justificacion; DANE unido por municipio y anio.
 - Episodios completos para entrenamiento, validacion y prueba cronologicas.

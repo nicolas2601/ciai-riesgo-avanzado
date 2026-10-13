@@ -31,13 +31,13 @@ Regla de apoyo: Nico toma el bloque que se atrase (ML o web), pero **solo con av
 | 11:45 a 12:00 | Confirma recepcion; **no se agregan funciones** | Verifica que el checkpoint corre | Prueba navegacion y respaldo local |
 | 12:00 a 14:00 | Ensayo del pitch (10 min) | Ensayo | Ensayo y arreglos |
 
-Reparto del Medio (diferencia entre las dos vistas, resuelta): uts2 propone que Zabdiel haga los tres bloques; uts propone que Nico haga el Medio. Se adopta que **Nico implementa el Medio bajo las definiciones de Zabdiel** (objetivo, particiones, escala) y Zabdiel lo revisa: reparte la carga sin dos cabezas sobre la misma logica.
+Reparto del Medio (diferencia entre las dos vistas, resuelta): uts2 propone que Zabdiel haga los tres bloques; uts propone que Nico haga el Medio. Se adopta que **Nico implementa el Medio bajo las definiciones de Zabdiel** (objetivo, particiones, escala) y Zabdiel lo revisa, **solo si el SGC, el panel y la exportacion ya pasaron su gate (8:45)**; si no, Zabdiel hace una version simple (KMeans) y Nico sigue con integracion. El codigo del Medio vive en `ml/medio/` (Nico, con revision de Zabdiel); no hay dos cabezas sobre `ml/` ni dos generadores del mismo JSON.
 
 ## 3. Cuellos de botella y plan B
 
 - **Ruta critica:** los datos del SGC. Si a las 9:00 no hay tabla v0, Zabdiel y Julian siguen con datos de forma para probar codigo, pero nada de eso se entrega ni se muestra como resultado.
 - **Si el SGC no se puede automatizar:** descargar el Excel por tramos desde la interfaz (la pagina oficial lo contempla). Si el sitio cae, USGS por API como respaldo de emergencia, declarado en la fuente.
-- **Si el RL sale degenerado** (mismo top-K casi siempre): se rediseña la recompensa a sacudida esperada y/o revisita (`docs/research/12-brechas-e-ideas.md`, seccion 4).
+- **Si el RL sale degenerado** (mismo top-K casi siempre, medido **solo con entrenamiento**): se compara contra el top-K estatico y se declara; opcionalmente se rediseña la recompensa a un proxy de sacudida estimada (`docs/research/12-brechas-e-ideas.md`, seccion 4).
 - **Si se atrasa la web:** Streamlit con los mismos JSON, sin tocar el codigo de ML.
 
 ## 4. Contrato de datos de la web (sin API)
@@ -47,7 +47,7 @@ La web **lee archivos JSON** de `app/web/public/data/`. No hace falta API. Cada 
 | Archivo | Quien lo genera | Contenido |
 |---|---|---|
 | `municipios.json` | Nico | `[{id, nombre, lat, lon, poblacion, cluster, nivel}]` (87 municipios; centroides ya en `app/api/data/municipios_santander.json`) |
-| `serie_mensual.json` | Nico | por municipio y mes: eventos, magnitud maxima, sacudida esperada, nivel real y nivel predicho en los meses de prueba |
+| `serie_mensual.json` | Nico | por municipio y mes: eventos, magnitud maxima, proxy de sacudida estimada, nivel real y nivel predicho en los meses de prueba |
 | `clusters.json` | Nico | perfil de cada grupo del Medio (promedios de variables clave, lectura en palabras, municipios) e importancia de variables |
 | `priorizacion.json` | Zabdiel | por corte de prueba: K elegidos por el agente, por cada linea base y por el oraculo, y el resultado real (que paso despues) |
 | `metricas.json` | Zabdiel | Basico (matriz de confusion, F1), curvas del RL, comparacion contra lineas base con intervalos, semillas |
@@ -77,7 +77,14 @@ Reglas de UI: leer `skills/web-app/SKILL.md` y crear `app/web/DESIGN.md` antes d
 | 6,5 a 9 | Julian (demo) con Zabdiel | Maquina del tiempo y priorizacion en vivo |
 | 9 a 10 | Nico | Impacto, supuestos, limites y extensiones; cierre |
 
-La demo en vivo (**requisito habilitante**) ejecuta el modelo entrenado: el boton "Ejecutar agente" corre la politica guardada (el checkpoint propio) sobre un corte elegido; respaldo: los resultados ya calculados en `priorizacion.json`.
+**Demo en vivo (requisito habilitante) y como se ejecuta el modelo.** Hay dos niveles y se rotulan distinto en pantalla:
+
+1. **Reproduccion de resultados guardados**: la web lee `priorizacion.json` precalculado. Es un **replay, NO una inferencia nueva**; el boton se llama "Reproducir resultado guardado".
+2. **Ejecucion en vivo del agente**: un **puente local** que corre el checkpoint propio. Opcion principal: un servicio local delgado de FastAPI (`uv run uvicorn ml.serve:app`, reutilizando la base de `app/api/`) con un endpoint que recibe un corte (y K) y devuelve los municipios elegidos y las lineas base; la web lo llama. Opcion de respaldo: una orden de consola (`uv run python -m ml.select --cutoff YYYY-MM`) que genera un paquete nuevo y la web lo importa. Se prueba **antes de las 10:45**.
+
+K: el agente se entrena con un K fijo (por defecto K = 5). **Mover K a un valor no entrenado exige una politica nueva**; no se trunca la lista de otro K como si fuera el mismo agente.
+
+La demo ante el jurado muestra el nivel 2 funcionando; si falla, se dice que es un replay y se muestra el nivel 1.
 
 ## 7. Que se publica
 

@@ -40,7 +40,7 @@ Antes de empezar, cada persona lee: este archivo, `docs/plan/01-roles-cronograma
 
 ## Reglas no negociables
 
-0. **Gate de degeneracion** (nuevo): antes de entrenar el RL, medir cuanto varia el top-K entre cortes; si el mismo top-K aparece en mas del 90 %, rediseñar la recompensa (`docs/research/12-brechas-e-ideas.md`, seccion 4).
+0. **Gate de degeneracion** (nuevo): antes de entrenar el RL, medir **solo con entrenamiento** cuanto varia el top-K entre cortes (K, empates y soporte fijados de antemano). Si es casi constante no es un fallo: se compara contra el top-K estatico y se declara (`docs/research/12-brechas-e-ideas.md`, seccion 4). Nunca se usa validacion ni prueba para decidir.
 1. Cumplir lo oficial: datos reales de fuente oficial citada (URL, fecha, filtros), tabla unica con diccionario, >= 20 variables, objetivo que no se calcule de las entradas, modelo entrenado por el equipo y demostrado en vivo. (El contrato de la API `03` esta congelado: no se requiere API.)
 2. Sin fuga espacial ni temporal: validacion por bloques de municipios (clusters de centroides o provincias) y particion temporal con embargo; nunca aleatoria sobre unidades vecinas.
 3. Todo experimento deja rastro: corrida en MLflow, semilla fija, hash de datos, version de codigo. Sin rastro no cuenta como resultado.
